@@ -1,0 +1,8 @@
+{
+     "admin_pass": "password",
+      "backlog": 50,
+       "bind": "0.0.0.0",
+        "db_path": "db",
+         "port": 9876,
+          "server": "auto"
+}

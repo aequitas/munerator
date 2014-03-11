@@ -7,7 +7,8 @@ Commands:
     wrap <cmd>
     trans
     context
-    live <url>
+    ledbar
+    voting
     help
 
 Options:
@@ -25,6 +26,7 @@ import wrap
 import trans
 import context
 import ledbar
+import voting
 
 version = pkg_resources.get_distribution("munerator").version
 
@@ -45,3 +47,6 @@ def main():
         context.main(argv)
     elif args['<command>'] == 'ledbar':
         ledbar.main(argv)
+    elif args['<command>'] == 'voting':
+        voting.main(argv)
+

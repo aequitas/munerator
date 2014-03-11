@@ -21,6 +21,7 @@ setup(
     install_requires=[
         'docopt',
         'pyzmq',
+        'codernitydb'
     ],
     packages=find_packages(),
     license=read("LICENSE"),
