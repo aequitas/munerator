@@ -1,0 +1,1290 @@
+  0:00 InitGame: \g_lms_mode\0\elimination_roundtime\120\g_delagHitscan\1\g_voteMinFraglimit\10\g_voteMaxFraglimit\100\g_voteMinTimelimit\10\g_voteMaxTimelimit\40\g_voteGametypes\/0/3/4/\g_allowVote\1\g_doWarmup\0\capturelimit\5\videoflags\7\g_maxGameClients\32\sv_dlURL\http://quake.brensen.com\sv_floodProtect\1\sv_maxPing\400\sv_minPing\0\sv_maxRate\25000\sv_minRate\0\sv_maxclients\32\sv_hostname\Brensen OpenArena Server\timelimit\22\fraglimit\28\dmflags\72\sv_privateClients\0\sv_allowDownload\1\g_obeliskRespawnDelay\10\version\ioq3+oa 1.36_SVN1910M linux-x86_64 Dec 25 2011\protocol\71\g_gametype\5\mapname\oasago1\gamename\baseoa\elimflags\0\voteflags\215\g_needpass\0\g_enableDust\0\g_enableBreath\0\g_rockets\0\g_instantgib\0\g_altExcellent\0\g_timestamp\2014-02-20 13:06:03
+  0:00 Info: ServerInfo length: 768 of 1024
+  0:00 ClientUserinfoChanged: 0 n\-[aequitas]-\t\2\model\assassin/ghost\hmodel\assassin/ghost\g_redteam\\g_blueteam\\c1\3\c2\3\hc\100\w\0\l\0\tt\0\tl\0\id\9982DEAC44F27E0622FCF0FC6C540F45
+  0:00 ClientConnect: 0
+  0:00 ClientUserinfoChanged: 1 n\Anton aus Tirol\t\2\model\sarge/classicred\hmodel\sarge/classicred\g_redteam\\g_blueteam\\c1\6\c2\5\hc\100\w\0\l\0\tt\0\tl\0\id\EE89E193833D17601D63BC6A47BC0163
+  0:00 ClientConnect: 1
+  0:00 ClientUserinfoChanged: 2 n\Django\t\2\model\james\hmodel\*james\g_redteam\\g_blueteam\\c1\4\c2\5\hc\100\w\0\l\0\tt\0\tl\0\id\9CD101D150811D227AB7EF2C65082083
+  0:00 ClientConnect: 2
+  0:00 ClientUserinfoChanged: 3 n\Uberschwanz\t\2\model\sarge/red\hmodel\sarge/red\g_redteam\\g_blueteam\\c1\4\c2\4\hc\100\w\0\l\0\tt\0\tl\0\id\8B0870E9DB02BFE9172E7C096E58F49D
+  0:00 ClientConnect: 3
+  0:00 ClientUserinfoChanged: 5 n\Feldwebel\t\2\model\james\hmodel\*james\g_redteam\\g_blueteam\\c1\4\c2\5\hc\100\w\0\l\0\tt\0\tl\0\id\9F77851FD4FF3E284B33E8B413DC2A39
+  0:00 ClientConnect: 5
+  0:00 ClientUserinfoChanged: 6 n\Power Pretzel\t\2\model\liz/default\hmodel\liz/default\g_redteam\\g_blueteam\\c1\7\c2\5\hc\100\w\0\l\0\tt\0\tl\0\id\2B779FD340F3D2ED888A462EB792F9F2
+  0:00 ClientConnect: 6
+  0:00 ClientUserinfoChanged: 7 n\Tamas\t\2\model\smarine/red\hmodel\smarine/red\g_redteam\\g_blueteam\\c1\4\c2\5\hc\100\w\0\l\0\tt\0\tl\0\id\74BD397D445180B7E2E9C78A8C9A802A
+  0:00 ClientConnect: 7
+  0:04 ClientUserinfoChanged: 7 n\Tamas\t\2\model\smarine/red\hmodel\smarine/red\g_redteam\\g_blueteam\\c1\4\c2\5\hc\100\w\0\l\0\tt\0\tl\0\id\74BD397D445180B7E2E9C78A8C9A802A
+  0:04 Playerstore: Nothing to restore. Guid: 74BD397D445180B7E2E9C78A8C9A802A
+  0:04 ClientBegin: 7
+  0:04 ClientUserinfoChanged: 5 n\Feldwebel\t\2\model\james\hmodel\*james\g_redteam\\g_blueteam\\c1\4\c2\5\hc\100\w\0\l\0\tt\0\tl\0\id\9F77851FD4FF3E284B33E8B413DC2A39
+  0:04 Playerstore: Nothing to restore. Guid: 9F77851FD4FF3E284B33E8B413DC2A39
+  0:04 ClientBegin: 5
+  0:05 Playerstore: Nothing to restore. Guid: EE89E193833D17601D63BC6A47BC0163
+  0:05 ClientBegin: 1
+  0:05 Item: 7 weapon_plasmagun
+  0:06 Playerstore: Nothing to restore. Guid: 8B0870E9DB02BFE9172E7C096E58F49D
+  0:06 ClientBegin: 3
+  0:06 ClientUserinfoChanged: 0 n\-[aequitas]-\t\2\model\assassin/ghost\hmodel\assassin/ghost\g_redteam\\g_blueteam\\c1\3\c2\3\hc\100\w\0\l\0\tt\0\tl\0\id\9982DEAC44F27E0622FCF0FC6C540F45
+  0:06 Playerstore: Nothing to restore. Guid: 9982DEAC44F27E0622FCF0FC6C540F45
+  0:06 ClientBegin: 0
+  0:06 ClientUserinfoChanged: 6 n\Power Pretzel\t\2\model\liz/default\hmodel\liz/default\g_redteam\\g_blueteam\\c1\7\c2\5\hc\100\w\0\l\0\tt\0\tl\0\id\2B779FD340F3D2ED888A462EB792F9F2
+  0:06 Playerstore: Nothing to restore. Guid: 2B779FD340F3D2ED888A462EB792F9F2
+  0:06 ClientBegin: 6
+  0:06 Item: 1 ammo_shells
+  0:07 Item: 1 ammo_slugs
+  0:07 Playerstore: Nothing to restore. Guid: 9CD101D150811D227AB7EF2C65082083
+  0:07 ClientBegin: 2
+  0:07 Item: 5 ammo_bullets
+  0:08 Item: 3 ammo_cells
+  0:08 Item: 3 ammo_mines
+  0:09 Item: 3 weapon_plasmagun
+  0:09 Kill: 0 0 20: -[aequitas]- killed -[aequitas]- by MOD_SUICIDE
+  0:09 Playerstore: Stored player with guid: 9982DEAC44F27E0622FCF0FC6C540F45 in 0
+  0:09 ClientUserinfoChanged: 0 n\-[aequitas]-\t\1\model\assassin/ghost\hmodel\assassin/ghost\g_redteam\\g_blueteam\\c1\3\c2\3\hc\100\w\0\l\0\tt\0\tl\1\id\9982DEAC44F27E0622FCF0FC6C540F45
+  0:09 ClientUserinfoChanged: 0 n\-[aequitas]-\t\1\model\assassin/ghost\hmodel\assassin/ghost\g_redteam\\g_blueteam\\c1\3\c2\3\hc\100\w\0\l\0\tt\0\tl\1\id\9982DEAC44F27E0622FCF0FC6C540F45
+  0:09 Restored player with guid: 9982DEAC44F27E0622FCF0FC6C540F45
+  0:09 ClientBegin: 0
+  0:10 Kill: 2 2 20: Django killed Django by MOD_SUICIDE
+  0:10 Playerstore: Stored player with guid: 9CD101D150811D227AB7EF2C65082083 in 0
+  0:10 ClientUserinfoChanged: 2 n\Django\t\1\model\james\hmodel\*james\g_redteam\\g_blueteam\\c1\4\c2\5\hc\100\w\0\l\0\tt\0\tl\0\id\9CD101D150811D227AB7EF2C65082083
+  0:10 Restored player with guid: 9CD101D150811D227AB7EF2C65082083
+  0:10 ClientBegin: 2
+  0:10 Item: 0 weapon_plasmagun
+  0:10 Item: 7 item_scout
+  0:10 Item: 2 ammo_shells
+  0:10 Item: 5 ammo_lightning
+  0:11 Item: 2 ammo_slugs
+  0:11 Item: 1 weapon_rocketlauncher
+  0:11 Item: 2 weapon_plasmagun
+  0:12 Kill: 6 6 20: Power Pretzel killed Power Pretzel by MOD_SUICIDE
+  0:12 Playerstore: Stored player with guid: 2B779FD340F3D2ED888A462EB792F9F2 in 0
+  0:12 ClientUserinfoChanged: 6 n\Power Pretzel\t\1\model\liz/default\hmodel\liz/default\g_redteam\\g_blueteam\\c1\7\c2\5\hc\100\w\0\l\0\tt\0\tl\0\id\2B779FD340F3D2ED888A462EB792F9F2
+  0:12 Restored player with guid: 2B779FD340F3D2ED888A462EB792F9F2
+  0:12 ClientBegin: 6
+  0:13 Item: 3 weapon_shotgun
+  0:13 Item: 0 item_scout
+  0:14 Item: 7 ammo_belt
+  0:15 Item: 2 weapon_rocketlauncher
+  0:15 Item: 7 weapon_chaingun
+  0:15 Item: 5 team_CTF_neutralflag
+  0:15 1FCTF: 5 2 0: Feldwebel got the flag!
+  0:15 PlayerScore: 5 0: Feldwebel now has 0 points
+  0:16 Item: 6 ammo_bullets
+  0:18 Kill: 2 1 7: Django killed Anton aus Tirol by MOD_ROCKET_SPLASH
+  0:18 PlayerScore: 2 1: Django now has 1 points
+  0:18 Challenge: 2 205 1: Client 2 got award 205
+  0:18 Challenge: 2 1 1: Client 2 got award 1
+  0:18 Challenge: 1 2 1: Client 1 got award 2
+  0:18 Item: 6 weapon_rocketlauncher
+  0:18 Item: 7 weapon_plasmagun
+  0:19 Item: 3 weapon_rocketlauncher
+  0:19 Item: 6 weapon_rocketlauncher
+  0:19 Kill: 0 5 8: -[aequitas]- killed Feldwebel by MOD_PLASMA
+  0:19 PlayerScore: 0 1: -[aequitas]- now has 1 points
+  0:19 Challenge: 0 207 1: Client 0 got award 207
+  0:19 Challenge: 0 1 1: Client 0 got award 1
+  0:19 Challenge: 5 2 1: Client 5 got award 2
+  0:19 PlayerScore: 0 3: -[aequitas]- now has 3 points
+  0:19 1fCTF: 0 2 3: -[aequitas]- fragged BLUE's flag carrier!
+  0:20 Item: 0 team_CTF_neutralflag
+  0:20 1FCTF: 0 1 0: -[aequitas]- got the flag!
+  0:20 PlayerScore: 0 3: -[aequitas]- now has 3 points
+  0:21 Item: 1 weapon_shotgun
+  0:22 Item: 6 ammo_lightning
+  0:23 Item: 7 weapon_plasmagun
+  0:24 Kill: 6 3 7: Power Pretzel killed Uberschwanz by MOD_ROCKET_SPLASH
+  0:24 PlayerScore: 6 1: Power Pretzel now has 1 points
+  0:24 Challenge: 6 205 1: Client 6 got award 205
+  0:24 Challenge: 6 1 1: Client 6 got award 1
+  0:24 Challenge: 3 2 1: Client 3 got award 2
+  0:24 Item: 0 team_CTF_blueflag
+  0:24 1FCTF: 0 -1 1: -[aequitas]- captured the flag!
+  0:24 Award: 0 4: -[aequitas]- gained the CAPTURE award!
+  0:24 Challenge: 0 303 1: Client 0 got award 303
+  0:24 PlayerScore: 0 8: -[aequitas]- now has 8 points
+  0:24 PlayerScore: 2 1: Django now has 1 points
+  0:24 PlayerScore: 6 1: Power Pretzel now has 1 points
+  0:25 Item: 2 item_armor_combat
+  0:25 Item: 0 item_health
+  0:25 Item: 0 item_health
+  0:26 Item: 6 weapon_shotgun
+  0:27 Item: 3 item_ammoregen
+  0:28 Item: 6 ammo_rockets
+  0:28 Item: 3 weapon_lightning
+  0:29 Item: 5 weapon_plasmagun
+  0:29 Item: 3 ammo_lightning
+  0:29 Kill: 7 6 24: Tamas killed Power Pretzel by MOD_CHAINGUN
+  0:29 PlayerScore: 7 1: Tamas now has 1 points
+  0:29 Challenge: 7 211 1: Client 7 got award 211
+  0:29 Challenge: 7 1 1: Client 7 got award 1
+  0:29 Challenge: 6 2 1: Client 6 got award 2
+  0:29 Item: 7 ammo_shells
+  0:30 Item: 7 weapon_rocketlauncher
+  0:30 Kill: 2 1 6: Django killed Anton aus Tirol by MOD_ROCKET
+  0:30 PlayerScore: 2 2: Django now has 2 points
+  0:30 Challenge: 2 205 1: Client 2 got award 205
+  0:30 Challenge: 2 1 1: Client 2 got award 1
+  0:30 Challenge: 1 2 1: Client 1 got award 2
+  0:31 Item: 0 team_CTF_neutralflag
+  0:31 1FCTF: 0 1 0: -[aequitas]- got the flag!
+  0:31 PlayerScore: 0 8: -[aequitas]- now has 8 points
+  0:31 Kill: 3 0 11: Uberschwanz killed -[aequitas]- by MOD_LIGHTNING
+  0:31 PlayerScore: 3 1: Uberschwanz now has 1 points
+  0:31 Challenge: 3 206 1: Client 3 got award 206
+  0:31 Challenge: 3 1 1: Client 3 got award 1
+  0:31 Challenge: 0 2 1: Client 0 got award 2
+  0:31 PlayerScore: 3 3: Uberschwanz now has 3 points
+  0:31 1fCTF: 3 1 3: Uberschwanz fragged RED's flag carrier!
+  0:32 Item: 6 weapon_prox_launcher
+  0:33 Item: 6 item_scout
+  0:33 Item: 3 team_CTF_neutralflag
+  0:33 1FCTF: 3 2 0: Uberschwanz got the flag!
+  0:33 PlayerScore: 3 3: Uberschwanz now has 3 points
+  0:34 Item: 2 item_health
+  0:34 Item: 2 item_health
+  0:34 Item: 1 weapon_lightning
+  0:34 Kill: 7 5 7: Tamas killed Feldwebel by MOD_ROCKET_SPLASH
+  0:34 Item: 2 weapon_plasmagun
+  0:35 Item: 0 weapon_chaingun
+  0:35 Item: 6 weapon_rocketlauncher
+  0:36 Kill: 7 2 6: Tamas killed Django by MOD_ROCKET
+  0:36 PlayerScore: 7 2: Tamas now has 2 points
+  0:36 Challenge: 7 205 1: Client 7 got award 205
+  0:36 Challenge: 7 1 1: Client 7 got award 1
+  0:36 Challenge: 2 2 1: Client 2 got award 2
+  0:36 PlayerScore: 7 3: Tamas now has 3 points
+  0:36 Challenge: 7 305 1: Client 7 got award 305
+  0:36 Award: 7 3: Tamas gained the DEFENCE award!
+  0:36 Item: 7 weapon_plasmagun
+  0:36 Item: 3 ammo_lightning
+  0:36 Item: 3 weapon_lightning
+  0:40 Item: 2 weapon_rocketlauncher
+  0:41 Item: 5 weapon_shotgun
+  0:41 Kill: 0 3 24: -[aequitas]- killed Uberschwanz by MOD_CHAINGUN
+  0:41 PlayerScore: 0 9: -[aequitas]- now has 9 points
+  0:41 Challenge: 0 211 1: Client 0 got award 211
+  0:41 Challenge: 0 1 1: Client 0 got award 1
+  0:41 Challenge: 3 2 1: Client 3 got award 2
+  0:41 PlayerScore: 0 11: -[aequitas]- now has 11 points
+  0:41 1fCTF: 0 2 3: -[aequitas]- fragged BLUE's flag carrier!
+  0:41 Item: 0 team_CTF_neutralflag
+  0:41 1FCTF: 0 1 0: -[aequitas]- got the flag!
+  0:41 PlayerScore: 0 11: -[aequitas]- now has 11 points
+  0:41 Item: 0 weapon_lightning
+  0:41 Kill: 6 5 6: Power Pretzel killed Feldwebel by MOD_ROCKET
+  0:41 PlayerScore: 6 2: Power Pretzel now has 2 points
+  0:41 Challenge: 6 205 1: Client 6 got award 205
+  0:41 Challenge: 6 1 1: Client 6 got award 1
+  0:41 Challenge: 5 2 1: Client 5 got award 2
+  0:42 Item: 2 weapon_rocketlauncher
+  0:44 Item: 6 weapon_shotgun
+  0:44 Item: 5 item_ammoregen
+  0:45 Item: 3 weapon_chaingun
+  0:45 Item: 3 ammo_belt
+  0:45 Item: 0 weapon_rocketlauncher
+  0:46 Kill: 0 7 7: -[aequitas]- killed Tamas by MOD_ROCKET_SPLASH
+  0:46 PlayerScore: 0 12: -[aequitas]- now has 12 points
+  0:46 Challenge: 0 205 1: Client 0 got award 205
+  0:46 Challenge: 0 1 1: Client 0 got award 1
+  0:46 Challenge: 7 2 1: Client 7 got award 2
+  0:46 Item: 5 weapon_rocketlauncher
+  0:46 Item: 5 ammo_rockets
+  0:46 Kill: 6 1 7: Power Pretzel killed Anton aus Tirol by MOD_ROCKET_SPLASH
+  0:46 PlayerScore: 6 3: Power Pretzel now has 3 points
+  0:46 Challenge: 6 205 1: Client 6 got award 205
+  0:46 Challenge: 6 1 1: Client 6 got award 1
+  0:46 Challenge: 1 2 1: Client 1 got award 2
+  0:46 Item: 6 item_health
+  0:48 Item: 2 weapon_rocketlauncher
+  0:48 Item: 0 item_quad
+  0:48 Item: 1 weapon_lightning
+  0:49 Kill: 0 0 7: -[aequitas]- killed -[aequitas]- by MOD_ROCKET_SPLASH
+  0:49 Item: 7 weapon_chaingun
+  0:50 Item: 5 ammo_rockets
+  0:50 Item: 3 item_quad
+  0:50 Item: 3 weapon_rocketlauncher
+  0:51 Kill: 3 2 24: Uberschwanz killed Django by MOD_CHAINGUN
+  0:51 PlayerScore: 3 4: Uberschwanz now has 4 points
+  0:51 Challenge: 3 211 1: Client 3 got award 211
+  0:51 Challenge: 3 1 1: Client 3 got award 1
+  0:51 Challenge: 2 2 1: Client 2 got award 2
+  0:51 Challenge: 3 401 1: Client 3 got award 401
+  0:51 Item: 3 team_CTF_neutralflag
+  0:51 1FCTF: 3 2 0: Uberschwanz got the flag!
+  0:51 PlayerScore: 3 4: Uberschwanz now has 4 points
+  0:51 Item: 1 item_scout
+  0:52 Item: 0 item_ammoregen
+  0:52 Item: 1 weapon_shotgun
+  0:53 Item: 0 weapon_rocketlauncher
+  0:54 Item: 0 ammo_rockets
+  0:54 Kill: 3 2 24: Uberschwanz killed Django by MOD_CHAINGUN
+  0:54 PlayerScore: 3 5: Uberschwanz now has 5 points
+  0:54 Challenge: 3 211 1: Client 3 got award 211
+  0:54 Challenge: 3 1 1: Client 3 got award 1
+  0:54 Challenge: 2 2 1: Client 2 got award 2
+  0:54 Challenge: 3 401 1: Client 3 got award 401
+  0:54 Item: 0 ammo_slugs
+  0:54 Item: 0 ammo_shells
+  0:55 Item: 3 weapon_rocketlauncher
+  0:56 Item: 6 ammo_bullets
+  0:56 Kill: 2 3 3: Django killed Uberschwanz by MOD_MACHINEGUN
+  0:56 PlayerScore: 2 3: Django now has 3 points
+  0:56 Challenge: 2 202 1: Client 2 got award 202
+  0:56 Challenge: 2 1 1: Client 2 got award 1
+  0:56 Challenge: 3 2 1: Client 3 got award 2
+  0:56 Challenge: 2 406 1: Client 2 got award 406
+  0:56 PlayerScore: 2 5: Django now has 5 points
+  0:56 1fCTF: 2 2 3: Django fragged BLUE's flag carrier!
+  0:58 Item: 2 item_health
+  0:58 Item: 5 team_CTF_neutralflag
+  0:58 1FCTF: 5 2 0: Feldwebel got the flag!
+  0:58 PlayerScore: 5 0: Feldwebel now has 0 points
+  0:58 Item: 2 item_quad
+  0:58 Kill: 5 2 7: Feldwebel killed Django by MOD_ROCKET_SPLASH
+  0:58 PlayerScore: 5 1: Feldwebel now has 1 points
+  0:58 Challenge: 5 205 1: Client 5 got award 205
+  0:58 Challenge: 5 1 1: Client 5 got award 1
+  0:58 Challenge: 2 2 1: Client 2 got award 2
+  0:58 Challenge: 5 406 1: Client 5 got award 406
+  0:59 Item: 3 weapon_prox_launcher
+  1:00 Item: 3 ammo_lightning
+  1:00 Kill: 6 7 7: Power Pretzel killed Tamas by MOD_ROCKET_SPLASH
+  1:00 PlayerScore: 6 4: Power Pretzel now has 4 points
+  1:00 Challenge: 6 205 1: Client 6 got award 205
+  1:00 Challenge: 6 1 1: Client 6 got award 1
+  1:00 Challenge: 7 2 1: Client 7 got award 2
+  1:01 Item: 1 item_quad
+  1:02 Item: 5 team_CTF_redflag
+  1:02 1FCTF: 5 -1 1: Feldwebel captured the flag!
+  1:02 Award: 5 4: Feldwebel gained the CAPTURE award!
+  1:02 Challenge: 5 303 1: Client 5 got award 303
+  1:02 PlayerScore: 5 6: Feldwebel now has 6 points
+  1:02 PlayerScore: 1 0: Anton aus Tirol now has 0 points
+  1:02 PlayerScore: 3 5: Uberschwanz now has 5 points
+  1:02 PlayerScore: 7 3: Tamas now has 3 points
+  1:02 Item: 5 item_health
+  1:02 Item: 5 item_health
+  1:03 Item: 5 ammo_shells
+  1:03 Item: 5 ammo_slugs
+  1:04 Item: 6 weapon_chaingun
+  1:04 Item: 6 item_health
+  1:04 Item: 0 weapon_prox_launcher
+  1:05 Item: 7 weapon_rocketlauncher
+  1:05 Item: 3 weapon_rocketlauncher
+  1:06 Kill: 1 0 1: Anton aus Tirol killed -[aequitas]- by MOD_SHOTGUN
+  1:06 PlayerScore: 1 1: Anton aus Tirol now has 1 points
+  1:06 Challenge: 1 203 1: Client 1 got award 203
+  1:06 Challenge: 1 1 1: Client 1 got award 1
+  1:06 Challenge: 0 2 1: Client 0 got award 2
+  1:06 Challenge: 1 401 1: Client 1 got award 401
+  1:06 Item: 1 weapon_prox_launcher
+  1:07 Item: 2 weapon_shotgun
+  1:08 Kill: 5 2 6: Feldwebel killed Django by MOD_ROCKET
+  1:08 PlayerScore: 5 7: Feldwebel now has 7 points
+  1:08 Challenge: 5 205 1: Client 5 got award 205
+  1:08 Challenge: 5 1 1: Client 5 got award 1
+  1:08 Challenge: 2 2 1: Client 2 got award 2
+  1:08 Item: 5 weapon_shotgun
+  1:09 Item: 3 weapon_rocketlauncher
+  1:09 Item: 7 team_CTF_neutralflag
+  1:09 1FCTF: 7 2 0: Tamas got the flag!
+  1:09 PlayerScore: 7 3: Tamas now has 3 points
+  1:11 Item: 0 weapon_prox_launcher
+  1:11 Item: 0 ammo_lightning
+  1:12 Kill: 3 6 25: Uberschwanz killed Power Pretzel by MOD_PROXIMITY_MINE
+  1:12 PlayerScore: 3 6: Uberschwanz now has 6 points
+  1:12 Challenge: 3 213 1: Client 3 got award 213
+  1:12 Challenge: 3 1 1: Client 3 got award 1
+  1:12 Challenge: 6 2 1: Client 6 got award 2
+  1:13 Kill: 5 0 1: Feldwebel killed -[aequitas]- by MOD_SHOTGUN
+  1:13 PlayerScore: 5 8: Feldwebel now has 8 points
+  1:13 Challenge: 5 203 1: Client 5 got award 203
+  1:13 Challenge: 5 1 1: Client 5 got award 1
+  1:13 Challenge: 0 2 1: Client 0 got award 2
+  1:13 Item: 1 item_health
+  1:13 Item: 1 item_health
+  1:14 Item: 7 ammo_lightning
+  1:14 Item: 7 weapon_lightning
+  1:14 Kill: 0 3 25: -[aequitas]- killed Uberschwanz by MOD_PROXIMITY_MINE
+  1:14 PlayerScore: 0 13: -[aequitas]- now has 13 points
+  1:14 Challenge: 0 213 1: Client 0 got award 213
+  1:14 Challenge: 0 1 1: Client 0 got award 1
+  1:14 Challenge: 3 2 1: Client 3 got award 2
+  1:15 Item: 5 weapon_shotgun
+  1:16 Item: 2 weapon_plasmagun
+  1:16 Item: 0 item_ammoregen
+  1:16 Item: 1 weapon_prox_launcher
+  1:16 Item: 6 weapon_chaingun
+  1:16 Item: 6 ammo_belt
+  1:16 Item: 1 weapon_rocketlauncher
+  1:16 Item: 5 weapon_prox_launcher
+  1:17 Item: 2 weapon_chaingun
+  1:17 Item: 3 weapon_prox_launcher
+  1:18 Item: 0 weapon_lightning
+  1:18 Item: 0 ammo_lightning
+  1:19 Item: 1 weapon_rocketlauncher
+  1:21 Item: 7 weapon_plasmagun
+  1:22 Item: 1 weapon_rocketlauncher
+  1:24 Item: 5 item_armor_combat
+  1:24 Kill: 2 1 24: Django killed Anton aus Tirol by MOD_CHAINGUN
+  1:24 PlayerScore: 2 6: Django now has 6 points
+  1:24 Challenge: 2 211 1: Client 2 got award 211
+  1:24 Challenge: 2 1 1: Client 2 got award 1
+  1:24 Challenge: 1 2 1: Client 1 got award 2
+  1:24 PlayerScore: 2 7: Django now has 7 points
+  1:24 Challenge: 2 305 1: Client 2 got award 305
+  1:24 Award: 2 3: Django gained the DEFENCE award!
+  1:25 Kill: 6 3 24: Power Pretzel killed Uberschwanz by MOD_CHAINGUN
+  1:25 PlayerScore: 6 5: Power Pretzel now has 5 points
+  1:25 Challenge: 6 211 1: Client 6 got award 211
+  1:25 Challenge: 6 1 1: Client 6 got award 1
+  1:25 Challenge: 3 2 1: Client 3 got award 2
+  1:26 Item: 2 weapon_rocketlauncher
+  1:28 Item: 1 weapon_lightning
+  1:29 Item: 3 weapon_rocketlauncher
+  1:29 Kill: 6 5 24: Power Pretzel killed Feldwebel by MOD_CHAINGUN
+  1:29 PlayerScore: 6 6: Power Pretzel now has 6 points
+  1:29 Challenge: 6 211 1: Client 6 got award 211
+  1:29 Challenge: 6 1 1: Client 6 got award 1
+  1:29 Challenge: 5 2 1: Client 5 got award 2
+  1:29 Item: 6 weapon_shotgun
+  1:29 Kill: 2 6 6: Django killed Power Pretzel by MOD_ROCKET
+  1:30 Item: 1 weapon_rocketlauncher
+  1:30 Item: 1 ammo_rockets
+  1:30 Item: 3 weapon_prox_launcher
+  1:30 Item: 1 ammo_slugs
+  1:31 Item: 3 item_scout
+  1:32 Item: 5 item_ammoregen
+  1:33 Item: 3 weapon_chaingun
+  1:34 Item: 2 weapon_rocketlauncher
+  1:34 Item: 5 weapon_rocketlauncher
+  1:34 Kill: 3 2 7: Uberschwanz killed Django by MOD_ROCKET_SPLASH
+  1:34 PlayerScore: 3 7: Uberschwanz now has 7 points
+  1:34 Challenge: 3 205 1: Client 3 got award 205
+  1:34 Challenge: 3 1 1: Client 3 got award 1
+  1:34 Challenge: 2 2 1: Client 2 got award 2
+  1:35 Item: 6 weapon_prox_launcher
+  1:35 Item: 5 ammo_shells
+  1:35 Item: 6 item_scout
+  1:37 Kill: 1 0 7: Anton aus Tirol killed -[aequitas]- by MOD_ROCKET_SPLASH
+  1:37 PlayerScore: 1 2: Anton aus Tirol now has 2 points
+  1:37 Challenge: 1 205 1: Client 1 got award 205
+  1:37 Challenge: 1 1 1: Client 1 got award 1
+  1:37 Challenge: 0 2 1: Client 0 got award 2
+  1:38 Item: 1 weapon_lightning
+  1:38 Item: 6 weapon_plasmagun
+  1:39 Item: 1 weapon_rocketlauncher
+  1:39 Item: 2 weapon_lightning
+  1:39 Item: 1 weapon_rocketlauncher
+  1:40 Item: 6 ammo_bullets
+  1:40 Item: 0 weapon_prox_launcher
+  1:41 Item: 7 team_CTF_redflag
+  1:41 1FCTF: 7 -1 1: Tamas captured the flag!
+  1:41 Award: 7 4: Tamas gained the CAPTURE award!
+  1:41 Challenge: 7 303 1: Client 7 got award 303
+  1:41 PlayerScore: 7 8: Tamas now has 8 points
+  1:41 PlayerScore: 1 2: Anton aus Tirol now has 2 points
+  1:41 PlayerScore: 3 7: Uberschwanz now has 7 points
+  1:41 PlayerScore: 5 8: Feldwebel now has 8 points
+  1:41 Kill: 6 1 8: Power Pretzel killed Anton aus Tirol by MOD_PLASMA
+  1:41 PlayerScore: 6 7: Power Pretzel now has 7 points
+  1:41 Challenge: 6 207 1: Client 6 got award 207
+  1:41 Challenge: 6 1 1: Client 6 got award 1
+  1:41 Challenge: 1 2 1: Client 1 got award 2
+  1:41 PlayerScore: 6 8: Power Pretzel now has 8 points
+  1:41 Challenge: 6 305 1: Client 6 got award 305
+  1:41 Award: 6 3: Power Pretzel gained the DEFENCE award!
+  1:41 Item: 7 item_health
+  1:41 Kill: 3 6 24: Uberschwanz killed Power Pretzel by MOD_CHAINGUN
+  1:41 PlayerScore: 3 8: Uberschwanz now has 8 points
+  1:41 Challenge: 3 211 1: Client 3 got award 211
+  1:41 Challenge: 3 1 1: Client 3 got award 1
+  1:41 Challenge: 6 2 1: Client 6 got award 2
+  1:43 Item: 3 weapon_plasmagun
+  1:43 Item: 3 weapon_rocketlauncher
+  1:43 Item: 7 weapon_plasmagun
+  1:44 Item: 0 item_scout
+  1:44 Kill: 6 5 25: Power Pretzel killed Feldwebel by MOD_PROXIMITY_MINE
+  1:44 PlayerScore: 6 9: Power Pretzel now has 9 points
+  1:44 Challenge: 6 213 1: Client 6 got award 213
+  1:44 Challenge: 6 1 1: Client 6 got award 1
+  1:44 Challenge: 5 2 1: Client 5 got award 2
+  1:45 Item: 3 item_health
+  1:45 Item: 6 weapon_prox_launcher
+  1:45 Item: 1 weapon_lightning
+  1:45 Item: 3 ammo_shells
+  1:46 Item: 3 ammo_slugs
+  1:46 Item: 6 weapon_rocketlauncher
+  1:46 Item: 2 weapon_rocketlauncher
+  1:46 Item: 0 team_CTF_neutralflag
+  1:46 1FCTF: 0 1 0: -[aequitas]- got the flag!
+  1:46 PlayerScore: 0 13: -[aequitas]- now has 13 points
+  1:46 Item: 1 weapon_rocketlauncher
+  1:47 Kill: 7 2 8: Tamas killed Django by MOD_PLASMA
+  1:47 PlayerScore: 7 9: Tamas now has 9 points
+  1:47 Challenge: 7 207 1: Client 7 got award 207
+  1:47 Challenge: 7 1 1: Client 7 got award 1
+  1:47 Challenge: 2 2 1: Client 2 got award 2
+  1:48 Item: 5 weapon_chaingun
+  1:48 Item: 5 ammo_belt
+  1:48 Item: 7 weapon_rocketlauncher
+  1:50 Kill: 3 6 8: Uberschwanz killed Power Pretzel by MOD_PLASMA
+  1:50 PlayerScore: 3 9: Uberschwanz now has 9 points
+  1:50 Challenge: 3 207 1: Client 3 got award 207
+  1:50 Challenge: 3 1 1: Client 3 got award 1
+  1:50 Challenge: 6 2 1: Client 6 got award 2
+  1:50 Item: 0 weapon_plasmagun
+  1:50 Item: 0 team_CTF_blueflag
+  1:50 1FCTF: 0 -1 1: -[aequitas]- captured the flag!
+  1:50 Award: 0 4: -[aequitas]- gained the CAPTURE award!
+  1:50 Challenge: 0 303 1: Client 0 got award 303
+  1:50 PlayerScore: 0 18: -[aequitas]- now has 18 points
+  1:50 PlayerScore: 2 7: Django now has 7 points
+  1:50 PlayerScore: 6 9: Power Pretzel now has 9 points
+  1:51 Item: 0 item_health
+  1:51 Item: 3 weapon_rocketlauncher
+  1:51 Item: 1 team_CTF_neutralflag
+  1:51 1FCTF: 1 2 0: Anton aus Tirol got the flag!
+  1:51 PlayerScore: 1 2: Anton aus Tirol now has 2 points
+  1:52 Item: 2 weapon_lightning
+  1:52 Item: 3 weapon_rocketlauncher
+  1:52 Item: 3 weapon_prox_launcher
+  1:52 Item: 7 ammo_rockets
+  1:53 Item: 7 ammo_shells
+  1:54 Item: 6 weapon_shotgun
+  1:55 Item: 5 ammo_lightning
+  1:55 Item: 5 weapon_prox_launcher
+  1:56 Kill: 1 6 6: Anton aus Tirol killed Power Pretzel by MOD_ROCKET
+  1:56 PlayerScore: 1 3: Anton aus Tirol now has 3 points
+  1:56 Challenge: 1 205 1: Client 1 got award 205
+  1:56 Challenge: 1 1 1: Client 1 got award 1
+  1:56 Challenge: 6 2 1: Client 6 got award 2
+  1:57 Item: 5 weapon_prox_launcher
+  1:57 Kill: 2 1 11: Django killed Anton aus Tirol by MOD_LIGHTNING
+  1:57 PlayerScore: 2 8: Django now has 8 points
+  1:57 Challenge: 2 206 1: Client 2 got award 206
+  1:57 Challenge: 2 1 1: Client 2 got award 1
+  1:57 Challenge: 1 2 1: Client 1 got award 2
+  1:57 PlayerScore: 2 10: Django now has 10 points
+  1:57 1fCTF: 2 2 3: Django fragged BLUE's flag carrier!
+  1:57 Item: 2 weapon_rocketlauncher
+  1:57 Item: 2 team_CTF_neutralflag
+  1:57 1FCTF: 2 1 0: Django got the flag!
+  1:57 PlayerScore: 2 10: Django now has 10 points
+  1:58 Item: 2 weapon_shotgun
+  1:58 Item: 7 weapon_rocketlauncher
+  1:58 Item: 5 weapon_prox_launcher
+  2:00 Item: 7 item_health
+  2:00 Kill: 2 3 6: Django killed Uberschwanz by MOD_ROCKET
+  2:00 PlayerScore: 2 11: Django now has 11 points
+  2:00 Challenge: 2 205 1: Client 2 got award 205
+  2:00 Challenge: 2 1 1: Client 2 got award 1
+  2:00 Challenge: 3 2 1: Client 3 got award 2
+  2:00 Item: 7 item_health
+  2:00 Item: 6 item_ammoregen
+  2:02 Item: 7 ammo_bullets
+  2:02 Item: 6 weapon_lightning
+  2:02 Kill: 5 2 3: Feldwebel killed Django by MOD_MACHINEGUN
+  2:02 PlayerScore: 5 9: Feldwebel now has 9 points
+  2:02 Challenge: 5 202 1: Client 5 got award 202
+  2:02 Challenge: 5 1 1: Client 5 got award 1
+  2:02 Challenge: 2 2 1: Client 2 got award 2
+  2:02 PlayerScore: 5 11: Feldwebel now has 11 points
+  2:02 1fCTF: 5 1 3: Feldwebel fragged RED's flag carrier!
+  2:02 Item: 6 ammo_lightning
+  2:03 Item: 1 item_scout
+  2:03 Item: 5 weapon_rocketlauncher
+  2:03 Item: 5 team_CTF_neutralflag
+  2:03 1FCTF: 5 2 0: Feldwebel got the flag!
+  2:03 PlayerScore: 5 11: Feldwebel now has 11 points
+  2:03 Item: 3 item_ammoregen
+  2:04 Item: 6 weapon_rocketlauncher
+  2:04 Kill: 0 5 8: -[aequitas]- killed Feldwebel by MOD_PLASMA
+  2:04 PlayerScore: 0 19: -[aequitas]- now has 19 points
+  2:04 Challenge: 0 207 1: Client 0 got award 207
+  2:04 Challenge: 0 1 1: Client 0 got award 1
+  2:04 Challenge: 5 2 1: Client 5 got award 2
+  2:04 PlayerScore: 0 21: -[aequitas]- now has 21 points
+  2:04 1fCTF: 0 2 3: -[aequitas]- fragged BLUE's flag carrier!
+  2:04 Item: 0 weapon_rocketlauncher
+  2:04 Item: 6 ammo_rockets
+  2:04 Item: 3 weapon_lightning
+  2:05 Item: 0 team_CTF_neutralflag
+  2:05 1FCTF: 0 1 0: -[aequitas]- got the flag!
+  2:05 PlayerScore: 0 21: -[aequitas]- now has 21 points
+  2:05 Item: 3 ammo_lightning
+  2:06 Item: 2 weapon_chaingun
+  2:06 Item: 2 ammo_belt
+  2:06 Kill: 7 0 8: Tamas killed -[aequitas]- by MOD_PLASMA
+  2:06 PlayerScore: 7 10: Tamas now has 10 points
+  2:06 Challenge: 7 207 1: Client 7 got award 207
+  2:06 Challenge: 7 1 1: Client 7 got award 1
+  2:06 Challenge: 0 2 1: Client 0 got award 2
+  2:06 PlayerScore: 7 12: Tamas now has 12 points
+  2:06 1fCTF: 7 1 3: Tamas fragged RED's flag carrier!
+  2:07 Kill: 5 6 25: Feldwebel killed Power Pretzel by MOD_PROXIMITY_MINE
+  2:07 PlayerScore: 5 12: Feldwebel now has 12 points
+  2:07 Challenge: 5 213 1: Client 5 got award 213
+  2:07 Challenge: 5 1 1: Client 5 got award 1
+  2:07 Challenge: 6 2 1: Client 6 got award 2
+  2:07 Item: 3 item_armor_combat
+  2:08 Item: 7 weapon_rocketlauncher
+  2:08 Item: 7 team_CTF_neutralflag
+  2:08 1FCTF: 7 2 0: Tamas got the flag!
+  2:08 PlayerScore: 7 12: Tamas now has 12 points
+  2:09 Item: 5 weapon_plasmagun
+  2:10 Item: 5 ammo_lightning
+  2:10 Item: 0 weapon_chaingun
+  2:11 Kill: 3 2 11: Uberschwanz killed Django by MOD_LIGHTNING
+  2:11 PlayerScore: 3 10: Uberschwanz now has 10 points
+  2:11 Challenge: 3 206 1: Client 3 got award 206
+  2:11 Challenge: 3 1 1: Client 3 got award 1
+  2:11 Challenge: 2 2 1: Client 2 got award 2
+  2:12 Item: 3 weapon_chaingun
+  2:12 Item: 6 weapon_lightning
+  2:14 Item: 6 weapon_rocketlauncher
+  2:14 Item: 0 item_scout
+  2:15 Item: 2 weapon_lightning
+  2:16 Item: 1 ammo_shells
+  2:16 Item: 1 item_health
+  2:17 Item: 1 ammo_cells
+  2:17 Item: 6 weapon_rocketlauncher
+  2:17 Item: 1 ammo_mines
+  2:19 Kill: 3 6 24: Uberschwanz killed Power Pretzel by MOD_CHAINGUN
+  2:19 PlayerScore: 3 11: Uberschwanz now has 11 points
+  2:19 Challenge: 3 211 1: Client 3 got award 211
+  2:19 Challenge: 3 1 1: Client 3 got award 1
+  2:19 Challenge: 6 2 1: Client 6 got award 2
+  2:20 Kill: 2 7 11: Django killed Tamas by MOD_LIGHTNING
+  2:20 PlayerScore: 2 12: Django now has 12 points
+  2:20 Challenge: 2 206 1: Client 2 got award 206
+  2:20 Challenge: 2 1 1: Client 2 got award 1
+  2:20 Challenge: 7 2 1: Client 7 got award 2
+  2:20 PlayerScore: 2 14: Django now has 14 points
+  2:20 1fCTF: 2 2 3: Django fragged BLUE's flag carrier!
+  2:20 Item: 0 item_health
+  2:20 Item: 2 team_CTF_neutralflag
+  2:20 1FCTF: 2 1 0: Django got the flag!
+  2:20 PlayerScore: 2 14: Django now has 14 points
+  2:20 Item: 2 weapon_plasmagun
+  2:20 Item: 0 item_health
+  2:20 Item: 0 weapon_plasmagun
+  2:20 Item: 1 weapon_plasmagun
+  2:21 Item: 3 ammo_rockets
+  2:22 Kill: 2 5 8: Django killed Feldwebel by MOD_PLASMA
+  2:22 PlayerScore: 2 15: Django now has 15 points
+  2:22 Challenge: 2 207 1: Client 2 got award 207
+  2:22 Challenge: 2 1 1: Client 2 got award 1
+  2:22 Challenge: 5 2 1: Client 5 got award 2
+  2:22 Award: 2 1: Django gained the EXCELLENT award!
+  2:22 Challenge: 2 302 1: Client 2 got award 302
+  2:22 PlayerScore: 2 16: Django now has 16 points
+  2:22 Challenge: 2 305 1: Client 2 got award 305
+  2:22 Award: 2 3: Django gained the DEFENCE award!
+  2:22 Item: 3 ammo_shells
+  2:22 Item: 6 weapon_chaingun
+  2:24 Item: 7 weapon_lightning
+  2:24 Item: 2 ammo_bullets
+  2:25 Item: 7 weapon_rocketlauncher
+  2:25 Item: 7 ammo_rockets
+  2:26 Item: 7 ammo_slugs
+  2:26 Item: 7 ammo_shells
+  2:26 Item: 2 weapon_prox_launcher
+  2:29 Item: 2 item_armor_combat
+  2:30 Kill: 7 2 7: Tamas killed Django by MOD_ROCKET_SPLASH
+  2:30 PlayerScore: 7 13: Tamas now has 13 points
+  2:30 Challenge: 7 205 1: Client 7 got award 205
+  2:30 Challenge: 7 1 1: Client 7 got award 1
+  2:30 Challenge: 2 2 1: Client 2 got award 2
+  2:30 PlayerScore: 7 15: Tamas now has 15 points
+  2:30 1fCTF: 7 1 3: Tamas fragged RED's flag carrier!
+  2:30 Kill: 7 1 6: Tamas killed Anton aus Tirol by MOD_ROCKET
+  2:31 Item: 3 ammo_slugs
+  2:32 Item: 3 weapon_plasmagun
+  2:32 Item: 1 item_guard
+  2:34 Item: 2 weapon_lightning
+  2:34 Item: 5 weapon_rocketlauncher
+  2:34 Item: 1 weapon_chaingun
+  2:34 Kill: 3 6 24: Uberschwanz killed Power Pretzel by MOD_CHAINGUN
+  2:34 PlayerScore: 3 12: Uberschwanz now has 12 points
+  2:34 Challenge: 3 211 1: Client 3 got award 211
+  2:34 Challenge: 3 1 1: Client 3 got award 1
+  2:34 Challenge: 6 2 1: Client 6 got award 2
+  2:34 PlayerScore: 3 13: Uberschwanz now has 13 points
+  2:34 Challenge: 3 305 1: Client 3 got award 305
+  2:34 Award: 3 3: Uberschwanz gained the DEFENCE award!
+  2:34 Item: 3 item_health
+  2:34 Item: 1 ammo_belt
+  2:34 Item: 3 item_health
+  2:36 Item: 0 weapon_chaingun
+  2:36 Item: 3 weapon_chaingun
+  2:36 Item: 1 team_CTF_neutralflag
+  2:36 1FCTF: 1 2 0: Anton aus Tirol got the flag!
+  2:36 PlayerScore: 1 3: Anton aus Tirol now has 3 points
+  2:37 Item: 1 weapon_plasmagun
+  2:37 Item: 5 weapon_rocketlauncher
+  2:37 Item: 1 weapon_prox_launcher
+  2:38 Item: 3 item_health
+  2:38 Kill: 1 0 24: Anton aus Tirol killed -[aequitas]- by MOD_CHAINGUN
+  2:38 PlayerScore: 1 4: Anton aus Tirol now has 4 points
+  2:38 Challenge: 1 211 1: Client 1 got award 211
+  2:38 Challenge: 1 1 1: Client 1 got award 1
+  2:38 Challenge: 0 2 1: Client 0 got award 2
+  2:39 Item: 6 weapon_rocketlauncher
+  2:40 Item: 6 ammo_slugs
+  2:40 Item: 6 ammo_shells
+  2:40 Item: 2 weapon_rocketlauncher
+  2:41 Item: 7 weapon_chaingun
+  2:42 Item: 0 item_ammoregen
+  2:42 Item: 1 weapon_rocketlauncher
+  2:43 Item: 0 weapon_rocketlauncher
+  2:43 Item: 5 ammo_lightning
+  2:44 Kill: 5 2 6: Feldwebel killed Django by MOD_ROCKET
+  2:44 PlayerScore: 5 13: Feldwebel now has 13 points
+  2:44 Challenge: 5 205 1: Client 5 got award 205
+  2:44 Challenge: 5 1 1: Client 5 got award 1
+  2:44 Challenge: 2 2 1: Client 2 got award 2
+  2:45 Item: 1 item_health
+  2:45 Item: 6 weapon_chaingun
+  2:45 Item: 5 weapon_rocketlauncher
+  2:47 Item: 7 ammo_rockets
+  2:48 Item: 6 ammo_shells
+  2:48 Item: 5 weapon_plasmagun
+  2:48 Item: 3 ammo_bullets
+  2:48 Item: 5 weapon_plasmagun
+  2:48 Item: 1 team_CTF_redflag
+  2:48 1FCTF: 1 -1 1: Anton aus Tirol captured the flag!
+  2:48 Award: 1 4: Anton aus Tirol gained the CAPTURE award!
+  2:48 Challenge: 1 303 1: Client 1 got award 303
+  2:48 PlayerScore: 1 9: Anton aus Tirol now has 9 points
+  2:48 PlayerScore: 3 13: Uberschwanz now has 13 points
+  2:48 PlayerScore: 5 13: Feldwebel now has 13 points
+  2:48 PlayerScore: 7 15: Tamas now has 15 points
+  2:48 Item: 2 weapon_lightning
+  2:48 Item: 2 ammo_lightning
+  2:49 Kill: 0 7 7: -[aequitas]- killed Tamas by MOD_ROCKET_SPLASH
+  2:49 PlayerScore: 0 22: -[aequitas]- now has 22 points
+  2:49 Challenge: 0 205 1: Client 0 got award 205
+  2:49 Challenge: 0 1 1: Client 0 got award 1
+  2:49 Challenge: 7 2 1: Client 7 got award 2
+  2:49 Item: 1 ammo_shells
+  2:50 Item: 1 ammo_slugs
+  2:50 Item: 6 item_quad
+  2:50 Item: 6 weapon_lightning
+  2:52 Item: 2 team_CTF_neutralflag
+  2:52 1FCTF: 2 1 0: Django got the flag!
+  2:52 PlayerScore: 2 16: Django now has 16 points
+  2:53 Kill: 6 3 6: Power Pretzel killed Uberschwanz by MOD_ROCKET
+  2:53 PlayerScore: 6 10: Power Pretzel now has 10 points
+  2:53 Challenge: 6 205 1: Client 6 got award 205
+  2:53 Challenge: 6 1 1: Client 6 got award 1
+  2:53 Challenge: 3 2 1: Client 3 got award 2
+  2:53 Challenge: 6 401 1: Client 6 got award 401
+  2:53 Item: 6 weapon_prox_launcher
+  2:53 Item: 7 weapon_rocketlauncher
+  2:54 Item: 6 weapon_prox_launcher
+  2:54 Item: 6 weapon_chaingun
+  2:56 Item: 6 weapon_prox_launcher
+  2:56 Item: 3 weapon_chaingun
+  2:59 Item: 2 team_CTF_blueflag
+  2:59 1FCTF: 2 -1 1: Django captured the flag!
+  2:59 Award: 2 4: Django gained the CAPTURE award!
+  2:59 Challenge: 2 303 1: Client 2 got award 303
+  2:59 PlayerScore: 2 21: Django now has 21 points
+  2:59 PlayerScore: 0 22: -[aequitas]- now has 22 points
+  2:59 PlayerScore: 6 10: Power Pretzel now has 10 points
+  3:00 Kill: 3 0 24: Uberschwanz killed -[aequitas]- by MOD_CHAINGUN
+  3:00 PlayerScore: 3 14: Uberschwanz now has 14 points
+  3:00 Challenge: 3 211 1: Client 3 got award 211
+  3:00 Challenge: 3 1 1: Client 3 got award 1
+  3:00 Challenge: 0 2 1: Client 0 got award 2
+  3:01 Item: 3 weapon_rocketlauncher
+  3:03 Kill: 2 7 11: Django killed Tamas by MOD_LIGHTNING
+  3:03 PlayerScore: 2 22: Django now has 22 points
+  3:03 Challenge: 2 206 1: Client 2 got award 206
+  3:03 Challenge: 2 1 1: Client 2 got award 1
+  3:03 Challenge: 7 2 1: Client 7 got award 2
+  3:03 Item: 0 weapon_prox_launcher
+  3:04 Item: 0 item_scout
+  3:04 Item: 5 weapon_rocketlauncher
+  3:05 Item: 6 weapon_rocketlauncher
+  3:05 Kill: 5 6 7: Feldwebel killed Power Pretzel by MOD_ROCKET_SPLASH
+  3:05 PlayerScore: 5 14: Feldwebel now has 14 points
+  3:05 Challenge: 5 205 1: Client 5 got award 205
+  3:05 Challenge: 5 1 1: Client 5 got award 1
+  3:05 Challenge: 6 2 1: Client 6 got award 2
+  3:05 Challenge: 5 406 1: Client 5 got award 406
+  3:05 PlayerScore: 5 15: Feldwebel now has 15 points
+  3:05 Challenge: 5 305 1: Client 5 got award 305
+  3:05 Award: 5 3: Feldwebel gained the DEFENCE award!
+  3:05 Kill: 1 2 25: Anton aus Tirol killed Django by MOD_PROXIMITY_MINE
+  3:05 PlayerScore: 1 10: Anton aus Tirol now has 10 points
+  3:05 Challenge: 1 213 1: Client 1 got award 213
+  3:05 Challenge: 1 1 1: Client 1 got award 1
+  3:05 Challenge: 2 2 1: Client 2 got award 2
+  3:07 Item: 3 item_quad
+  3:07 Item: 1 weapon_lightning
+  3:08 Kill: 6 3 25: Power Pretzel killed Uberschwanz by MOD_PROXIMITY_MINE
+  3:08 PlayerScore: 6 11: Power Pretzel now has 11 points
+  3:08 Challenge: 6 213 1: Client 6 got award 213
+  3:08 Challenge: 6 1 1: Client 6 got award 1
+  3:08 Challenge: 3 2 1: Client 3 got award 2
+  3:08 Challenge: 6 406 1: Client 6 got award 406
+  3:08 Kill: 6 5 25: Power Pretzel killed Feldwebel by MOD_PROXIMITY_MINE
+  3:08 PlayerScore: 6 12: Power Pretzel now has 12 points
+  3:08 Challenge: 6 213 1: Client 6 got award 213
+  3:08 Challenge: 6 1 1: Client 6 got award 1
+  3:08 Challenge: 5 2 1: Client 5 got award 2
+  3:08 Award: 6 1: Power Pretzel gained the EXCELLENT award!
+  3:08 Challenge: 6 302 1: Client 6 got award 302
+  3:08 Item: 7 item_scout
+  3:08 Item: 7 weapon_prox_launcher
+  3:09 Item: 6 item_ammoregen
+  3:09 Kill: 1 0 7: Anton aus Tirol killed -[aequitas]- by MOD_ROCKET_SPLASH
+  3:09 PlayerScore: 1 11: Anton aus Tirol now has 11 points
+  3:09 Challenge: 1 205 1: Client 1 got award 205
+  3:09 Challenge: 1 1 1: Client 1 got award 1
+  3:09 Challenge: 0 2 1: Client 0 got award 2
+  3:09 PlayerScore: 1 12: Anton aus Tirol now has 12 points
+  3:09 Challenge: 1 305 1: Client 1 got award 305
+  3:09 Award: 1 3: Anton aus Tirol gained the DEFENCE award!
+  3:09 Item: 2 weapon_chaingun
+  3:09 Item: 2 ammo_belt
+  3:10 Item: 6 weapon_rocketlauncher
+  3:10 Kill: 6 7 25: Power Pretzel killed Tamas by MOD_PROXIMITY_MINE
+  3:10 PlayerScore: 6 13: Power Pretzel now has 13 points
+  3:10 Challenge: 6 213 1: Client 6 got award 213
+  3:10 Challenge: 6 1 1: Client 6 got award 1
+  3:10 Challenge: 7 2 1: Client 7 got award 2
+  3:10 Award: 6 1: Power Pretzel gained the EXCELLENT award!
+  3:10 Challenge: 6 302 1: Client 6 got award 302
+  3:11 Item: 6 ammo_rockets
+  3:11 Item: 3 weapon_chaingun
+  3:11 Item: 5 weapon_lightning
+  3:12 Item: 5 ammo_lightning
+  3:12 Item: 1 item_quad
+  3:12 Item: 1 weapon_rocketlauncher
+  3:12 Item: 5 weapon_lightning
+  3:13 Item: 0 weapon_chaingun
+  3:13 Item: 2 team_CTF_neutralflag
+  3:13 1FCTF: 2 1 0: Django got the flag!
+  3:13 PlayerScore: 2 22: Django now has 22 points
+  3:14 Item: 7 weapon_rocketlauncher
+  3:15 Item: 0 item_armor_combat
+  3:16 Item: 3 weapon_prox_launcher
+  3:16 Item: 3 item_scout
+  3:17 Kill: 1 2 7: Anton aus Tirol killed Django by MOD_ROCKET_SPLASH
+  3:17 PlayerScore: 1 13: Anton aus Tirol now has 13 points
+  3:17 Challenge: 1 205 1: Client 1 got award 205
+  3:17 Challenge: 1 1 1: Client 1 got award 1
+  3:17 Challenge: 2 2 1: Client 2 got award 2
+  3:17 Challenge: 1 401 1: Client 1 got award 401
+  3:17 PlayerScore: 1 15: Anton aus Tirol now has 15 points
+  3:17 1fCTF: 1 1 3: Anton aus Tirol fragged RED's flag carrier!
+  3:17 Kill: 7 6 25: Tamas killed Power Pretzel by MOD_PROXIMITY_MINE
+  3:17 PlayerScore: 7 16: Tamas now has 16 points
+  3:17 Challenge: 7 213 1: Client 7 got award 213
+  3:17 Challenge: 7 1 1: Client 7 got award 1
+  3:17 Challenge: 6 2 1: Client 6 got award 2
+  3:17 PlayerScore: 7 17: Tamas now has 17 points
+  3:17 Challenge: 7 305 1: Client 7 got award 305
+  3:17 Award: 7 3: Tamas gained the DEFENCE award!
+  3:18 Item: 3 weapon_shotgun
+  3:19 Item: 3 team_CTF_neutralflag
+  3:19 1FCTF: 3 2 0: Uberschwanz got the flag!
+  3:19 PlayerScore: 3 14: Uberschwanz now has 14 points
+  3:19 Item: 0 weapon_shotgun
+  3:19 Item: 3 weapon_chaingun
+  3:20 Kill: 0 3 1: -[aequitas]- killed Uberschwanz by MOD_SHOTGUN
+  3:20 PlayerScore: 0 23: -[aequitas]- now has 23 points
+  3:20 Challenge: 0 203 1: Client 0 got award 203
+  3:20 Challenge: 0 1 1: Client 0 got award 1
+  3:20 Challenge: 3 2 1: Client 3 got award 2
+  3:20 PlayerScore: 0 25: -[aequitas]- now has 25 points
+  3:20 1fCTF: 0 2 3: -[aequitas]- fragged BLUE's flag carrier!
+  3:20 Item: 0 team_CTF_neutralflag
+  3:20 1FCTF: 0 1 0: -[aequitas]- got the flag!
+  3:20 PlayerScore: 0 25: -[aequitas]- now has 25 points
+  3:20 Item: 0 weapon_chaingun
+  3:21 Item: 6 item_ammoregen
+  3:21 Item: 2 weapon_plasmagun
+  3:22 Kill: 1 0 6: Anton aus Tirol killed -[aequitas]- by MOD_ROCKET
+  3:22 PlayerScore: 1 16: Anton aus Tirol now has 16 points
+  3:22 Challenge: 1 205 1: Client 1 got award 205
+  3:22 Challenge: 1 1 1: Client 1 got award 1
+  3:22 Challenge: 0 2 1: Client 0 got award 2
+  3:22 Challenge: 1 401 1: Client 1 got award 401
+  3:22 PlayerScore: 1 18: Anton aus Tirol now has 18 points
+  3:22 1fCTF: 1 1 3: Anton aus Tirol fragged RED's flag carrier!
+  3:22 Item: 6 weapon_rocketlauncher
+  3:22 Item: 2 weapon_chaingun
+  3:22 Item: 1 weapon_shotgun
+  3:23 Item: 1 team_CTF_neutralflag
+  3:23 1FCTF: 1 2 0: Anton aus Tirol got the flag!
+  3:23 PlayerScore: 1 18: Anton aus Tirol now has 18 points
+  3:23 Item: 6 ammo_slugs
+  3:23 Item: 1 weapon_shotgun
+  3:23 Item: 6 ammo_shells
+  3:24 Item: 3 weapon_lightning
+  3:24 Item: 1 weapon_shotgun
+  3:24 Item: 0 item_scout
+  3:25 Item: 0 weapon_prox_launcher
+  3:25 Item: 5 item_scout
+  3:25 Item: 0 ammo_lightning
+  3:25 Item: 3 item_ammoregen
+  3:28 Kill: 6 1 6: Power Pretzel killed Anton aus Tirol by MOD_ROCKET
+  3:28 PlayerScore: 6 14: Power Pretzel now has 14 points
+  3:28 Challenge: 6 205 1: Client 6 got award 205
+  3:28 Challenge: 6 1 1: Client 6 got award 1
+  3:28 Challenge: 1 2 1: Client 1 got award 2
+  3:28 PlayerScore: 6 16: Power Pretzel now has 16 points
+  3:28 1fCTF: 6 2 3: Power Pretzel fragged BLUE's flag carrier!
+  3:29 Item: 6 team_CTF_neutralflag
+  3:29 1FCTF: 6 1 0: Power Pretzel got the flag!
+  3:29 PlayerScore: 6 16: Power Pretzel now has 16 points
+  3:29 Item: 6 weapon_rocketlauncher
+  3:29 Item: 3 weapon_prox_launcher
+  3:29 Kill: 7 5 6: Tamas killed Feldwebel by MOD_ROCKET
+  3:30 Item: 0 weapon_rocketlauncher
+  3:30 Item: 3 weapon_rocketlauncher
+  3:31 Item: 7 ammo_rockets
+  3:31 Item: 0 weapon_lightning
+  3:31 Kill: 6 7 6: Power Pretzel killed Tamas by MOD_ROCKET
+  3:31 PlayerScore: 6 17: Power Pretzel now has 17 points
+  3:31 Challenge: 6 205 1: Client 6 got award 205
+  3:31 Challenge: 6 1 1: Client 6 got award 1
+  3:31 Challenge: 7 2 1: Client 7 got award 2
+  3:31 Award: 6 1: Power Pretzel gained the EXCELLENT award!
+  3:31 Challenge: 6 302 1: Client 6 got award 302
+  3:31 Item: 3 weapon_rocketlauncher
+  3:31 Item: 1 weapon_lightning
+  3:32 Item: 3 ammo_lightning
+  3:32 Item: 3 weapon_prox_launcher
+  3:32 Item: 2 ammo_shells
+  3:33 Item: 1 weapon_rocketlauncher
+  3:33 Item: 1 ammo_rockets
+  3:33 Item: 1 ammo_slugs
+  3:34 Item: 1 ammo_shells
+  3:36 Kill: 6 7 6: Power Pretzel killed Tamas by MOD_ROCKET
+  3:36 PlayerScore: 6 18: Power Pretzel now has 18 points
+  3:36 Challenge: 6 205 1: Client 6 got award 205
+  3:36 Challenge: 6 1 1: Client 6 got award 1
+  3:36 Challenge: 7 2 1: Client 7 got award 2
+  3:36 Item: 3 weapon_lightning
+  3:38 Item: 1 weapon_rocketlauncher
+  3:39 Kill: 7 6 2: Tamas killed Power Pretzel by MOD_GAUNTLET
+  3:39 PlayerScore: 7 18: Tamas now has 18 points
+  3:39 Challenge: 7 201 1: Client 7 got award 201
+  3:39 Award: 7 0: Tamas gained the GAUNTLET award!
+  3:39 Challenge: 7 201 1: Client 7 got award 201
+  3:39 Challenge: 7 1 1: Client 7 got award 1
+  3:39 Challenge: 6 2 1: Client 6 got award 2
+  3:39 PlayerScore: 7 20: Tamas now has 20 points
+  3:39 1fCTF: 7 1 3: Tamas fragged RED's flag carrier!
+  3:39 Item: 7 weapon_rocketlauncher
+  3:40 Kill: 0 7 7: -[aequitas]- killed Tamas by MOD_ROCKET_SPLASH
+  3:40 PlayerScore: 0 26: -[aequitas]- now has 26 points
+  3:40 Challenge: 0 205 1: Client 0 got award 205
+  3:40 Challenge: 0 1 1: Client 0 got award 1
+  3:40 Challenge: 7 2 1: Client 7 got award 2
+  3:41 Item: 5 ammo_rockets
+  3:41 Item: 0 team_CTF_neutralflag
+  3:41 1FCTF: 0 1 0: -[aequitas]- got the flag!
+  3:41 PlayerScore: 0 26: -[aequitas]- now has 26 points
+  3:42 Item: 0 team_CTF_blueflag
+  3:42 1FCTF: 0 -1 1: -[aequitas]- captured the flag!
+  3:42 Award: 0 4: -[aequitas]- gained the CAPTURE award!
+  3:42 Challenge: 0 303 1: Client 0 got award 303
+  3:42 PlayerScore: 0 31: -[aequitas]- now has 31 points
+  3:42 PlayerScore: 2 22: Django now has 22 points
+  3:42 PlayerScore: 6 18: Power Pretzel now has 18 points
+  3:43 Item: 0 item_health
+  3:43 Item: 0 item_health
+  3:43 Item: 6 weapon_chaingun
+  3:44 Item: 7 weapon_lightning
+  3:44 Item: 0 ammo_mines
+  3:44 Item: 1 weapon_rocketlauncher
+  3:44 Item: 1 ammo_bullets
+  3:44 Item: 3 ammo_lightning
+  3:45 Item: 5 weapon_rocketlauncher
+  3:45 Item: 3 weapon_lightning
+  3:45 Item: 2 weapon_lightning
+  3:47 Kill: 2 0 11: Django killed -[aequitas]- by MOD_LIGHTNING
+  3:48 Item: 7 team_CTF_neutralflag
+  3:48 1FCTF: 7 2 0: Tamas got the flag!
+  3:48 PlayerScore: 7 20: Tamas now has 20 points
+  3:48 Item: 6 item_armor_combat
+  3:48 Kill: 3 7 11: Uberschwanz killed Tamas by MOD_LIGHTNING
+  3:48 Item: 1 item_scout
+  3:48 Item: 2 weapon_rocketlauncher
+  3:49 Item: 3 team_CTF_neutralflag
+  3:49 1FCTF: 3 2 0: Uberschwanz got the flag!
+  3:49 PlayerScore: 3 14: Uberschwanz now has 14 points
+  3:50 Item: 3 weapon_lightning
+  3:50 Kill: 3 2 11: Uberschwanz killed Django by MOD_LIGHTNING
+  3:50 PlayerScore: 3 15: Uberschwanz now has 15 points
+  3:50 Challenge: 3 206 1: Client 3 got award 206
+  3:50 Challenge: 3 1 1: Client 3 got award 1
+  3:50 Challenge: 2 2 1: Client 2 got award 2
+  3:50 Item: 3 ammo_shells
+  3:51 Item: 0 weapon_lightning
+  3:52 Item: 7 weapon_chaingun
+  3:52 Item: 7 ammo_belt
+  3:52 Kill: 3 6 11: Uberschwanz killed Power Pretzel by MOD_LIGHTNING
+  3:52 PlayerScore: 3 16: Uberschwanz now has 16 points
+  3:52 Challenge: 3 206 1: Client 3 got award 206
+  3:52 Challenge: 3 1 1: Client 3 got award 1
+  3:52 Challenge: 6 2 1: Client 6 got award 2
+  3:52 Award: 3 1: Uberschwanz gained the EXCELLENT award!
+  3:52 Challenge: 3 302 1: Client 3 got award 302
+  3:53 Item: 3 weapon_chaingun
+  3:54 Item: 2 weapon_lightning
+  3:54 Item: 1 item_health
+  3:54 Item: 5 weapon_rocketlauncher
+  3:57 Item: 7 item_armor_combat
+  3:58 Item: 6 item_scout
+  3:59 Item: 1 weapon_rocketlauncher
+  4:00 Item: 6 weapon_prox_launcher
+  4:01 Item: 2 weapon_shotgun
+  4:02 Item: 2 weapon_prox_launcher
+  4:04 Item: 3 item_health
+  4:05 Item: 3 item_health
+  4:05 Item: 2 weapon_prox_launcher
+  4:06 Item: 3 weapon_lightning
+  4:06 Item: 3 ammo_lightning
+  4:08 Kill: 1 5 6: Anton aus Tirol killed Feldwebel by MOD_ROCKET
+  4:09 Item: 7 weapon_rocketlauncher
+  4:09 Item: 6 weapon_rocketlauncher
+  4:10 Kill: 7 1 6: Tamas killed Anton aus Tirol by MOD_ROCKET
+  4:11 Item: 7 ammo_rockets
+  4:12 Item: 3 ammo_belt
+  4:12 Item: 2 ammo_bullets
+  4:12 Item: 3 weapon_chaingun
+  4:12 Item: 5 weapon_rocketlauncher
+  4:14 Item: 1 weapon_chaingun
+  4:16 Item: 1 weapon_plasmagun
+  4:16 Item: 7 weapon_rocketlauncher
+  4:17 Kill: 7 3 7: Tamas killed Uberschwanz by MOD_ROCKET_SPLASH
+  4:17 Item: 0 weapon_lightning
+  4:17 Item: 0 team_CTF_neutralflag
+  4:17 1FCTF: 0 1 0: -[aequitas]- got the flag!
+  4:17 PlayerScore: 0 31: -[aequitas]- now has 31 points
+  4:18 Item: 2 weapon_plasmagun
+  4:19 Kill: 7 7 7: Tamas killed Tamas by MOD_ROCKET_SPLASH
+  4:19 Item: 6 weapon_prox_launcher
+  4:20 Item: 3 item_ammoregen
+  4:20 Item: 6 ammo_lightning
+  4:21 Item: 6 weapon_rocketlauncher
+  4:21 Item: 3 weapon_lightning
+  4:22 Item: 7 item_scout
+  4:23 Item: 7 weapon_prox_launcher
+  4:23 Item: 6 weapon_plasmagun
+  4:24 Item: 3 item_armor_combat
+  4:24 Item: 7 weapon_prox_launcher
+  4:26 Kill: 2 5 8: Django killed Feldwebel by MOD_PLASMA
+  4:26 PlayerScore: 2 23: Django now has 23 points
+  4:26 Challenge: 2 207 1: Client 2 got award 207
+  4:26 Challenge: 2 1 1: Client 2 got award 1
+  4:26 Challenge: 5 2 1: Client 5 got award 2
+  4:26 Item: 0 item_doubler
+  4:27 Item: 2 weapon_rocketlauncher
+  4:27 Item: 0 ammo_rockets
+  4:27 Item: 1 item_armor_combat
+  4:28 Item: 0 weapon_railgun
+  4:28 Item: 3 weapon_prox_launcher
+  4:30 Item: 2 ammo_mines
+  4:31 Item: 7 weapon_prox_launcher
+  4:32 Item: 3 ammo_shells
+  4:33 Item: 3 ammo_slugs
+  4:33 Kill: 7 0 25: Tamas killed -[aequitas]- by MOD_PROXIMITY_MINE
+  4:33 PlayerScore: 7 21: Tamas now has 21 points
+  4:33 Challenge: 7 213 1: Client 7 got award 213
+  4:33 Challenge: 7 1 1: Client 7 got award 1
+  4:33 Challenge: 0 2 1: Client 0 got award 2
+  4:33 PlayerScore: 7 23: Tamas now has 23 points
+  4:33 1fCTF: 7 1 3: Tamas fragged RED's flag carrier!
+  4:33 Kill: 1 6 24: Anton aus Tirol killed Power Pretzel by MOD_CHAINGUN
+  4:33 PlayerScore: 1 19: Anton aus Tirol now has 19 points
+  4:33 Challenge: 1 211 1: Client 1 got award 211
+  4:33 Challenge: 1 1 1: Client 1 got award 1
+  4:33 Challenge: 6 2 1: Client 6 got award 2
+  4:34 Item: 7 ammo_bullets
+  4:34 Item: 7 team_CTF_neutralflag
+  4:34 1FCTF: 7 2 0: Tamas got the flag!
+  4:34 PlayerScore: 7 23: Tamas now has 23 points
+  4:34 Item: 5 weapon_railgun
+  4:35 Item: 0 weapon_rocketlauncher
+  4:36 Item: 3 item_health
+  4:37 Item: 0 weapon_prox_launcher
+  4:37 Item: 1 weapon_rocketlauncher
+  4:37 Item: 0 item_scout
+  4:38 Item: 6 weapon_rocketlauncher
+  4:38 Kill: 1 2 6: Anton aus Tirol killed Django by MOD_ROCKET
+  4:38 PlayerScore: 1 20: Anton aus Tirol now has 20 points
+  4:38 Challenge: 1 205 1: Client 1 got award 205
+  4:38 Challenge: 1 1 1: Client 1 got award 1
+  4:38 Challenge: 2 2 1: Client 2 got award 2
+  4:38 Item: 7 weapon_lightning
+  4:38 Item: 6 ammo_rockets
+  4:38 Item: 6 ammo_slugs
+  4:39 Item: 7 weapon_rocketlauncher
+  4:39 Item: 7 ammo_rockets
+  4:39 Item: 3 weapon_lightning
+  4:40 Item: 7 ammo_slugs
+  4:40 Kill: 0 1 6: -[aequitas]- killed Anton aus Tirol by MOD_ROCKET
+  4:40 PlayerScore: 0 32: -[aequitas]- now has 32 points
+  4:40 Challenge: 0 205 1: Client 0 got award 205
+  4:40 Challenge: 0 1 1: Client 0 got award 1
+  4:40 Challenge: 1 2 1: Client 1 got award 2
+  4:40 Item: 7 ammo_shells
+  4:41 Item: 0 weapon_rocketlauncher
+  4:42 Item: 2 weapon_chaingun
+  4:43 Kill: 2 7 24: Django killed Tamas by MOD_CHAINGUN
+  4:43 PlayerScore: 2 24: Django now has 24 points
+  4:43 Challenge: 2 211 1: Client 2 got award 211
+  4:43 Challenge: 2 1 1: Client 2 got award 1
+  4:43 Challenge: 7 2 1: Client 7 got award 2
+  4:43 PlayerScore: 2 26: Django now has 26 points
+  4:43 1fCTF: 2 2 3: Django fragged BLUE's flag carrier!
+  4:43 Item: 2 team_CTF_neutralflag
+  4:43 1FCTF: 2 1 0: Django got the flag!
+  4:43 PlayerScore: 2 26: Django now has 26 points
+  4:43 Item: 2 weapon_rocketlauncher
+  4:44 Item: 1 weapon_lightning
+  4:44 Kill: 2 3 24: Django killed Uberschwanz by MOD_CHAINGUN
+  4:44 PlayerScore: 2 27: Django now has 27 points
+  4:44 Challenge: 2 211 1: Client 2 got award 211
+  4:44 Challenge: 2 1 1: Client 2 got award 1
+  4:44 Challenge: 3 2 1: Client 3 got award 2
+  4:44 Award: 2 1: Django gained the EXCELLENT award!
+  4:44 Challenge: 2 302 1: Client 2 got award 302
+  4:45 Item: 0 ammo_mines
+  4:45 Item: 0 ammo_cells
+  4:45 Item: 1 weapon_rocketlauncher
+  4:46 Item: 0 ammo_shells
+  4:46 Item: 2 weapon_lightning
+  4:46 Item: 0 ammo_slugs
+  4:47 ClientUserinfoChanged: 4 n\schwanszwebel\t\1\model\penguin/default\hmodel\penguin/default\g_redteam\\g_blueteam\\c1\4\c2\1\hc\100\w\0\l\0\tt\0\tl\0\id\18FB3BAF54AC1A673F6BE56AFAACF278
+  4:47 ClientConnect: 4
+  4:47 Item: 7 weapon_lightning
+  4:47 Item: 0 weapon_plasmagun
+  4:47 Item: 7 ammo_lightning
+  4:48 Item: 3 weapon_chaingun
+  4:48 Item: 3 ammo_belt
+  4:49 Kill: 2 1 24: Django killed Anton aus Tirol by MOD_CHAINGUN
+  4:49 PlayerScore: 2 28: Django now has 28 points
+  4:49 Challenge: 2 211 1: Client 2 got award 211
+  4:49 Challenge: 2 1 1: Client 2 got award 1
+  4:49 Challenge: 1 2 1: Client 1 got award 2
+  4:49 Kill: 5 2 10: Feldwebel killed Django by MOD_RAILGUN
+  4:49 PlayerScore: 5 16: Feldwebel now has 16 points
+  4:49 Challenge: 5 208 1: Client 5 got award 208
+  4:49 Challenge: 5 1 1: Client 5 got award 1
+  4:49 Challenge: 2 2 1: Client 2 got award 2
+  4:49 PlayerScore: 5 18: Feldwebel now has 18 points
+  4:49 1fCTF: 5 1 3: Feldwebel fragged RED's flag carrier!
+  4:50 Item: 7 team_CTF_neutralflag
+  4:50 1FCTF: 7 2 0: Tamas got the flag!
+  4:50 PlayerScore: 7 23: Tamas now has 23 points
+  4:51 Item: 7 weapon_chaingun
+  4:51 Item: 7 weapon_rocketlauncher
+  4:51 Item: 5 ammo_shells
+  4:52 Item: 5 ammo_rockets
+  4:52 Item: 1 item_scout
+  4:52 ClientUserinfoChanged: 4 n\schwanszwebel\t\1\model\penguin/default\hmodel\penguin/default\g_redteam\\g_blueteam\\c1\4\c2\1\hc\100\w\0\l\0\tt\0\tl\0\id\18FB3BAF54AC1A673F6BE56AFAACF278
+  4:52 Playerstore: Nothing to restore. Guid: 18FB3BAF54AC1A673F6BE56AFAACF278
+  4:52 ClientBegin: 4
+  4:53 Kill: 0 7 8: -[aequitas]- killed Tamas by MOD_PLASMA
+  4:53 PlayerScore: 0 33: -[aequitas]- now has 33 points
+  4:53 Challenge: 0 207 1: Client 0 got award 207
+  4:53 Challenge: 0 1 1: Client 0 got award 1
+  4:53 Challenge: 7 2 1: Client 7 got award 2
+  4:53 PlayerScore: 0 35: -[aequitas]- now has 35 points
+  4:53 1fCTF: 0 2 3: -[aequitas]- fragged BLUE's flag carrier!
+  4:53 Item: 0 team_CTF_neutralflag
+  4:53 1FCTF: 0 1 0: -[aequitas]- got the flag!
+  4:53 PlayerScore: 0 35: -[aequitas]- now has 35 points
+  4:53 Item: 0 weapon_rocketlauncher
+  4:53 Item: 2 weapon_chaingun
+  4:54 Item: 6 weapon_rocketlauncher
+  4:55 Item: 0 item_quad
+  4:55 Item: 4 ammo_bullets
+  4:56 Item: 4 weapon_rocketlauncher
+  4:56 Item: 3 item_guard
+  4:56 Item: 7 item_ammoregen
+  4:57 Kill: 6 5 6: Power Pretzel killed Feldwebel by MOD_ROCKET
+  4:57 PlayerScore: 6 19: Power Pretzel now has 19 points
+  4:57 Challenge: 6 205 1: Client 6 got award 205
+  4:57 Challenge: 6 1 1: Client 6 got award 1
+  4:57 Challenge: 5 2 1: Client 5 got award 2
+  4:58 Kill: 1 0 3: Anton aus Tirol killed -[aequitas]- by MOD_MACHINEGUN
+  4:58 PlayerScore: 1 21: Anton aus Tirol now has 21 points
+  4:58 Challenge: 1 202 1: Client 1 got award 202
+  4:58 Challenge: 1 1 1: Client 1 got award 1
+  4:58 Challenge: 0 2 1: Client 0 got award 2
+  4:58 Challenge: 1 406 1: Client 1 got award 406
+  4:58 PlayerScore: 1 23: Anton aus Tirol now has 23 points
+  4:58 1fCTF: 1 1 3: Anton aus Tirol fragged RED's flag carrier!
+  4:58 Item: 7 weapon_rocketlauncher
+  4:58 Item: 6 ammo_lightning
+  4:59 Item: 6 weapon_prox_launcher
+  4:59 Item: 6 item_scout
+  4:59 Item: 1 item_quad
+  4:59 Item: 1 team_CTF_neutralflag
+  4:59 1FCTF: 1 2 0: Anton aus Tirol got the flag!
+  4:59 PlayerScore: 1 23: Anton aus Tirol now has 23 points
+  4:59 Item: 1 weapon_rocketlauncher
+  5:00 Item: 5 weapon_chaingun
+  5:01 Item: 3 ammo_mines
+  5:01 Item: 7 item_armor_combat
+  5:01 Item: 0 weapon_chaingun
+  5:01 Item: 0 ammo_belt
+  5:01 Item: 1 weapon_railgun
+  5:02 Item: 3 ammo_rockets
+  5:02 Item: 4 ammo_rockets
+  5:02 Kill: 1 6 7: Anton aus Tirol killed Power Pretzel by MOD_ROCKET_SPLASH
+  5:02 PlayerScore: 1 24: Anton aus Tirol now has 24 points
+  5:02 Challenge: 1 205 1: Client 1 got award 205
+  5:02 Challenge: 1 1 1: Client 1 got award 1
+  5:02 Challenge: 6 2 1: Client 6 got award 2
+  5:02 Challenge: 1 401 1: Client 1 got award 401
+  5:03 Item: 3 weapon_railgun
+  5:05 Kill: 2 1 24: Django killed Anton aus Tirol by MOD_CHAINGUN
+  5:05 PlayerScore: 2 29: Django now has 29 points
+  5:05 Challenge: 2 211 1: Client 2 got award 211
+  5:05 Challenge: 2 1 1: Client 2 got award 1
+  5:05 Challenge: 1 2 1: Client 1 got award 2
+  5:05 Challenge: 2 406 1: Client 2 got award 406
+  5:05 PlayerScore: 2 31: Django now has 31 points
+  5:05 1fCTF: 2 2 3: Django fragged BLUE's flag carrier!
+  5:05 Item: 6 item_scout
+  5:06 Item: 6 weapon_prox_launcher
+  5:06 Kill: 5 4 24: Feldwebel killed schwanszwebel by MOD_CHAINGUN
+  5:06 PlayerScore: 5 19: Feldwebel now has 19 points
+  5:06 Challenge: 5 211 1: Client 5 got award 211
+  5:06 Challenge: 5 1 1: Client 5 got award 1
+  5:06 Challenge: 4 2 1: Client 4 got award 2
+  5:06 Item: 2 team_CTF_neutralflag
+  5:06 1FCTF: 2 1 0: Django got the flag!
+  5:06 PlayerScore: 2 31: Django now has 31 points
+  5:06 Item: 2 item_quad
+  5:06 Item: 7 weapon_rocketlauncher
+  5:06 Item: 2 weapon_rocketlauncher
+  5:08 Item: 5 weapon_rocketlauncher
+  5:10 Item: 4 weapon_chaingun
+  5:11 Kill: 5 0 6: Feldwebel killed -[aequitas]- by MOD_ROCKET
+  5:11 PlayerScore: 5 20: Feldwebel now has 20 points
+  5:11 Challenge: 5 205 1: Client 5 got award 205
+  5:11 Challenge: 5 1 1: Client 5 got award 1
+  5:11 Challenge: 0 2 1: Client 0 got award 2
+  5:11 Kill: 3 2 24: Uberschwanz killed Django by MOD_CHAINGUN
+  5:11 PlayerScore: 3 17: Uberschwanz now has 17 points
+  5:11 Challenge: 3 211 1: Client 3 got award 211
+  5:11 Challenge: 3 1 1: Client 3 got award 1
+  5:11 Challenge: 2 2 1: Client 2 got award 2
+  5:11 Challenge: 3 406 1: Client 3 got award 406
+  5:11 PlayerScore: 3 19: Uberschwanz now has 19 points
+  5:11 1fCTF: 3 1 3: Uberschwanz fragged RED's flag carrier!
+  5:11 Item: 3 item_quad
+  5:11 Item: 3 team_CTF_neutralflag
+  5:11 1FCTF: 3 2 0: Uberschwanz got the flag!
+  5:11 PlayerScore: 3 19: Uberschwanz now has 19 points
+  5:12 Item: 4 weapon_plasmagun
+  5:13 Item: 6 weapon_chaingun
+  5:14 Item: 0 weapon_chaingun
+  5:14 Item: 2 item_ammoregen
+  5:15 Kill: 7 5 7: Tamas killed Feldwebel by MOD_ROCKET_SPLASH
+  5:16 Item: 2 weapon_rocketlauncher
+  5:16 Item: 1 weapon_rocketlauncher
+  5:17 Kill: 6 7 25: Power Pretzel killed Tamas by MOD_PROXIMITY_MINE
+  5:17 PlayerScore: 6 20: Power Pretzel now has 20 points
+  5:17 Challenge: 6 213 1: Client 6 got award 213
+  5:17 Challenge: 6 1 1: Client 6 got award 1
+  5:17 Challenge: 7 2 1: Client 7 got award 2
+  5:17 PlayerScore: 6 21: Power Pretzel now has 21 points
+  5:17 Challenge: 6 305 1: Client 6 got award 305
+  5:17 Award: 6 3: Power Pretzel gained the DEFENCE award!
+  5:17 Item: 3 team_CTF_redflag
+  5:17 1FCTF: 3 -1 1: Uberschwanz captured the flag!
+  5:17 Award: 3 4: Uberschwanz gained the CAPTURE award!
+  5:17 Challenge: 3 303 1: Client 3 got award 303
+  5:17 PlayerScore: 3 24: Uberschwanz now has 24 points
+  5:17 PlayerScore: 1 24: Anton aus Tirol now has 24 points
+  5:17 PlayerScore: 5 20: Feldwebel now has 20 points
+  5:17 PlayerScore: 7 23: Tamas now has 23 points
+  5:17 Kill: 7 6 6: Tamas killed Power Pretzel by MOD_ROCKET
+  5:17 PlayerScore: 7 24: Tamas now has 24 points
+  5:17 Challenge: 7 205 1: Client 7 got award 205
+  5:17 Challenge: 7 1 1: Client 7 got award 1
+  5:17 Challenge: 6 2 1: Client 6 got award 2
+  5:18 Item: 1 item_health
+  5:18 Item: 4 weapon_prox_launcher
+  5:18 Kill: 6 1 25: Power Pretzel killed Anton aus Tirol by MOD_PROXIMITY_MINE
+  5:18 PlayerScore: 6 22: Power Pretzel now has 22 points
+  5:18 Challenge: 6 213 1: Client 6 got award 213
+  5:18 Challenge: 6 1 1: Client 6 got award 1
+  5:18 Challenge: 1 2 1: Client 1 got award 2
+  5:18 Award: 6 1: Power Pretzel gained the EXCELLENT award!
+  5:18 Challenge: 6 302 1: Client 6 got award 302
+  5:18 PlayerScore: 6 23: Power Pretzel now has 23 points
+  5:18 Challenge: 6 305 1: Client 6 got award 305
+  5:18 Award: 6 3: Power Pretzel gained the DEFENCE award!
+  5:19 Item: 4 ammo_shells
+  5:19 Item: 5 weapon_shotgun
+  5:19 Item: 7 weapon_prox_launcher
+  5:19 Item: 2 team_CTF_neutralflag
+  5:19 1FCTF: 2 1 0: Django got the flag!
+  5:19 PlayerScore: 2 31: Django now has 31 points
+  5:20 Item: 3 weapon_rocketlauncher
+  5:20 Kill: 0 7 25: -[aequitas]- killed Tamas by MOD_PROXIMITY_MINE
+  5:20 PlayerScore: 0 36: -[aequitas]- now has 36 points
+  5:20 Challenge: 0 213 1: Client 0 got award 213
+  5:20 Challenge: 0 1 1: Client 0 got award 1
+  5:20 Challenge: 7 2 1: Client 7 got award 2
+  5:20 Item: 6 weapon_prox_launcher
+  5:20 Kill: 3 6 24: Uberschwanz killed Power Pretzel by MOD_CHAINGUN
+  5:20 PlayerScore: 3 25: Uberschwanz now has 25 points
+  5:20 Challenge: 3 211 1: Client 3 got award 211
+  5:20 Challenge: 3 1 1: Client 3 got award 1
+  5:20 Challenge: 6 2 1: Client 6 got award 2
+  5:20 Challenge: 3 401 1: Client 3 got award 401
+  5:21 Item: 5 weapon_prox_launcher
+  5:22 Item: 1 item_ammoregen
+  5:23 Item: 1 ammo_rockets
+  5:24 Item: 1 weapon_rocketlauncher
+  5:24 Item: 1 ammo_slugs
+  5:24 Item: 7 weapon_lightning
+  5:24 Item: 1 ammo_shells
+  5:24 Item: 6 weapon_chaingun
+  5:25 Item: 2 team_CTF_blueflag
+  5:25 1FCTF: 2 -1 1: Django captured the flag!
+  5:25 Award: 2 4: Django gained the CAPTURE award!
+  5:25 Challenge: 2 303 1: Client 2 got award 303
+  5:25 PlayerScore: 2 36: Django now has 36 points
+  5:25 Exit: Capturelimit hit.
+  5:25 red:5  blue:4
+  5:25 score: 36  ping: 33  client: 0 -[aequitas]-
+  5:25 score: 36  ping: 36  client: 2 Django
+  5:25 score: 25  ping: 67  client: 3 Uberschwanz
+  5:25 score: 24  ping: 44  client: 7 Tamas
+  5:25 score: 24  ping: 34  client: 1 Anton aus Tirol
+  5:25 score: 23  ping: 44  client: 6 Power Pretzel
+  5:25 score: 20  ping: 31  client: 5 Feldwebel
+  5:25 score: 0  ping: 33  client: 4 schwanszwebel
+  5:25 PlayerScore: 0 36: -[aequitas]- now has 36 points
+  5:25 PlayerScore: 4 0: schwanszwebel now has 0 points
+  5:25 PlayerScore: 6 23: Power Pretzel now has 23 points
+  5:25 say: Django: gg\
+  5:30 say: Power Pretzel: gg
+  5:31 ShutdownGame:
+180943: client:0 health:116 damage:15 armor:32
+Rcon from 37.34.56.243: print m02
+Rcon from 37.34.56.243: status
+190909: client:0 health:100 damage:17 armor:33
+Rcon from 37.34.56.243: print nextmap
+192196: client:0 health:83 damage:17 armor:33
+Rcon from 37.34.56.243: dumpuser 0
+194110: client:0 health:66 damage:48 armor:2
+Rcon from 37.34.56.243: print m02
+195562: client:0 health:18 damage:50 armor:0
