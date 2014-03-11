@@ -24,8 +24,7 @@ import logging
 import wrap
 import trans
 import context
-import live
-import api
+import ledbar
 
 version = pkg_resources.get_distribution("munerator").version
 
@@ -44,7 +43,5 @@ def main():
         trans.main(argv)
     elif args['<command>'] == 'context':
         context.main(argv)
-    elif args['<command>'] == 'live':
-        live.main(argv)
-    elif args['<command>'] == 'api':
-        api.main(argv)
+    elif args['<command>'] == 'ledbar':
+        ledbar.main(argv)

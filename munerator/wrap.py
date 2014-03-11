@@ -5,7 +5,7 @@ Usage:
 
 Options:
   -v --verbose      Verbose logging
-  --raw-socket url  ZMQ socket for raw logline [default: ipc:///tmp/mun/0]
+  --raw-socket url  ZMQ socket for raw logline [default: tcp://127.0.0.1:9000]
 
 """
 from docopt import docopt

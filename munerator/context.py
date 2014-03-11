@@ -5,7 +5,7 @@ Usage:
 
 Options:
   -v --verbose          Verbose logging
-  --events-socket url   ZMQ socket for raw events [default: ipc:///tmp/mun/1]
+  --events-socket url   ZMQ socket for raw events [default: tcp://127.0.0.1:9001]
   --context-socket url  ZMQ socket for context events [default: tcp://0.0.0.0:9002]
 
 """
@@ -69,7 +69,7 @@ class GameContext(object):
 
 
 def main(argv):
-    docopt(__doc__, argv=argv)
+    args = docopt(__doc__, argv=argv)
 
     context = zmq.Context()
     in_socket = context.socket(zmq.PULL)

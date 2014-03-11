@@ -5,8 +5,8 @@ Usage:
 
 Options:
   -v --verbose         Verbose logging
-  --raw-socket url     ZMQ socket for raw logline [default: ipc:///tmp/mun/0]
-  --events-socket url  ZMQ socket for raw events [default: ipc:///tmp/mun/1]
+  --raw-socket url     ZMQ socket for raw logline [default: tcp://127.0.0.1:9000]
+  --events-socket url  ZMQ socket for raw events [default: tcp://127.0.0.1:9001]
 
 """
 from docopt import docopt
@@ -60,7 +60,7 @@ def eventstream(in_socket, out_socket):
 
 
 def main(argv):
-    docopt(__doc__, argv=argv)
+    args = docopt(__doc__, argv=argv)
 
     context = zmq.Context()
     in_socket = context.socket(zmq.PULL)
