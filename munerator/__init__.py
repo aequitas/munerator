@@ -8,6 +8,7 @@ Commands:
     trans
     context
     ledbar
+    old
     voting
     help
 
@@ -27,6 +28,7 @@ import trans
 import context
 import ledbar
 import voting
+import old
 
 version = pkg_resources.get_distribution("munerator").version
 
@@ -49,4 +51,5 @@ def main():
         ledbar.main(argv)
     elif args['<command>'] == 'voting':
         voting.main(argv)
-
+    elif args['<command>'] == 'old':
+        old.main(argv)

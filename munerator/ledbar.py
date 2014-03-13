@@ -17,15 +17,16 @@ from functools import partial
 import shelve
 import json
 
+
 def update_live(in_socket):
+    db = {}
+
     while True:
-        kind, data = in_socket.recv_string().split(' ',1)
+        kind, data = in_socket.recv_string().split(' ', 1)
         log.debug('got %s: %s' % (kind, data))
         data = json.loads(data)
         client_id = data.get('client_id')
 
-        db = {} # shelve.open(filename=db_file, flag='c')
-        
         if client_id:
             clients = db.get('clients', {})
             if not client_id in clients:
@@ -55,8 +56,6 @@ def update_live(in_socket):
             db['game'] = {}
             db['clients'] = {}
 
-        # db.close()
-
 
 def main(argv):
     args = docopt(__doc__, argv=argv)
@@ -65,8 +64,8 @@ def main(argv):
     in_socket = context.socket(zmq.SUB)
     in_socket.connect(args['--context-socket'])
 
-    filters = ['initgame', 'shutdowngame', 'clientdisconnect', 'clientbegin', 'clientuserinfochanged', 'hit']
-    add_filter = partial(in_socket.setsockopt,zmq.SUBSCRIBE)
+    filters = ['initgame', 'shutdowngame', 'clientdisconnect', 'clientbegin', 'clientuserinfochanged', 'hit', 'kill']
+    add_filter = partial(in_socket.setsockopt, zmq.SUBSCRIBE)
     map(add_filter, filters)
 
     update_live(in_socket)

@@ -1,7 +1,3 @@
-import sys
-import os
-import subprocess
-
 from setuptools import setup, find_packages
 
 
@@ -12,7 +8,7 @@ def read(fname):
 
 setup(
     name='munerator',
-    version="0.3.0",
+    version="0.3.4",
     description='Manager of OpenArena battles',
     long_description=read("README.rst"),
     author='Johan Bloemberg',
@@ -25,7 +21,6 @@ setup(
     ],
     packages=find_packages(),
     license=read("LICENSE"),
-    zip_safe=False,
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
