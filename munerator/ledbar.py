@@ -14,25 +14,27 @@ import logging
 log = logging.getLogger(__name__)
 
 from functools import partial
-import shelve
 import json
 
 
-def update_live(in_socket):
-    db = {}
+def update_ledbar(in_socket):
+    state = {}
 
     while True:
-        kind, data = in_socket.recv_string().split(' ', 1)
-        log.debug('got %s: %s' % (kind, data))
-        data = json.loads(data)
-        client_id = data.get('client_id')
+        msg = in_socket.recv_string()
+
+        if msg:
+            log.debug('got : %s' % msg)
+
+            data = json.loads(msg.split(' ', 1)[-1])
+            kind = data.get('kind')
+            client_id = data.get('client_id')
+
+            if not client_id in state:
+                state[client_id] = {}
+            c = state[client_id]
 
         if client_id:
-            clients = db.get('clients', {})
-            if not client_id in clients:
-                clients[client_id] = {}
-            c = clients[client_id]
-
             if kind == 'hit':
                 c['health'] = data.get('health')
             elif kind == 'playerscore':
@@ -43,18 +45,7 @@ def update_live(in_socket):
             elif kind == 'clientbegin':
                 c = {}
             elif kind == 'clientdisconnect':
-                del clients[client_id]
-
-            db['clients'] = clients
-
-        if kind == 'initgame':
-            db['game'] = {
-                'mapname': data.get('mapname')
-            }
-            db['clients'] = {}
-        elif kind == 'shutdowngame':
-            db['game'] = {}
-            db['clients'] = {}
+                del state[client_id]
 
 
 def main(argv):
@@ -64,8 +55,9 @@ def main(argv):
     in_socket = context.socket(zmq.SUB)
     in_socket.connect(args['--context-socket'])
 
-    filters = ['initgame', 'shutdowngame', 'clientdisconnect', 'clientbegin', 'clientuserinfochanged', 'hit', 'kill']
+    filters = ['initgame', 'shutdowngame', 'clientdisconnect',
+               'clientbegin', 'clientuserinfochanged', 'hit', 'kill']
     add_filter = partial(in_socket.setsockopt, zmq.SUBSCRIBE)
     map(add_filter, filters)
 
-    update_live(in_socket)
+    update_ledbar(in_socket)
