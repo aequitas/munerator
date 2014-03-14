@@ -23,7 +23,7 @@ translaters = [
     (r'[0-9: ]*say: (?P<playername>[^:]+): (?P<text>.+)', 'say'),
     (r'[0-9: ]*ClientUserinfoChanged: (?P<client_id>\d+) n\\(?P<player_name>[\w\s]+).*id\\(?P<guid>[\w]+)',
      'clientuserinfochanged'),
-    (r'[0-9]+: client:(?P<client_id>\d+) health:(?P<health>\d+).*', 'hit'),
+    (r'[0-9]+: client:(?P<client_id>\d+) health:(?P<health>[\d-]+).*', 'hit'),
     (r'[0-9: ]*Kill: [^:]+: (?P<killer>[\w\s]+) killed (?P<killed>[\w\s]+) by (?P<mod>[\w]+)', 'kill'),
     (r'[0-9: ]*ClientDisconnect: (?P<client_id>\d+)', 'clientdisconnect'),
     (r'[0-9: ]*ClientConnect: (?P<client_id>\d+)', 'clientconnect'),
@@ -35,8 +35,6 @@ regexes = [(re.compile(r), k) for r, k in translaters]
 
 
 def translate(line, regexes):
-    data = {}
-
     for regex, kind in regexes:
         m = regex.match(line)
         if m:

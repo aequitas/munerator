@@ -22,7 +22,7 @@ def wrap(socket, command):
     p = Popen(args, stdout=PIPE)
 
     while p.poll() is None:
-        line = p.stdout.readline()
+        line = p.stdout.readline().decode('ascii')
 
         if line:
             msg = "%s %s" % (time.time(), line.strip())

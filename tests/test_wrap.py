@@ -1,21 +1,18 @@
 import os
 import time
-import munerator.gamewrapper
+import mock
+from munerator.wrap import wrap
 
 
 def test_event_sending(monkeypatch):
-    def timestamp():
-        return 123
+    monkeypatch.setattr(time, 'time', lambda: 123)
 
-    monkeypatch.setattr(time, 'time', timestamp)
+    in_socket = mock.Mock()
 
     game_output = os.path.join(os.path.dirname(__file__), 'game_output.txt')
-    data = list()
+    wrap(in_socket, 'cat %s' % game_output)
 
-    def emitter(line, timestamp):
-        data.append((line.decode('utf-8'), timestamp))
-
-    munerator.gamewrapper.wrap(emitter, 'cat %s' % game_output)
     with open(game_output) as f:
         logline = f.readline().strip()
-    assert (logline, 123) in data
+
+    assert '123 ' + logline == in_socket.send_string.call_args_list[0][0][0]
