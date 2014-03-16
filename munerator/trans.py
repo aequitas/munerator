@@ -23,7 +23,7 @@ translaters = [
     (r'[0-9: ]*say: (?P<player_name>[^:]+): (?P<text>.+)', 'say'),
     (r'[0-9: ]*ClientUserinfoChanged: (?P<client_id>\d+) n\\(?P<player_name>[\w\s]+).*id\\(?P<guid>[\w]+)',
      'clientuserinfochanged'),
-    (r'[0-9]+: client:(?P<client_id>\d+) health:(?P<health>[\d-]+).*', 'hit'),
+    (r'.*client:(?P<client_id>\d+) health:(?P<health>[\d-]+).*', 'hit'),
     (r'[0-9: ]*Kill: [^:]+: (?P<killer>[\w\s]+) killed (?P<killed>[\w\s]+) by (?P<mod>[\w]+)', 'kill'),
     (r'[0-9: ]*ClientDisconnect: (?P<client_id>\d+)', 'clientdisconnect'),
     (r'[0-9: ]*ClientConnect: (?P<client_id>\d+)', 'clientconnect'),
@@ -54,6 +54,7 @@ def eventstream(in_socket, out_socket):
         for kind, data in translate(line, regexes):
             data['timestamp'] = ts
             data['kind'] = kind
+            log.debug('out: %s' % data)
             out_socket.send_json(data)
 
 

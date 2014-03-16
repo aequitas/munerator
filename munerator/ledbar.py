@@ -44,21 +44,23 @@ def update_ledbar(in_socket, numleds):
         t = int(time.time())
         msg = in_socket.recv_string()
 
-        # log.debug('got : %s' % msg)
+        log.debug('got : %s' % msg)
         data = json.loads(msg.split(' ', 1)[-1])
         kind = data.get('kind')
-        client_id = data.get('client_id')
+        client_id = data.get('client_id', '')
 
         if kind == 'initgame' or ids is None:
             ids = collections.defaultdict(itertools.count().next)
             state = ['black'] * numleds
-        elif client_id and client_id < numleds:
-            s = state[ids[client_id]]
+        elif client_id.isdigit() and int(client_id) < numleds:
+            s = state[ids[int(client_id)]]
             if kind == 'clientbegin':
                 s = 'white'
+            elif kind == 'hit':
+                s = 'orange'
             elif kind == 'clientdisconnect':
                 s = 'grey'
-            state[ids[client_id]] = s
+            state[ids[int(client_id)]] = s
         elif kind == 'kill':
             c = data.get('game_info', {}).get('clients', {})
             killer_id = [k for k,v in c.items() if v.get('name') == data.get('killer')]
