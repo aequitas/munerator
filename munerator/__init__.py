@@ -22,7 +22,7 @@ from docopt import docopt
 
 import pkg_resources
 import logging
-import imp
+import importlib
 
 version = pkg_resources.get_distribution("munerator").version
 
@@ -36,5 +36,5 @@ def main():
         logging.debug('debug logging enabled')
 
     module_name = 'munerator.' + args['<command>']
-    app = imp.load_module(module_name, *imp.find_module(module_name))
+    app = importlib.import_module(module_name)
     app.main(argv)

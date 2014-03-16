@@ -26,7 +26,7 @@ def proxy_to_old_api(in_socket, base_url):
         data = json.loads(data)
 
         if kind == 'say':
-            url = '%s/say/%s/%s' % (base_url, data.get('playername'), data.get('text'))
+            url = '%s/say/%s/%s' % (base_url, data.get('player_name'), data.get('text'))
         elif kind == 'initgame':
             url = '%s/InitGame/%s' % (base_url, data.get('mapname'))
 

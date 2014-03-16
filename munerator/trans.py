@@ -20,7 +20,7 @@ import re
 translaters = [
     (r'[0-9: ]*InitGame: .*\\mapname\\(?P<mapname>[\w]+).*', 'initgame'),
     (r'[0-9: ]*ShutdownGame:.*', 'shutdowngame'),
-    (r'[0-9: ]*say: (?P<playername>[^:]+): (?P<text>.+)', 'say'),
+    (r'[0-9: ]*say: (?P<player_name>[^:]+): (?P<text>.+)', 'say'),
     (r'[0-9: ]*ClientUserinfoChanged: (?P<client_id>\d+) n\\(?P<player_name>[\w\s]+).*id\\(?P<guid>[\w]+)',
      'clientuserinfochanged'),
     (r'[0-9]+: client:(?P<client_id>\d+) health:(?P<health>[\d-]+).*', 'hit'),
