@@ -70,7 +70,11 @@ def update_ledbar(in_socket, numleds, ledbar_api):
             if kind == 'clientbegin':
                 s = 'white'
             elif kind == 'hit':
+                if s in ['blue']:
+                    continue
                 s = 'orange'
+            elif kind == 'quad':
+                s = 'blue'
             elif kind == 'clientdisconnect':
                 s = 'dimgray'
             state[ids[int(client_id)]] = s
