@@ -41,7 +41,6 @@ class GameContext(object):
                 }
             elif kind == 'clientuserinfochanged':
                 log.debug('setting client info: %s' % client_id)
-                print data
                 self.gameinfo['clients'][client_id] = {
                     'name': data.get('player_name'),
                     'guid': data.get('guid'),

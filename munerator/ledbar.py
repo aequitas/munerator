@@ -6,13 +6,14 @@ Usage:
 Options:
   -v --verbose          Verbose logging
   --context-socket url  ZMQ socket for context events [default: tcp://quake.brensen.com:9002]
+  --ledbar-api url      URL to ledbar api [default: http://10.110.0.119/led/{led}/{color_code}]
+  --numleds num         Number of leds in the bar to use [default: 19]
 
 """
 import collections
 import itertools
 import json
 import logging
-import time
 import urllib2
 from functools import partial
 
@@ -23,25 +24,37 @@ from webcolors import name_to_hex
 log = logging.getLogger(__name__)
 
 
-def update_leds(state, numleds):
-    prev_state = [''] * numleds
-    while True:
-        for i, color in enumerate(state):
-            if color != prev_state[i]:
-                led = numleds - i
-                color_code = name_to_hex(color)
-                try:
-                    urllib2.urlopen('http://ijohan.nl/led/%s/%s' % (led, color_code), timeout=0.1)
-                except:
-                    log.debug('urlopen failed')
-            prev_state[i] = color
-        yield
+class Ledbar(object):
+    def __init__(self, numleds, ledbar_api):
+        self.prev_state = [''] * numleds
+        self.ledbar_api = ledbar_api
+        self.numleds = numleds
 
-def update_ledbar(in_socket, numleds):
+    def api_call(self, url):
+        try:
+            urllib2.urlopen(url, timeout=1)
+        except:
+            log.debug('urlopen failed')
+
+    def update_leds(self, state):
+        for i, color in enumerate(state):
+            if color != self.prev_state[i]:
+                led = self.numleds - i
+                color_code = name_to_hex(color).lstrip('#')
+
+                url = self.ledbar_api.format(led=led, color_code=color_code)
+                log.debug('url: %s' % url)
+                self.api_call(url)
+
+            self.prev_state[i] = color
+
+
+def update_ledbar(in_socket, numleds, ledbar_api):
     ids = None
 
+    ledbar = Ledbar(numleds, ledbar_api)
+
     while True:
-        t = int(time.time())
         msg = in_socket.recv_string()
 
         log.debug('got : %s' % msg)
@@ -59,12 +72,12 @@ def update_ledbar(in_socket, numleds):
             elif kind == 'hit':
                 s = 'orange'
             elif kind == 'clientdisconnect':
-                s = 'grey'
+                s = 'dimgray'
             state[ids[int(client_id)]] = s
         elif kind == 'kill':
             c = data.get('game_info', {}).get('clients', {})
-            killer_id = [k for k,v in c.items() if v.get('name') == data.get('killer')]
-            killed_id = [k for k,v in c.items() if v.get('name') == data.get('killed')]
+            killer_id = [k for k, v in c.items() if v.get('name') == data.get('killer')]
+            killed_id = [k for k, v in c.items() if v.get('name') == data.get('killed')]
 
             if killer_id:
                 state[int(killer_id[0])] = 'green'
@@ -72,7 +85,7 @@ def update_ledbar(in_socket, numleds):
                 state[int(killed_id[0])] = 'red'
 
         log.debug(state)
-        update_leds(state, numleds)
+        ledbar.update_leds(state)
 
 
 def main(argv):
@@ -87,4 +100,7 @@ def main(argv):
     add_filter = partial(in_socket.setsockopt, zmq.SUBSCRIBE)
     map(add_filter, filters)
 
-    update_ledbar(in_socket, 19)
+    numleds = int(args['--numleds'])
+    ledbar_api = args['--ledbar-api']
+
+    update_ledbar(in_socket, numleds, ledbar_api)
