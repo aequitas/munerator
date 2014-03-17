@@ -7,7 +7,7 @@ Options:
   -v --verbose          Verbose logging
   --context-socket url  ZMQ socket for context events [default: tcp://quake.brensen.com:9002]
   --ledbar-api url      URL to ledbar api [default: http://10.110.0.119/led/{led}/{color_code}]
-  --numleds num         Number of leds in the bar to use [default: 19]
+  --numleds num         Number of leds in the bar to use [default: 18]
 
 """
 import collections
@@ -32,7 +32,7 @@ class Ledbar(object):
 
     def api_call(self, url):
         try:
-            urllib2.urlopen(url, timeout=1)
+            urllib2.urlopen(url, timeout=0.5)
         except:
             log.debug('urlopen failed')
 
@@ -80,9 +80,9 @@ def update_ledbar(in_socket, numleds, ledbar_api):
             killed_id = [k for k, v in c.items() if v.get('name') == data.get('killed')]
 
             if killer_id:
-                state[int(killer_id[0])] = 'green'
+                state[ids[int(killer_id[0])]] = 'green'
             if killed_id:
-                state[int(killed_id[0])] = 'red'
+                state[ids[int(killed_id[0])]] = 'red'
 
         log.debug(state)
         ledbar.update_leds(state)
