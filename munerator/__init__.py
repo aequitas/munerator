@@ -10,6 +10,7 @@ Commands:
     ledbar
     old
     voting
+    listen
     help
 
 Options:
@@ -31,8 +32,10 @@ def main():
     args = docopt(__doc__, version=version, options_first=True)
     argv = [args['<command>']] + args['<args>']
 
+    logging.basicConfig(level=logging.INFO)
+
     if '-v' in argv or '--verbose' in argv or args.get('--verbose'):
-        logging.basicConfig(level=logging.DEBUG)
+        logging.getLogger().setLevel(logging.DEBUG)
         logging.debug('debug logging enabled')
 
     module_name = 'munerator.' + args['<command>']
