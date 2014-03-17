@@ -51,6 +51,8 @@ Requirements
 ------------
 
 - Python >= 2.6 or >= 3.3
+- ZMQ
+- OpenArena
 
 License
 -------
