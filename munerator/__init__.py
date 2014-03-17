@@ -8,6 +8,7 @@ Commands:
     trans
     context
     ledbar
+    old
     voting
     help
 
@@ -21,12 +22,7 @@ from docopt import docopt
 
 import pkg_resources
 import logging
-
-import wrap
-import trans
-import context
-import ledbar
-import voting
+import importlib
 
 version = pkg_resources.get_distribution("munerator").version
 
@@ -39,14 +35,6 @@ def main():
         logging.basicConfig(level=logging.DEBUG)
         logging.debug('debug logging enabled')
 
-    if args['<command>'] == 'wrap':
-        wrap.main(argv)
-    elif args['<command>'] == 'trans':
-        trans.main(argv)
-    elif args['<command>'] == 'context':
-        context.main(argv)
-    elif args['<command>'] == 'ledbar':
-        ledbar.main(argv)
-    elif args['<command>'] == 'voting':
-        voting.main(argv)
-
+    module_name = 'munerator.' + args['<command>']
+    app = importlib.import_module(module_name)
+    app.main(argv)

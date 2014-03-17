@@ -22,8 +22,7 @@ class GameContext(object):
         self.start_ts = 0
         self.stop_ts = 0
 
-        self.gameinfo = {}
-        self.clients = {}
+        self.gameinfo = {'clients': {}}
 
     def eventstream(self, in_socket, out_socket):
         while True:
@@ -42,14 +41,11 @@ class GameContext(object):
                 }
             elif kind == 'clientuserinfochanged':
                 log.debug('setting client info: %s' % client_id)
-                self.clients[client_id] = {
-                    'name': data.get('playername'),
-                    'guid': data.get('guid')
+                self.gameinfo['clients'][client_id] = {
+                    'name': data.get('player_name'),
+                    'guid': data.get('guid'),
+                    'client_id': client_id
                 }
-
-            # add player info to event
-            if client_id:
-                data['player_info'] = self.clients.get(client_id, {})
 
             # add game context to event
             if self.start_ts < ts > self.stop_ts:
@@ -62,7 +58,7 @@ class GameContext(object):
                     pass
             elif kind == 'shutdowngame':
                 self.stop_ts = ts
-                self.gameinfo = {}
+                self.gameinfo = {'clients': {}}
 
             log.debug('out: %s' % data)
             out_socket.send_string("%s %s" % (data.get('kind'), json.dumps(data)))
