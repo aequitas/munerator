@@ -1,14 +1,15 @@
-# Config file for automatic testing at travis-ci.org
-
 language: python
-
 python:
-  - "3.3"
-  - "2.7"
-#  - "pypy"
-
-# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+- '3.3'
+- '2.7'
 install: pip install -U . --use-mirrors
-
-# command to run tests, e.g. python setup.py test
 script: py.test
+deploy:
+  provider: pypi
+  user: aequitas
+  password:
+    secure: PSw4qGkuDhjeixMpSlmM2GawShS68yMwgoN0raOs4n/8zJPZmWOYuyE1emik07EgxYDpduwh0pCeN57ImsuKcBY7KT7qMnbT5hlFnFQZY3m8Xl7LIxnkA2GIxh2mOEiAY/zXyfGiLVzbwfGjk95vdrPJxmtOInr5ht8/gX49c8w=
+  on:
+    tags: true
+    repo: aequitas/munerator
+  distributions: "bdist_wheel"
