@@ -7,7 +7,7 @@ Options:
   -v --verbose          Verbose logging
   --context-socket url  ZMQ socket for context events [default: tcp://quake.brensen.com:9002]
   --ledbar-api url      URL to ledbar api [default: http://10.110.0.119/led/{led}/{color_code}]
-  --numleds num         Number of leds in the bar to use [default: 18]
+  --numleds num         Number of leds in the bar to use [default: 19]
 
 """
 import collections
@@ -39,7 +39,7 @@ class Ledbar(object):
     def update_leds(self, state):
         for i, color in enumerate(state):
             if color != self.prev_state[i]:
-                led = self.numleds - i
+                led = self.numleds - (i + 1)
                 color_code = name_to_hex(color).lstrip('#')
 
                 url = self.ledbar_api.format(led=led, color_code=color_code)
