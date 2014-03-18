@@ -28,7 +28,7 @@ def listen(in_socket):
         data = json.loads(msg.split(' ', 1)[-1])
         kind = data.get('kind')
 
-        print kind, ' '.join(['%s:%s' % (k, v) for k, v in data.items() if not k in exclude_keys])
+        print(kind, ' '.join(['%s:%s' % (k, v) for k, v in data.items() if not k in exclude_keys]))
 
 
 def main(argv):
