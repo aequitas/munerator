@@ -6,6 +6,7 @@ install: pip install -U . --use-mirrors
 script: py.test
 deploy:
   provider: pypi
+  server: https://pypi.python.org/
   user: aequitas
   password:
     secure: If37lNteMLGeaAMmU7c4L1wzJXgw3AGKIbCr5zV/Bt1Y9JL/FXTxl613v2RlZ0ny1NEh4yF3EoRr8WJeaf4TA9OGE1pSwwR6ERT/JRQZk3waGIcE+ZVPm+GWil4b9VI9YM2gQoyXXdBQXgFvEKRZqYLQEM1ayRZimisx/875NUs=
