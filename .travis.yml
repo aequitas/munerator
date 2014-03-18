@@ -8,5 +8,8 @@ deploy:
   provider: pypi
   user: aequitas
   password:
-    secure: PSw4qGkuDhjeixMpSlmM2GawShS68yMwgoN0raOs4n/8zJPZmWOYuyE1emik07EgxYDpduwh0pCeN57ImsuKcBY7KT7qMnbT5hlFnFQZY3m8Xl7LIxnkA2GIxh2mOEiAY/zXyfGiLVzbwfGjk95vdrPJxmtOInr5ht8/gX49c8w=
+    secure: If37lNteMLGeaAMmU7c4L1wzJXgw3AGKIbCr5zV/Bt1Y9JL/FXTxl613v2RlZ0ny1NEh4yF3EoRr8WJeaf4TA9OGE1pSwwR6ERT/JRQZk3waGIcE+ZVPm+GWil4b9VI9YM2gQoyXXdBQXgFvEKRZqYLQEM1ayRZimisx/875NUs=
   distributions: "sdist bdist_wheel"
+  on:
+    repo: aequitas/munerator
+    branch: master
