@@ -49,10 +49,8 @@ class Ledbar(object):
             self.prev_state[i] = color
 
 
-def update_ledbar(in_socket, numleds, ledbar_api):
+def update_ledbar(in_socket, numleds, ledbar):
     ids = None
-
-    ledbar = Ledbar(numleds, ledbar_api)
 
     while True:
         msg = in_socket.recv_string()
@@ -68,13 +66,23 @@ def update_ledbar(in_socket, numleds, ledbar_api):
         elif client_id.isdigit() and int(client_id) < numleds:
             s = state[ids[int(client_id)]]
             if kind == 'clientbegin':
-                s = 'white'
+                team = data.get('game_info', {}).get('clients', {})[client_id].get('team')
+                if team:
+                    s = team
+                else:
+                    s = 'white'
             elif kind == 'hit':
-                if s in ['blue']:
+                if s in ['blue', 'invisible']:
                     continue
-                s = 'orange'
+                health = int(data.get('health'))
+                if health < 50:
+                    s = 'orange'
+                elif health < 25:
+                    s = 'orangered'
             elif kind == 'quad':
                 s = 'blue'
+            elif kind == 'invisible':
+                s = 'black'
             elif kind == 'clientdisconnect':
                 s = 'dimgray'
             state[ids[int(client_id)]] = s
@@ -99,7 +107,7 @@ def main(argv):
     in_socket = context.socket(zmq.SUB)
     in_socket.connect(args['--context-socket'])
 
-    filters = ['initgame', 'shutdowngame', 'clientdisconnect',
+    filters = ['initgame', 'shutdowngame', 'clientdisconnect', 'quad',
                'clientbegin', 'clientuserinfochanged', 'hit', 'kill']
     add_filter = partial(in_socket.setsockopt, zmq.SUBSCRIBE)
     map(add_filter, filters)
@@ -107,4 +115,6 @@ def main(argv):
     numleds = int(args['--numleds'])
     ledbar_api = args['--ledbar-api']
 
-    update_ledbar(in_socket, numleds, ledbar_api)
+    ledbar = Ledbar(numleds, ledbar_api)
+
+    update_ledbar(in_socket, numleds, ledbar)

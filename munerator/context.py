@@ -16,6 +16,8 @@ log = logging.getLogger(__name__)
 
 import json
 
+team_id_map = ['', 'blue', 'red', 'spectator']
+
 
 class GameContext(object):
     def __init__(self):
@@ -44,7 +46,9 @@ class GameContext(object):
                 self.gameinfo['clients'][client_id] = {
                     'name': data.get('player_name'),
                     'guid': data.get('guid'),
-                    'client_id': client_id
+                    'client_id': client_id,
+                    'team_id': data.get('team_id'),
+                    'team': team_id_map[data.get('team_id')]
                 }
 
             # add game context to event

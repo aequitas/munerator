@@ -21,8 +21,8 @@ translaters = [
     (r'[0-9: ]*InitGame: .*\\mapname\\(?P<mapname>[\w]+).*', 'initgame'),
     (r'[0-9: ]*ShutdownGame:.*', 'shutdowngame'),
     (r'[0-9: ]*say: (?P<player_name>[^:]+): (?P<text>.+)', 'say'),
-    (r'[0-9: ]*ClientUserinfoChanged: (?P<client_id>\d+) n\\(?P<player_name>[\w\s]+).*id\\(?P<guid>[\w]+)',
-     'clientuserinfochanged'),
+    (r'[0-9: ]*ClientUserinfoChanged: (?P<client_id>\d+) n\\(?P<player_name>[^\\]+)\\t\\(?P<team_id>\d+).*id\\'
+        r'(?P<guid>[\w]+)', 'clientuserinfochanged'),
     (r'.*client:(?P<client_id>\d+) health:(?P<health>[\d-]+).*', 'hit'),
     (r'[0-9: ]*Kill: [^:]+: (?P<killer>[\w\s]+) killed (?P<killed>[\w\s]+) by (?P<mod>[\w]+)', 'kill'),
     (r'[0-9: ]*ClientDisconnect: (?P<client_id>\d+)', 'clientdisconnect'),
