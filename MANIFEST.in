@@ -1,1 +1,3 @@
 include *.rst LICENSE
+include tests/*.txt
+include tests/*.log
