@@ -11,6 +11,7 @@ Commands:
     old
     voting
     listen
+    rcon
     help
 
 Options:
