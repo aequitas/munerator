@@ -66,7 +66,7 @@ def update_ledbar(in_socket, numleds, ledbar):
         elif client_id.isdigit() and int(client_id) < numleds:
             s = state[ids[int(client_id)]]
             if kind == 'clientbegin':
-                team = data.get('game_info', {}).get('clients', {})[client_id].get('team')
+                team = data.get('game_info', {}).get('clients', {}).get(client_id, {}).get('team')
                 if team:
                     s = team
                 else:
