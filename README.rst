@@ -46,8 +46,10 @@ Listeners:
 - old: subscribe to game events, proxy events to old api http://quake.ijohan.nl
 - listen: listen to all events sent out, for debugging etc.
 
-Planned:
+Other:
 - rcon: interact with running game through rcon commands (change maps, say stuff)
+
+Planned:
 - changer: change current game (fraglimit, gametype, instagib, restart) based on game info
 - voting: store player votes on maps/gameoption in db
 - rotate: rotate maps based on player preferences
