@@ -48,7 +48,7 @@ class GameContext(object):
                     'guid': data.get('guid'),
                     'client_id': client_id,
                     'team_id': data.get('team_id'),
-                    'team': team_id_map[data.get('team_id')]
+                    'team': team_id_map[int(data.get('team_id'))]
                 }
 
             # add game context to event
