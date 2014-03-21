@@ -6,7 +6,8 @@ python:
 - 'pypy'
 before_install:
   - sudo apt-get install libzmq3-dev
-install: pip install -U . --use-mirrors
+install: 
+    pip install -U . sphinx --use-mirrors
 script: 
     - py.test
     - sphinx-build -n -b html -d _build/doctrees . build/docs
