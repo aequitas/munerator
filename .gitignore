@@ -46,3 +46,4 @@ docs/_build
 *.db
 *.db.lock
 oud
+_build
