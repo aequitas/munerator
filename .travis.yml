@@ -3,7 +3,7 @@ python:
 - '3.4'
 - '3.3'
 - '2.7'
-- 'pypi'
+- 'pypy'
 install: pip install -U . --use-mirrors
 script: py.test
 deploy:
