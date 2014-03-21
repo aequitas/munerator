@@ -6,9 +6,10 @@ python:
 - 'pypy'
 before_install:
   - sudo apt-get install libzmq3-dev
-docs_dir: _build/html
 install: pip install -U . --use-mirrors
-script: py.test
+script: 
+    - py.test
+    - sphinx-build -n -b html -d _build/doctrees . build/docs
 deploy:
   provider: pypi
   user: aequitas
