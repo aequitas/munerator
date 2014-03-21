@@ -8,7 +8,7 @@ def read(fname):
 
 setup(
     name='munerator',
-    version="0.3.15",
+    version="0.3.16",
     description='Manager of OpenArena battles',
     long_description=read("README.rst"),
     author='Johan Bloemberg',
@@ -18,7 +18,8 @@ setup(
         'docopt',
         'pyzmq',
         'codernitydb',
-        'webcolors'
+        'webcolors',
+        'python-Levenshtein'
     ],
     packages=find_packages(),
     license=read("LICENSE"),

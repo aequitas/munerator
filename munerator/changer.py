@@ -17,6 +17,8 @@ from functools import partial
 
 import zmq
 from docopt import docopt
+from Levenshtein import ratio
+
 
 log = logging.getLogger(__name__)
 
@@ -40,7 +42,7 @@ class Changer(object):
             log.error('invalid response')
             return None
 
-        m = re.match('"%s" is:"(?P<value>[^:]*)\^7".*' % value, response[1])
+        m = re.match('"%s" is:"(?P<value>[^\^]*)\^7".*' % value, response[1])
         if m:
             return m.group('value')
         else:
@@ -68,6 +70,19 @@ class Changer(object):
                 if new_fraglimit > fraglimit:
                     log.info('new fraglimit %s' % new_fraglimit)
                     self.rcon('set fraglimit %s' % new_fraglimit)
+            elif kind == 'say':
+                text = data.get('text')
+                if ratio(text, u'instagib') > 0.5:
+                    nextmap = self.rcon_get_value('nextmap')
+                    self.rcon('set g_instantgib 2')
+                    self.rcon('map_restart')
+                    time.sleep(2)
+                    self.rcon('set nextmap %s' % nextmap)
+                if ratio(text, u'again') > 0.5:
+                    nextmap = self.rcon_get_value('nextmap')
+                    self.rcon('map_restart')
+                    time.sleep(2)
+                    self.rcon('set nextmap %s' % nextmap)
 
 
 def main(argv):
@@ -78,7 +93,7 @@ def main(argv):
     in_socket = context.socket(zmq.SUB)
     in_socket.connect(args['--context-socket'])
 
-    filters = ['initgame', 'clientbegin', 'clientdisconnect']
+    filters = ['initgame', 'clientbegin', 'clientdisconnect', 'say']
     add_filter = partial(in_socket.setsockopt, zmq.SUBSCRIBE)
     map(add_filter, filters)
 
