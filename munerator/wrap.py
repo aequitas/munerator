@@ -21,13 +21,16 @@ def wrap(socket, command):
     args = command.split()
     p = Popen(args, stdout=PIPE)
 
-    while p.poll() is None:
+    while True:
         line = p.stdout.readline().decode('ascii')
 
         if line:
             msg = "%s %s" % (time.time(), line.strip())
             log.debug('sending: ' + msg)
             socket.send_string(msg)
+
+        if not p.poll() is None:
+            break
 
 
 def main(argv):
