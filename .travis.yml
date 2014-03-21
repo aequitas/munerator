@@ -4,6 +4,9 @@ python:
 - '3.3'
 - '2.7'
 - 'pypy'
+before_install:
+  - sudo apt-get install libzmq3-dev libsodium-dev
+
 install: pip install -U . --use-mirrors
 script: py.test
 deploy:
