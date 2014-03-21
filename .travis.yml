@@ -6,7 +6,7 @@ python:
 - 'pypy'
 before_install:
   - sudo apt-get install libzmq3-dev
-
+docs_dir: _build/html
 install: pip install -U . --use-mirrors
 script: py.test
 deploy:
