@@ -15,7 +15,7 @@ deploy:
   provider: pypi
   user: aequitas
   password:
-    secure: KuVGDWs/KtlAgA7dsgugvzRQHlbP23eI1zdEZ8xGhclkHF8xZjXZKSRQyX/JhHUqsv+HVYweYNUfCL+0m10xM1/O8u+EktmIPsSWSdcw8sUuP3yS59RxXa7Ccg7rOb+Q5XUXHdwkCBrIB4niHhv6PUosn3Hu4XtL/m6spzmT2p8=
+    secure: "N+b+ne+t9s+tw1kEdA3m0RZtH8ssQCSpuMHe4jjdyThRas9lwB516BFOI9LEg/NGWGsqr5Xc2VKCNQeexp9BMAU3WlLgKqKfmLRe7Jci8U0uTHnfLfcDOJCJ6iCVwwohzIxGEJiYLBNkH7ISYH1Q4jRhVxstTUd/7Vhdc6KW3G8="
   on:
     repo: aequitas/munerator
     branch: master
