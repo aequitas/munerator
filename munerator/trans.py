@@ -12,7 +12,6 @@ Options:
 from docopt import docopt
 import zmq
 import logging
-import collections
 log = logging.getLogger(__name__)
 
 import re
@@ -35,8 +34,6 @@ translaters = [
 
 regexes = [(re.compile(r), k) for r, k in translaters]
 
-deduplicate = collections.deque(maxlen=5)
-
 
 def translate(line, regexes):
     for regex, kind in regexes:
@@ -50,10 +47,6 @@ def eventstream(in_socket, out_socket):
         msg = in_socket.recv_string()
         ts, line = msg.split(' ', 1)
 
-        if not line or line in deduplicate:
-            continue
-
-        deduplicate.append(line)
         log.debug('translating: ' + line)
 
         for kind, data in translate(line, regexes):

@@ -31,12 +31,12 @@ class GameContext(object):
     def eventstream(self, in_socket, out_socket):
         while True:
             data = in_socket.recv_json()
-            log.debug(' in: %s' % data)
+            log.debug('   in: %s' % data)
 
-            if not data or data in deduplicate:
-                log.debug('duplicate')
+            if str(data) in deduplicate:
+                log.debug('skip:')
                 continue
-            deduplicate.append(data)
+            deduplicate.append(str(data))
 
             kind = data.get('kind')
             ts = data.get('timestamp')
@@ -71,7 +71,7 @@ class GameContext(object):
                 self.stop_ts = ts
                 self.gameinfo = {'clients': {}}
 
-            log.debug('out: %s' % data)
+            log.debug(' out: %s' % data)
             out_socket.send_string("%s %s" % (data.get('kind'), json.dumps(data)))
 
 
