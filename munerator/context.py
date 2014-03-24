@@ -12,11 +12,13 @@ Options:
 from docopt import docopt
 import zmq
 import logging
+import collections
 log = logging.getLogger(__name__)
 
 import json
 
 team_id_map = ['', 'blue', 'red', 'spectator']
+deduplicate = collections.deque(maxlen=5)
 
 
 class GameContext(object):
@@ -30,6 +32,11 @@ class GameContext(object):
         while True:
             data = in_socket.recv_json()
             log.debug(' in: %s' % data)
+
+            if not data or data in deduplicate:
+                log.debug('duplicate')
+                continue
+            deduplicate.append(data)
 
             kind = data.get('kind')
             ts = data.get('timestamp')
