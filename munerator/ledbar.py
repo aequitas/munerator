@@ -67,7 +67,7 @@ def update_ledbar(in_socket, numleds, ledbar):
             s = state[ids[int(client_id)]]
             if kind == 'clientbegin':
                 team = data.get('game_info', {}).get('clients', {}).get(client_id, {}).get('team')
-                if team:
+                if team and team in ['red', 'blue']:
                     s = team
                 else:
                     s = 'white'

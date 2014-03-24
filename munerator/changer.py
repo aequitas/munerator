@@ -27,6 +27,7 @@ class Changer(object):
     def __init__(self, in_socket, rcon_socket):
         self.in_socket = in_socket
         self.rcon_socket = rcon_socket
+        self.votecache = []
 
     def rcon(self, cmd):
         self.rcon_socket.send_string(cmd)
@@ -55,11 +56,12 @@ class Changer(object):
             data = json.loads(data)
 
             if kind == 'initgame':
-                time.sleep(10)
-                self.rcon('say munerator is watching')
+                # reset votecache on game start
+                self.votecache = []
+                self.rcon('wait 100000; say munerator is watching')
             elif kind in ['clientbegin', 'clientdisconnect']:
                 fraglimit = int(self.rcon_get_value('fraglimit'))
-                num_players = len(data.get('clients', []))
+                num_players = len(data.get('game_info', {}).get('clients', {}))
 
                 # increate fraglimit by 8 for every two players joining
                 new_fraglimit = int(num_players) / 2 * 8
@@ -71,18 +73,68 @@ class Changer(object):
                     log.info('new fraglimit %s' % new_fraglimit)
                     self.rcon('set fraglimit %s' % new_fraglimit)
             elif kind == 'say':
-                text = data.get('text')
-                if ratio(text, u'instagib') > 0.5:
-                    nextmap = self.rcon_get_value('nextmap')
-                    self.rcon('set g_instantgib 2')
-                    self.rcon('map_restart')
-                    time.sleep(2)
-                    self.rcon('set nextmap %s' % nextmap)
-                if ratio(text, u'again') > 0.5:
-                    nextmap = self.rcon_get_value('nextmap')
-                    self.rcon('map_restart')
-                    time.sleep(2)
-                    self.rcon('set nextmap %s' % nextmap)
+                self.voting(data)
+
+    def voting(self, data):
+        text = data.get('text')
+
+        if ratio(text, u'instagib') > 0.75:
+            change = ('gametype', 'instagib')
+        elif ratio(text, u'again') > 0.75:
+            change = ('map', 'restart')
+        else:
+            return
+
+        client_id = data.get('client_id')
+        self.record_vote(client_id, change)
+
+        num_players = len(data.get('game_info', {}).get('clients', {}))
+        votes = self.votes_for_change(change)
+        log.info('votes:%s num_players:%s' % (votes, num_players))
+        if votes >= num_players / 2:
+            changetype, value = change
+            for i in range(4):
+                self.rcon('say got %s votes for %s %s, changing game!' % (votes, changetype, value))
+                time.sleep(1)
+            self.apply_change(change)
+        else:
+            votes_needed = (num_players / 2) - votes
+            changetype, value = change
+            self.rcon('say need %s more votes for %s %s' % (votes_needed, changetype, value))
+
+    def apply_change(self, change):
+        changetype, value = change
+        if changetype == 'gametype':
+            self.change_gametype(value)
+        elif changetype == 'map' and value == 'restart':
+            self.change_gametype('')
+
+    def record_vote(self, client_id, change):
+        vote = (client_id, change)
+        self.votecache.append(vote)
+
+    def votes_for_change(self, change):
+        votes = []
+        for client_id, change_vote in self.votecache:
+            if change == change_vote:
+                if not client_id in votes:
+                    votes.append(client_id)
+        return len(votes)
+
+    def change_gametype(self, gametype):
+        nextmap = self.rcon_get_value('nextmap')
+
+        self.rcon('set g_rockets 0')
+        self.rcon('set g_instantgib 0')
+
+        if gametype == 'instagib':
+            self.rcon('set g_instantgib 2')
+        elif gametype == 'rockets':
+            self.rcon('set g_rockets 1')
+
+        self.rcon('map_restart')
+        time.sleep(2)
+        self.rcon('set nextmap %s' % nextmap)
 
 
 def main(argv):
