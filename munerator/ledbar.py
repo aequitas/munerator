@@ -40,7 +40,9 @@ class Ledbar(object):
         for i, color in enumerate(state):
             if color != self.prev_state[i]:
                 led = self.numleds - (i + 1)
-                color_code = name_to_hex(color).lstrip('#')
+                if not color.startswith('#'):
+                    color = name_to_hex(color)
+                color_code = color.lstrip('#')
 
                 url = self.ledbar_api.format(led=led, color_code=color_code)
                 log.debug('url: %s' % url)
@@ -62,7 +64,8 @@ def update_ledbar(in_socket, numleds, ledbar):
 
         if kind == 'initgame' or ids is None:
             ids = collections.defaultdict(itertools.count().next)
-            state = ['black'] * numleds
+            num_players = len(data.get('game_info', {}).get('clients', {}))
+            state = ['white'] * num_players + ['black'] * (numleds - num_players)
         elif client_id.isdigit() and int(client_id) < numleds:
             s = state[ids[int(client_id)]]
             if kind == 'clientbegin':
@@ -84,7 +87,7 @@ def update_ledbar(in_socket, numleds, ledbar):
             elif kind == 'invisible':
                 s = 'black'
             elif kind == 'clientdisconnect':
-                s = 'dimgray'
+                s = '#212121'
             state[ids[int(client_id)]] = s
         elif kind == 'kill':
             c = data.get('game_info', {}).get('clients', {})
