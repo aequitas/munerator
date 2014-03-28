@@ -64,7 +64,7 @@ def update_ledbar(in_socket, numleds, ledbar):
 
         if kind == 'initgame' or ids is None:
             ids = collections.defaultdict(itertools.count().next)
-            num_players = len(data.get('game_info', {}).get('clients', {}))
+            num_players = data['game_info']['num_players']
             state = ['white'] * num_players + ['black'] * (numleds - num_players)
         elif client_id.isdigit() and int(client_id) < numleds:
             s = state[ids[int(client_id)]]

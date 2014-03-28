@@ -46,30 +46,34 @@ class GameContext(object):
                 self.start_ts = ts
                 self.gameinfo = {
                     'mapname': data.get('mapname'),
-                    'clients': {}
+                    'num_players': 0,
                 }
+                self.clients = {}
             elif kind == 'clientuserinfochanged':
                 log.debug('setting client info: %s' % client_id)
-                self.gameinfo['clients'][client_id] = {
+                self.clients[client_id] = {
                     'name': data.get('player_name'),
                     'guid': data.get('guid'),
                     'client_id': client_id,
                     'team_id': data.get('team_id'),
                     'team': team_id_map[int(data.get('team_id'))]
                 }
+                self.gameinfo['num_players'] = len(self.clients)
 
             # add game context to event
             if self.start_ts < ts > self.stop_ts:
                 data['game_info'] = self.gameinfo
+                data['client_info'] = self.clients.get(client_id, {})
 
             if kind == 'clientdisconnect':
                 try:
-                    del self.gameinfo['clients'][client_id]
+                    del self.clients[client_id]
                 except KeyError:
                     pass
             elif kind == 'shutdowngame':
                 self.stop_ts = ts
-                self.gameinfo = {'clients': {}}
+                self.gameinfo = {}
+                self.clients = {}
 
             log.debug(' out: %s' % data)
             out_socket.send_string("%s %s" % (data.get('kind'), json.dumps(data)))

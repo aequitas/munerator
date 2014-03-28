@@ -16,10 +16,10 @@ from docopt import docopt
 
 log = logging.getLogger(__name__)
 
-exclude_keys = ['kind', 'game_info', 'timestamp']
+exclude_keys = ['kind', 'timestamp']
 
 
-def listen(in_socket):
+def listen(in_socket, show_context=False):
     log.info('listening for game events')
     while True:
         msg = in_socket.recv_string()
