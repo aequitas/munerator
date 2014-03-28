@@ -26,7 +26,8 @@ class GameContext(object):
         self.start_ts = 0
         self.stop_ts = 0
 
-        self.gameinfo = {'clients': {}}
+        self.gameinfo = {}
+        self.clients = {}
 
     def eventstream(self, in_socket, out_socket):
         while True:
