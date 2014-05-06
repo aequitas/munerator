@@ -21,6 +21,7 @@ from Levenshtein import ratio
 
 
 log = logging.getLogger(__name__)
+voting_enabled = False
 
 
 class Changer(object):
@@ -72,7 +73,7 @@ class Changer(object):
                 if new_fraglimit > fraglimit:
                     log.info('new fraglimit %s' % new_fraglimit)
                     self.rcon('set fraglimit %s' % new_fraglimit)
-            elif kind == 'say':
+            elif voting_enabled and kind == 'say':
                 self.voting(data)
 
     def voting(self, data):
