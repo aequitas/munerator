@@ -26,7 +26,7 @@ log = logging.getLogger(__name__)
 
 class Ledbar(object):
     def __init__(self, numleds, ledbar_api):
-        self.prev_state = [''] * numleds
+        self.prev_state = ['#000000'] * numleds
         self.ledbar_api = ledbar_api
         self.numleds = numleds
 
@@ -38,10 +38,11 @@ class Ledbar(object):
 
     def update_leds(self, state):
         for i, color in enumerate(state):
+            if not color.startswith('#'):
+                color = name_to_hex(color)
+
             if color != self.prev_state[i]:
                 led = self.numleds - (i + 1)
-                if not color.startswith('#'):
-                    color = name_to_hex(color)
                 color_code = color.lstrip('#')
 
                 url = self.ledbar_api.format(led=led, color_code=color_code)
