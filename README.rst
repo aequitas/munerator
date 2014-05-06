@@ -9,7 +9,7 @@ munerator
         :target: https://travis-ci.org/aequitas/munerator
 
 .. image:: https://pypip.in/d/munerator/badge.png
-        :target: https://crate.io/packages/munerator?version=latest
+        :target: https://crate.io/packages/munerator
 
 
 Munerator: Organizer of gladiatorial fights. (http://www.unrv.com/culture/gladiator.php)
