@@ -75,7 +75,7 @@ def update_ledbar(in_socket, numleds, ledbar):
                 else:
                     s = 'white'
             elif kind == 'hit':
-                if s in ['blue', 'invisible']:
+                if s in ['cyan', 'invisible']:
                     continue
                 health = int(data.get('health'))
                 if health < 50:
@@ -83,7 +83,7 @@ def update_ledbar(in_socket, numleds, ledbar):
                 elif health < 25:
                     s = 'orangered'
             elif kind == 'quad':
-                s = 'blue'
+                s = 'cyan'
             elif kind == 'invisible':
                 s = 'black'
             elif kind == 'clientdisconnect':
@@ -99,7 +99,6 @@ def update_ledbar(in_socket, numleds, ledbar):
             if killed_id:
                 state[ids[int(killed_id[0])]] = 'red'
 
-        log.debug(state)
         ledbar.update_leds(state)
 
 
