@@ -59,7 +59,6 @@ class Changer(object):
             if kind == 'initgame':
                 # reset votecache on game start
                 self.votecache = []
-                self.rcon('wait 100000; say munerator is watching')
             elif kind in ['clientbegin', 'clientdisconnect']:
                 fraglimit = int(self.rcon_get_value('fraglimit'))
                 num_players = len(data.get('game_info', {}).get('clients', {}))
