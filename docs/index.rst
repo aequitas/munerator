@@ -12,6 +12,11 @@ Contents:
    :maxdepth: 2
 
 
+Ledbar
+=================================
+    .. automodule:: munerator.ledbar
+        :members:
+
 
 Indices and tables
 ==================
