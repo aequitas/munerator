@@ -10,6 +10,9 @@ import pytest
     [r'say: -[aequitas]-: instagib', 'say'],
     [r'-[aequitas]-^7: instagib', None],
     [r'Kill: 1022 5 20: <world> killed Gunnaway by MOD_SUICIDE', 'kill'],
+    [r'Kill: 1022 0 16: <world> killed -[aequitas]- by MOD_LAVA', 'kill'],
+    [r'Kill: 1022 0 16: <world> killed Some nick by MOD_LAVA', 'kill'],
+    [r'Kill: 1022 0 16: <world> killed ^1color by MOD_LAVA', 'kill'],
     [r'0:37 ClientUserinfoChanged: 0 n\-[aequitas]-\t\0\model\assassin/ghost\hmodel\assassin/ghost\g_redteam\\'
         r'g_blueteam\\c1\3\c2\3\hc\100\w\0\l\0\tt\0\tl\0\id\9982DEAC44F27E0622FCF0FC6C540F45', 'clientuserinfochanged']
 ])
@@ -30,7 +33,11 @@ def test_translations(line, kind):
         r'g_blueteam\\c1\3\c2\3\hc\100\w\0\l\0\tt\0\tl\1\id\9982DEAC44F27E0622FCF0FC6C540F45', 'team_id', '1'],
     [r'0:01 ClientUserinfoChanged: 0 n\-[aequitas]-\t\0\model\assassin/ghost\hmodel\assassin/ghost\g_redteam\\g_blue'
         r'team\\c1\3\c2\3\hc\100\w\0\l\0\tt\0\tl\1\id\9982DEAC44F27E0622FCF0FC6C540F45', 'team_id', '0'],
-    [r'say: -[aequitas]-: instagib', 'text', 'instagib']
+    [r'say: -[aequitas]-: instagib', 'text', 'instagib'],
+    [r'Kill: 1022 5 20: <world> killed Gunnaway by MOD_SUICIDE', 'killer', '<world>'],
+    [r'Kill: 1022 0 16: <world> killed -[aequitas]- by MOD_LAVA', 'killed', '-[aequitas]-'],
+    [r'Kill: 1022 0 16: <world> killed Some nick by MOD_LAVA', 'killed', 'Some nick'],
+    [r'Kill: 1022 0 16: <world> killed ^1color by MOD_LAVA', 'killed', '^1color']
 ])
 def test_data(line, key, value):
     assert list(translate(line, regexes))[0][1][key] == value
