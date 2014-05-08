@@ -24,7 +24,7 @@ translaters = [
     (r'[0-9: ]*ClientUserinfoChanged: (?P<client_id>\d+) n\\(?P<player_name>[^\\]+)\\t\\(?P<team_id>\d+).*id\\'
         r'(?P<guid>[\w]+)', 'clientuserinfochanged'),
     (r'.*client:(?P<client_id>\d+) health:(?P<health>[\d-]+).*', 'hit'),
-    (r'[0-9: ]*Kill: [^:]+: (?P<killer>[\w\s]+) killed (?P<killed>[\w\s]+) by (?P<mod>[\w]+)', 'kill'),
+    (r'[0-9: ]*Kill: [^:]+: (?P<killer>[<>\w\s]+) killed (?P<killed>[\w\s]+) by (?P<mod>[\w]+)', 'kill'),
     (r'[0-9: ]*ClientDisconnect: (?P<client_id>\d+)', 'clientdisconnect'),
     (r'[0-9: ]*ClientConnect: (?P<client_id>\d+)', 'clientconnect'),
     (r'[0-9: ]*ClientBegin: (?P<client_id>\d+)', 'clientbegin'),

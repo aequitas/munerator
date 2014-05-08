@@ -9,6 +9,7 @@ import pytest
     [r'0:48 Item: 0 item_quad', 'quad'],
     [r'say: -[aequitas]-: instagib', 'say'],
     [r'-[aequitas]-^7: instagib', None],
+    [r'Kill: 1022 5 20: <world> killed Gunnaway by MOD_SUICIDE', 'kill'],
     [r'0:37 ClientUserinfoChanged: 0 n\-[aequitas]-\t\0\model\assassin/ghost\hmodel\assassin/ghost\g_redteam\\'
         r'g_blueteam\\c1\3\c2\3\hc\100\w\0\l\0\tt\0\tl\0\id\9982DEAC44F27E0622FCF0FC6C540F45', 'clientuserinfochanged']
 ])
