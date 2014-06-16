@@ -22,6 +22,8 @@ from tornado.wsgi import WSGIContainer
 from zmq.eventloop import ioloop
 from zmq.eventloop.zmqstream import ZMQStream
 
+from .misc import crossdomain
+
 log = logging.getLogger(__name__)
 
 
@@ -58,9 +60,9 @@ def handle_event(msg):
             player = players.get(client_id, dict())
 
             if kind == 'clientbegin':
-                team = data.get('game_info', {}).get('clients', {}).get(client_id, {}).get('team')
-                player['team'] = team
-                player['client_id'] = client_id
+                player['team'] = data['client_info']['team']
+                player['name'] = data['client_info']['name']
+                player['id'] = client_id
                 players[client_id] = player
             elif kind == 'clientdisconnect':
                 del players[client_id]
@@ -70,7 +72,7 @@ def handle_event(msg):
             maps['current']['name'] = data['mapname']
             maps['current']['current'] = True
         elif kind == 'shutdowngame':
-            if maps['current']:
+            if maps.get('current'):
                 maps['previous'] = maps['current']
                 maps['previous']['current'] = False
 
@@ -84,13 +86,15 @@ def index():
 
 
 @app.route("/players")
+@crossdomain('*')
 def get_players():
-    return json.dumps(players.values())
+    return json.dumps({'players': players.values()})
 
 
 @app.route("/maps")
+@crossdomain('*')
 def get_maps():
-    return json.dumps(maps.values())
+    return json.dumps({'maps': maps.values()})
 
 
 def main(argv):
