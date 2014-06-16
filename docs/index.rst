@@ -12,8 +12,34 @@ Contents:
    :maxdepth: 2
 
 
+Module overview
+===============
+
+.. blockdiag::
+
+   diagram {
+    store [shape = flowchart.database];
+
+    openarena -> wrap -> trans -> context -> ledbar;
+    context -> old;
+    context -> listen;
+    context -> changer;
+    context -> voting;
+    context -> rotate;
+    rcon -> openarena;
+
+    changer -> rcon;
+    rotate -> rcon;
+
+    voting -> store [dir = both];
+    rotate -> store [dir = both];
+
+    context -> restapi;
+
+   }
+
 Ledbar
-=================================
+======
     .. automodule:: munerator.ledbar
         :members:
 
