@@ -1,19 +1,26 @@
 language: python
 python:
-- '3.4'
-- '3.3'
 - '2.7'
-- pypy
-before_install: sudo apt-get install libzmq3-dev
-install: pip install -U . sphinx --use-mirrors
-script: py.test
+env:
+    - '2.7'
+    - '3.4'
+    - 'pypy'
+    - 'docs'
+before_install: 
+    - sudo apt-get install libzmq3-dev
+install: 
+    - pip install -U . tox wheel sphinx --use-mirrors
+    - npm install -g ember-cli
+script: 
+    - tox -e $TOX_ENV
+#    - "cd arena;ember build"
 deploy:
-  provider: pypi
-  user: aequitas
-  password:
-    secure: To8EeaZoZaZTyAhlzp8dF0FF6ehshEq6En73pDSwB5LcpFVLG7ighStOdhtkEfKbU1SUhUnwTzIPzhGUiNGhU5sFN8t7vV23Hi2s36HKqdhi9cCoRK+l71K7Nys1nJK1IQPWYw69Bx7W3eP3AWst1iTlFfnha7fjPEh1+mfq9gw=
-  #docs_dir: docs/build/html
-  distributions: "bdist_wheel"
-  on:
-    repo: aequitas/munerator
-    branch: master
+    provider: pypi
+    user: aequitas
+    password:
+        secure: To8EeaZoZaZTyAhlzp8dF0FF6ehshEq6En73pDSwB5LcpFVLG7ighStOdhtkEfKbU1SUhUnwTzIPzhGUiNGhU5sFN8t7vV23Hi2s36HKqdhi9cCoRK+l71K7Nys1nJK1IQPWYw69Bx7W3eP3AWst1iTlFfnha7fjPEh1+mfq9gw=
+    docs_dir: docs/_build/html
+    distributions: "bdist_wheel"
+    on:
+        repo: aequitas/munerator
+        branch: master
