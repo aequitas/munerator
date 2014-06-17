@@ -1,8 +1,9 @@
 .PHONY: all test clean clean_all pytest embertest
 
 WORKON_HOME ?= env
+VIRTUAL_ENV ?= $(WORKON_HOME)/munerator
 
-pyenv = $(WORKON_HOME)/munerator
+pyenv = $(VIRTUAL_ENV)
 
 pip = $(pyenv)/bin/pip
 ember = node_modules/ember-cli/bin/ember
@@ -19,10 +20,13 @@ $(pip):
 	virtualenv -q $(pyenv)
 
 arena/$(ember):
-	cd arena; npm install .; npm install ember-cli
+	cd arena; npm install .;npm install bower;bower install; npm install ember-cli
 
-$(pytest): $(pip)
+requirements_dev.txt.done: $(pip)
 	pip install -r requirements_dev.txt
+	touch $@
+
+$(pytest): requirements_dev.txt.done
 
 $(pyapp): $(pip) setup.py
 	pip install -e .
@@ -57,4 +61,4 @@ clean:
 	rm -rf docs/_build
 
 clean_all: clean
-	rm -rf arena/node_modules/ $(pyenv)
+	rm -rf arena/node_modules/ $(pyenv) arena/vendor/*

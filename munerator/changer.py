@@ -117,7 +117,7 @@ class Changer(object):
         votes = []
         for client_id, change_vote in self.votecache:
             if change == change_vote:
-                if not client_id in votes:
+                if client_id not in votes:
                     votes.append(client_id)
         return len(votes)
 
