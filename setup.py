@@ -15,6 +15,7 @@ setup(
     author_email='mail@ijohan.nl',
     url='https://github.com/aequitas/munerator',
     install_requires=[
+        'six',
         'docopt',
         'pyzmq',
         'webcolors',
