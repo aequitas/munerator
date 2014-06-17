@@ -1,19 +1,17 @@
 language: python
 python:
-- '2.7'
-env:
     - '2.7'
     - '3.4'
     - 'pypy'
-    - 'docs'
 before_install: 
     - sudo apt-get install libzmq3-dev
 install: 
-    - pip install -U . tox wheel sphinx --use-mirrors
-    - npm install -g ember-cli
+    - pip install -U . wheel --use-mirrors
 script: 
-    - tox -e $TOX_ENV
-#    - "cd arena;ember build"
+    - make test
+before_deploy:
+    - "make munerator/static"
+    - "make docs/_build"
 deploy:
     provider: pypi
     user: aequitas
