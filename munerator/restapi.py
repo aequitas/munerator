@@ -51,24 +51,24 @@ def handle_event(msg):
         log.debug('in data: %s' % raw_data)
         if not raw_data:
             return
-
         data = json.loads(raw_data)
 
+        # handle player events
         client_id = data.get('client_id', '')
-
         if client_id.isdigit():
             player = players.get(client_id, dict())
-
             if kind == 'clientbegin':
                 player['team'] = data['client_info']['team']
                 player['name'] = data['client_info']['name']
-                player['id'] = client_id
+                player['id'] = data['client_info']['']
                 players[client_id] = player
             elif kind == 'clientdisconnect':
                 del players[client_id]
 
+        # handle map events
         elif kind == 'initgame':
             maps['current'] = dict()
+            maps['current']['id'] = data['id']
             maps['current']['name'] = data['mapname']
             maps['current']['current'] = True
         elif kind == 'shutdowngame':

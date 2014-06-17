@@ -48,6 +48,7 @@ class GameContext(object):
                 self.gameinfo = {
                     'mapname': data.get('mapname'),
                     'num_players': 0,
+                    'id': int(ts)
                 }
                 self.clients = {}
             elif kind == 'clientuserinfochanged':
