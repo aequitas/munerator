@@ -1,0 +1,6 @@
+pytest
+pytest-xdist
+pytest-pep8
+pytest-flakes
+pytest-cov
+mock

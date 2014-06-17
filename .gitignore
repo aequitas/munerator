@@ -47,3 +47,5 @@ docs/_build
 *.db.lock
 oud
 _build
+
+munerator/static
