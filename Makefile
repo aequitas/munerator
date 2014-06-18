@@ -44,6 +44,9 @@ embertest: arena/$(ember)
 
 test: embertest pytest
 
+install: $(pip) setup.py munerator/static
+	pip install .
+
 # building/dist
 
 munerator/static: arena/$(ember) arena/app/*/*.js arena/config/environment.js

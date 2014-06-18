@@ -18,6 +18,7 @@ deploy:
         secure: To8EeaZoZaZTyAhlzp8dF0FF6ehshEq6En73pDSwB5LcpFVLG7ighStOdhtkEfKbU1SUhUnwTzIPzhGUiNGhU5sFN8t7vV23Hi2s36HKqdhi9cCoRK+l71K7Nys1nJK1IQPWYw69Bx7W3eP3AWst1iTlFfnha7fjPEh1+mfq9gw=
     docs_dir: docs/_build/html
     distributions: "bdist_wheel"
+    skip_cleanup: true
     on:
         repo: aequitas/munerator
         branch: master
