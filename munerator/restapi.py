@@ -60,10 +60,11 @@ def handle_event(msg):
             if kind == 'clientbegin':
                 player['team'] = data['client_info']['team']
                 player['name'] = data['client_info']['name']
-                player['id'] = data['client_info']['']
+                player['id'] = data['client_info']['guid']
                 players[client_id] = player
             elif kind == 'clientdisconnect':
-                del players[client_id]
+                if players.get(client_id):
+                    del players[client_id]
 
         # handle map events
         elif kind == 'initgame':
