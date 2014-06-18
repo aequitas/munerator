@@ -1,3 +1,5 @@
+import DS from "ember-data";
+
 var GameMap = DS.Model.extend({
     name: DS.attr('string'),
     current: DS.attr('boolean'),

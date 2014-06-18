@@ -9,16 +9,16 @@
 
     {{BASE_TAG}}
 
-    <link rel="stylesheet" href="static/assets/vendor.css">
-    <link rel="stylesheet" href="static/assets/arena.css">
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/arena.css">
   </head>
   <body>
     <script>
       window.ArenaENV = {{ENV}};
       window.EmberENV = window.ArenaENV.EmberENV;
     </script>
-    <script src="static/assets/vendor.js"></script>
-    <script src="static/assets/arena.js"></script>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/arena.js"></script>
     <script>
       window.Arena = require('arena/app')['default'].create(ArenaENV.APP);
     </script>

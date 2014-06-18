@@ -49,8 +49,9 @@ install: $(pip) setup.py munerator/static
 
 # building/dist
 
-munerator/static: arena/$(ember) arena/app/*/*.js arena/config/environment.js
-	cd arena; $(ember) build --output-path ../munerator/static
+munerator/static: arena/$(ember) arena/app/*.js arena/app/*/*.js arena/config/environment.js
+	rm -r $@ || true
+	cd arena; $(ember) build --environment=production --output-path ../$@
 
 wheel: munerator/static setup.py
 	python setup.py -v bdist_wheel

@@ -2,10 +2,7 @@
   "predef": {
     "document": true,
     "window": true,
-    "ArenaENV": true,
-    "Ember": true,
-    "Em": true,
-    "DS": true
+    "ArenaENV": true
   },
   "browser" : true,
   "boss" : true,

@@ -35,7 +35,7 @@ maps = {}
 ioloop.install()
 
 # setup flask app
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 
 
 def handle_events(msgs):
@@ -56,15 +56,17 @@ def handle_event(msg):
         # handle player events
         client_id = data.get('client_id', '')
         if client_id.isdigit():
-            player = players.get(client_id, dict())
+            if client_id not in players:
+                players[client_id] = dict()
+            player = players.get(client_id)
+
             if kind == 'clientbegin':
                 player['team'] = data['client_info']['team']
                 player['name'] = data['client_info']['name']
                 player['id'] = data['client_info']['guid']
-                players[client_id] = player
+                player['online'] = True
             elif kind == 'clientdisconnect':
-                if players.get(client_id):
-                    del players[client_id]
+                player['online'] = False
 
         # handle map events
         elif kind == 'initgame':

@@ -1,10 +1,12 @@
 <section id="players">
-<h3>Online players ({{length}})</h3>
+<h3>Online players</h3>
     <ul id="player-list">
         {{#each}}
+        {{#if online}}
         <li>
-          <label>{{name}}</label>({{team}})
+          <label>{{name}}</label>
         </li>
+        {{/if}}
         {{/each}}
     </ul>
 </section>
