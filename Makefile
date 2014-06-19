@@ -4,9 +4,12 @@ WORKON_HOME ?= env
 VIRTUAL_ENV ?= $(WORKON_HOME)/munerator
 
 pyenv = $(VIRTUAL_ENV)
+ember = $(shell which ember)
+ifeq ($(ember), )
+$(error Please install ember-cli: npm install -g ember-cli)
+endif
 
 pip = $(pyenv)/bin/pip
-ember = node_modules/ember-cli/bin/ember
 pytest = $(pyenv)/bin/py.test
 sphinx = $(pyenv)/bin/sphinx
 
@@ -18,9 +21,6 @@ all: munerator/static $(pyapp)
 
 $(pip):
 	virtualenv -q $(pyenv)
-
-arena/$(ember):
-	cd arena; npm install .;npm install bower;bower install; npm install ember-cli
 
 requirements_dev.txt.done: $(pip)
 	pip install -r requirements_dev.txt
@@ -39,7 +39,7 @@ $(sphinx): $(pip)
 pytest: $(pytest) $(pyapp)
 	$(pytest) --pep8 --flakes --cov munerator munerator tests
 
-embertest: arena/$(ember)
+embertest: 
 	cd arena; $(ember) test
 
 test: embertest pytest
@@ -49,7 +49,7 @@ install: $(pip) setup.py munerator/static
 
 # building/dist
 
-munerator/static: arena/$(ember) arena/app/*.js arena/app/*/*.js arena/config/environment.js
+munerator/static: arena/app/*.js arena/app/*/*.js arena/config/environment.js
 	rm -r $@ || true
 	cd arena; $(ember) build --environment=production --output-path ../$@
 
