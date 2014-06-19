@@ -66,6 +66,7 @@ class GameContext(object):
             if self.start_ts < ts > self.stop_ts:
                 data['game_info'] = self.gameinfo
                 data['client_info'] = self.clients.get(client_id, {})
+                data['clients'] = self.clients
 
             if kind == 'clientdisconnect':
                 try:
