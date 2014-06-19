@@ -5,29 +5,33 @@ var Player = DS.Model.extend({
     name: DS.attr('string'),
     team: DS.attr('string'),
     online: DS.attr('boolean'),
+    score: DS.attr('number'),
+    // games: DS.hasMany('game'),
 
     poll: function() {
         var _this = this;
         Ember.run.later( function() {
             _this.reload(); 
             _this.poll();
-        }, 500 );
-    }.observes('didLoad')
+        }, 5000 );
+    }.observes('didLoad').on('init')
 });
 
 Player.reopenClass({
     FIXTURES: [
         {
-            id: '9982DEAC44F27E0622FCF0FC6C540F45',
+            id: 0,
             name: '-[aequitas]-',
             team: 'red',
-            online: true
+            online: true,
+            score: 42
         },
         {
-            id: '9CD101D150811D227AB7EF2C65082083',
+            id: 1,
             name: 'n00b',
             team: 'blue',
-            online: true
+            online: true,
+            score: 0
         }
     ]
 });

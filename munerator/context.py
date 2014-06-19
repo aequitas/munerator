@@ -35,7 +35,7 @@ class GameContext(object):
             log.debug('   in: %s' % data)
 
             if str(data) in deduplicate:
-                log.debug('skip:')
+                log.debug('skip')
                 continue
             deduplicate.append(str(data))
 
@@ -43,12 +43,19 @@ class GameContext(object):
             ts = data.get('timestamp')
             client_id = data.get('client_id')
 
+            # skip if outside of context
+            if not self.start_ts <= ts >= self.stop_ts:
+                log.debug('out of context')
+                continue
+
             if kind == 'initgame':
                 self.start_ts = ts
                 self.gameinfo = {
                     'mapname': data.get('mapname'),
                     'num_players': 0,
-                    'id': int(ts)
+                    'id': int(float(ts)),
+                    'start_ts': ts,
+                    'stop_ts': None
                 }
                 self.clients = {}
             elif kind == 'clientuserinfochanged':
@@ -62,11 +69,9 @@ class GameContext(object):
                 }
                 self.gameinfo['num_players'] = len(self.clients)
 
-            # add game context to event
-            if self.start_ts < ts > self.stop_ts:
-                data['game_info'] = self.gameinfo
-                data['client_info'] = self.clients.get(client_id, {})
-                data['clients'] = self.clients
+            data['game_info'] = self.gameinfo
+            data['client_info'] = self.clients.get(client_id, {})
+            data['clients'] = self.clients
 
             if kind == 'clientdisconnect':
                 try:
@@ -74,7 +79,11 @@ class GameContext(object):
                 except KeyError:
                     pass
             elif kind == 'shutdowngame':
+                # add stop time
                 self.stop_ts = ts
+                self.gameinfo['stop_ts'] = self.stop_ts
+
+                # reset current context
                 self.gameinfo = {}
                 self.clients = {}
 

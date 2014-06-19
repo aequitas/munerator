@@ -29,7 +29,7 @@ log = logging.getLogger(__name__)
 
 # global stores
 players = {}
-maps = {}
+games = {}
 
 # setup some zmq/tornado binding
 ioloop.install()
@@ -53,31 +53,42 @@ def handle_event(msg):
             return
         data = json.loads(raw_data)
 
+        # get player and/or game id from data
+        player_id = data.get('client_info', {}).get('guid')
+        game_id = data.get('game_info', {}).get('id')
+
         # handle player events
-        client_id = data.get('client_id', '')
-        if client_id.isdigit():
-            if client_id not in players:
-                players[client_id] = dict()
-            player = players.get(client_id)
+        if player_id:
+            if player_id not in players:
+                players[player_id] = dict()
+            player = players.get(player_id)
 
             if kind == 'clientbegin':
                 player['team'] = data['client_info']['team']
                 player['name'] = data['client_info']['name']
-                player['id'] = data['client_info']['guid']
+                player['id'] = player_id
                 player['online'] = True
+                player['games'] = []
+                player['score'] = 0
             elif kind == 'clientdisconnect':
                 player['online'] = False
 
+            if game_id and game_id in games:
+                if player_id not in games[game_id]['players']:
+                    games[game_id]['players'].append(player_id)
+
         # handle map events
         elif kind == 'initgame':
-            maps['current'] = dict()
-            maps['current']['id'] = data['id']
-            maps['current']['name'] = data['mapname']
-            maps['current']['current'] = True
+            games[game_id] = dict()
+            games[game_id]['id'] = game_id
+            games[game_id]['mapname'] = data['mapname']
+            games[game_id]['current'] = True
+            games[game_id]['players'] = list()
+            games[game_id]['start'] = data['start_ts']
         elif kind == 'shutdowngame':
-            if maps.get('current'):
-                maps['previous'] = maps['current']
-                maps['previous']['current'] = False
+            if game_id in games:
+                games[game_id]['current'] = False
+                games[game_id]['stop'] = data['stop_ts']
 
 
 @app.route('/')
@@ -85,16 +96,28 @@ def root():
     return app.send_static_file('index.html')
 
 
-@app.route("/players")
+@app.route("/api/1/players")
 @crossdomain('*')
 def get_players():
     return json.dumps({'players': players.values()})
 
 
-@app.route("/maps")
+@app.route('/api/1/players/<player_id>', methods=['GET'])
 @crossdomain('*')
-def get_maps():
-    return json.dumps({'maps': maps.values()})
+def get_player(player_id):
+    return json.dumps({'player': players[player_id]})
+
+
+@app.route("/api/1/games")
+@crossdomain('*')
+def get_games():
+    return json.dumps({'games': games.values()})
+
+
+@app.route('/api/1/games/<game_id>', methods=['GET'])
+@crossdomain('*')
+def get_game(game_id):
+    return json.dumps({'game': games[game_id]})
 
 
 def main(argv):

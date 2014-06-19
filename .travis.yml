@@ -5,12 +5,12 @@ python:
     - 'pypy'
 before_install: 
     - sudo apt-get install libzmq3-dev
-install: 
     - pip install -U . wheel --use-mirrors
 script: 
     - "make test"
-    - "make munerator/static"
+install:
     - "make docs/_build"
+    - "make install"
 deploy:
     provider: pypi
     user: aequitas

@@ -1,0 +1,24 @@
+<table class="table">
+<tr>
+    <th>Current</th>
+    <th>Map name</th>
+    <th>Players</th>
+    <th>Start</th>
+    <th>Stop</th>
+</tr>
+{{#each}}
+<tr>
+    <td>{{#if current}}<span class="glyphicon glyphicon-ok"></span>{{/if}}</td>
+    <td>{{mapname}}</td>
+    <td>
+    <ul>
+    {{#each players}}
+    <li>{{#link-to 'player' this}}{{name}}{{/link-to}}</li>
+    {{/each}}
+    </ul
+    </td>
+    <td>{{start}}</td>
+    <td>{{stop}}</td>
+</tr>
+{{/each}}
+</table>

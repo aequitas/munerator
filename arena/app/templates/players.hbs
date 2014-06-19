@@ -1,12 +1,16 @@
-<section id="players">
-<h3>Online players</h3>
-    <ul id="player-list">
-        {{#each}}
-        {{#if online}}
-        <li>
-          <label>{{name}}</label>
-        </li>
-        {{/if}}
-        {{/each}}
-    </ul>
-</section>
+<table class="table">
+<tr>
+    <th>Online</th>
+    <th>Name</th>
+    <th>Team</th>
+    <th>Score</th>
+</tr>
+{{#each}}
+<tr>
+    <td>{{#if online}}<span class="glyphicon glyphicon-ok"></span>{{/if}}</td>
+    <td>{{name}}</td>
+    <td>{{team}}</td>
+    <td>{{score}}</td>
+</tr>
+{{/each}}
+</table>

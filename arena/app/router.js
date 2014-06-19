@@ -5,8 +5,11 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-    this.resource('players', { path: '/' });
-    this.resource('maps', { path: '/maps' });
+  this.resource('games', { path: '/games' });
+  this.resource('players', { path: '/players' });
+  this.resource('player', { path: '/player/:player_id' }, function() {
+    this.route('edit');
+  });
 });
 
 export default Router;
