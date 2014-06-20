@@ -27,7 +27,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.api_endpoint = 'http://quake.brensen.com:8081'; // live url
-    ENV.api_endpoint = 'http://localhost:8081'; // live url
+    // ENV.api_endpoint = 'http://localhost:8081'; // live url
   }
 
   if (environment === 'production') {

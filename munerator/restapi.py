@@ -39,6 +39,9 @@ app = Flask(__name__, static_url_path='')
 
 
 def handle_events(msgs):
+    """
+    Loop over incoming messages and handle them individually.
+    """
     for msg in msgs:
         try:
             handle_event(msg)
@@ -47,6 +50,11 @@ def handle_events(msgs):
 
 
 def handle_event(msg):
+        """
+        Receive message and update games/players stores with new information.
+        """
+
+        # parse message
         kind, raw_data = msg.split(' ', 1)
         log.debug('in data: %s' % raw_data)
         if not raw_data:
@@ -58,17 +66,20 @@ def handle_event(msg):
         game_id = data.get('game_info', {}).get('id')
 
         # handle player events
-        if player_id:
+        if player_id and kind in ['clientbegin', 'clientdisconnect']:
             if player_id not in players:
-                players[player_id] = dict()
-            player = players.get(player_id)
+                # create player
+                player = dict()
+                players[player_id] = player
 
-            # set player context
-            player['team'] = data['client_info']['team']
-            player['name'] = data['client_info']['name']
-            player['id'] = player_id
-            player['games'] = []
-            player['score'] = 0
+                # set player context
+                player['team'] = data['client_info']['team']
+                player['name'] = data['client_info']['name']
+                player['id'] = player_id
+                player['games'] = []
+                player['score'] = 0
+            else:
+                player = players.get(player_id)
 
             # set online value
             if kind == 'clientbegin':
@@ -81,17 +92,24 @@ def handle_event(msg):
                     games[game_id]['players'].append(player_id)
 
         # handle map events
-        elif kind == 'initgame':
-            games[game_id] = dict()
-            games[game_id]['id'] = game_id
-            games[game_id]['mapname'] = data['mapname']
-            games[game_id]['current'] = True
-            games[game_id]['players'] = list()
-            games[game_id]['start'] = data['game_info']['start_ts']
-        elif kind == 'shutdowngame':
-            if game_id in games:
-                games[game_id]['current'] = False
-                games[game_id]['stop'] = data['game_info']['stop_ts']
+        if game_id and kind in ['initgame', 'shutdowngame']:
+            if game_id not in games:
+                # create game object
+                game = dict()
+                games[game_id] = game
+                game['players'] = list()
+
+                # set game context
+                game['id'] = game_id
+                game['mapname'] = data['mapname']
+                game['start'] = data['game_info']['start_ts']
+                game['stop'] = data['game_info']['stop_ts']
+
+            # set current map value
+            if kind == 'initgame':
+                game['current'] = True
+            elif kind == 'shutdowngame':
+                game['current'] = False
 
 
 @app.route('/')
