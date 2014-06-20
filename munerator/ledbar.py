@@ -91,7 +91,7 @@ def update_ledbar(in_socket, numleds, ledbar):
                 s = '#212121'
             state[ids[int(client_id)]] = s
         elif kind == 'kill':
-            c = data.get('game_info', {}).get('clients', {})
+            c = data.get('clients', {})
             killer_id = [k for k, v in c.items() if v.get('name') == data.get('killer')]
             killed_id = [k for k, v in c.items() if v.get('name') == data.get('killed')]
 

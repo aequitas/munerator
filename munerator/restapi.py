@@ -84,11 +84,11 @@ def handle_event(msg):
             games[game_id]['mapname'] = data['mapname']
             games[game_id]['current'] = True
             games[game_id]['players'] = list()
-            games[game_id]['start'] = data['start_ts']
+            games[game_id]['start'] = data['game_info']['start_ts']
         elif kind == 'shutdowngame':
             if game_id in games:
                 games[game_id]['current'] = False
-                games[game_id]['stop'] = data['stop_ts']
+                games[game_id]['stop'] = data['game_info']['stop_ts']
 
 
 @app.route('/')
