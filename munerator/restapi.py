@@ -101,9 +101,11 @@ def handle_event(msg):
 
                 # set game context
                 game['id'] = game_id
-                game['mapname'] = data['mapname']
+                game['mapname'] = data['game_info']['mapname']
                 game['start'] = data['game_info']['start_ts']
                 game['stop'] = data['game_info']['stop_ts']
+            else:
+                game = games.get(game_id)
 
             # set current map value
             if kind == 'initgame':
