@@ -63,13 +63,16 @@ def handle_event(msg):
                 players[player_id] = dict()
             player = players.get(player_id)
 
+            # set player context
+            player['team'] = data['client_info']['team']
+            player['name'] = data['client_info']['name']
+            player['id'] = player_id
+            player['games'] = []
+            player['score'] = 0
+
+            # set online value
             if kind == 'clientbegin':
-                player['team'] = data['client_info']['team']
-                player['name'] = data['client_info']['name']
-                player['id'] = player_id
                 player['online'] = True
-                player['games'] = []
-                player['score'] = 0
             elif kind == 'clientdisconnect':
                 player['online'] = False
 
