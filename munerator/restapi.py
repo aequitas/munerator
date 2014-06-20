@@ -15,7 +15,7 @@ from functools import partial
 
 import zmq
 from docopt import docopt
-from flask import Flask
+from flask import Flask, url_for
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
 from tornado.wsgi import WSGIContainer
@@ -94,6 +94,14 @@ def handle_event(msg):
 @app.route('/')
 def root():
     return app.send_static_file('index.html')
+
+
+@app.route('/api/1/')
+def api_index():
+    return json.dumps({
+        'players': url_for('get_players', _external=True),
+        'maps': url_for('get_maps', _external=True)
+    })
 
 
 @app.route("/api/1/players")
