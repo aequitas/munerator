@@ -5,6 +5,8 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var app = new EmberApp();
 
 app.import('vendor/momentjs/moment.js');
+app.import('vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js');
+app.import('vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js');
 
 // Put the bootstrap fonts in the place that the bootstrap css expects to find them.
 var pickFiles = require('broccoli-static-compiler');

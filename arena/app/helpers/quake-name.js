@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Handlebars.makeBoundHelper(function(value) {
-    var escaped = Handlebars.Utils.escapeExpression(value);
+    var escaped = Ember.Handlebars.Utils.escapeExpression(value);
 
     escaped = escaped.replace(/\^([0-9])/,'<span class="quake-color-$1">');
     escaped = escaped.replace(/\^([0-9])/g,'</span><span class="quake-color-$1">');
