@@ -20,17 +20,24 @@ var Player = DS.Model.extend({
 Player.reopenClass({
     FIXTURES: [
         {
-            id: 0,
+            id: '2394808AFSDFAFS',
             name: '-[aequitas]-',
             team: 'red',
             online: true,
             score: 42
         },
         {
-            id: 1,
+            id: '23948ASDF08AFSDFAFS',
             name: 'n00b',
-            team: 'blue',
+            team: 'red',
             online: true,
+            score: 0
+        },
+        {
+            id: '23948SFADFJKLASDF08AFSDFAFS',
+            name: 'colors^11^22^33^44^55^66^77^0w00t',
+            team: '',
+            online: false,
             score: 0
         }
     ]
