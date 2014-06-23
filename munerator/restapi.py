@@ -123,7 +123,7 @@ def root():
 def api_index():
     return json.dumps({
         'players': url_for('get_players', _external=True),
-        'maps': url_for('get_maps', _external=True)
+        'games': url_for('get_games', _external=True)
     })
 
 
