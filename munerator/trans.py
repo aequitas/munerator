@@ -30,6 +30,8 @@ translaters = [
     (r'[0-9: ]*ClientBegin: (?P<client_id>\d+)', 'clientbegin'),
     (r'[0-9: ]*PlayerScore: (?P<client_id>\d+) (?P<score>[\d\-]):.*', 'playerscore'),
     (r'[0-9: ]*Item: (?P<client_id>\d+) item_quad.*', 'quad'),
+    (r'[0-9: ]*ClientUserinfoChanged: (?P<guid>(?P<client_id>\d+)) n\\(?P<player_name>[^\\]+)\\t\\(?P<team_id>\d+).*'
+        r'\\skill\\ (?P<skill>[\d\.]+).*id\\', 'clientuserinfochanged'),
 ]
 
 regexes = [(re.compile(r), k) for r, k in translaters]
