@@ -65,9 +65,14 @@ class GameContext(object):
                     'guid': data.get('guid'),
                     'client_id': client_id,
                     'team_id': data.get('team_id'),
-                    'team': team_id_map[int(data.get('team_id'))]
+                    'team': team_id_map[int(data.get('team_id'))],
+                    'score': 0
                 }
                 self.gameinfo['num_players'] = len(self.clients)
+            elif kind == 'playerscore':
+                log.debug('setting client score: %s' % client_id)
+                if client_id in self.clients:
+                    self.clients[client_id]['score'] = data.get('score')
 
             data['game_info'] = self.gameinfo
             data['client_info'] = self.clients.get(client_id, {})

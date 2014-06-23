@@ -8,7 +8,7 @@ def read(fname):
 
 setup(
     name='munerator',
-    version="0.6.7",
+    version="0.6.8",
     description='Manager of OpenArena battles',
     long_description=read("README.rst"),
     author='Johan Bloemberg',

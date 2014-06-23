@@ -15,8 +15,8 @@ Game.reopenClass({
             map: 'awesomemap',
             current: true,
             players: [
-                0,
-                1
+                '2394808AFSDFAFS',
+                '23948ASDF08AFSDFAFS'
             ],
             start: moment().toDate(),
             stop: null

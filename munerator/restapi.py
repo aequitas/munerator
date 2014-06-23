@@ -66,20 +66,19 @@ def handle_event(msg):
         game_id = data.get('game_info', {}).get('id')
 
         # handle player events
-        if player_id and kind in ['clientbegin', 'clientdisconnect']:
+        if player_id and kind in ['clientbegin', 'clientdisconnect', 'clientuserinfochanged', 'playerscore']:
             if player_id not in players:
                 # create player
                 player = dict()
                 players[player_id] = player
-
-                # set player context
-                player['team'] = data['client_info']['team']
-                player['name'] = data['client_info']['name']
                 player['id'] = player_id
-                player['games'] = []
-                player['score'] = 0
             else:
                 player = players.get(player_id)
+
+            # set variable player context
+            player['team'] = data['client_info']['team']
+            player['name'] = data['client_info']['name']
+            player['score'] = data['client_info']['score']
 
             # set online value
             if kind == 'clientbegin':
@@ -87,6 +86,7 @@ def handle_event(msg):
             elif kind == 'clientdisconnect':
                 player['online'] = False
 
+            # add player to game
             if game_id and game_id in games:
                 if player_id not in games[game_id]['players']:
                     games[game_id]['players'].append(player_id)
@@ -102,16 +102,16 @@ def handle_event(msg):
                 # set game context
                 game['id'] = game_id
                 game['mapname'] = data['game_info']['mapname']
-                game['start'] = data['game_info']['start_ts']
-                game['stop'] = data['game_info']['stop_ts']
             else:
                 game = games.get(game_id)
 
             # set current map value
             if kind == 'initgame':
                 game['current'] = True
+                game['start'] = data['game_info']['start_ts']
             elif kind == 'shutdowngame':
                 game['current'] = False
+                game['stop'] = data['game_info']['stop_ts']
 
 
 @app.route('/')
@@ -160,7 +160,10 @@ def main(argv):
     in_socket.connect(args['--context-socket'])
 
     # subscribe to relevant events
-    filters = ['initgame', 'shutdowngame', 'clientdisconnect', 'clientbegin', 'clientuserinfochanged']
+    filters = [
+        'initgame', 'shutdowngame', 'clientdisconnect',
+        'clientbegin', 'clientuserinfochanged', 'playerscore'
+    ]
     add_filter = partial(in_socket.setsockopt, zmq.SUBSCRIBE)
     map(add_filter, filters)
 
