@@ -71,20 +71,10 @@ def handle_event(msg):
                 # create player
                 player = dict()
                 players[player_id] = player
-                player['id'] = player_id
             else:
                 player = players.get(player_id)
 
-            # set variable player context
-            player['team'] = data['client_info']['team']
-            player['name'] = data['client_info']['name']
-            player['score'] = data['client_info']['score']
-
-            # set online value
-            if kind == 'clientbegin':
-                player['online'] = True
-            elif kind == 'clientdisconnect':
-                player['online'] = False
+            player.update(data['client_info'])
 
             # add player to game
             if game_id and game_id in games:
@@ -98,20 +88,11 @@ def handle_event(msg):
                 game = dict()
                 games[game_id] = game
                 game['players'] = list()
-
-                # set game context
-                game['id'] = game_id
-                game['mapname'] = data['game_info']['mapname']
             else:
                 game = games.get(game_id)
 
-            # set current map value
-            if kind == 'initgame':
-                game['current'] = True
-                game['start'] = data['game_info']['start_ts']
-            elif kind == 'shutdowngame':
-                game['current'] = False
-                game['stop'] = data['game_info']['stop_ts']
+            # set game context
+            game.update(data['game_info'])
 
 
 @app.route('/')

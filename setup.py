@@ -8,7 +8,7 @@ def read(fname):
 
 setup(
     name='munerator',
-    version="0.6.10",
+    version="0.7.0",
     description='Manager of OpenArena battles',
     long_description=read("README.rst"),
     author='Johan Bloemberg',
@@ -22,7 +22,8 @@ setup(
         'python-Levenshtein',
         'pymongo',
         'flask',
-        'tornado'
+        'tornado',
+        'mongokit'
     ],
     packages=find_packages(),
     license=read("LICENSE"),

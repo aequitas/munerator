@@ -18,24 +18,38 @@ Module overview
 .. blockdiag::
 
    diagram {
-    store [shape = flowchart.database];
+    openarena;
+    logfiles [stacked];
+    wrap [stacked];
+    db [shape = flowchart.database];
+    ember [ color = '#f23818', label = "EmberJS\nfrontend" ];
+    theledbar [ label = 'Teh Ledbar'];
 
-    openarena -> wrap -> trans -> context -> ledbar;
-    context -> old;
-    context -> listen;
-    context -> changer;
-    context -> voting;
-    context -> rotate;
-    rcon -> openarena;
+    openarena -> logfiles;
+
+    logfiles -> wrap;
+
+    wrap -> trans;
+    trans -> context;
+    context -> old, ledbar, listen, changer, store, restapi;
+
+    group {
+        ledbar -> theledbar;
+    }
+    
+    group {
+        old -> quake.ijohan.nl;    
+    }
+
+    store -> db [dir = both];
+
+    restapi -> ember [ label = http ];
 
     changer -> rcon;
-    rotate -> rcon;
 
-    voting -> store [dir = both];
-    rotate -> store [dir = both];
 
-    context -> restapi;
 
+    rcon -> openarena;
    }
 
 Ledbar

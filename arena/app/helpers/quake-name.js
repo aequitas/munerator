@@ -1,14 +1,15 @@
 import Ember from 'ember';
 
-export default Ember.Handlebars.makeBoundHelper(function(value) {
+var helper = function(value) {
     var escaped = Ember.Handlebars.Utils.escapeExpression(value);
 
-    escaped = escaped.replace(/\^([0-9])/,'<span class="quake-color-$1">');
     escaped = escaped.replace(/\^([0-9])/g,'</span><span class="quake-color-$1">');
-
-    if (escaped.indexOf('<span class') !== -1){
-        escaped = escaped + '</span>';
-    }
+    escaped = '<span class="quake-color-0">' + escaped + '</span>';
 
     return new Ember.Handlebars.SafeString(escaped);
-});
+};
+
+var quakeName = Ember.Handlebars.makeBoundHelper(helper);
+quakeName.helper = helper;
+
+export default quakeName;

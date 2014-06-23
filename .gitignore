@@ -50,3 +50,4 @@ _build
 
 munerator/static
 *.done
+db

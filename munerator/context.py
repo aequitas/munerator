@@ -44,7 +44,7 @@ class GameContext(object):
             client_id = data.get('client_id')
 
             # skip if outside of context
-            if not self.start_ts <= ts >= self.stop_ts:
+            if ts < self.start_ts:
                 log.debug('out of context')
                 continue
 
@@ -54,25 +54,31 @@ class GameContext(object):
                     'mapname': data.get('mapname'),
                     'num_players': 0,
                     'id': int(float(ts)),
-                    'start_ts': ts,
-                    'stop_ts': None
+                    'start': ts,
+                    'stop': None,
+                    'current': True
                 }
                 self.clients = {}
             elif kind == 'clientuserinfochanged':
                 log.debug('setting client info: %s' % client_id)
                 self.clients[client_id] = {
                     'name': data.get('player_name'),
+                    'id': data.get('guid'),
                     'guid': data.get('guid'),
                     'client_id': client_id,
                     'team_id': data.get('team_id'),
                     'team': team_id_map[int(data.get('team_id'))],
-                    'score': 0
+                    'score': 0,
+                    'online': True
                 }
                 self.gameinfo['num_players'] = len(self.clients)
             elif kind == 'playerscore':
                 log.debug('setting client score: %s' % client_id)
                 if client_id in self.clients:
                     self.clients[client_id]['score'] = data.get('score')
+            elif kind == 'clientdisconnect':
+                if client_id in self.clients:
+                    self.clients[client_id]['online'] = False
 
             data['game_info'] = self.gameinfo
             data['client_info'] = self.clients.get(client_id, {})
@@ -85,8 +91,8 @@ class GameContext(object):
                     pass
             elif kind == 'shutdowngame':
                 # add stop time
-                self.stop_ts = ts
-                self.gameinfo['stop_ts'] = self.stop_ts
+                self.gameinfo['stop'] = ts
+                self.gameinfo['current'] = False
 
                 # reset current context
                 self.gameinfo = {}

@@ -28,7 +28,7 @@ Player.reopenClass({
         },
         {
             id: '23948ASDF08AFSDFAFS',
-            name: 'n00b',
+            name: 'n^100^0b',
             team: 'red',
             online: true,
             score: 0
