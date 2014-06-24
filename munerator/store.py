@@ -15,41 +15,13 @@ from functools import partial
 
 import zmq
 from docopt import docopt
-from mongokit import Connection, Document
+from mongoengine import connect
+from munerator.common.models import Games, Players
 
 log = logging.getLogger(__name__)
 
 
-class Player(Document):
-    __collection__ = 'players'
-    __database__ = 'munerator'
-    structure = {
-        'id': bytes,
-        'name': bytes,
-        'names': [bytes],
-    }
-    default_values = {
-        'names': list(),
-    }
-
-
-class Game(Document):
-    __collection__ = 'games'
-    __database__ = 'munerator'
-    structure = {
-        'id': int,
-        'mapname': bytes,
-        'players': [bytes],
-        'state': bytes,
-        'start': bytes,
-        'stop': bytes,
-    }
-    default_values = {
-        'players': list(),
-    }
-
-
-def handle_events(in_socket, database):
+def handle_events(in_socket):
     """
     Loop over incoming messages and handle them individually.
     """
@@ -62,77 +34,63 @@ def handle_events(in_socket, database):
         kind = data.get('kind')
 
         try:
-            handle_event(kind, data, database=database)
+            handle_event(kind, data)
         except:
             log.exception('error in event handling')
 
 
-def handle_event(kind, data, database):
+def handle_event(kind, data):
     """
     Parse event message and update database with new information.
     """
 
     # get player and/or game id from data
-    player_id = data.get('client_info', {}).get('guid')
-    game_id = data.get('game_info', {}).get('id')
+    player_id = str(data.get('client_info', {}).get('guid'))
+    game_id = str(data.get('game_info', {}).get('id'))
 
     # handle player updates
     if player_id and kind in ['clientbegin', 'clientdisconnect', 'clientuserinfochanged', 'playerscore']:
-        player = database.Player.find_one({'id': player_id})
-        if not player:
+        player, new = Players.objects.get_or_create(guid=player_id)
+        if new:
             log.debug('creating new player')
-            player = database.Player()
-            player['id'] = data['client_info']['guid']
 
         # on name change, store previous name
-        if player['name'] != data['client_info']['name']:
-            player['names'].append(data['client_info']['name'])
+        if data['client_info'] and player.name != data['client_info']['name']:
+            player.update(add_to_set__names=data['client_info']['name'])
 
         # update variable data
-        player['name'] = data['client_info']['name']
-
-        player.save()
+        player.update(**{'set__%s' % k: v for k, v in data['client_info'].items() if not k.endswith('id')})
 
         # add player to game
-        game = database.Game.find_one({'id': game_id})
-        if game and player['id'] not in game['players']:
-            game['players'].append(player['id'])
-            game.save()
+        if game_id:
+            game, new = Games.objects.get_or_create(game_id=game_id)
+            game.update(add_to_set__players=player)
 
         log.info('updated player')
 
     # handle game updates
     if game_id and kind in ['initgame', 'shutdowngame']:
-        game = database.Game.find_one({'id': game_id})
-        if not game:
+        game, new = Games.objects.get_or_create(game_id=game_id)
+        if new:
             log.debug('creating new game')
-            game = database.Game()
-            game['id'] = data['game_info']['id']
-            game['mapname'] = data['game_info']['mapname']
-            game['start'] = data['game_info']['start']
+            game.game_id = game_id
 
-        # update current game state
-        if kind == 'initgame':
-            game['state'] = 'current'
-        elif kind == 'shutdowngame':
-            game['state'] = 'played'
-            game['stop'] = data['game_info']['stop']
-
-        game.save()
+        # update variable data
+        game.update(**{'set__%' % k: v for k, v in data['game_info'].items()if not k.endswith('id')})
 
         log.info('updated game')
 
 
 def main(argv):
     args = docopt(__doc__, argv=argv)
-    log.info('test')
 
+    # setup zmq input socket
     context = zmq.Context()
     in_socket = context.socket(zmq.SUB)
     in_socket.connect(args['--context-socket'])
-
     in_socket.setsockopt(zmq.SUBSCRIBE, '')
 
+    # apply message filters
     filters = [
         'initgame', 'shutdowngame', 'clientdisconnect',
         'clientbegin', 'clientuserinfochanged', 'playerscore'
@@ -140,10 +98,8 @@ def main(argv):
     add_filter = partial(in_socket.setsockopt, zmq.SUBSCRIBE)
     map(add_filter, filters)
 
+    # setup database
     host, port = args['--database'].split(':')
-    connection = Connection(host, int(port))
-    connection.register([Player, Game])
+    connect('munerator', host=host, port=int(port))
 
-    database = connection.munerator
-
-    handle_events(in_socket, database)
+    handle_events(in_socket)

@@ -4,5 +4,5 @@ import DS from "ember-data";
 
 export default DS.RESTAdapter.extend({
     host: ArenaENV.api_endpoint,
-    namespace: 'api/1'
+    namespace: 'api/1',
 });

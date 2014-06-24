@@ -3,4 +3,5 @@ pytest-xdist
 pytest-pep8
 pytest-flakes
 pytest-cov
+-e git://github.com/vmalloc/mongomock@master#egg=mongomock
 mock

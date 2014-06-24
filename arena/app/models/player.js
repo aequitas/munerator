@@ -1,5 +1,4 @@
 import DS from "ember-data";
-import Ember from "ember";
 
 var Player = DS.Model.extend({
     name: DS.attr('string'),
@@ -7,15 +6,6 @@ var Player = DS.Model.extend({
     online: DS.attr('boolean'),
     score: DS.attr('number'),
     names: DS.attr('raw'),
-    // games: DS.hasMany('game'),
-
-    poll: function() {
-        var _this = this;
-        Ember.run.later( function() {
-            _this.reload(); 
-            _this.poll();
-        }, 5000 );
-    }.observes('didLoad').on('init')
 });
 
 Player.reopenClass({

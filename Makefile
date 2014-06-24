@@ -18,7 +18,7 @@ all: munerator/static $(pyapp)
 $(pip):
 	virtualenv -q $(pyenv)
 
-requirements_dev.txt.done: $(pip)
+requirements_dev.txt.done: $(pip) requirements_dev.txt
 	pip install -r requirements_dev.txt
 	touch $@
 
@@ -37,7 +37,7 @@ arena/.done:
 # testing
 
 pytest: $(pytest) $(pyapp)
-	$(pytest) --pep8 --flakes --cov munerator munerator tests
+	$(pytest) --pep8 --flakes --cov munerator munerator tests $(args)
 
 embertest:
 	cd arena; make test
@@ -66,5 +66,8 @@ clean:
 	rm -rf $(pyenv)/lib/*/site-packages/munerator* $(pyenv)/bin/munerator
 	rm -rf docs/_build
 
-clean_all: clean
-	rm -rf arena/node_modules/ $(pyenv) arena/vendor/*
+clean_pyenv:
+	rm -rf $(pyenv) requirements_dev.txt.done
+
+clean_all: clean clean_pyenv
+	rm -rf arena/node_modules/ arena/vendor/*
