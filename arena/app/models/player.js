@@ -6,6 +6,7 @@ var Player = DS.Model.extend({
     team: DS.attr('string'),
     online: DS.attr('boolean'),
     score: DS.attr('number'),
+    names: DS.attr('raw'),
     // games: DS.hasMany('game'),
 
     poll: function() {
@@ -24,7 +25,8 @@ Player.reopenClass({
             name: '-[aequitas]-',
             team: 'red',
             online: true,
-            score: 42
+            score: 42,
+            names: ['old_nickname']
         },
         {
             id: '23948ASDF08AFSDFAFS',

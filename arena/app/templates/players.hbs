@@ -8,7 +8,7 @@
 {{#each}}
 <tr>
     <td>{{#if online}}<span class="glyphicon glyphicon-ok"></span>{{/if}}</td>
-    <td>{{quake-name name}}</td>
+    <td>{{#link-to 'player' this}}{{quake-name name}}{{/link-to}}</td>
     <td>{{team}}</td>
     <td>{{score}}</td>
 </tr>

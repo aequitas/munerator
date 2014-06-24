@@ -41,7 +41,9 @@ Module overview
         old -> quake.ijohan.nl;    
     }
 
-    store -> db [dir = both];
+    store -> db;
+
+    db -> restapi;
 
     restapi -> ember [ label = http ];
 

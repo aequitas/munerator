@@ -1,0 +1,8 @@
+<p>Nickname: {{quake-name name}}</p>
+{{#if names}}
+<p>Previous nicknames:</p>
+<ul>
+{{#each names}}
+<li>{{quake-name this}}</li>
+{{/each}}
+{{/if}}
