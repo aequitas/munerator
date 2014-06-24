@@ -24,9 +24,9 @@ class Player(Document):
     __collection__ = 'players'
     __database__ = 'munerator'
     structure = {
-        'id': basestring,
-        'name': basestring,
-        'names': [basestring],
+        'id': bytes,
+        'name': bytes,
+        'names': [bytes],
     }
     default_values = {
         'names': list(),
@@ -38,11 +38,11 @@ class Game(Document):
     __database__ = 'munerator'
     structure = {
         'id': int,
-        'mapname': basestring,
-        'players': [basestring],
-        'state': basestring,
-        'start': basestring,
-        'stop': basestring,
+        'mapname': bytes,
+        'players': [bytes],
+        'state': bytes,
+        'start': bytes,
+        'stop': bytes,
     }
     default_values = {
         'players': list(),
