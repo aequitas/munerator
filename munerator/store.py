@@ -45,8 +45,8 @@ def handle_event(kind, data):
     """
 
     # get player and/or game id from data
-    player_id = str(data.get('client_info', {}).get('guid'))
-    game_id = str(data.get('game_info', {}).get('id'))
+    player_id = str(data.get('client_info', {}).get('guid', ''))
+    game_id = str(data.get('game_info', {}).get('id', ''))
 
     # handle player updates
     if player_id and kind in ['clientbegin', 'clientdisconnect', 'clientuserinfochanged', 'playerscore']:
