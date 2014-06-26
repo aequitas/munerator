@@ -76,7 +76,7 @@ def handle_event(kind, data):
             game.game_id = game_id
 
         # update variable data
-        game.update(**{'set__%' % k: v for k, v in data['game_info'].items()if not k.endswith('id')})
+        game.update(**{'set__%s' % k: v for k, v in data['game_info'].items()if not k.endswith('id')})
 
         log.info('updated game')
 
