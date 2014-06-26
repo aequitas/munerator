@@ -16,12 +16,12 @@ from functools import partial
 import zmq
 from docopt import docopt
 from mongoengine import connect
-from munerator.common.models import Games, Players
+from munerator.common.models import Games, Players, Votes
 
 log = logging.getLogger(__name__)
 
 
-def handle_events(in_socket):
+def handle_events(in_socket, rcon_socket):
     """
     Loop over incoming messages and handle them individually.
     """
@@ -34,12 +34,12 @@ def handle_events(in_socket):
         kind = data.get('kind')
 
         try:
-            handle_event(kind, data)
+            handle_event(kind, data, rcon_socket)
         except:
             log.exception('error in event handling')
 
 
-def handle_event(kind, data):
+def handle_event(kind, data, rcon_socket):
     """
     Parse event message and update database with new information.
     """
@@ -48,9 +48,15 @@ def handle_event(kind, data):
     player_id = str(data.get('client_info', {}).get('guid', ''))
     game_id = str(data.get('game_info', {}).get('id', ''))
 
+    player, new = Players.objects.get_or_create(guid=player_id)
+    if new:
+        player.save()
+    game, new = Games.objects.get_or_create(game_id=game_id)
+    if new:
+        game.save()
+
     # handle player updates
-    if player_id and kind in ['clientbegin', 'clientdisconnect', 'clientuserinfochanged', 'playerscore']:
-        player, new = Players.objects.get_or_create(guid=player_id)
+    if player and kind in ['clientbegin', 'clientdisconnect', 'clientuserinfochanged', 'playerscore']:
         if new:
             log.debug('creating new player')
 
@@ -69,8 +75,7 @@ def handle_event(kind, data):
         log.info('updated player')
 
     # handle game updates
-    if game_id and kind in ['initgame', 'shutdowngame']:
-        game, new = Games.objects.get_or_create(game_id=game_id)
+    if game and kind in ['initgame', 'shutdowngame']:
         if new:
             log.debug('creating new game')
             game.game_id = game_id
@@ -79,6 +84,16 @@ def handle_event(kind, data):
         game.update(**{'set__%s' % k: v for k, v in data['game_info'].items()if not k.endswith('id')})
 
         log.info('updated game')
+
+    # handle votes
+    if kind == 'say' and player and game:
+        if data.get('text') in ['+1', 'gg', 'GG', 'GGG', 'like', 'fuckthismaprocks', '++', '+1337']:
+            vote = Votes(player=player, game=game, vote=1)
+        elif data.get('text') in ['-1', '--1', '-11', '-1000', '-2', 'dislike', 'hate', 'RAGE!!!', 'fuckthismap', '--']:
+            vote = Votes(player=player, game=game, vote=-1)
+        vote.save()
+        rcon_socket.send_string('say %s your vote has been counted' % player.name)
+        log.info('saved vote')
 
 
 def main(argv):
@@ -92,14 +107,19 @@ def main(argv):
 
     # apply message filters
     filters = [
-        'initgame', 'shutdowngame', 'clientdisconnect',
+        'initgame', 'shutdowngame', 'clientdisconnect', 'say',
         'clientbegin', 'clientuserinfochanged', 'playerscore'
     ]
     add_filter = partial(in_socket.setsockopt, zmq.SUBSCRIBE)
     map(add_filter, filters)
 
+    # setup rcon socket
+    rcon_socket = context.socket(zmq.PUB)
+    rcon_socket.connect(args['--rcon-socket'])
+
     # setup database
     host, port = args['--database'].split(':')
     connect('munerator', host=host, port=int(port))
 
-    handle_events(in_socket)
+    # start event loop
+    handle_events(in_socket, rcon_socket)

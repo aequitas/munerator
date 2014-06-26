@@ -61,6 +61,10 @@ wheel: munerator/static setup.py
 docs/_build: $(sphinx) $(pyapp)
 	cd docs; make html
 
+livehtml: $(sphinx)
+	(sleep 1; open http://localhost:8000) &
+	cd docs; make livehtml
+
 clean:
 	rm -rf arena/dist munerator/static dist build *.egg-info
 	rm -rf $(pyenv)/lib/*/site-packages/munerator* $(pyenv)/bin/munerator

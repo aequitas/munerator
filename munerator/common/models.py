@@ -20,3 +20,9 @@ class Games(Document):
     stop = StringField()
     num_players = IntField()
     current = BooleanField()
+
+
+class Votes(Document):
+    game = ReferenceField(Games)
+    player = ReferenceField(Players)
+    vote = IntField()

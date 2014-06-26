@@ -1,3 +1,4 @@
 sphinx
 sphinxcontrib-seqdiag
 sphinxcontrib-blockdiag
+sphinx-autobuild

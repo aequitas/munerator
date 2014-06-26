@@ -7,7 +7,7 @@ def test_add_player(db, uuid):
         'guid': uuid,
         'name': 'test'
     }
-    handle_event('clientuserinfochanged', {'client_info': data})
+    handle_event('clientuserinfochanged', {'client_info': data}, None)
 
     player = db.players.find_one()
     assert player['name'] == data['name']
@@ -20,7 +20,7 @@ def test_update_player(db, uuid):
         'guid': uuid,
         'name': 'test'
     }
-    handle_event('clientuserinfochanged', {'client_info': data})
+    handle_event('clientuserinfochanged', {'client_info': data}, None)
 
     player = db.players.find_one()
     assert player['name'] == data['name']
@@ -30,7 +30,7 @@ def test_update_player(db, uuid):
         'guid': uuid,
         'name': 'test2'
     }
-    handle_event('clientuserinfochanged', {'client_info': data2})
+    handle_event('clientuserinfochanged', {'client_info': data2}, None)
 
     print list(db.players.find())
     player = db.players.find_one()

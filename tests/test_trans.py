@@ -1,5 +1,6 @@
-from munerator.trans import translate, regexes
+from munerator.trans import translate, regexes, handle_line
 import pytest
+from mock import Mock
 
 
 @pytest.mark.parametrize("line,kind", [
@@ -50,3 +51,21 @@ def test_data(line, key, value):
     assert result
     expect = result[0][1][key]
     assert expect == value
+
+
+def test_line_handling():
+    mock_socket = Mock()
+    handle_line('0', 'say: -[aequitas]-: instagib', mock_socket)
+
+    data = {'text': 'instagib', 'kind': 'say', 'player_name': '-[aequitas]-', 'timestamp': '0'}
+
+    mock_socket.send_json.assert_called_with(data)
+
+
+def test_line_unhandling():
+    mock_socket = Mock()
+    handle_line('0', 'E_nosuchevent', mock_socket)
+
+    data = {'raw': 'E_nosuchevent', 'kind': 'unhandled', 'timestamp': '0'}
+
+    mock_socket.send_json.assert_called_with(data)

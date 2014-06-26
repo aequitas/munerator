@@ -21,6 +21,12 @@ team_id_map = ['', 'blue', 'red', 'spectator']
 deduplicate = collections.deque(maxlen=5)
 
 
+def get_dict_value_from_key_if_key_value(data, value_key, query_key, query_value):
+    item = [k for k, v in data.items() if v.get(query_key) == query_value]
+    if item:
+        return item.get(value_key)
+
+
 class GameContext(object):
     def __init__(self):
         self.start_ts = 0
@@ -42,6 +48,11 @@ class GameContext(object):
             kind = data.get('kind')
             ts = data.get('timestamp')
             client_id = data.get('client_id')
+
+            # for say events we need to translate player name into client_id
+            if kind == 'say':
+                client_id = get_dict_value_from_key_if_key_value(
+                    self.clients, 'id', 'player_name', data.get('player_name'))
 
             # skip if outside of context
             if ts < self.start_ts:

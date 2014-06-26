@@ -25,13 +25,18 @@ Module overview
     ember [ color = '#f23818', label = "EmberJS\nfrontend" ];
     theledbar [ label = 'Teh Ledbar'];
 
-    openarena -> logfiles;
+    group {
+        rcon -> openarena;
 
-    logfiles -> wrap;
+        openarena -> logfiles;
 
-    wrap -> trans;
-    trans -> context;
-    context -> old, ledbar, listen, changer, store, restapi;
+        logfiles -> wrap;
+
+        wrap -> trans;
+        trans -> context;
+    }
+
+    context -> old, ledbar, listen, changer, store;
 
     group {
         ledbar -> theledbar;
@@ -47,11 +52,10 @@ Module overview
 
     restapi -> ember [ label = http ];
 
+    store -> rcon [ label = "extra info requests" ];
     changer -> rcon;
 
-
-
-    rcon -> openarena;
+    rcon -> trans [ label = "rcon response" ];
    }
 
 Ledbar

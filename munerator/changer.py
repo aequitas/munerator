@@ -149,7 +149,7 @@ def main(argv):
     add_filter = partial(in_socket.setsockopt, zmq.SUBSCRIBE)
     map(add_filter, filters)
 
-    rcon_socket = context.socket(zmq.REQ)
+    rcon_socket = context.socket(zmq.PUB)
     rcon_socket.connect(args['--rcon-socket'])
 
     c = Changer(in_socket, rcon_socket)

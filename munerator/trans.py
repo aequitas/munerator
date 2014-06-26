@@ -44,6 +44,21 @@ def translate(line, regexes):
             yield kind, m.groupdict()
 
 
+def handle_line(ts, line, out_socket):
+    for kind, data in translate(line, regexes):
+        data['kind'] = kind
+        log.debug('out: %s' % data)
+        break
+    else:
+        data = {
+            'kind': 'unhandled',
+            'raw': line
+        }
+
+    data['timestamp'] = ts
+    out_socket.send_json(data)
+
+
 def eventstream(in_socket, out_socket):
     while True:
         msg = in_socket.recv_string()
@@ -51,11 +66,7 @@ def eventstream(in_socket, out_socket):
 
         log.debug('translating: ' + line)
 
-        for kind, data in translate(line, regexes):
-            data['timestamp'] = ts
-            data['kind'] = kind
-            log.debug('out: %s' % data)
-            out_socket.send_json(data)
+        handle_line(ts, line, out_socket)
 
 
 def main(argv):
