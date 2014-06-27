@@ -58,6 +58,9 @@ munerator/static:
 wheel: munerator/static setup.py
 	python setup.py -v bdist_wheel
 
+upload: clean test munerator/static setup.py
+	python setup.py sdist upload
+
 docs/_build: $(sphinx) $(pyapp)
 	cd docs; make html
 
