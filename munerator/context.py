@@ -22,9 +22,9 @@ deduplicate = collections.deque(maxlen=5)
 
 
 def get_dict_value_from_key_if_key_value(data, value_key, query_key, query_value):
-    item = [k for k, v in data.items() if v.get(query_key) == query_value]
+    item = [v for k, v in data.items() if v.get(query_key) == query_value]
     if item:
-        return item.get(value_key)
+        return item[0].get(value_key)
 
 
 class GameContext(object):
@@ -50,9 +50,9 @@ class GameContext(object):
             client_id = data.get('client_id')
 
             # for say events we need to translate player name into client_id
-            if kind == 'say':
+            if kind in'say':
                 client_id = get_dict_value_from_key_if_key_value(
-                    self.clients, 'id', 'player_name', data.get('player_name'))
+                    self.clients, 'id', 'name', data.get('player_name'))
 
             # skip if outside of context
             if ts < self.start_ts:

@@ -117,7 +117,7 @@ def main(argv):
     map(add_filter, filters)
 
     # setup rcon socket
-    rcon_socket = context.socket(zmq.PUB)
+    rcon_socket = context.socket(zmq.PUSH)
     rcon_socket.connect(args['--rcon-socket'])
 
     # setup database

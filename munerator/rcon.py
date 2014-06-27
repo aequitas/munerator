@@ -32,7 +32,7 @@ def main(argv):
     args = docopt(__doc__, argv=argv)
 
     context = zmq.Context()
-    zmq_socket = context.socket(zmq.SUB)
+    zmq_socket = context.socket(zmq.PULL)
     zmq_socket.bind(args['--rcon-socket'])
 
     raw_socket = context.socket(zmq.PUSH)
