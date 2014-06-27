@@ -26,6 +26,10 @@ def handle_events(in_socket, rcon_socket):
     """
     Loop over incoming messages and handle them individually.
     """
+    # prime commands for current game info
+    rcon_socket.send_string('status')
+    rcon_socket.send_string('getstatus')
+
     log.info('listening for game events')
     while True:
         msg = in_socket.recv_string()
@@ -85,6 +89,10 @@ def handle_event(kind, data, rcon_socket):
         game.update(**{'set__%s' % k: v for k, v in data['game_info'].items()if not k.endswith('id')})
 
         log.info('updated game')
+
+        # request extra game info at start of game
+        if kind == 'initgame':
+            rcon_socket.send_string('getstatus')
 
     # handle votes
     if kind == 'say' and player and game:

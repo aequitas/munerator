@@ -20,11 +20,16 @@ log = logging.getLogger(__name__)
 from vendor.pyquake3 import Administrator
 
 
-def eventstream(zmq_socket, rcon_send_cmd, raw_socket):
+def eventstream(zmq_socket, rcon_connection, raw_socket):
     while True:
         cmd = zmq_socket.recv_string()
-        response = rcon_send_cmd(str(cmd))
+        # send some commands without rcon
+        if cmd in ['getstatus']:
+            response = rcon_connection.command(str(cmd))
+        else:
+            response = rcon_connection.rcon_command(str(cmd))
         log.debug('cmd:%s, response:%s' % (cmd, response))
+        # put response into translate module for parsing
         raw_socket.send_string(json.dumps(response))
 
 
@@ -40,4 +45,4 @@ def main(argv):
 
     rcon_connection = Administrator(args['--oa-addr'], int(args['--oa-port']), args['--rcon-passwd'])
 
-    eventstream(zmq_socket, rcon_connection.rcon_command, raw_socket)
+    eventstream(zmq_socket, rcon_connection, raw_socket)

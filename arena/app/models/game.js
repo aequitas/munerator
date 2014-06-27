@@ -5,7 +5,8 @@ var Game = DS.Model.extend({
     current: DS.attr('boolean'),
     start: DS.attr('epoch'),
     stop: DS.attr('epoch'),
-    players: DS.hasMany('player', {async: true})
+    players: DS.hasMany('player', {async: true}),
+    _updated: DS.attr('date')
 });
 
 Game.reopenClass({

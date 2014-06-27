@@ -24,4 +24,4 @@ clean:
 	rm -rf dist/* tmp/*
 
 clean_all: clean
-	rm -rf node_modules/* vendor/* 
+	rm -rf node_modules/* vendor/* vendor/.done

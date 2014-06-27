@@ -1,4 +1,7 @@
-from mongoengine import Document, ListField, StringField, IntField, BooleanField, ReferenceField
+import datetime
+
+from mongoengine import (BooleanField, DateTimeField, Document, IntField,
+                         ListField, ReferenceField, StringField)
 
 
 class Players(Document):
@@ -9,6 +12,7 @@ class Players(Document):
     score = IntField()
     team = StringField()
     team_id = IntField()
+    _updated = DateTimeField(default=datetime.datetime.now)
 
 
 class Games(Document):
@@ -20,9 +24,11 @@ class Games(Document):
     stop = StringField()
     num_players = IntField()
     current = BooleanField()
+    _updated = DateTimeField(default=datetime.datetime.now)
 
 
 class Votes(Document):
     game = ReferenceField(Games)
     player = ReferenceField(Players)
     vote = IntField()
+    _updated = DateTimeField(default=datetime.datetime.now)
