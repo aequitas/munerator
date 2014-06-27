@@ -6,8 +6,8 @@
 </tr>
 {{#each}}
 <tr>
-    <td>{{player.name}}</td>
-    <td>{{game.mapname}}</td>
+    <td>{{#link-to 'player' this.player}}{{quake-name player.name}}{{/link-to}}</td>
+    <td>{{#link-to 'game' this.game}}{{game.mapname}}{{/link-to}}</td>
     <td>{{vote}}</td>
 </tr>
 {{/each}}

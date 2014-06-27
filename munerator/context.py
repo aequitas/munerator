@@ -52,7 +52,7 @@ class GameContext(object):
             # for say events we need to translate player name into client_id
             if kind in'say':
                 client_id = get_dict_value_from_key_if_key_value(
-                    self.clients, 'id', 'name', data.get('player_name'))
+                    self.clients, 'client_id', 'name', data.get('player_name'))
 
             # skip if outside of context
             if ts < self.start_ts:
