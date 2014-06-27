@@ -2,8 +2,9 @@
 
 module.exports = function(environment) {
   var ENV = {
+    environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -12,30 +13,24 @@ module.exports = function(environment) {
     },
 
     APP: {
+      // Here you can pass flags/options to your application instance
+      // when it is created
     }
   };
 
   if (environment === 'development') {
     // LOG_MODULE_RESOLVER is needed for pre-1.6.0
-    ENV.LOG_MODULE_RESOLVER = false;
+    // ENV.LOG_MODULE_RESOLVER = true;
 
-    ENV.APP.LOG_RESOLVER = false;
-    ENV.APP.LOG_ACTIVE_GENERATION = false;
-    ENV.APP.LOG_MODULE_RESOLVER = false;
-    // ENV.APP.LOG_TRANSITIONS = false;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = false;
-    ENV.APP.LOG_VIEW_LOOKUPS = false;
-
-    ENV.api_endpoint = 'http://quake.brensen.com:8081'; // live url
-    // ENV.api_endpoint = 'http://localhost:8081'; // live url
-
-    ENV.locationType = 'hash';
-
+    // ENV.APP.LOG_RESOLVER = true;
+    // ENV.APP.LOG_ACTIVE_GENERATION = true;
+    // ENV.APP.LOG_MODULE_RESOLVER = true;
+    // ENV.APP.LOG_TRANSITIONS = true;
+    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
   if (environment === 'production') {
-    ENV.locationType = 'hash';
-    ENV.api_endpoint = '';
   }
 
   return ENV;

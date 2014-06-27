@@ -21,4 +21,7 @@ dist: app/*.js app/*/*.js config/environment.js $(ember) vendor/.done
 	$(ember) build --environment=production
 
 clean:
-	rm -rf node_modules/* vendor/*
+	rm -rf dist/* tmp/*
+
+clean_all: clean
+	rm -rf node_modules/* vendor/* 
