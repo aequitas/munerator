@@ -88,6 +88,7 @@ def handle_event(kind, data, rcon_socket):
 
     # handle votes
     if kind == 'say' and player and game:
+        vote = None
         if data.get('text') in ['+1', 'gg', 'GG', 'GGG', 'like', 'fuckthismaprocks', '++', '+1337']:
             vote = Votes(player=player, game=game, vote=1)
         elif data.get('text') in ['-1', '--1', '-11', '-1000', '-2', 'dislike', 'hate', 'RAGE!!!', 'fuckthismap', '--']:
