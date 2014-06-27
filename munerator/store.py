@@ -7,6 +7,7 @@ Options:
   -v --verbose            Verbose logging
   --context-socket url    ZMQ socket for conext event [default: tcp://127.0.0.1:9002]
   --database ip:port      Host and port for mongo database [default: 127.0.0.1:27017]
+  --rcon-socket url       ZMQ socket for rcon commands [default: tcp://127.0.0.1:9005]
 
 """
 import json
@@ -91,9 +92,10 @@ def handle_event(kind, data, rcon_socket):
             vote = Votes(player=player, game=game, vote=1)
         elif data.get('text') in ['-1', '--1', '-11', '-1000', '-2', 'dislike', 'hate', 'RAGE!!!', 'fuckthismap', '--']:
             vote = Votes(player=player, game=game, vote=-1)
-        vote.save()
-        rcon_socket.send_string('say %s your vote has been counted' % player.name)
-        log.info('saved vote')
+        if vote:
+            vote.save()
+            rcon_socket.send_string('say %s your vote has been counted' % player.name)
+            log.info('saved vote')
 
 
 def main(argv):
