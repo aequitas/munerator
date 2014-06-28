@@ -6,6 +6,7 @@ var Player = DS.Model.extend({
     online: DS.attr('boolean'),
     score: DS.attr('number'),
     names: DS.attr('raw'),
+    skill: DS.attr('number'),    
     _updated: DS.attr('date')
 });
 
