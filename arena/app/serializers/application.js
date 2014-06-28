@@ -15,8 +15,10 @@ export default DS.RESTSerializer.extend({
         return this._super(store, type, _payload, id);
     },
     extractMeta: function(store, type, payload) {
-        payload.meta = payload._meta;
-        delete payload._meta;
+        if (payload._meta){
+            payload.meta = payload._meta;
+            delete payload._meta;        
+        }
         return this._super(store, type, payload);
     },
     primaryKey: '_id'

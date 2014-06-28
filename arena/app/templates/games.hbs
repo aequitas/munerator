@@ -9,7 +9,7 @@
 </tr>
 {{#each}}
 {{#link-to 'game' this tagName="tr"}}
-    <td>{{#if current}}<span class="glyphicon glyphicon-ok"></span>{{/if}}</td>
+    <td>{{_updated}}{{#if current}}<span class="glyphicon glyphicon-ok"></span>{{/if}}</td>
     <td>{{mapname}}</td>
     <td>{{gametype}}</td>
     <td>

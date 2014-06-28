@@ -15,7 +15,7 @@ import zmq
 import logging
 import collections
 import json
-
+import time
 import dateutil.parser
 
 log = logging.getLogger(__name__)
@@ -34,9 +34,6 @@ def get_dict_value_from_key_if_key_value(data, value_key, query_key, query_value
 class GameContext(object):
 
     def __init__(self, in_socket, out_socket, rcon_socket):
-        self.start_ts = 0
-        self.stop_ts = 0
-
         self.gameinfo = {}
         self.clients = {}
 
@@ -64,7 +61,6 @@ class GameContext(object):
 
     def handle_event(self, data):
         kind = data.get('kind')
-        ts = data.get('timestamp')
         client_id = data.get('client_id')
 
         # for some events we need to translate player_name into client_id
@@ -74,7 +70,6 @@ class GameContext(object):
             data['client_id'] = client_id
 
         if kind in ['initgame', 'getstatus']:
-            self.start_ts = ts
             self.gameinfo = {
                 'mapname': data.get('mapname'),
                 'gametype': data.get('gametype'),
@@ -119,7 +114,7 @@ class GameContext(object):
                 pass
         elif kind == 'shutdowngame':
             # add stop time
-            self.gameinfo['stop'] = ts
+            self.gameinfo['stop'] = int(time.time())
             self.gameinfo['current'] = False
 
             # reset current context
