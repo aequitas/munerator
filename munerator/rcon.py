@@ -1,4 +1,4 @@
-"""Send rcon commands to server
+"""Send rcon commands to server report response to raw socket
 
 Usage:
   munerator [options] rcon
@@ -14,7 +14,6 @@ Options:
 """
 from docopt import docopt
 import zmq
-import json
 import logging
 log = logging.getLogger(__name__)
 from vendor.pyquake3 import Administrator
@@ -28,9 +27,10 @@ def eventstream(zmq_socket, rcon_connection, raw_socket):
             response = rcon_connection.command(str(cmd))
         else:
             response = rcon_connection.rcon_command(str(cmd))
-        log.debug('cmd:%s, response:%s' % (cmd, response))
+        log.debug("cmd:%s, response:%s" % (cmd, response))
+
         # put response into translate module for parsing
-        raw_socket.send_string(json.dumps(response))
+        raw_socket.send_string("cmd:%s, response:%s" % (cmd, response))
 
 
 def main(argv):

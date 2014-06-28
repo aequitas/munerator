@@ -39,10 +39,10 @@ arena/.done:
 pytest: $(pytest) $(pyapp)
 	$(pytest) --pep8 --flakes --cov munerator munerator tests $(args)
 
-embertest:
+jstest:
 	cd arena; make test
 
-test: embertest pytest
+test: jstest pytest
 
 install: $(pip) setup.py munerator/static
 	pip install .

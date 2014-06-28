@@ -16,8 +16,9 @@ from functools import partial
 
 import zmq
 from docopt import docopt
-from mongoengine import connect
 from munerator.common.models import Games, Players, Votes
+from eve import Eve
+from eve_mongoengine import EveMongoengine
 
 log = logging.getLogger(__name__)
 
@@ -107,6 +108,25 @@ def handle_event(kind, data, rcon_socket):
             log.info('saved vote')
 
 
+def setup_eve_mongoengine(host, port):
+    # app settings
+    my_settings = {
+        'MONGO_HOST': host,
+        'MONGO_PORT': int(port),
+        'MONGO_PASSWORD': None,
+        'MONGO_USERNAME': None,
+        'MONGO_DBNAME': 'munerator',
+        'DOMAIN': {'eve-mongoengine': {}},
+    }
+    app = Eve(settings=my_settings)
+
+    # setup eve mongodb database
+    ext = EveMongoengine(app)
+
+    # add models
+    ext.add_model([Players, Games, Votes])
+
+
 def main(argv):
     args = docopt(__doc__, argv=argv)
 
@@ -130,7 +150,8 @@ def main(argv):
 
     # setup database
     host, port = args['--database'].split(':')
-    connect('munerator', host=host, port=int(port))
+
+    setup_eve_mongoengine(host, port)
 
     # start event loop
     handle_events(in_socket, rcon_socket)
