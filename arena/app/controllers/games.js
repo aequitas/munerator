@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-    sortProperties: ['start'],
+    sortProperties: ['updated'],
     sortAscending: false
 });

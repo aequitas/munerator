@@ -31,7 +31,6 @@ import timeit
         r"amename\baseoa\elimflags\0\voteflags\215\g_needpass\0\g_enableDust\0\g_enable"
         r"Breath\0\g_rockets\0\g_instantgib\0\g_altExcellent\0\g_timestamp\2014-06-28 "
         r"13:38:20", 'getstatus'],
-    [r"cmd:getstatus response_type:statusResponse response:\g_obeliskRespawnDelay\10')", 'getstatus'],
     [r"cmd:status response_type:print response:  0     0   57 test^7                0 82.161.93.152"
      r"         15309 25000", 'clientstatus'],
     [r'Kill: 1022 5 20: <world> killed Gunnaway by MOD_SUICIDE', 'killer'],
@@ -82,11 +81,12 @@ def test_data(line, key, value):
 
 
 @pytest.mark.parametrize("line,key,value", [
-    [r"cmd:getstatus response_type:statusResponse response:\g_gametype\10",
-        'g_gametype', '10'],
-    [r"cmd:getstatus response_type:statusResponse response:\g_gametype\10\bot_minplayers\0"
+    [r"cmd:getstatus response_type:statusResponse response:\g_gametype\10\mapname\testmap"
         r"\sv_allowDownload\1\sv_privateClients\0\dmflags\72\fraglimit\10\timelimit"
-        r"\100\sv_hostname\Brensen13:38:20", 'dmflags', '72'],
+        r"\100\sv_hostname\g_timestamp\2014-06-28 19:22:53", 'g_gametype', '10'],
+    [r"cmd:getstatus response_type:statusResponse response:\g_gametype\10\mapname\testmap"
+        r"\sv_allowDownload\1\sv_privateClients\0\dmflags\72\fraglimit\10\timelimit"
+        r"\100\sv_hostname\g_timestamp\2014-06-28 19:22:53", 'fraglimit', '10'],
 ])
 def test_data_extras(line, key, value):
     result = list(translate(line, regexes))
@@ -99,7 +99,7 @@ def test_line_handling():
     mock_socket = Mock()
     handle_line('0', 'say: -[aequitas]-: instagib', mock_socket)
 
-    data = {'text': 'instagib', 'kind': 'say', 'player_name': '-[aequitas]-', 'timestamp': '0'}
+    data = {'text': 'instagib', 'kind': 'say', 'player_name': '-[aequitas]-'}
 
     mock_socket.send_json.assert_called_with(data)
 
@@ -108,7 +108,7 @@ def test_line_unhandling():
     mock_socket = Mock()
     handle_line('0', 'E_nosuchevent', mock_socket)
 
-    data = {'raw': 'E_nosuchevent', 'kind': 'unhandled', 'timestamp': '0'}
+    data = {'raw': 'E_nosuchevent', 'kind': 'unhandled'}
 
     mock_socket.send_json.assert_called_with(data)
 

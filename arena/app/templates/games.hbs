@@ -2,14 +2,16 @@
 <tr>
     <th>Current</th>
     <th>Map name</th>
+    <th>Gametype</th>
     <th>Players</th>
     <th>Start</th>
     <th>Stop</th>
 </tr>
 {{#each}}
-<tr>
+{{#link-to 'game' this tagName="tr"}}
     <td>{{#if current}}<span class="glyphicon glyphicon-ok"></span>{{/if}}</td>
     <td>{{mapname}}</td>
+    <td>{{gametype}}</td>
     <td>
     <ul>
     {{#each players}}
@@ -19,6 +21,6 @@
     </td>
     <td>{{start}}</td>
     <td>{{stop}}</td>
-</tr>
+{{/link-to}}
 {{/each}}
 </table>

@@ -2,11 +2,13 @@ import DS from "ember-data";
 
 var Game = DS.Model.extend({
     mapname: DS.attr('string'),
+    gametype: DS.attr('number'),
     current: DS.attr('boolean'),
     start: DS.attr('epoch'),
     stop: DS.attr('epoch'),
     players: DS.hasMany('player', {async: true}),
-    _updated: DS.attr('date')
+    _updated: DS.attr('date'),
+    options: DS.attr('dict')
 });
 
 Game.reopenClass({

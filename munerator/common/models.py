@@ -15,7 +15,7 @@ class Players(Document):
 
 
 class Games(Document):
-    game_id = StringField()
+    timestamp = StringField()
     mapname = StringField()
     gametype = IntField()
     players = ListField(ReferenceField(Players))

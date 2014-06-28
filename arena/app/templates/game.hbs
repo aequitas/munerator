@@ -1,4 +1,5 @@
 <p>map: {{mapname}}</p>
+<p>gametype: {{gametype}}</p>
 <p>players:</p>
 <ul>
 {{#each players}}
@@ -7,3 +8,9 @@
 </ul>
 <p>started: {{start}}</p>
 <p>ended: {{stop}}</p>
+<p>game options:</p>
+<ul>
+{{#each option in options}}
+<li>{{option.name}} - {{option.value}}</li>
+{{/each}}
+</ul>

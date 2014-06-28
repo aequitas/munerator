@@ -14,9 +14,12 @@ from docopt import docopt
 import zmq
 import logging
 import collections
+import json
+
+import dateutil.parser
+
 log = logging.getLogger(__name__)
 
-import json
 
 team_id_map = ['', 'blue', 'red', 'spectator']
 deduplicate = collections.deque(maxlen=5)
@@ -76,12 +79,12 @@ class GameContext(object):
                 'mapname': data.get('mapname'),
                 'gametype': data.get('gametype'),
                 'timestamp': data.get('timestamp'),
+                'start': dateutil.parser.parse(data.get('timestamp')).strftime('%s'),
                 'current': True
             }
             if kind == 'initgame':
                 self.gameinfo.update({
                     'num_players': 0,
-                    'start': ts,
                     'stop': None
                 })
                 self.clients = {}

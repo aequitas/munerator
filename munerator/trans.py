@@ -77,7 +77,6 @@ def handle_line(ts, line, out_socket):
             'raw': line
         }
 
-    data['timestamp'] = ts
     out_socket.send_json(data)
 
 
