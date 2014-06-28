@@ -14,6 +14,7 @@ class Players(Document):
     team_id = IntField()
     skill = StringField()
     address = StringField()
+    bot = BooleanField()
 
 
 class Games(Document):

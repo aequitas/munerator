@@ -94,9 +94,12 @@ def handle_event(kind, data, rcon_socket):
 
         log.info('updated game')
 
-        # request extra game info at start of game
+        # reset other games current status
         if kind == 'initgame':
-            rcon_socket.send_string('getstatus')
+            Games.objects(current=True).update(set__current=False)
+
+        # reset players online status just to be sure
+        Players.objects(online=True).update(set__online=False, set__score=None, set__team=None)
 
     # handle votes
     if kind == 'say' and player and game:
