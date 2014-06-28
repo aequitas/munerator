@@ -25,6 +25,7 @@ log = logging.getLogger(__name__)
 
 
 class Ledbar(object):
+
     def __init__(self, numleds, ledbar_api):
         self.prev_state = ['#000000'] * numleds
         self.ledbar_api = ledbar_api
@@ -70,7 +71,7 @@ def update_ledbar(in_socket, numleds, ledbar):
         elif client_id.isdigit() and int(client_id) < numleds:
             s = state[ids[int(client_id)]]
             if kind == 'clientbegin':
-                team = data.get('game_info', {}).get('clients', {}).get(client_id, {}).get('team')
+                team = data.get('client_info', {}).get('team')
                 if team and team in ['red', 'blue']:
                     s = team
                 else:
@@ -90,15 +91,10 @@ def update_ledbar(in_socket, numleds, ledbar):
             elif kind == 'clientdisconnect':
                 s = '#212121'
             state[ids[int(client_id)]] = s
-        elif kind == 'kill':
-            c = data.get('clients', {})
-            killer_id = [k for k, v in c.items() if v.get('name') == data.get('killer')]
-            killed_id = [k for k, v in c.items() if v.get('name') == data.get('killed')]
-
-            if killer_id:
-                state[ids[int(killer_id[0])]] = 'green'
-            if killed_id:
-                state[ids[int(killed_id[0])]] = 'red'
+        elif kind == 'killer':
+            state[ids[int(client_id)]] = 'green'
+        elif kind == 'killed':
+            state[ids[int(client_id)]] = 'red'
 
         ledbar.update_leds(state)
 

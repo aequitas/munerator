@@ -25,6 +25,7 @@ voting_enabled = False
 
 
 class Changer(object):
+
     def __init__(self, in_socket, rcon_socket):
         self.in_socket = in_socket
         self.rcon_socket = rcon_socket
@@ -61,7 +62,7 @@ class Changer(object):
                 self.votecache = []
             elif kind in ['clientbegin', 'clientdisconnect']:
                 fraglimit = int(self.rcon_get_value('fraglimit'))
-                num_players = len(data.get('game_info', {}).get('clients', {}))
+                num_players = data.get('game_info', {}).get('num_players')
 
                 # increate fraglimit by 8 for every two players joining
                 new_fraglimit = int(num_players) / 2 * 8

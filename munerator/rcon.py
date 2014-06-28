@@ -34,7 +34,8 @@ def eventstream(zmq_socket, rcon_connection, raw_socket):
 
         # put response into translate module for parsing
         for line in response.splitlines():
-            raw_socket.send_string("%s cmd:%s response_type:%s response:%s" % (now, cmd, response_type, line))
+            if line:
+                raw_socket.send_string("%s cmd:%s response_type:%s response:%s" % (now, cmd, response_type, line))
 
 
 def main(argv):

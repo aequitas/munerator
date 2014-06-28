@@ -41,6 +41,7 @@ def main(argv):
     in_socket.connect(args['--context-socket'])
 
     if args['<event>']:
+        log.debug('filters: %s' % ', '.join(args['<event>']))
         add_filter = partial(in_socket.setsockopt, zmq.SUBSCRIBE)
         map(add_filter, args['<event>'])
     else:

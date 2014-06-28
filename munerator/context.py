@@ -7,6 +7,7 @@ Options:
   -v --verbose          Verbose logging
   --events-socket url   ZMQ socket for raw events [default: tcp://127.0.0.1:9001]
   --context-socket url  ZMQ socket for context events [default: tcp://0.0.0.0:9002]
+  --rcon-socket url     ZMQ socket for rcon commands [default: tcp://127.0.0.1:9005]
 
 """
 from docopt import docopt
@@ -28,16 +29,25 @@ def get_dict_value_from_key_if_key_value(data, value_key, query_key, query_value
 
 
 class GameContext(object):
-    def __init__(self):
+
+    def __init__(self, in_socket, out_socket, rcon_socket):
         self.start_ts = 0
         self.stop_ts = 0
 
         self.gameinfo = {}
         self.clients = {}
 
-    def eventstream(self, in_socket, out_socket):
+        self.in_socket = in_socket
+        self.out_socket = out_socket
+        self.rcon_socket = rcon_socket
+
+    def eventstream(self):
+        # prime commands for current game info
+        self.rcon_socket.send_string('status')
+        self.rcon_socket.send_string('getstatus')
+
         while True:
-            data = in_socket.recv_json()
+            data = self.in_socket.recv_json()
             log.debug('   in: %s' % data)
 
             if str(data) in deduplicate:
@@ -45,72 +55,73 @@ class GameContext(object):
                 continue
             deduplicate.append(str(data))
 
-            kind = data.get('kind')
-            ts = data.get('timestamp')
-            client_id = data.get('client_id')
+            contexted_data = self.handle_event(data)
 
-            # for say events we need to translate player name into client_id
-            if kind in'say':
-                client_id = get_dict_value_from_key_if_key_value(
-                    self.clients, 'client_id', 'name', data.get('player_name'))
+            self.out_socket.send_string("%s %s" % (contexted_data.get('kind'), json.dumps(contexted_data)))
 
-            # skip if outside of context
-            if ts < self.start_ts:
-                log.debug('out of context')
-                continue
+    def handle_event(self, data):
+        kind = data.get('kind')
+        ts = data.get('timestamp')
+        client_id = data.get('client_id')
 
-            if kind == 'initgame':
-                self.start_ts = ts
-                self.gameinfo = {
-                    'mapname': data.get('mapname'),
-                    'num_players': 0,
-                    'id': int(float(ts)),
-                    'start': ts,
-                    'stop': None,
-                    'current': True
-                }
-                self.clients = {}
-            elif kind == 'clientuserinfochanged':
-                log.debug('setting client info: %s' % client_id)
-                self.clients[client_id] = {
-                    'name': data.get('player_name'),
-                    'id': data.get('guid'),
-                    'guid': data.get('guid'),
-                    'client_id': client_id,
-                    'team_id': data.get('team_id'),
-                    'team': team_id_map[int(data.get('team_id'))],
-                    'score': 0,
-                    'online': True
-                }
-                self.gameinfo['num_players'] = len(self.clients)
-            elif kind == 'playerscore':
-                log.debug('setting client score: %s' % client_id)
-                if client_id in self.clients:
-                    self.clients[client_id]['score'] = data.get('score')
-            elif kind == 'clientdisconnect':
-                if client_id in self.clients:
-                    self.clients[client_id]['online'] = False
+        # for some events we need to translate player_name into client_id
+        if not client_id and kind in ['say', 'killer', 'killed']:
+            client_id = get_dict_value_from_key_if_key_value(
+                self.clients, 'client_id', 'name', data.get('player_name'))
+            data['client_id'] = client_id
 
-            data['game_info'] = self.gameinfo
-            data['client_info'] = self.clients.get(client_id, {})
-            data['clients'] = self.clients
+        if kind == 'initgame':
+            self.start_ts = ts
+            self.gameinfo = {
+                'mapname': data.get('mapname'),
+                'num_players': 0,
+                'id': int(float(ts)),
+                'start': ts,
+                'stop': None,
+                'current': True
+            }
+            self.clients = {}
+        elif kind == 'clientuserinfochanged':
+            log.debug('setting client info: %s' % client_id)
+            self.clients[client_id] = {
+                'name': data.get('player_name'),
+                'id': data.get('guid'),
+                'guid': data.get('guid'),
+                'client_id': client_id,
+                'team_id': data.get('team_id'),
+                'team': team_id_map[int(data.get('team_id'))],
+                'score': 0,
+                'online': True
+            }
+            self.gameinfo['num_players'] = len(self.clients)
+        elif kind == 'playerscore':
+            log.debug('setting client score: %s' % client_id)
+            if client_id in self.clients:
+                self.clients[client_id]['score'] = data.get('score')
+        elif kind == 'clientdisconnect':
+            if client_id in self.clients:
+                self.clients[client_id]['online'] = False
 
-            if kind == 'clientdisconnect':
-                try:
-                    del self.clients[client_id]
-                except KeyError:
-                    pass
-            elif kind == 'shutdowngame':
-                # add stop time
-                self.gameinfo['stop'] = ts
-                self.gameinfo['current'] = False
+        data['game_info'] = self.gameinfo
+        data['client_info'] = self.clients.get(client_id, {})
 
-                # reset current context
-                self.gameinfo = {}
-                self.clients = {}
+        if kind == 'clientdisconnect':
+            try:
+                del self.clients[client_id]
+            except KeyError:
+                pass
+        elif kind == 'shutdowngame':
+            # add stop time
+            self.gameinfo['stop'] = ts
+            self.gameinfo['current'] = False
 
-            log.debug(' out: %s' % data)
-            out_socket.send_string("%s %s" % (data.get('kind'), json.dumps(data)))
+            # reset current context
+            self.gameinfo = {}
+            self.clients = {}
+
+        log.debug(' out: %s' % data)
+
+        return data
 
 
 def main(argv):
@@ -123,6 +134,10 @@ def main(argv):
     out_socket = context.socket(zmq.PUB)
     out_socket.bind(args['--context-socket'])
 
-    gc = GameContext()
+    # setup rcon socket
+    rcon_socket = context.socket(zmq.PUSH)
+    rcon_socket.connect(args['--rcon-socket'])
 
-    gc.eventstream(in_socket, out_socket)
+    gc = GameContext(in_socket, out_socket, rcon_socket)
+
+    gc.eventstream()

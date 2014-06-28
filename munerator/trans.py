@@ -25,6 +25,8 @@ translaters = [
         r'(?P<guid>[\w]+)', 'clientuserinfochanged'),
     (r'.*client:(?P<client_id>\d+) health:(?P<health>[\d-]+).*', 'hit'),
     (r'[0-9: ]*Kill: [^:]+: (?P<killer>.+) killed (?P<killed>.+) by (?P<mod>[\w]+)', 'kill'),
+    (r'[0-9: ]*Kill: [^:]+: (?P<killer_name>.+) killed (?P<player_name>.+) by (?P<mod>[\w]+)', 'killed'),
+    (r'[0-9: ]*Kill: [^:]+: (?P<player_name>.+) killed (?P<killed_name>.+) by (?P<mod>[\w]+)', 'killer'),
     (r'[0-9: ]*ClientDisconnect: (?P<client_id>\d+)', 'clientdisconnect'),
     (r'[0-9: ]*ClientConnect: (?P<client_id>\d+)', 'clientconnect'),
     (r'[0-9: ]*ClientBegin: (?P<client_id>\d+)', 'clientbegin'),
@@ -38,7 +40,7 @@ translaters = [
 ]
 
 findalls = {
-    'getstatus': r"\\\\\\\\([a-zA-Z0-9_]+)\\\\\\\\([^\\]+)",
+    'getstatus': r"\\([a-zA-Z0-9_]+)\\([^\\]+)",
 }
 
 regexes = [(re.compile(r), k) for r, k in translaters]
@@ -61,11 +63,13 @@ def translate(line, regexes):
 
 
 def handle_line(ts, line, out_socket):
+    handled = False
     for kind, data in translate(line, regexes):
         data['kind'] = kind
         log.debug('out: %s' % data)
-        break
-    else:
+        handled = True
+
+    if not handled:
         data = {
             'kind': 'unhandled',
             'raw': line
