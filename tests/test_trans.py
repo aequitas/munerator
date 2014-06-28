@@ -67,20 +67,31 @@ def test_translations(line, kind):
     [r'Kill: 1022 0 16: <world> killed -[aequitas]- by MOD_LAVA', 'killed', '-[aequitas]-'],
     [r'Kill: 1022 0 16: <world> killed Some nick by MOD_LAVA', 'killed', 'Some nick'],
     [r'Kill: 1022 0 16: <world> killed ^1color by MOD_LAVA', 'killed', '^1color'],
-    [r"cmd:getstatus response_type:statusResponse response:\g_obeliskRespawnDelay\10",
-        'g_obeliskRespawnDelay', '10'],
-    [r"cmd:getstatus response_type:statusResponse response:\g_obeliskRespawnDelay\10\bot_minplayers\0"
-        r"\sv_allowDownload\1\sv_privateClients\0\dmflags\72\fraglimit\10\timelimit"
-        r"\100\sv_hostname\Brensen13:38:20", 'dmflags', '72'],
     [r"cmd:status response_type:print response:  0     0   57 test^7                0 82.161.93.152"
      r"         15309 25000')", 'score', '0'],
     [r"cmd:status response_type:print response:  0     0   53 test name^7           0 82.161.93.152"
-     r"         31203 25000')", 'player_name', 'test name']
+     r"         31203 25000')", 'player_name', 'test name'],
+    [r"0:00 InitGame: \g_gametype\10\mapname\testmap\sv_allowDownload\1\g_timestamp\2014-06-28 19:22:53",
+        "timestamp", "2014-06-28 19:22:53"]
 ])
 def test_data(line, key, value):
     result = list(translate(line, regexes))
     assert result
     expect = result[0][1][key]
+    assert expect == value
+
+
+@pytest.mark.parametrize("line,key,value", [
+    [r"cmd:getstatus response_type:statusResponse response:\g_gametype\10",
+        'g_gametype', '10'],
+    [r"cmd:getstatus response_type:statusResponse response:\g_gametype\10\bot_minplayers\0"
+        r"\sv_allowDownload\1\sv_privateClients\0\dmflags\72\fraglimit\10\timelimit"
+        r"\100\sv_hostname\Brensen13:38:20", 'dmflags', '72'],
+])
+def test_data_extras(line, key, value):
+    result = list(translate(line, regexes))
+    assert result
+    expect = result[0][1]['extras'][key]
     assert expect == value
 
 

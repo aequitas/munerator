@@ -52,7 +52,7 @@ def handle_event(kind, data, rcon_socket):
 
     # get player and/or game id from data
     player_id = str(data.get('client_info', {}).get('guid', ''))
-    game_id = str(data.get('game_info', {}).get('id', ''))
+    game_id = str(data.get('game_info', {}).get('timestamp', ''))
 
     player, new = Players.objects.get_or_create(guid=player_id)
     if new:
@@ -81,13 +81,16 @@ def handle_event(kind, data, rcon_socket):
         log.info('updated player')
 
     # handle game updates
-    if game and kind in ['initgame', 'shutdowngame']:
+    if game and kind in ['initgame', 'shutdowngame', 'getstatus']:
         if new:
             log.debug('creating new game')
-            game.game_id = game_id
 
         # update variable data
         game.update(**{'set__%s' % k: v for k, v in data['game_info'].items()if not k.endswith('id')})
+
+        if data.get('extras'):
+            game.options = data.get('extras')
+            game.save()
 
         log.info('updated game')
 

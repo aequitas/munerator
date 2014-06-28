@@ -1,6 +1,6 @@
 __all__ = ['Players', 'Games', 'Votes']
 
-from mongoengine import (BooleanField, Document, IntField,
+from mongoengine import (BooleanField, Document, IntField, DictField,
                          ListField, ReferenceField, StringField)
 
 
@@ -17,12 +17,14 @@ class Players(Document):
 class Games(Document):
     game_id = StringField()
     mapname = StringField()
+    gametype = IntField()
     players = ListField(ReferenceField(Players))
     state = StringField()
     start = StringField()
     stop = StringField()
     num_players = IntField()
     current = BooleanField()
+    options = DictField()
 
 
 class Votes(Document):

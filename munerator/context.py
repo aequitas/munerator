@@ -70,17 +70,21 @@ class GameContext(object):
                 self.clients, 'client_id', 'name', data.get('player_name'))
             data['client_id'] = client_id
 
-        if kind == 'initgame':
+        if kind in ['initgame', 'getstatus']:
             self.start_ts = ts
             self.gameinfo = {
                 'mapname': data.get('mapname'),
-                'num_players': 0,
-                'id': int(float(ts)),
-                'start': ts,
-                'stop': None,
+                'gametype': data.get('gametype'),
+                'timestamp': data.get('timestamp'),
                 'current': True
             }
-            self.clients = {}
+            if kind == 'initgame':
+                self.gameinfo.update({
+                    'num_players': 0,
+                    'start': ts,
+                    'stop': None
+                })
+                self.clients = {}
         elif kind == 'clientuserinfochanged':
             log.debug('setting client info: %s' % client_id)
             self.clients[client_id] = {

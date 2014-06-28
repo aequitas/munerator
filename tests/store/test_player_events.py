@@ -32,7 +32,6 @@ def test_update_player(db, uuid):
     }
     handle_event('clientuserinfochanged', {'client_info': data2}, None)
 
-    print list(db.players.find())
     player = db.players.find_one()
 
     assert player['name'] == data2['name']

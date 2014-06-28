@@ -18,7 +18,8 @@ import re
 
 
 translaters = [
-    (r'[0-9: ]*InitGame: .*\\mapname\\(?P<mapname>[\w]+).*', 'initgame'),
+    (r'[0-9: ]*InitGame: .*\\g_gametype\\(?P<gametype>[^\\])+\\mapname\\(?P<mapname>[\w]+).*\\g_timestamp'
+        r'\\(?P<timestamp>[^\\]+)', 'initgame'),
     (r'[0-9: ]*ShutdownGame:.*', 'shutdowngame'),
     (r'[0-9: ]*say: (?P<player_name>[^:]+): (?P<text>.+)', 'say'),
     (r'[0-9: ]*ClientUserinfoChanged: (?P<client_id>\d+) n\\(?P<player_name>[^\\]+)\\t\\(?P<team_id>\d+).*id\\'
@@ -34,13 +35,15 @@ translaters = [
     (r'[0-9: ]*Item: (?P<client_id>\d+) item_quad.*', 'quad'),
     (r'[0-9: ]*ClientUserinfoChanged: (?P<guid>(?P<client_id>\d+)) n\\(?P<player_name>[^\\]+)\\t\\(?P<team_id>\d+).*'
         r'\\skill\\ (?P<skill>[\d\.]+).*id\\', 'clientuserinfochanged'),
-    (r'cmd:getstatus response_type:statusResponse response:.*', 'getstatus'),
+    (r'cmd:getstatus response_type:statusResponse response:.*\\g_gametype\\(?P<gametype>[^\\])+\\mapname'
+        r'\\(?P<mapname>[\w]+).*\\g_timestamp\\(?P<timestamp>[^\\]+)', 'getstatus'),
     (r"cmd:status response_type:print response:\s*(?P<client_id>[0-9]+)\s*(?P<score>[0-9]+)\s*(?P<ping>[0-9]+)\s*"
      r"(?P<player_name>.+)\^7\s*[^\s]+\s*[^\s]+\s*(?P<qport>[^\s]+)\s*(?P<rate>[^\s]+)", 'clientstatus'),
 ]
 
-findalls = {
-    'getstatus': r"\\([a-zA-Z0-9_]+)\\([^\\]+)",
+extras = {
+    'getstatus': re.compile(r"\\([a-zA-Z0-9_]+)\\([^\\]+)"),
+    'initgame': re.compile(r"\\([a-zA-Z0-9_]+)\\([^\\]+)"),
 }
 
 regexes = [(re.compile(r), k) for r, k in translaters]
@@ -55,10 +58,9 @@ def translate(line, regexes):
             data = m.groupdict()
 
             # see if we need to get extra information out of the line
-            if kind in findalls:
-                found = re.findall(findalls.get(kind), line)
-                print found
-                data.update(dict(found))
+            if kind in extras:
+                found = re.findall(extras.get(kind), line)
+                data['extras'] = dict(found)
             yield kind, data
 
 
