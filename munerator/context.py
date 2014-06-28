@@ -83,7 +83,7 @@ class GameContext(object):
                     'stop': None
                 })
                 self.clients = {}
-        elif kind == 'clientuserinfochanged':
+        elif kind in ['clientuserinfochanged', 'clientstatus']:
             log.debug('setting client info: %s' % client_id)
             self.clients[client_id] = {
                 'name': data.get('player_name'),
@@ -91,7 +91,7 @@ class GameContext(object):
                 'guid': data.get('guid'),
                 'client_id': client_id,
                 'team_id': data.get('team_id'),
-                'team': team_id_map[int(data.get('team_id'))],
+                'team': team_id_map[int(data.get('team_id', 0))],
                 'score': 0,
                 'online': True
             }

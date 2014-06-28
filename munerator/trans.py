@@ -38,7 +38,7 @@ translaters = [
     (r'cmd:getstatus response_type:statusResponse response:.*\\g_gametype\\(?P<gametype>[^\\])+\\mapname'
         r'\\(?P<mapname>[\w]+).*\\g_timestamp\\(?P<timestamp>[^\\]+)', 'getstatus'),
     (r"cmd:status response_type:print response:\s*(?P<client_id>[0-9]+)\s*(?P<score>[0-9]+)\s*(?P<ping>[0-9]+)\s*"
-     r"(?P<player_name>.+)\^7\s*[^\s]+\s*[^\s]+\s*(?P<qport>[^\s]+)\s*(?P<rate>[^\s]+)", 'clientstatus'),
+     r"(?P<player_name>.+)\^7\s*[^\s]+\s*(?P<address>[^\s]+)\s*[^\s]+\s*[^\s]+", 'clientstatus'),
 ]
 
 extras = {

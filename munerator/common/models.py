@@ -12,7 +12,8 @@ class Players(Document):
     score = IntField()
     team = StringField()
     team_id = IntField()
-    skill = IntField()
+    skill = StringField()
+    address = StringField()
 
 
 class Games(Document):
