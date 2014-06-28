@@ -62,7 +62,7 @@ def handle_event(kind, data, rcon_socket):
         game.save()
 
     # handle player updates
-    if player and kind in ['clientbegin', 'clientdisconnect', 'clientuserinfochanged', 'playerscore']:
+    if player and kind in ['clientbegin', 'clientdisconnect', 'clientuserinfochanged', 'playerscore', 'clientstatus']:
         if new:
             log.debug('creating new player')
 
@@ -104,7 +104,7 @@ def handle_event(kind, data, rcon_socket):
             vote = Votes(player=player, game=game, vote=-1)
         if vote:
             vote.save()
-            rcon_socket.send_string('say %s your vote has been counted' % player.name)
+            rcon_socket.send_string('say %s^7 your vote has been counted' % player.name)
             log.info('saved vote')
 
 

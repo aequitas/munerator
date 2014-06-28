@@ -17,6 +17,7 @@ import zmq
 import logging
 log = logging.getLogger(__name__)
 from vendor.pyquake3 import Administrator
+import time
 
 
 def eventstream(zmq_socket, rcon_connection, raw_socket):
@@ -24,13 +25,16 @@ def eventstream(zmq_socket, rcon_connection, raw_socket):
         cmd = zmq_socket.recv_string()
         # send some commands without rcon
         if cmd in ['getstatus']:
-            response = rcon_connection.command(str(cmd))
+            response_type, response = rcon_connection.command(str(cmd))
         else:
-            response = rcon_connection.rcon_command(str(cmd))
+            response_type, response = rcon_connection.rcon_command(str(cmd))
         log.debug("cmd:%s, response:%s" % (cmd, response))
 
+        now = time.time()
+
         # put response into translate module for parsing
-        raw_socket.send_string("cmd:%s, response:%s" % (cmd, response))
+        for line in response.splitlines():
+            raw_socket.send_string("%s cmd:%s response_type:%s response:%s" % (now, cmd, response_type, line))
 
 
 def main(argv):

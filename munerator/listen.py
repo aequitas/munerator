@@ -1,7 +1,7 @@
 """Listen and output game event
 
 Usage:
-  munerator [options] listen
+  munerator [options] listen [<event>...]
 
 Options:
   -v --verbose          Verbose logging
@@ -13,6 +13,8 @@ import logging
 
 import zmq
 from docopt import docopt
+from functools import partial
+
 
 log = logging.getLogger(__name__)
 
@@ -38,6 +40,10 @@ def main(argv):
     in_socket = context.socket(zmq.SUB)
     in_socket.connect(args['--context-socket'])
 
-    in_socket.setsockopt(zmq.SUBSCRIBE, '')
+    if args['<event>']:
+        add_filter = partial(in_socket.setsockopt, zmq.SUBSCRIBE)
+        map(add_filter, args['<event>'])
+    else:
+        in_socket.setsockopt(zmq.SUBSCRIBE, '')
 
     listen(in_socket)
