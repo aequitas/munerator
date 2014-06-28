@@ -19,6 +19,7 @@ from docopt import docopt
 from munerator.common.models import Games, Players, Votes
 from eve import Eve
 from eve_mongoengine import EveMongoengine
+from mongoengine.queryset import Q
 
 log = logging.getLogger(__name__)
 
@@ -55,17 +56,10 @@ def handle_event(kind, data, rcon_socket):
     timestamp = str(data.get('game_info', {}).get('timestamp', ''))
 
     player, new = Players.objects.get_or_create(guid=player_id)
-    if new:
-        player.save()
     game, new = Games.objects.get_or_create(timestamp=timestamp)
-    if new:
-        game.save()
 
     # handle player updates
     if player and kind in ['clientbegin', 'clientdisconnect', 'clientuserinfochanged', 'playerscore', 'clientstatus']:
-        if new:
-            log.debug('creating new player')
-
         # on name change, store previous name
         if data['client_info'] and player.name != data['client_info']['name']:
             player.update(add_to_set__names=data['client_info']['name'])
@@ -82,8 +76,9 @@ def handle_event(kind, data, rcon_socket):
 
     # handle game updates
     if game and kind in ['initgame', 'shutdowngame', 'getstatus']:
-        if new:
-            log.debug('creating new game')
+        # reset other games current status
+        if kind == 'initgame':
+            Games.objects(current=True).update(set__current=False)
 
         # update variable data
         game.update(**{'set__%s' % k: v for k, v in data['game_info'].items()if not k.endswith('id')})
@@ -94,12 +89,9 @@ def handle_event(kind, data, rcon_socket):
 
         log.info('updated game')
 
-        # reset other games current status
-        if kind == 'initgame':
-            Games.objects(current=True).update(set__current=False)
-
         # reset players online status just to be sure
-        Players.objects(online=True).update(set__online=False, set__score=None, set__team=None)
+        Players.objects(Q(online=True) | Q(score__ne=None) | Q(team__ne=None)).update(
+            set__online=False, set__score=None, set__team=None)
 
     # handle votes
     if kind == 'say' and player and game:

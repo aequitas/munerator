@@ -3,7 +3,7 @@
 <p>players:</p>
 <ul>
 {{#each players}}
-<li>{{#link-to 'player' this}}{{quake-name name}}{{/link-to}}</li>
+<li>{{#link-to 'player' this}}{{quake-name name}}{{/link-to}} {{#if bot}}(bot){{/if}}</li>
 {{/each}}
 </ul>
 <p>started: {{start}}</p>

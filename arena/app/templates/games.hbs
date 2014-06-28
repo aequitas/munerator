@@ -9,13 +9,13 @@
 </tr>
 {{#each}}
 {{#link-to 'game' this tagName="tr"}}
-    <td>{{_updated}}{{#if current}}<span class="glyphicon glyphicon-ok"></span>{{/if}}</td>
+    <td>{{#if current}}<span class="glyphicon glyphicon-ok"></span>{{/if}}</td>
     <td>{{mapname}}</td>
     <td>{{gametype}}</td>
     <td>
     <ul>
     {{#each players}}
-    <li>{{#link-to 'player' this}}{{quake-name name}}{{/link-to}}</li>
+    <li>{{#link-to 'player' this}}{{quake-name name}}{{/link-to}} {{#if bot}}(bot){{/if}}</li>
     {{/each}}
     </ul
     </td>
