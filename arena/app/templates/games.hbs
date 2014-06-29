@@ -15,7 +15,7 @@
     <td>
     <ul>
     {{#each players}}
-    <li>{{#link-to 'player' this}}{{quake-name name}}{{/link-to}} {{#if bot}}(bot){{/if}}</li>
+    <li {{bind-attr class="online::circle"}}>{{#link-to 'player' this}}{{quake-name name}}{{/link-to}} {{#if bot}}(bot){{/if}}</li>
     {{/each}}
     </ul
     </td>
