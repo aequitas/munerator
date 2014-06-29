@@ -107,6 +107,9 @@ class GameContext(object):
         elif kind == 'clientdisconnect':
             if client_id in self.clients:
                 self.clients[client_id]['online'] = False
+        elif kind in ['clientstatus', 'clientconnect']:
+            # on clientstatus also request dumpuser
+            self.rcon_socket.send_string('dumpuser %s' % client_id)
 
         data['game_info'] = self.gameinfo
         data['client_info'] = self.clients.get(client_id, {})
