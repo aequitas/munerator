@@ -35,6 +35,7 @@ import timeit
      r"         15309 25000", 'clientstatus'],
     [r'Kill: 1022 5 20: <world> killed Gunnaway by MOD_SUICIDE', 'killer'],
     [r'Kill: 1022 5 20: <world> killed Gunnaway by MOD_SUICIDE', 'killed'],
+    [r'cmd:dumpuser 4 response_type:print response:cl_guid              4149407351D856EBE4C59B969BAA68B2', 'dumpuser']
 
 ])
 def test_translations(line, kind):
@@ -71,7 +72,10 @@ def test_translations(line, kind):
     [r"cmd:status response_type:print response:  0     0   53 test name^7           0 82.161.93.152"
      r"         31203 25000')", 'player_name', 'test name'],
     [r"0:00 InitGame: \g_gametype\10\mapname\testmap\sv_allowDownload\1\g_timestamp\2014-06-28 19:22:53",
-        "timestamp", "2014-06-28 19:22:53"]
+        "timestamp", "2014-06-28 19:22:53"],
+    [r'cmd:dumpuser 4 response_type:print response:cl_guid 4149407351D856EBE4C59B969BAA68B2',
+        'guid', '4149407351D856EBE4C59B969BAA68B2']
+
 ])
 def test_data(line, key, value):
     result = list(translate(line, regexes))

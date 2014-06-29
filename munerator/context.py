@@ -95,11 +95,13 @@ class GameContext(object):
                 'team': team_id_map[int(data.get('team_id', 0))],
                 'score': 0,
                 'online': True,
-                'bot': False
+                'bot': False,
             }
             if data.get('skill') or data.get('address') == 'bot':
                 self.clients[client_id]['bot'] = True
             self.gameinfo['num_players'] = len(self.clients)
+        elif kind == 'dumpuser':
+            self.clients[client_id].update(data)
         elif kind == 'playerscore':
             log.debug('setting client score: %s' % client_id)
             if client_id in self.clients:

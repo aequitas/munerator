@@ -39,6 +39,8 @@ translaters = [
         r'\\(?P<mapname>[\w]+).*\\g_timestamp\\(?P<timestamp>[^\\]+)', 'getstatus'),
     (r"cmd:status response_type:print response:\s*(?P<client_id>[0-9]+)\s*(?P<score>[0-9]+)\s*(?P<ping>[0-9]+)\s*"
      r"(?P<player_name>.+)\^7\s*[^\s]+\s*(?P<address>[^\s]+)\s*[^\s]+\s*[^\s]+", 'clientstatus'),
+    (r'cmd:dumpuser (?P<client_id>\d+) response_type:print response:cl_guid\s*(?P<guid>[\w]+)', 'dumpuser'),
+    (r'cmd:dumpuser (?P<client_id>\d+) response_type:print response:headmodel\s*(?P<headmodel>[\w]+)', 'dumpuser'),
 ]
 
 extras = {

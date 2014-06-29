@@ -15,6 +15,7 @@ class Players(Document):
     skill = StringField()
     address = StringField()
     bot = BooleanField()
+    headmodel = StringField()
 
 
 class Gamemaps(Document):
