@@ -10,8 +10,8 @@
 {{#each}}
 {{#link-to 'game' this tagName="tr"}}
     <td>{{#if current}}<span class="glyphicon glyphicon-ok"></span>{{/if}}</td>
-    <td>{{mapname}}</td>
-    <td>{{gametype}}</td>
+    <td>{{#link-to 'gamemap' this}}{{gamemap.name}}{{/link-to}}</td>
+    <td>{{game-type gametype}}</td>
     <td>
     <ul>
     {{#each players}}

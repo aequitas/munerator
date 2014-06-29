@@ -8,9 +8,9 @@
 {{#each}}
 <tr>
     <td>{{#link-to 'player' this.player}}{{quake-name player.name}}{{/link-to}}</td>
-    <td>{{#link-to 'game' this.game}}{{game.mapname}}{{/link-to}}</td>
+    <td>{{#link-to 'game' this.game}}{{game.gamemap.name}} ({{game-type game.gametype}}){{/link-to}}</td>
     <td>{{vote}}</td>
-    <td>{{created_at}}</td>
-</tr>
+    <td>{{_created}}</td>
+</tr
 {{/each}}
 </table>

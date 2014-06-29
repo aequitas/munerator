@@ -1,6 +1,12 @@
 import DS from "ember-data";
 import Ember from "ember";
 
+// export default DS.FixtureAdapter.extend({
+//     queryFixtures: function(fixtures){
+//         return fixtures;
+//     }
+// });
+
 export default DS.RESTAdapter.extend({
     host: ArenaENV.api_endpoint,
     namespace: 'api/1',

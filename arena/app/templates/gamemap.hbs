@@ -1,0 +1,14 @@
+<img {{bind-attr src=levelshot}} alt="levelshot" height="64">
+<p>map: {{name}}</p>
+<p>gametypes:</p>
+<ul>
+{{#each gametypes}}
+<li>{{game-type this}}</li>
+{{/each}}
+</ul>
+<p>images:</p>
+<ul>
+{{#each images}}
+<li><img {{bind-attr src=this}} alt="map image" height="128"></li>
+{{/each}}
+</ul>

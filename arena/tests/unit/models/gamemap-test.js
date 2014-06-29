@@ -1,8 +1,8 @@
 import { test, moduleForModel } from 'ember-qunit';
 
-moduleForModel('vote', 'Vote', {
+moduleForModel('gamemap', 'Gamemap', {
   // Specify the other units that are required for this test.
-  needs: ['model:player', 'model:game', 'model:gamemap']
+  needs: []
 });
 
 test('it exists', function() {

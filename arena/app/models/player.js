@@ -8,7 +8,8 @@ var Player = DS.Model.extend({
     names: DS.attr('raw'),
     skill: DS.attr('number'),    
     bot: DS.attr('boolean'),
-    _updated: DS.attr('date')
+    _updated: DS.attr('date'),
+    _created: DS.attr('date')
 });
 
 Player.reopenClass({

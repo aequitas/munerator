@@ -1,5 +1,5 @@
 <p>map: {{mapname}}</p>
-<p>gametype: {{gametype}}</p>
+<p>gametype: {{game-type gametype}}</p>
 <p>players:</p>
 <ul>
 {{#each players}}
@@ -8,6 +8,12 @@
 </ul>
 <p>started: {{start}}</p>
 <p>ended: {{stop}}</p>
+<p>votes:</p>
+<ul>
+{{#each votes}}
+<li>{{#link-to 'player' this}}{{quake-name player.name}}{{/link-to}} - {{vote}}</li>
+{{/each}}
+</ul>
 <p>game options:</p>
 <ul>
 {{#each option in options}}

@@ -1,0 +1,20 @@
+<table class="table">
+<tr>
+    <th>&nbsp;</th>
+    <th>Map name</th>
+    <th>Gametypes</th>
+</tr>
+{{#each}}
+{{#link-to 'gamemap' this tagName="tr"}}
+    <td><img {{bind-attr src=levelshot}} alt="levelshot" height="64"></td>
+    <td>{{name}}</td>
+    <td>
+    <ul>
+    {{#each gametypes}}
+    <li>{{game-type this}}</li>
+    {{/each}}
+    </ul
+    </td>
+{{/link-to}}
+{{/each}}
+</table>

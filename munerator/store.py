@@ -16,7 +16,7 @@ from functools import partial
 
 import zmq
 from docopt import docopt
-from munerator.common.models import Games, Players, Votes
+from munerator.common.models import Games, Players, Votes, Gamemaps
 from eve import Eve
 from eve_mongoengine import EveMongoengine
 from mongoengine.queryset import Q
@@ -68,8 +68,7 @@ def handle_event(kind, data, rcon_socket):
         player.update(**{'set__%s' % k: v for k, v in data['client_info'].items() if not k.endswith('id')})
 
         # add player to game
-        if timestamp:
-            game, new = Games.objects.get_or_create(timestamp=timestamp)
+        if game:
             game.update(add_to_set__players=player)
 
         log.info('updated player')
@@ -82,6 +81,10 @@ def handle_event(kind, data, rcon_socket):
 
         # update variable data
         game.update(**{'set__%s' % k: v for k, v in data['game_info'].items()if not k.endswith('id')})
+
+        # set game map
+        gamemap, new = Gamemaps.objects.get_or_create(name=data['game_info']['mapname'])
+        game.update(set__gamemap=gamemap)
 
         if data.get('extras'):
             game.options = data.get('extras')
@@ -105,6 +108,9 @@ def handle_event(kind, data, rcon_socket):
             rcon_socket.send_string('say %s^7 your vote has been counted' % player.name)
             log.info('saved vote')
 
+        # add vote to game
+        game.update(add_to_set__votes=vote)
+
 
 def setup_eve_mongoengine(host, port):
     # app settings
@@ -122,7 +128,7 @@ def setup_eve_mongoengine(host, port):
     ext = EveMongoengine(app)
 
     # add models
-    ext.add_model([Players, Games, Votes])
+    ext.add_model([Players, Games, Votes, Gamemaps])
 
 
 def main(argv):
