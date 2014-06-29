@@ -36,7 +36,6 @@ import timeit
     [r'Kill: 1022 5 20: <world> killed Gunnaway by MOD_SUICIDE', 'killer'],
     [r'Kill: 1022 5 20: <world> killed Gunnaway by MOD_SUICIDE', 'killed'],
     [r'cmd:dumpuser 4 response_type:print response:cl_guid              4149407351D856EBE4C59B969BAA68B2', 'dumpuser']
-
 ])
 def test_translations(line, kind):
     results = list(translate(line, regexes))

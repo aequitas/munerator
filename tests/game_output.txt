@@ -1288,3 +1288,9 @@ Rcon from 37.34.56.243: dumpuser 0
 194110: client:0 health:66 damage:48 armor:2
 Rcon from 37.34.56.243: print m02
 195562: client:0 health:18 damage:50 armor:0
+
+
+
+
+
+('print', 'userinfo\n--------\nip                   82.161.93.152\nname                 -[aequitas]-\nrate                 25000\nsnaps                20\nmodel                sarge\nheadmodel            sarge\nteam_model           james\nteam_headmodel       *james\ncolor1               4\ncolor2               5\nhandicap             100\nsex                  male\ncl_anonymous         0\ncg_predictItems      1\ncl_voip              1\ncg_scorePlums        1\ncg_delag             1\ncg_cmdTimeNudge      0\nteamtask             0\ncl_guid              4149407351D856EBE4C59B969BAA68B2\nteamoverlay          0\n')

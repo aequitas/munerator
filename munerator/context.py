@@ -57,7 +57,8 @@ class GameContext(object):
 
             contexted_data = self.handle_event(data)
 
-            self.out_socket.send_string("%s %s" % (contexted_data.get('kind'), json.dumps(contexted_data)))
+            self.out_socket.send_string(
+                "%s %s" % (contexted_data.get('kind'), json.dumps(contexted_data)))
 
     def handle_event(self, data):
         kind = data.get('kind')
@@ -68,6 +69,9 @@ class GameContext(object):
             client_id = get_dict_value_from_key_if_key_value(
                 self.clients, 'client_id', 'name', data.get('player_name'))
             data['client_id'] = client_id
+
+        if client_id and client_id not in self.clients:
+            self.clients[client_id] = {}
 
         if kind in ['initgame', 'getstatus']:
             self.gameinfo = {
@@ -85,7 +89,7 @@ class GameContext(object):
                 self.clients = {}
         elif kind in ['clientuserinfochanged', 'clientstatus']:
             log.debug('setting client info: %s' % client_id)
-            self.clients[client_id] = {
+            self.clients[client_id].update({
                 'name': data.get('player_name'),
                 'id': data.get('guid'),
                 'guid': data.get('guid'),
@@ -96,7 +100,7 @@ class GameContext(object):
                 'score': 0,
                 'online': True,
                 'bot': False,
-            }
+            })
             if data.get('skill') or data.get('address') == 'bot':
                 self.clients[client_id]['bot'] = True
             self.gameinfo['num_players'] = len(self.clients)
@@ -104,12 +108,12 @@ class GameContext(object):
             self.clients[client_id].update(data)
         elif kind == 'playerscore':
             log.debug('setting client score: %s' % client_id)
-            if client_id in self.clients:
-                self.clients[client_id]['score'] = data.get('score')
+            self.clients[client_id]['score'] = data.get('score')
         elif kind == 'clientdisconnect':
             if client_id in self.clients:
                 self.clients[client_id]['online'] = False
-        elif kind in ['clientstatus', 'clientconnect']:
+
+        if kind in ['clientstatus', 'clientconnect']:
             # on clientstatus also request dumpuser
             self.rcon_socket.send_string('dumpuser %s' % client_id)
 
