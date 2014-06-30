@@ -18,6 +18,7 @@ import logging
 log = logging.getLogger(__name__)
 from vendor.pyquake3 import Administrator
 import time
+from rcfile import rcfile
 
 
 def eventstream(zmq_socket, rcon_connection, raw_socket):
@@ -39,15 +40,15 @@ def eventstream(zmq_socket, rcon_connection, raw_socket):
 
 
 def main(argv):
-    args = docopt(__doc__, argv=argv)
+    args = rcfile('munerator', docopt(__doc__, argv=argv), module_name='rcon')
 
     context = zmq.Context()
     zmq_socket = context.socket(zmq.PULL)
-    zmq_socket.bind(args['--rcon-socket'])
+    zmq_socket.bind(args['rcon-socket'])
 
     raw_socket = context.socket(zmq.PUSH)
-    raw_socket.connect(args['--raw-socket'])
+    raw_socket.connect(args['raw-socket'])
 
-    rcon_connection = Administrator(args['--oa-addr'], int(args['--oa-port']), args['--rcon-passwd'])
+    rcon_connection = Administrator(args['oa-addr'], int(args['oa-port']), args['rcon-passwd'])
 
     eventstream(zmq_socket, rcon_connection, raw_socket)
