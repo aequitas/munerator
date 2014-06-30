@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import PollingRouteMixin from './polling';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(PollingRouteMixin, {
     controllerName: 'game',
 
     model: function(){

@@ -25,7 +25,7 @@ requirements_dev.txt.done: $(pip) requirements_dev.txt
 $(pytest): requirements_dev.txt.done
 
 $(pyapp): $(pip) setup.py
-	pip install -e .
+	pip install -e .[restapi,store]
 
 $(sphinx): $(pip)
 	pip install -r docs/requirements.txt
@@ -45,7 +45,7 @@ jstest:
 test: jstest pytest
 
 install: $(pip) setup.py munerator/static
-	pip install .
+	pip install .[restapi,store]
 
 # building/dist
 

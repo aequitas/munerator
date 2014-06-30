@@ -11,4 +11,14 @@ var App = Ember.Application.extend({
 
 loadInitializers(App, 'arena');
 
+moment.lang('en', {
+    longDateFormat : {
+        LT : "HH:mm",
+        L : "DD/MM/YYYY",
+        LL : "D MMMM YYYY",
+        LLL : "D MMMM YYYY LT",
+        LLLL : "dddd D MMMM YYYY LT"
+    },
+});
+
 export default App;
