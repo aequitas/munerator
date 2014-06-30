@@ -8,7 +8,7 @@ def read(fname):
 
 setup(
     name='munerator',
-    version="0.10.11",
+    version="0.10.12",
     description='Manager of OpenArena battles',
     long_description=read("README.rst"),
     author='Johan Bloemberg',
@@ -20,14 +20,22 @@ setup(
         'pyzmq',
         'webcolors',
         'python-Levenshtein',
-        'eve==0.3',
-        'flask',
-        'tornado',
-        'mongoengine',
-        'eve-mongoengine',
         'python-dateutil',
         'rcfile'
     ],
+    extras_require={
+        'restapi': [
+            'mongoengine',
+            'eve-mongoengine',
+            'eve==0.3',
+            'flask',
+        ],
+        'store': [
+            'mongoengine',
+            'eve-mongoengine',
+            'eve==0.3',
+        ]
+    },
     packages=find_packages(),
     license=read("LICENSE"),
     include_package_data=True,
