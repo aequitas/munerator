@@ -18,8 +18,8 @@ import re
 
 
 translaters = [
-    (r'[0-9: ]*InitGame: .*\\g_gametype\\(?P<gametype>[^\\])+\\mapname\\(?P<mapname>[\w]+).*\\g_timestamp'
-        r'\\(?P<timestamp>[^\\]+)', 'initgame'),
+    (r'[0-9: ]*InitGame: .*fraglimit\\(?P<fraglimit>[\w]+).*\\g_gametype\\(?P<gametype>[^\\])+\\mapname'
+        r'\\(?P<mapname>[\w]+).*\\g_timestamp\\(?P<timestamp>[^\\]+)', 'initgame'),
     (r'[0-9: ]*ShutdownGame:.*', 'shutdowngame'),
     (r'[0-9: ]*say: (?P<player_name>[^:]+): (?P<text>.+)', 'say'),
     (r'[0-9: ]*ClientUserinfoChanged: (?P<client_id>\d+) n\\(?P<player_name>[^\\]+)\\t\\(?P<team_id>\d+).*id\\'
