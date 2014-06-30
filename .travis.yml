@@ -10,7 +10,7 @@ script:
     - "make test"
 install:
     - "make docs/_build"
-    - "make install"
+    - "make"
 deploy:
     provider: pypi
     user: aequitas
