@@ -1,5 +1,6 @@
 .PHONY: all test clean clean_all pytest embertest
 
+USE_WHEEL ?= 1
 WORKON_HOME ?= env
 VIRTUAL_ENV ?= $(WORKON_HOME)/munerator
 
