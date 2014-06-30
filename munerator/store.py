@@ -65,7 +65,7 @@ def handle_event(kind, data, rcon_socket):
             player.update(add_to_set__names=data['client_info']['name'])
 
         # update variable data
-        player.update(**{'set__%s' % k: v for k, v in data['client_info'].items() if not k.endswith('id')})
+        player.update(**{'set__%s' % k: v for k, v in data['client_info'].items() if k in player.update_fields})
 
         # add player to game
         if game:
@@ -80,7 +80,7 @@ def handle_event(kind, data, rcon_socket):
             Games.objects(current=True).update(set__current=False)
 
         # update variable data
-        game.update(**{'set__%s' % k: v for k, v in data['game_info'].items()if not k.endswith('id')})
+        game.update(**{'set__%s' % k: v for k, v in data['game_info'].items() if k in game.update_fields})
 
         # set game map
         gamemap, new = Gamemaps.objects.get_or_create(name=data['game_info']['mapname'])

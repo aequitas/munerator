@@ -17,6 +17,9 @@ class Players(Document):
     bot = BooleanField()
     headmodel = StringField()
 
+    # fields allowed to be updated by context info
+    update_fields = ['name', 'online', 'score', 'team', 'team_id', 'skill', 'address', 'bot', 'headmodel']
+
 
 class Gamemaps(Document):
     name = StringField()
@@ -44,3 +47,6 @@ class Games(Document):
     num_players = IntField()
     current = BooleanField()
     options = DictField()
+
+    # fields allowed to be updated by context info
+    update_fields = ['mapname', 'gametype', 'state', 'start', 'stop', 'num_players', 'current']
