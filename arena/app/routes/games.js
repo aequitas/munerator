@@ -13,7 +13,10 @@ export default Ember.Route.extend({
     poll: function() {
         var _this = this;
         var poll_inst = Ember.run.later( function() {
-            _this.refresh();
+            _this.controller.set('isLoading', true);
+            _this.refresh().then(function(){
+                _this.controller.set('isLoading', false);
+            });
             _this.poll();
         }, 10000 );
         this.set('poll_inst', poll_inst);

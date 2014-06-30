@@ -1,7 +1,25 @@
-<p><a href="https://quake.ijohan.nl">Game Manager</a></p>
-<p><a href="http://quake.brensen.com/api/1">API</a></p>
-<p><a href="/stats">Stats</a></p>
+<div class="row">
+<div class="col-md-6">
+    <p><a href="https://quake.ijohan.nl">Game Manager</a></p>
+    <p><a href="http://quake.brensen.com/api/1">API</a></p>
+    <p><a href="/stats">Stats</a></p>
 
-<p>Join us every day around 12:30 at: quake.brensen.com, port 1200.</p>
-<p>OpenArena version: 0.8.8 (<a href="http://www.openarena.ws/download.php?list.61">download</a>)</p>
-<p>Be sure to enable downloading in your settings or some maps will not load <a target="_blank" href="http://openarena.wikia.com/wiki/Manual/Automatic_downloading#How_to_setup">instructions</a></p>
+    <p>Join us every day around 12:30 at: quake.brensen.com, port 1200.</p>
+    <p>OpenArena version: 0.8.8 (<a href="http://www.openarena.ws/download.php?list.61">download</a>)</p>
+    <p>Be sure to enable downloading in your settings or some maps will not load <a target="_blank" href="http://openarena.wikia.com/wiki/Manual/Automatic_downloading#How_to_setup">instructions</a></p>
+</div>
+<div class="col-md-6">
+<p>Current game:</p>
+<p>{{mapname}} - {{game-type gametype}}</p>
+<p>players:</p>
+<ul>
+{{#each players}}
+{{#if online}}
+<li>{{#link-to 'player' this}}{{quake-name name}}{{/link-to}} {{#if bot}}(bot){{/if}} - {{score}}</li>
+{{/if}}
+{{else}}
+<li>no players</li>
+{{/each}}
+</ul>
+</div>
+</div>
