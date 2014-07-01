@@ -1,7 +1,7 @@
-"""Find assets (levelshot, images, etc)
+"""Run periodic tasks like finding assets (levelshot, images, etc), cleaning database.
 
 Usage:
-  munerator [options] assets
+  munerator [options] periodic
 
 Options:
   -v --verbose          Verbose logging
@@ -15,7 +15,8 @@ import hashlib
 
 from docopt import docopt
 from munerator.common.database import setup_eve_mongoengine
-from munerator.common.models import Gamemaps
+from munerator.common.models import Gamemaps, Games
+from mongoengine.queryset import Q
 
 log = logging.getLogger(__name__)
 
@@ -104,6 +105,12 @@ def find_assets(force):
                 log.debug('url %s is invalid' % url)
 
 
+def clean_database():
+    games = Games.objects(Q(current=False) | Q(current__exists=False), players__size=0)
+    log.debug('removing games: %s' % games)
+    games.delete()
+
+
 def main(argv):
     args = docopt(__doc__, argv=argv)
 
@@ -111,5 +118,6 @@ def main(argv):
     host, port = args['--database'].split(':')
     setup_eve_mongoengine(host, port)
 
-    # start search
+    # run tasks
     find_assets(force=args['--force'])
+    clean_database()
