@@ -6,5 +6,9 @@ li.circle {
     list-style-type:circle;
 }
 
+tr.clickable {
+    cursor: pointer;
+}
+
 @import 'vendor/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import 'quakecolors';

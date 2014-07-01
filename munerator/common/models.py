@@ -26,11 +26,15 @@ class Gamemaps(Document):
     levelshot = URLField()
     images = ListField(URLField())
     gametypes = ListField(IntField())
+    min_players = IntField(default=2)
+    max_players = IntField(default=12)
 
 
 class Votes(Document):
     game = ReferenceField('Games')
     player = ReferenceField('Players')
+    gamemap = ReferenceField('Gamemaps')
+    gametype = IntField()
     vote = IntField()
 
 

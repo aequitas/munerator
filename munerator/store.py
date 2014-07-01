@@ -54,8 +54,8 @@ def handle_event(kind, data, rcon_socket):
     player_id = str(data.get('client_info', {}).get('guid', ''))
     timestamp = str(data.get('game_info', {}).get('timestamp', ''))
 
-    player, new = Players.objects.get_or_create(guid=player_id)
-    game, new = Games.objects.get_or_create(timestamp=timestamp)
+    player, new_player = Players.objects.get_or_create(guid=player_id) if player_id else (None, None)
+    game, new_game = Games.objects.get_or_create(timestamp=timestamp) if timestamp else (None, None)
 
     # handle player updates
     if player and kind in ['clientbegin', 'clientdisconnect', 'clientuserinfochanged', 'playerscore', 'clientstatus']:
@@ -73,7 +73,7 @@ def handle_event(kind, data, rcon_socket):
         log.info('updated player')
 
     # handle game updates
-    if game and kind in ['initgame', 'shutdowngame', 'getstatus']:
+    if game and (kind in ['initgame', 'shutdowngame', 'getstatus'] or new_game):
         # reset other games current status
         if kind == 'initgame':
             Games.objects(current=True).update(set__current=False)
@@ -99,11 +99,12 @@ def handle_event(kind, data, rcon_socket):
     if kind == 'say' and player and game:
         vote = None
         if data.get('text') in ['+1', 'gg', 'GG', 'GGG', 'like', 'fuckthismaprocks', '++', '+1337']:
-            vote = Votes(player=player, game=game, vote=1)
+            vote = 1
         elif data.get('text') in ['-1', '--1', '-11', '-1000', '-2', 'dislike', 'hate', 'RAGE!!!', 'fuckthismap', '--']:
-            vote = Votes(player=player, game=game, vote=-1)
+            vote = -1
+
         if vote:
-            vote.save()
+            Votes.objects.create(player=player, game=game, gamemap=game.gamemap, gametype=game.gametype, vote=vote)
             rcon_socket.send_string('say %s^7 your vote has been counted' % player.name)
             log.info('saved vote')
 

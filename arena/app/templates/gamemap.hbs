@@ -1,14 +1,16 @@
-<img {{bind-attr src=levelshot}} alt="levelshot" height="64">
+<img {{bind-attr src=levelshot}} class="img-thumbnail" alt="levelshot" width="128">
 <p>map: {{name}}</p>
 <p>gametypes:</p>
 <ul>
-{{#each gametypes}}
-<li>{{game-type this}}</li>
-{{/each}}
+    {{#each gametypes}}
+    <li>{{game-type this}}</li>
+    {{/each}}
 </ul>
+<p>min players: {{min_players}}</p>
+<p>max players: {{max_players}}</p>
 <p>images:</p>
-<ul>
-{{#each images}}
-<li><img {{bind-attr src=this}} alt="map image" height="128"></li>
-{{/each}}
-</ul>
+<div>
+    {{#each images}}
+    <img {{bind-attr src=this}} alt="map image" class="img-rounded">
+    {{/each}}
+</div>

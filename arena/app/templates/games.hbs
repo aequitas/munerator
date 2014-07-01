@@ -1,28 +1,33 @@
 <table class="table">
-<tr>
-    <th>Current</th>
-    <th>Map name</th>
-    <th>Gametype</th>
-    <th>Players</th>
-    <th>Start</th>
-    <th>Stop</th>
-    <th><span {{bind-attr class="isPolling::invisible :glyphicon :glyphicon-refresh"}}></span></th>
-</tr>
-{{#each}}
-{{#link-to 'game' this tagName="tr"}}
-    <td>{{#if current}}<span class="glyphicon glyphicon-ok"></span>{{/if}}</td>
+    <tr>
+        <th>Current</th>
+        <th>Map name</th>
+        <th>Gametype</th>
+        <th>Players</th>
+        <th>Start</th>
+        <th>Stop</th>
+        <th><span {{bind-attr class="isPolling::invisible :glyphicon :glyphicon-refresh"}}></span></th>
+    </tr>
+    {{#each}}
+    {{#link-to 'game' this tagName="tr" class="clickable"}}
+    <td>
+        <img {{bind-attr src=gamemap.levelshot}} alt="levelshot" class="img-thumbnail" width="64" height="64">
+    </td>
     <td>{{#link-to 'gamemap' this}}{{gamemap.name}}{{/link-to}}</td>
     <td>{{game-type gametype}}</td>
     <td>
-    <ul>
-    {{#each players}}
-    <li {{bind-attr class="online::circle"}}>{{#link-to 'player' this}}{{quake-name name}}{{/link-to}} {{#if bot}}(bot){{/if}}</li>
-    {{/each}}
-    </ul
+        <ul>
+            {{#each players}}
+            <li {{bind-attr class="online::circle"}}>{{#link-to 'player' this}}{{quake-name name}}{{/link-to}} {{#if bot}}(bot){{/if}}</li>
+            {{/each}}
+        </ul>
     </td>
     <td>{{fromnow-date start 'DD'}}</td>
     <td>{{#unless current}}{{fromnow-date stop}}{{/unless}}</td>
-    <td>&nbsp;</td>
-{{/link-to}}
-{{/each}}
+    <td>
+        {{#if current}}<span class="glyphicon glyphicon-ok"></span>{{/if}}
+        &nbsp;
+    </td>
+    {{/link-to}}
+    {{/each}}
 </table>
