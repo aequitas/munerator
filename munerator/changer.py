@@ -9,38 +9,25 @@ Options:
   --rcon-socket url     ZMQ socket for rcon commands [default: tcp://127.0.0.1:9005]
 
 """
-import json
 import logging
 from functools import partial
 
 import zmq
 from docopt import docopt
-
+from munerator.common.eventler import Eventler
 
 log = logging.getLogger(__name__)
 
 
-class Changer(object):
-
-    def __init__(self, in_socket, rcon_socket):
-        self.in_socket = in_socket
-        self.rcon_socket = rcon_socket
-
+class Changer(Eventler):
     def rcon(self, cmd):
         self.rcon_socket.send_string(cmd)
 
-    def change(self):
+    def handle_event(self, kind, data):
         """
         Apply changes based on gameplay event. Eg. player joins -> increase fraglimit
         """
-        while True:
-            kind, data = self.in_socket.recv_string().split(' ', 1)
-            log.debug('got %s: %s' % (kind, data))
-            data = json.loads(data)
 
-            self.handle_event(kind, data)
-
-    def handle_event(self, kind, data):
         if kind in ['clientbegin', 'clientdisconnect']:
             fraglimit = data.get('game_info', {}).get('fraglimit')
             num_players = data.get('game_info', {}).get('num_players')
@@ -72,5 +59,5 @@ def main(argv):
     rcon_socket = context.socket(zmq.PUSH)
     rcon_socket.connect(args['--rcon-socket'])
 
-    c = Changer(in_socket, rcon_socket)
-    c.change()
+    c = Changer(in_socket, rcon_socket=rcon_socket)
+    c.handle_events()

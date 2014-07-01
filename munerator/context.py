@@ -78,6 +78,7 @@ class GameContext(object):
                 'mapname': data.get('mapname'),
                 'gametype': data.get('gametype'),
                 'timestamp': data.get('timestamp'),
+                'fraglimit': data.get('fraglimit'),
                 'start': dateutil.parser.parse(data.get('timestamp')).strftime('%s'),
                 'current': True
             }
