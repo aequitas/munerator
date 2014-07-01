@@ -15,11 +15,13 @@ from functools import partial
 import zmq
 from docopt import docopt
 from munerator.common.eventler import Eventler
+from munerator.games import Game
 
 log = logging.getLogger(__name__)
 
 
 class Changer(Eventler):
+
     def rcon(self, cmd):
         self.rcon_socket.send_string(cmd)
 
@@ -33,10 +35,7 @@ class Changer(Eventler):
             num_players = data.get('game_info', {}).get('num_players')
 
             if all([fraglimit, num_players]):
-                # increate fraglimit by 8 for every two players joining
-                new_fraglimit = int(num_players) / 2 * 8
-                new_fraglimit = new_fraglimit = max(10, min(new_fraglimit, 30))
-
+                new_fraglimit = Game.get_fraglimit(num_players)
                 log.debug('fraglimit:%s new_fraglimit:%s' % (fraglimit, new_fraglimit))
 
                 if new_fraglimit > fraglimit:
