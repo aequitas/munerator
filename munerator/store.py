@@ -104,12 +104,13 @@ def handle_event(kind, data, rcon_socket):
             vote = -1
 
         if vote:
-            Votes.objects.create(player=player, game=game, gamemap=game.gamemap, gametype=game.gametype, vote=vote)
+            vote_obj = Votes(player=player, game=game, gamemap=game.gamemap, gametype=game.gametype, vote=vote)
             rcon_socket.send_string('say %s^7 your vote has been counted' % player.name)
+            vote_obj.save()
             log.info('saved vote')
 
         # add vote to game
-        game.update(add_to_set__votes=vote)
+        game.update(add_to_set__votes=vote_obj)
 
 
 def main(argv):

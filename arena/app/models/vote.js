@@ -4,6 +4,8 @@ var Vote = DS.Model.extend({
     vote: DS.attr('number'),
     player: DS.belongsTo('player', {async: true}),
     game: DS.belongsTo('game', {async: true}),
+    gamemap: DS.belongsTo('gamemap', {async: true}),
+    gametype: DS.attr('number'),
     _updated: DS.attr('date'),
     _created: DS.attr('date')
 });

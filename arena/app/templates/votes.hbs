@@ -2,6 +2,8 @@
 <tr>
     <th>Player</th>
     <th>Game</th>
+    <th>Map</th>
+    <th>Gametype</th>
     <th>Vote</th>
     <th>Created</th>
     <th><span {{bind-attr class="isPolling::invisible :glyphicon :glyphicon-refresh"}}></span></th>
@@ -10,6 +12,8 @@
 <tr>
     <td>{{#link-to 'player' this.player}}{{quake-name player.name}}{{/link-to}}</td>
     <td>{{#link-to 'game' this.game}}{{game.gamemap.name}} ({{game-type game.gametype}}){{/link-to}}</td>
+    <td>{{#link-to 'gamemap' this}}{{gamemap.name}}{{/link-to}}</td>
+    <td>{{game-type gametype}}</td>
     <td>{{vote}}</td>
     <td>{{format-date _created 'LLL'}}</td>
     <td>&nbsp;</td>
