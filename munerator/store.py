@@ -74,16 +74,16 @@ def handle_event(kind, data, rcon_socket):
 
     # handle game updates
     if game and (kind in ['initgame', 'shutdowngame', 'getstatus'] or new_game):
-        # reset other games current status
-        if kind == 'initgame':
-            Games.objects(current=True).update(set__current=False)
-
         # update variable data
         game.update(**{'set__%s' % k: v for k, v in data['game_info'].items() if k in game.update_fields})
 
         # set game map
         gamemap, new = Gamemaps.objects.get_or_create(name=data['game_info']['mapname'])
         game.update(set__gamemap=gamemap)
+
+        if kind == 'initgame':
+            Games.objects(current=True).update(set__current=False)
+            gamemap.update(inc__times_player=1)
 
         if data.get('extras'):
             game.options = data.get('extras')

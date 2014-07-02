@@ -1,38 +1,45 @@
 <nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Munerator</a>
-    </div>
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Munerator</a>
+        </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        {{#link-to 'players' tagName="li" href=false}}
-            {{#link-to 'players' bubbles=false}}
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                {{#link-to 'players' tagName="li" href=false}}
+                {{#link-to 'players' bubbles=false}}
                 Players
-            {{/link-to}}
-        {{/link-to}}
-        {{#link-to 'games' tagName="li" href=false}}
-            {{#link-to 'games' bubbles=false}}
+                {{/link-to}}
+                {{/link-to}}
+                {{#link-to 'games' tagName="li" href=false}}
+                {{#link-to 'games' bubbles=false}}
                 Games
-            {{/link-to}}
-        {{/link-to}}
-        {{#link-to 'votes' tagName="li" href=false}}
-            {{#link-to 'votes' bubbles=false}}
+                {{/link-to}}
+                {{/link-to}}
+                {{#link-to 'votes' tagName="li" href=false}}
+                {{#link-to 'votes' bubbles=false}}
                 Votes
-            {{/link-to}}
-        {{/link-to}}
-        {{#link-to 'gamemaps' tagName="li" href=false}}
-            {{#link-to 'gamemaps' bubbles=false}}
+                {{/link-to}}
+                {{/link-to}}
+                {{#link-to 'gamemaps' tagName="li" href=false}}
+                {{#link-to 'gamemaps' bubbles=false}}
                 Maps
-            {{/link-to}}
-        {{/link-to}}
-  </div><!-- /.container-fluid -->
+                {{/link-to}}
+                {{/link-to}}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/api/1/" target="_blank">API</a>
+                </li>
+            </ul>
+        </div>
+    </div><!-- /.container-fluid -->
 </nav>

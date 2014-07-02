@@ -17,7 +17,7 @@ export default DS.RESTAdapter.extend({
         if (Ember.isEmpty(hash.data)) {
             hash.data = {};
         }
-        hash.data.ts = new Date().getTime();
+        hash.data.ts = Math.round(new Date().getTime()/10000);
         return this._super(url, type, hash);
     }
 });

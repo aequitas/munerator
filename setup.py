@@ -8,7 +8,7 @@ def read(fname):
 
 setup(
     name='munerator',
-    version="0.11.3",
+    version="0.12.0",
     description='Manager of OpenArena battles',
     long_description=read("README.rst"),
     author='Johan Bloemberg',
@@ -27,7 +27,7 @@ setup(
         'db': [
             'mongoengine',
             'eve-mongoengine',
-            'eve==0.3',
+            'eve',
             'flask',
         ]
     },

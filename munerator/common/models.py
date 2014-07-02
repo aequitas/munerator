@@ -28,6 +28,7 @@ class Gamemaps(Document):
     gametypes = ListField(IntField())
     min_players = IntField(default=2)
     max_players = IntField(default=12)
+    times_played = IntField(default=0)
 
 
 class Votes(Document):

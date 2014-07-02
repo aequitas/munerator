@@ -25,7 +25,8 @@ requirements_dev.txt.done: $(pip) requirements_dev.txt
 
 $(pytest): requirements_dev.txt.done
 
-$(pyapp): $(pip) setup.py
+$(pyapp): $(pip) setup.py requirements.txt
+	pip install -r requirements.txt
 	pip install -e .[db]
 
 $(sphinx): $(pip)
@@ -78,4 +79,4 @@ clean_pyenv:
 	rm -rf $(pyenv) requirements_dev.txt.done
 
 clean_all: clean clean_pyenv
-	rm -rf arena/node_modules/ arena/vendor/*
+	cd arena; make clean_all

@@ -4,6 +4,7 @@
         <th>Map name</th>
         <th>Gametypes</th>
         <th>Num. players</th>
+        <th>Updated</th>
     </tr>
     {{#each}}
     {{#link-to 'gamemap' this tagName="tr" class="clickable"}}
@@ -19,6 +20,12 @@
     <td>
         {{min_players}} - {{max_players}}
     </td>
+    <td>{{format-date _created 'LLL'}}</td>
     {{/link-to}}
     {{/each}}
 </table>
+{{#if hasMore}}
+{{#bs-button clicked="getMore" type="primary" xs=true block=true}}
+    {{#if loadingMore}}Loading more...{{else}}Load more{{/if}}
+{{/bs-button}}
+{{/if}}

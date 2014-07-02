@@ -1,0 +1,1778 @@
+{
+"name": "oa_bases5",
+"min_players": "4",
+"max_players": "12",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "CMP1-dm6",
+"min_players": "2",
+"max_players": "8",
+"votes": "3",
+"gametypes": [0]
+}
+{
+"name": "el3dm1",
+"min_players": "2",
+"max_players": "8",
+"votes": "4",
+"gametypes": [0]
+}
+{
+"name": "distonic_small",
+"min_players": "2",
+"max_players": "8",
+"votes": "7",
+"gametypes": [0]
+}
+{
+"name": "bubctf1",
+"min_players": "4",
+"max_players": "12",
+"votes": "17",
+"gametypes": [0, 4, 5]
+}
+{
+"name": "bal3dm3",
+"min_players": "2",
+"max_players": "8",
+"votes": "6",
+"gametypes": [0]
+}
+{
+"name": "dm6ish",
+"min_players": "2",
+"max_players": "8",
+"votes": "1",
+"gametypes": [0]
+}
+{
+"name": "alkdm13",
+"min_players": "0",
+"max_players": "6",
+"votes": "12",
+"gametypes": [0]
+}
+{
+"name": "kaos2",
+"min_players": "4",
+"max_players": "12",
+"votes": "1",
+"gametypes": [0]
+}
+{
+"name": "leafland",
+"min_players": "4",
+"max_players": "12",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "lsdm3_v1",
+"min_players": "2",
+"max_players": "8",
+"votes": "11",
+"gametypes": [0]
+}
+{
+"name": "bastir",
+"min_players": "10",
+"max_players": "20",
+"votes": "1",
+"gametypes": [4, 5]
+}
+{
+"name": "islandctf",
+"min_players": "4",
+"max_players": "12",
+"votes": "-3",
+"gametypes": [4]
+}
+{
+"name": "LetGo_01",
+"min_players": "2",
+"max_players": "8",
+"votes": "1",
+"gametypes": [4, 5]
+}
+{
+"name": "ctf_inyard",
+"min_players": "4",
+"max_players": "12",
+"votes": "9",
+"gametypes": [4]
+}
+{
+"name": "LetGo_02",
+"min_players": "2",
+"max_players": "8",
+"votes": "7",
+"gametypes": [4, 5]
+}
+{
+"name": "oa_dm1",
+"min_players": "0",
+"max_players": "6",
+"votes": "12",
+"gametypes": [0]
+}
+{
+"name": "mictourney1a",
+"min_players": "4",
+"max_players": "12",
+"votes": "0",
+"gametypes": [0]
+}
+{
+"name": "ik3dm2",
+"min_players": "0",
+"max_players": "6",
+"votes": "10",
+"gametypes": [0]
+}
+{
+"name": "am_galmevish2",
+"min_players": "4",
+"max_players": "12",
+"votes": "12",
+"gametypes": [0]
+}
+{
+"name": "af3hex",
+"min_players": "2",
+"max_players": "8",
+"votes": "3",
+"gametypes": [0]
+}
+{
+"name": "batcula",
+"min_players": "4",
+"max_players": "12",
+"votes": "7",
+"gametypes": [0]
+}
+{
+"name": "oa_bases7",
+"min_players": "2",
+"max_players": "8",
+"votes": "13",
+"gametypes": [4, 5]
+}
+{
+"name": "apocalyptica",
+"min_players": "2",
+"max_players": "8",
+"votes": "-1",
+"gametypes": [0]
+}
+{
+"name": "oa_koth2",
+"min_players": "4",
+"max_players": "12",
+"votes": "4",
+"gametypes": [0]
+}
+{
+"name": "mlca1",
+"min_players": "4",
+"max_players": "12",
+"votes": "5",
+"gametypes": [0, 0]
+}
+{
+"name": "aedesert",
+"min_players": "4",
+"max_players": "12",
+"votes": "-4",
+"gametypes": [0]
+}
+{
+"name": "kaos",
+"min_players": "4",
+"max_players": "12",
+"votes": "6",
+"gametypes": [0]
+}
+{
+"name": "oa_bases3cl",
+"min_players": "4",
+"max_players": "12",
+"votes": "-4",
+"gametypes": [4, 4]
+}
+{
+"name": "oaN",
+"min_players": "4",
+"max_players": "12",
+"votes": "1",
+"gametypes": [0, 4, 5]
+}
+{
+"name": "ame7q3tny1",
+"min_players": "2",
+"max_players": "8",
+"votes": "11",
+"gametypes": [0]
+}
+{
+"name": "oa_minia",
+"min_players": "4",
+"max_players": "12",
+"votes": "9",
+"gametypes": [0]
+}
+{
+"name": "hal_palindrome",
+"min_players": "10",
+"max_players": "20",
+"votes": "1",
+"gametypes": [4, 5]
+}
+{
+"name": "alpha3d",
+"min_players": "4",
+"max_players": "12",
+"votes": "5",
+"gametypes": [0]
+}
+{
+"name": "bal3dm5",
+"min_players": "4",
+"max_players": "8",
+"votes": "3",
+"gametypes": [0]
+}
+{
+"name": "hydronex2",
+"min_players": "4",
+"max_players": "12",
+"votes": "9",
+"gametypes": [4, 5]
+}
+{
+"name": "cbctf1",
+"min_players": "10",
+"max_players": "20",
+"votes": "-1",
+"gametypes": [4, 5]
+}
+{
+"name": "klcurves",
+"min_players": "4",
+"max_players": "12",
+"votes": "4",
+"gametypes": [0]
+}
+{
+"name": "oa_dm4",
+"min_players": "0",
+"max_players": "6",
+"votes": "11",
+"gametypes": [0]
+}
+{
+"name": "gibtech",
+"min_players": "4",
+"max_players": "12",
+"votes": "9",
+"gametypes": [0]
+}
+{
+"name": "oa_ctf2old",
+"min_players": "0",
+"max_players": "6",
+"votes": "5",
+"gametypes": [0, 3, 4, 5]
+}
+{
+"name": "blitzkrieg3",
+"min_players": "2",
+"max_players": "8",
+"votes": "6",
+"gametypes": [0]
+}
+{
+"name": "hindustry",
+"min_players": "4",
+"max_players": "12",
+"votes": "-5",
+"gametypes": [0]
+}
+{
+"name": "oa_bases3",
+"min_players": "4",
+"max_players": "12",
+"votes": "3",
+"gametypes": [4, 4]
+}
+{
+"name": "meatpatty",
+"min_players": "4",
+"max_players": "12",
+"votes": "-3",
+"gametypes": [0]
+}
+{
+"name": "am_mckinleyish2",
+"min_players": "4",
+"max_players": "12",
+"votes": "11",
+"gametypes": [4, 5]
+}
+{
+"name": "am_underworks2",
+"min_players": "4",
+"max_players": "12",
+"votes": "2",
+"gametypes": [0]
+}
+{
+"name": "oa_dm5",
+"min_players": "2",
+"max_players": "8",
+"votes": "4",
+"gametypes": [0]
+}
+{
+"name": "jaxdm9",
+"min_players": "4",
+"max_players": "12",
+"votes": "8",
+"gametypes": [0]
+}
+{
+"name": "czest3ctf",
+"min_players": "4",
+"max_players": "12",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "oa_dm3",
+"min_players": "4",
+"max_players": "12",
+"votes": "-1",
+"gametypes": [0]
+}
+{
+"name": "czest1tourney",
+"min_players": "2",
+"max_players": "8",
+"votes": "6",
+"gametypes": [0]
+}
+{
+"name": "coloncancer",
+"min_players": "4",
+"max_players": "12",
+"votes": "-4",
+"gametypes": [0]
+}
+{
+"name": "ca-supplice",
+"min_players": "2",
+"max_players": "8",
+"votes": "-5",
+"gametypes": [0]
+}
+{
+"name": "islanddm",
+"min_players": "4",
+"max_players": "12",
+"votes": "-4",
+"gametypes": [0]
+}
+{
+"name": "ce1m7",
+"min_players": "2",
+"max_players": "8",
+"votes": "2",
+"gametypes": [0]
+}
+{
+"name": "oa_koth1",
+"min_players": "4",
+"max_players": "12",
+"votes": "6",
+"gametypes": [0]
+}
+{
+"name": "oa_ctf2",
+"min_players": "2",
+"max_players": "8",
+"votes": "8",
+"gametypes": [4, 5]
+}
+{
+"name": "oa_dm6",
+"min_players": "2",
+"max_players": "8",
+"votes": "7",
+"gametypes": [0]
+}
+{
+"name": "79drdm5_beta2",
+"min_players": "2",
+"max_players": "8",
+"votes": "8",
+"gametypes": [0, 3]
+}
+{
+"name": "geo2_AD5",
+"min_players": "4",
+"max_players": "12",
+"votes": "-3",
+"gametypes": [0]
+}
+{
+"name": "delta",
+"min_players": "4",
+"max_players": "12",
+"votes": "1",
+"gametypes": [4, 5]
+}
+{
+"name": "dantesca",
+"min_players": "2",
+"max_players": "8",
+"votes": "6",
+"gametypes": [0]
+}
+{
+"name": "alkdm14",
+"min_players": "2",
+"max_players": "8",
+"votes": "8",
+"gametypes": [0]
+}
+{
+"name": "deadmeat",
+"min_players": "4",
+"max_players": "12",
+"votes": "9",
+"gametypes": [0]
+}
+{
+"name": "kellblack",
+"min_players": "10",
+"max_players": "20",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "klzegypt",
+"min_players": "2",
+"max_players": "8",
+"votes": "9",
+"gametypes": [0]
+}
+{
+"name": "mlctf1beta",
+"min_players": "4",
+"max_players": "12",
+"votes": "16",
+"gametypes": [4, 5]
+}
+{
+"name": "13vast",
+"min_players": "4",
+"max_players": "12",
+"votes": "8",
+"gametypes": [4, 5]
+}
+{
+"name": "dubneoc",
+"min_players": "4",
+"max_players": "12",
+"votes": "2",
+"gametypes": [0]
+}
+{
+"name": "oa_pvomit",
+"min_players": "4",
+"max_players": "12",
+"votes": "4",
+"gametypes": [0]
+}
+{
+"name": "gon2",
+"min_players": "4",
+"max_players": "12",
+"votes": "6",
+"gametypes": [0]
+}
+{
+"name": "mythology",
+"min_players": "10",
+"max_players": "20",
+"votes": "2",
+"gametypes": [0]
+}
+{
+"name": "am_thornish",
+"min_players": "2",
+"max_players": "8",
+"votes": "-1",
+"gametypes": [0, 3]
+}
+{
+"name": "bal3void1",
+"min_players": "2",
+"max_players": "8",
+"votes": "-6",
+"gametypes": [0]
+}
+{
+"name": "oa_dm7",
+"min_players": "4",
+"max_players": "12",
+"votes": "5",
+"gametypes": [0]
+}
+{
+"name": "gaeldm1",
+"min_players": "0",
+"max_players": "6",
+"votes": "9",
+"gametypes": [0]
+}
+{
+"name": "geo-core",
+"min_players": "10",
+"max_players": "20",
+"votes": "4",
+"gametypes": [0]
+}
+{
+"name": "am_spacecont",
+"min_players": "2",
+"max_players": "8",
+"votes": "7",
+"gametypes": [0]
+}
+{
+"name": "AEdesert",
+"min_players": "4",
+"max_players": "12",
+"votes": "-8",
+"gametypes": [0]
+}
+{
+"name": "ctf_compromise",
+"min_players": "10",
+"max_players": "20",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "krctf02",
+"min_players": "10",
+"max_players": "20",
+"votes": "-2",
+"gametypes": [0, 4]
+}
+{
+"name": "aqua",
+"min_players": "4",
+"max_players": "12",
+"votes": "-1",
+"gametypes": [0]
+}
+{
+"name": "estatica",
+"min_players": "2",
+"max_players": "8",
+"votes": "8",
+"gametypes": [0]
+}
+{
+"name": "oa_ctf4ish",
+"min_players": "2",
+"max_players": "8",
+"votes": "13",
+"gametypes": [0, 4, 5]
+}
+{
+"name": "minima",
+"min_players": "4",
+"max_players": "12",
+"votes": "3",
+"gametypes": [0]
+}
+{
+"name": "hydronex",
+"min_players": "4",
+"max_players": "12",
+"votes": "4",
+"gametypes": [4, 5]
+}
+{
+"name": "oa_dm2",
+"min_players": "4",
+"max_players": "12",
+"votes": "-2",
+"gametypes": [0]
+}
+{
+"name": "am_lavactf",
+"min_players": "2",
+"max_players": "8",
+"votes": "5",
+"gametypes": [4]
+}
+{
+"name": "cmp1-dm5",
+"min_players": "4",
+"max_players": "12",
+"votes": "12",
+"gametypes": [0]
+}
+{
+"name": "nook3dm2pro",
+"min_players": "10",
+"max_players": "20",
+"votes": "2",
+"gametypes": [0]
+}
+{
+"name": "czest1dm",
+"min_players": "2",
+"max_players": "8",
+"votes": "1",
+"gametypes": [0]
+}
+{
+"name": "dm4ish",
+"min_players": "0",
+"max_players": "6",
+"votes": "9",
+"gametypes": [0]
+}
+{
+"name": "bal3void2",
+"min_players": "2",
+"max_players": "8",
+"votes": "-6",
+"gametypes": [0]
+}
+{
+"name": "darkmeat",
+"min_players": "2",
+"max_players": "8",
+"votes": "12",
+"gametypes": [0]
+}
+{
+"name": "ctf_gate1",
+"min_players": "2",
+"max_players": "8",
+"votes": "11",
+"gametypes": [4, 5]
+}
+{
+"name": "boxen",
+"min_players": "4",
+"max_players": "12",
+"votes": "-3",
+"gametypes": [0]
+}
+{
+"name": "charon3dm13",
+"min_players": "4",
+"max_players": "12",
+"votes": "11",
+"gametypes": [0]
+}
+{
+"name": "fan",
+"min_players": "2",
+"max_players": "8",
+"votes": "-4",
+"gametypes": [0]
+}
+{
+"name": "monolith",
+"min_players": "4",
+"max_players": "12",
+"votes": "2",
+"gametypes": [0]
+}
+{
+"name": "79drgc2",
+"min_players": "0",
+"max_players": "6",
+"votes": "13",
+"gametypes": [0]
+}
+{
+"name": "cf",
+"min_players": "10",
+"max_players": "20",
+"votes": "1",
+"gametypes": [0]
+}
+{
+"name": "XPac_BT",
+"min_players": "4",
+"max_players": "12",
+"votes": "-4",
+"gametypes": [0]
+}
+{
+"name": "jaxtourney2",
+"min_players": "4",
+"max_players": "12",
+"votes": "7",
+"gametypes": [0]
+}
+{
+"name": "czest2ctf",
+"min_players": "4",
+"max_players": "12",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "moonstone",
+"min_players": "10",
+"max_players": "20",
+"votes": "0",
+"gametypes": [4]
+}
+{
+"name": "dk_ib",
+"min_players": "4",
+"max_players": "12",
+"votes": "-3",
+"gametypes": [0]
+}
+{
+"name": "am_galmevish",
+"min_players": "4",
+"max_players": "12",
+"votes": "-3",
+"gametypes": [0]
+}
+{
+"name": "hibernia",
+"min_players": "10",
+"max_players": "20",
+"votes": "-3",
+"gametypes": [0]
+}
+{
+"name": "woa",
+"min_players": "4",
+"max_players": "12",
+"votes": "5",
+"gametypes": [0]
+}
+{
+"name": "tanq3a_dm1",
+"min_players": "4",
+"max_players": "12",
+"votes": "-4",
+"gametypes": [0]
+}
+{
+"name": "czq3p61ctf1",
+"min_players": "4",
+"max_players": "12",
+"votes": "1",
+"gametypes": [4]
+}
+{
+"name": "aggressor",
+"min_players": "0",
+"max_players": "6",
+"votes": "13",
+"gametypes": [0]
+}
+{
+"name": "quimera",
+"min_players": "4",
+"max_players": "12",
+"votes": "4",
+"gametypes": [0]
+}
+{
+"name": "reqkitchen",
+"min_players": "10",
+"max_players": "20",
+"votes": "2",
+"gametypes": [0]
+}
+{
+"name": "summer",
+"min_players": "4",
+"max_players": "12",
+"votes": "-3",
+"gametypes": [0]
+}
+{
+"name": "qfraggel3ffa",
+"min_players": "4",
+"max_players": "12",
+"votes": "2",
+"gametypes": [0]
+}
+{
+"name": "am_underworks",
+"min_players": "4",
+"max_players": "12",
+"votes": "5",
+"gametypes": [0]
+}
+{
+"name": "wtf16",
+"min_players": "4",
+"max_players": "10",
+"votes": "3",
+"gametypes": [4]
+}
+{
+"name": "oasago1",
+"min_players": "2",
+"max_players": "8",
+"votes": "3",
+"gametypes": [4, 5]
+}
+{
+"name": "shad3dm2",
+"min_players": "10",
+"max_players": "20",
+"votes": "1",
+"gametypes": [0]
+}
+{
+"name": "trajectory",
+"min_players": "4",
+"max_players": "12",
+"votes": "5",
+"gametypes": [0]
+}
+{
+"name": "am_lavactfxl",
+"min_players": "2",
+"max_players": "8",
+"votes": "8",
+"gametypes": [4, 5]
+}
+{
+"name": "ps9ctf",
+"min_players": "4",
+"max_players": "12",
+"votes": "3",
+"gametypes": [4, 5]
+}
+{
+"name": "stralegeo1",
+"min_players": "10",
+"max_players": "20",
+"votes": "4",
+"gametypes": [0]
+}
+{
+"name": "oa_bases3plus3",
+"min_players": "4",
+"max_players": "12",
+"votes": "20",
+"gametypes": [4, 5]
+}
+{
+"name": "yog3dm2",
+"min_players": "2",
+"max_players": "8",
+"votes": "8",
+"gametypes": [0]
+}
+{
+"name": "post",
+"min_players": "10",
+"max_players": "20",
+"votes": "-1",
+"gametypes": [0]
+}
+{
+"name": "syq3dm1",
+"min_players": "4",
+"max_players": "12",
+"votes": "6",
+"gametypes": [0]
+}
+{
+"name": "oa_thor",
+"min_players": "10",
+"max_players": "20",
+"votes": "-1",
+"gametypes": [4, 4, 5, 5]
+}
+{
+"name": "scorpion",
+"min_players": "4",
+"max_players": "12",
+"votes": "6",
+"gametypes": [0]
+}
+{
+"name": "q3shw19",
+"min_players": "4",
+"max_players": "12",
+"votes": "1",
+"gametypes": [0]
+}
+{
+"name": "slimefac",
+"min_players": "2",
+"max_players": "8",
+"votes": "10",
+"gametypes": [0]
+}
+{
+"name": "rjlctf2",
+"min_players": "10",
+"max_players": "20",
+"votes": "4",
+"gametypes": [4, 5]
+}
+{
+"name": "oasago2",
+"min_players": "4",
+"max_players": "12",
+"votes": "1",
+"gametypes": [4, 5]
+}
+{
+"name": "oa_spirit3",
+"min_players": "4",
+"max_players": "12",
+"votes": "10",
+"gametypes": [4, 4, 5, 5]
+}
+{
+"name": "sokar3dm5",
+"min_players": "4",
+"max_players": "12",
+"votes": "5",
+"gametypes": [0]
+}
+{
+"name": "pxlfan",
+"min_players": "2",
+"max_players": "8",
+"votes": "-2",
+"gametypes": [0]
+}
+{
+"name": "q3dm6ish",
+"min_players": "4",
+"max_players": "12",
+"votes": "5",
+"gametypes": [0]
+}
+{
+"name": "sumctf1",
+"min_players": "4",
+"max_players": "12",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "qbeast",
+"min_players": "2",
+"max_players": "8",
+"votes": "-3",
+"gametypes": [0]
+}
+{
+"name": "plutonians",
+"min_players": "2",
+"max_players": "8",
+"votes": "-1",
+"gametypes": [0]
+}
+{
+"name": "ps37ctf2",
+"min_players": "4",
+"max_players": "12",
+"votes": "10",
+"gametypes": [3, 4]
+}
+{
+"name": "redmeat",
+"min_players": "4",
+"max_players": "12",
+"votes": "8",
+"gametypes": [0]
+}
+{
+"name": "oa_bases3p3ta",
+"min_players": "2",
+"max_players": "8",
+"votes": "12",
+"gametypes": [4, 5]
+}
+{
+"name": "q3dade12",
+"min_players": "4",
+"max_players": "12",
+"votes": "5",
+"gametypes": [0]
+}
+{
+"name": "pul1ctf",
+"min_players": "4",
+"max_players": "12",
+"votes": "14",
+"gametypes": [4, 5]
+}
+{
+"name": "ps37ctf",
+"min_players": "2",
+"max_players": "8",
+"votes": "13",
+"gametypes": [4, 5]
+}
+{
+"name": "suspended",
+"min_players": "4",
+"max_players": "12",
+"votes": "-3",
+"gametypes": [0]
+}
+{
+"name": "quintdm3",
+"min_players": "4",
+"max_players": "12",
+"votes": "2",
+"gametypes": [0]
+}
+{
+"name": "oxodm4",
+"min_players": "10",
+"max_players": "20",
+"votes": "-2",
+"gametypes": [0]
+}
+{
+"name": "SpilGames",
+"min_players": "4",
+"max_players": "12",
+"votes": "1",
+"gametypes": [0, 3]
+}
+{
+"name": "winter",
+"min_players": "10",
+"max_players": "20",
+"votes": "-2",
+"gametypes": [0]
+}
+{
+"name": "pul1duel-oa",
+"min_players": "2",
+"max_players": "8",
+"votes": "3",
+"gametypes": [0]
+}
+{
+"name": "rota3dm2",
+"min_players": "4",
+"max_players": "12",
+"votes": "6",
+"gametypes": [0]
+}
+{
+"name": "wvwq3dm7",
+"min_players": "4",
+"max_players": "12",
+"votes": "0",
+"gametypes": [0]
+}
+{
+"name": "pukka3dm2",
+"min_players": "4",
+"max_players": "12",
+"votes": "7",
+"gametypes": [0]
+}
+{
+"name": "pukka3tourney2",
+"min_players": "4",
+"max_players": "12",
+"votes": "7",
+"gametypes": [0]
+}
+{
+"name": "sokar3d",
+"min_players": "4",
+"max_players": "12",
+"votes": "3",
+"gametypes": [0]
+}
+{
+"name": "pukka3dm1",
+"min_players": "4",
+"max_players": "12",
+"votes": "4",
+"gametypes": [0]
+}
+{
+"name": "pom_bots",
+"min_players": "4",
+"max_players": "12",
+"votes": "7",
+"gametypes": [0]
+}
+{
+"name": "wrackdm17",
+"min_players": "2",
+"max_players": "8",
+"votes": "12",
+"gametypes": [0]
+}
+{
+"name": "plduel1",
+"min_players": "10",
+"max_players": "20",
+"votes": "6",
+"gametypes": [0]
+}
+{
+"name": "oa_rpg3dm2",
+"min_players": "0",
+"max_players": "6",
+"votes": "19",
+"gametypes": [0]
+}
+{
+"name": "whitemeat",
+"min_players": "4",
+"max_players": "12",
+"votes": "3",
+"gametypes": [0]
+}
+{
+"name": "platypus",
+"min_players": "4",
+"max_players": "12",
+"votes": "4",
+"gametypes": [0]
+}
+{
+"name": "wvwq3dm4",
+"min_players": "4",
+"max_players": "12",
+"votes": "0",
+"gametypes": [0]
+}
+{
+"name": "scorpiontourney",
+"min_players": "4",
+"max_players": "12",
+"votes": "1",
+"gametypes": [0]
+}
+{
+"name": "q3ctf4+",
+"min_players": "4",
+"max_players": "12",
+"votes": "1",
+"gametypes": [4]
+}
+{
+"name": "XPac_BTIBSP.",
+"min_players": "0",
+"max_players": "64",
+"votes": "0",
+"gametypes": []
+}
+{
+"name": "teamtemple_q3a",
+"min_players": "4",
+"max_players": "12",
+"votes": "5",
+"gametypes": [3, 4, 5]
+}
+{
+"name": "oa_reptctf11",
+"min_players": "2",
+"max_players": "8",
+"votes": "8",
+"gametypes": [4, 5]
+}
+{
+"name": "Bal3dm4",
+"min_players": "2",
+"max_players": "8",
+"votes": "7",
+"gametypes": [0]
+}
+{
+"name": "handsofgod",
+"min_players": "0",
+"max_players": "6",
+"votes": "9",
+"gametypes": [0]
+}
+{
+"name": "17+",
+"min_players": "4",
+"max_players": "12",
+"votes": "2",
+"gametypes": [0, 3]
+}
+{
+"name": "sparth",
+"min_players": "2",
+"max_players": "8",
+"votes": "11",
+"gametypes": [0]
+}
+{
+"name": "sleekgrinder",
+"min_players": "4",
+"max_players": "12",
+"votes": "5",
+"gametypes": [0]
+}
+{
+"name": "qfraggel3tdm",
+"min_players": "4",
+"max_players": "12",
+"votes": "1",
+"gametypes": [3]
+}
+{
+"name": "q3arc1",
+"min_players": "4",
+"max_players": "12",
+"votes": "6",
+"gametypes": [0]
+}
+{
+"name": "oa_shouse",
+"min_players": "10",
+"max_players": "20",
+"votes": "-2",
+"gametypes": [0, 0]
+}
+{
+"name": "am_lavaarena",
+"min_players": "2",
+"max_players": "8",
+"votes": "-3",
+"gametypes": [0]
+}
+{
+"name": "pasctf3",
+"min_players": "4",
+"max_players": "12",
+"votes": "0",
+"gametypes": [4]
+}
+{
+"name": "spilgames",
+"min_players": "4",
+"max_players": "12",
+"votes": "5",
+"gametypes": [0, 3]
+}
+{
+"name": "oa_shine",
+"min_players": "2",
+"max_players": "8",
+"votes": "3",
+"gametypes": [0]
+}
+{
+"name": "wtf35-grenades",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf43",
+"min_players": "4",
+"max_players": "10",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "wtf14",
+"min_players": "4",
+"max_players": "10",
+"votes": "3",
+"gametypes": [4]
+}
+{
+"name": "wtf27",
+"min_players": "4",
+"max_players": "10",
+"votes": "3",
+"gametypes": [4]
+}
+{
+"name": "wtf35-grayscale",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf29",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf35-gauntlet",
+"min_players": "4",
+"max_players": "10",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "wtf30",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "wtf01-pro",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [0, 4]
+}
+{
+"name": "wtf45",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf31",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "wtf46",
+"min_players": "4",
+"max_players": "10",
+"votes": "1",
+"gametypes": [4]
+}
+{
+"name": "wtf32",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "wtf35-bfg",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf47",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [0, 4]
+}
+{
+"name": "wtf32-day",
+"min_players": "4",
+"max_players": "10",
+"votes": "1",
+"gametypes": [4]
+}
+{
+"name": "wtf35-shotgun",
+"min_players": "4",
+"max_players": "10",
+"votes": "1",
+"gametypes": [4]
+}
+{
+"name": "wtf48",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf35",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "wtf25-pro",
+"min_players": "4",
+"max_players": "10",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "wtf01",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "17",
+"min_players": "0",
+"max_players": "64",
+"votes": "0",
+"gametypes": [4]
+}
+{
+"name": "wtf44",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "q3ctf4",
+"min_players": "0",
+"max_players": "64",
+"votes": "0",
+"gametypes": [4]
+}
+{
+"name": "wtf15",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf17",
+"min_players": "4",
+"max_players": "10",
+"votes": "3",
+"gametypes": [4]
+}
+{
+"name": "wtf19",
+"min_players": "4",
+"max_players": "10",
+"votes": "-3",
+"gametypes": [4]
+}
+{
+"name": "wtf21",
+"min_players": "4",
+"max_players": "10",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "wtf25",
+"min_players": "4",
+"max_players": "10",
+"votes": "3",
+"gametypes": [4]
+}
+{
+"name": "wtf22",
+"min_players": "4",
+"max_players": "10",
+"votes": "0",
+"gametypes": [4]
+}
+{
+"name": "wtf13",
+"min_players": "4",
+"max_players": "10",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "wtf09",
+"min_players": "4",
+"max_players": "10",
+"votes": "4",
+"gametypes": [4]
+}
+{
+"name": "wtf40",
+"min_players": "4",
+"max_players": "10",
+"votes": "7",
+"gametypes": [4]
+}
+{
+"name": "wtf03",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf37",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "wtf08-pro",
+"min_players": "4",
+"max_players": "10",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "wtf07-pro",
+"min_players": "4",
+"max_players": "10",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "wtf04-pro",
+"min_players": "4",
+"max_players": "10",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "wtf02-pro",
+"min_players": "4",
+"max_players": "10",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "wtf33-pro",
+"min_players": "4",
+"max_players": "10",
+"votes": "1",
+"gametypes": [4]
+}
+{
+"name": "wtf04",
+"min_players": "4",
+"max_players": "10",
+"votes": "0",
+"gametypes": []
+}
+{
+"name": "wtf02",
+"min_players": "4",
+"max_players": "10",
+"votes": "3",
+"gametypes": [4]
+}
+{
+"name": "wtf05",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": []
+}
+{
+"name": "wtf38",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "17+CTF",
+"min_players": "4",
+"max_players": "12",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "wtf06",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "wtf07",
+"min_players": "4",
+"max_players": "10",
+"votes": "0",
+"gametypes": [4]
+}
+{
+"name": "wtf24",
+"min_players": "4",
+"max_players": "10",
+"votes": "1",
+"gametypes": [4]
+}
+{
+"name": "wtf08",
+"min_players": "4",
+"max_players": "10",
+"votes": "0",
+"gametypes": [4]
+}
+{
+"name": "wtf39",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "wtf41",
+"min_players": "4",
+"max_players": "10",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "wtf34",
+"min_players": "4",
+"max_players": "10",
+"votes": "3",
+"gametypes": [4]
+}
+{
+"name": "wtf42",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf10",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf36",
+"min_players": "4",
+"max_players": "10",
+"votes": "3",
+"gametypes": [4]
+}
+{
+"name": "wtf11",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf12",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf48-pro",
+"min_players": "4",
+"max_players": "10",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "wtf37-pro",
+"min_players": "4",
+"max_players": "10",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "wtf35-ultra",
+"min_players": "4",
+"max_players": "10",
+"votes": "1",
+"gametypes": [4]
+}
+{
+"name": "wtf35-rocket",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "wtf35-machine",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf35-plasmagun",
+"min_players": "4",
+"max_players": "10",
+"votes": "-1",
+"gametypes": [4]
+}
+{
+"name": "wtf28",
+"min_players": "4",
+"max_players": "10",
+"votes": "4",
+"gametypes": [4]
+}
+{
+"name": "wtf35-lightning",
+"min_players": "4",
+"max_players": "10",
+"votes": "-2",
+"gametypes": [4]
+}
+{
+"name": "wtf20",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "wtf26",
+"min_players": "4",
+"max_players": "10",
+"votes": "3",
+"gametypes": [4]
+}
+{
+"name": "wtf23",
+"min_players": "4",
+"max_players": "10",
+"votes": "3",
+"gametypes": [0, 4]
+}
+{
+"name": "wtf18",
+"min_players": "4",
+"max_players": "10",
+"votes": "2",
+"gametypes": [4]
+}
+{
+"name": "wtf33",
+"min_players": "4",
+"max_players": "10",
+"votes": "6",
+"gametypes": [4]
+}
