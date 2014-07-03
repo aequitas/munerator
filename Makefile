@@ -25,9 +25,8 @@ requirements_dev.txt.done: $(pip) requirements_dev.txt
 
 $(pytest): requirements_dev.txt.done
 
-$(pyapp): $(pip) setup.py requirements.txt
-	pip install -r requirements.txt
-	pip install -e .[db]
+$(pyapp): $(pip) setup.py
+	pip install --process-dependency-links -e .[db]
 
 $(sphinx): $(pip)
 	pip install -r docs/requirements.txt
@@ -45,9 +44,6 @@ jstest:
 	cd arena; make test
 
 test: jstest pytest
-
-install: $(pip) setup.py munerator/static
-	pip install .[db]
 
 # building/dist
 

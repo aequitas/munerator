@@ -1,2 +1,2 @@
 -e git://github.com/hellerstanislav/eve-mongoengine.git@01e983b0dcf80b95cdbee799e78405559cc6cca7#egg=eve_mongoengine
--e git://github.com/aequitas/eve.git@019800db83cda2a27cbd3b3f6ce6cd52c7993d5c#egg=eve
+-e git://github.com/aequitas/eve.git@25fc50e34ddc88ecd7ed14bd77124314f70622da#egg=eve

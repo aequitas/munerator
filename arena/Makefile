@@ -7,6 +7,7 @@ all: build
 
 $(ember): package.json
 	npm install .
+	touch $@
 
 vendor/.done: bower.json
 	$(bower) install --config.interactive=false

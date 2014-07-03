@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+import os
 
 
 def read(fname):
@@ -8,7 +9,7 @@ def read(fname):
 
 setup(
     name='munerator',
-    version="0.12.0",
+    version="0.12.1",
     description='Manager of OpenArena battles',
     long_description=read("README.rst"),
     author='Johan Bloemberg',
@@ -26,11 +27,16 @@ setup(
     extras_require={
         'db': [
             'mongoengine',
-            'eve-mongoengine',
-            'eve',
+            'eve_mongoengine==0.0.6-dev',
+            'eve==0.4-dev',
             'flask',
         ]
     },
+    dependency_links=[
+        'https://github.com/hellerstanislav/eve-mongoengine/tarball/01e983b0dcf80b95cdbee799e78405559cc6cca7'
+        '#egg=eve_mongoengine-0.0.6-dev',
+        'https://github.com/aequitas/eve/tarball/25fc50e34ddc88ecd7ed14bd77124314f70622da#egg=eve-0.4-dev'
+    ],
     packages=find_packages(),
     license=read("LICENSE"),
     include_package_data=True,
@@ -49,4 +55,7 @@ setup(
             "munerator = munerator:main",
         ]
     },
+    data_files=[
+        ('static', [os.path.join(dp, f) for dp, dn, filenames in os.walk('munerator/static') for f in filenames]),
+    ],
 )
