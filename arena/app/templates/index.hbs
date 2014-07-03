@@ -11,7 +11,9 @@
     <div class="col-md-6">
         <span {{bind-attr class="isPolling::invisible :glyphicon :glyphicon-refresh"}}></span>
         <p>Current game:</p>
+        <img {{bind-attr src=gamemap.levelshot}} alt="levelshot" class="img-thumbnail" width="128" height="128">
         <p>{{mapname}} - {{game-type gametype}}</p>
+        <p>Started: {{fromnow-date start 'DD'}}</p>
         <p>players:</p>
         <ul>
             {{#each players}}

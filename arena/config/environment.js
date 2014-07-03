@@ -29,7 +29,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    // ENV.api_endpoint = 'http://quake.brensen.com';
+    ENV.api_endpoint = 'http://quake.brensen.com';
   }
 
   if (environment === 'production') {

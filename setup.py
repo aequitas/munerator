@@ -9,7 +9,7 @@ def read(fname):
 
 setup(
     name='munerator',
-    version="0.12.1",
+    version="0.12.2",
     description='Manager of OpenArena battles',
     long_description=read("README.rst"),
     author='Johan Bloemberg',
