@@ -54,7 +54,7 @@ $(arena):
 wheel: $(arena) setup.py
 	python setup.py -v bdist_wheel
 
-upload: clean test $(arena) setup.py
+upload: test $(arena) setup.py
 	python setup.py sdist upload
 
 docs/_build: $(sphinx) $(pyapp)

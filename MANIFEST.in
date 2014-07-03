@@ -1,4 +1,4 @@
 include *.rst LICENSE
 include tests/*.txt
 include tests/*.log
-recursive-include munerator/static *
+recursive-include arena/dist *
