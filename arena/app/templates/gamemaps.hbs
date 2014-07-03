@@ -25,7 +25,7 @@
     {{/each}}
 </table>
 {{#if hasMore}}
-{{#bs-button clicked="getMore" type="primary" xs=true block=true}}
+<button {{action 'getMore'}} type="button" class="btn btn-primary btn-xs btn-block">
     {{#if loadingMore}}Loading more...{{else}}Load more{{/if}}
-{{/bs-button}}
+</button>
 {{/if}}
