@@ -42,7 +42,7 @@ class Votes(Document):
 class Games(Document):
     timestamp = StringField()
     mapname = StringField()
-    gamemap = ReferenceField(Gamemaps)
+    gamemap = ReferenceField('Gamemaps')
     gametype = IntField()
     players = ListField(ReferenceField('Players'))
     votes = ListField(ReferenceField('Votes'))

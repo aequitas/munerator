@@ -126,7 +126,6 @@ def main(argv):
     context = zmq.Context()
     in_socket = context.socket(zmq.SUB)
     in_socket.connect(args['--context-socket'])
-    in_socket.setsockopt(zmq.SUBSCRIBE, '')
 
     # apply message filters
     filters = [
