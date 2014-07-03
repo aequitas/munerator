@@ -1,0 +1,40 @@
+<div class="well-sm well">
+    <strong>Playlist generation</strong><br>
+    Playlist is generated every time a player joins/leaves. Maps are ordered on score. Score is based on current number of player, current player votes for maps and map last played time. Highest scoring game will be played next.
+</div>
+<table class="table">
+    <tr>
+        <th>&nbsp;</th>
+        <th>Map name</th>
+        <th>Gametypes</th>
+        <th>Votes</th>
+        <th>Score</th>
+        <th><span {{bind-attr class="isPolling::invisible :glyphicon :glyphicon-refresh"}}></span></th>
+    </tr>
+    {{#each}}
+    <tr>
+        <td>
+            <img {{bind-attr src=gamemap.levelshot}} alt="levelshot" class="img-thumbnail" width="64" height="64">
+        </td>
+        <td>{{#link-to 'gamemap' gamemap}}{{gamemap.name}}{{/link-to}}</td>
+        <td>
+            <ul>
+                {{#each gamemap.gametypes}}
+                <li>{{game-type this}}</li>
+                {{/each}}
+            </ul>
+        </td>
+        <td>
+            <ul>
+                {{#each votes}}
+                <li>{{player.name}}</li>
+                {{/each}}
+            </ul>
+        </td>
+        <td>{{score}}</td>
+        <td>
+            &nbsp;
+        </td>
+    </tr>
+    {{/each}}
+</table>

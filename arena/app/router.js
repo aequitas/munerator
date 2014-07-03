@@ -16,6 +16,7 @@ Router.map(function() {
 
   this.resource('votes');
 
+  this.route('playlist');
 });
 
 export default Router;

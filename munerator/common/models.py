@@ -55,3 +55,9 @@ class Games(Document):
 
     # fields allowed to be updated by context info
     update_fields = ['mapname', 'gametype', 'state', 'start', 'stop', 'num_players', 'current']
+
+
+class PlaylistItems(Document):
+    gamemap = ReferenceField('Gamemaps')
+    votes = ListField(ReferenceField('Votes'))
+    score = IntField(default=0)

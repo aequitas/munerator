@@ -17,7 +17,7 @@ from docopt import docopt
 from eve import Eve
 from eve_mongoengine import EveMongoengine
 from flask import current_app
-from munerator.common.models import Games, Players, Votes, Gamemaps
+from munerator.common.models import Games, Players, Votes, Gamemaps, PlaylistItems
 
 log = logging.getLogger(__name__)
 
@@ -51,7 +51,7 @@ def main(argv):
     ext = EveMongoengine(app)
 
     # add models
-    ext.add_model([Players, Games, Votes, Gamemaps], resource_methods=['GET'])
+    ext.add_model([Players, Games, Votes, Gamemaps, PlaylistItems], resource_methods=['GET'])
 
     # register other urls
     app.route('/')(root)
