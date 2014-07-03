@@ -1,5 +1,3 @@
-.PHONY: all test clean clean_all pytest embertest
-
 USE_WHEEL ?= 1
 WORKON_HOME ?= env
 VIRTUAL_ENV ?= $(WORKON_HOME)/munerator
@@ -11,8 +9,11 @@ pytest = $(pyenv)/bin/py.test
 sphinx = $(pyenv)/bin/sphinx
 
 pyapp = $(pyenv)/bin/munerator
+arena = arena/dist
 
-all: munerator/static $(pyapp)
+all: $(arena) $(pyapp)
+
+.PHONY: all test clean clean_all pytest embertest $(arena)
 
 # environment
 
@@ -47,16 +48,13 @@ test: jstest pytest
 
 # building/dist
 
-munerator/static:
-	rm -r $@ || true
-	mkdir -p $@
-	cd arena; make build
-	cp -R arena/dist/* $@
+$(arena):
+	cd arena; make dist
 
-wheel: munerator/static setup.py
+wheel: $(arena) setup.py
 	python setup.py -v bdist_wheel
 
-upload: clean test munerator/static setup.py
+upload: clean test $(arena) setup.py
 	python setup.py sdist upload
 
 docs/_build: $(sphinx) $(pyapp)

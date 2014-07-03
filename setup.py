@@ -1,5 +1,41 @@
+__version__ = '0.12.10'
 from setuptools import setup, find_packages
 import os
+import fnmatch
+import glob
+
+
+# from: https://wiki.python.org/moin/Distutils/Tutorial
+def opj(*args):
+    path = os.path.join(*args)
+    return os.path.normpath(path)
+
+
+def find_data_files(srcdir, *wildcards, **kw):
+    # get a list of all files under the srcdir matching wildcards,
+    # returned in a format to be used for install_data
+    def walk_helper(arg, dirname, files):
+        names = []
+        lst, wildcards = arg
+        for wc in wildcards:
+            wc_name = opj(dirname, wc)
+            for f in files:
+                filename = opj(dirname, f)
+
+                if fnmatch.fnmatch(filename, wc_name) and not os.path.isdir(filename):
+                    names.append(filename)
+        if names:
+            lst.append((dirname.replace(srcdir, kw.get('prefix', dirname)), names))
+
+    file_list = []
+    recursive = kw.get('recursive', True)
+    if recursive:
+        os.path.walk(srcdir, walk_helper, (file_list, wildcards))
+    else:
+        walk_helper((file_list, wildcards),
+                    srcdir,
+                    [os.path.basename(f) for f in glob.glob(opj(srcdir, '*'))])
+    return file_list
 
 
 def read(fname):
@@ -7,9 +43,10 @@ def read(fname):
         content = fp.read()
     return content
 
+
 setup(
     name='munerator',
-    version="0.12.5",
+    version=__version__,
     description='Manager of OpenArena battles',
     long_description=read("README.rst"),
     author='Johan Bloemberg',
@@ -55,7 +92,5 @@ setup(
             "munerator = munerator:main",
         ]
     },
-    data_files=[
-        ('static', [os.path.join(dp, f) for dp, dn, filenames in os.walk('munerator/static') for f in filenames]),
-    ],
+    data_files=find_data_files('arena/dist', '*', recursive=True, prefix='static'),
 )
