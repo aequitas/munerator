@@ -83,6 +83,7 @@ def handle_line(ts, line, out_socket):
 
 
 def eventstream(in_socket, out_socket):
+    handled = 0
     while True:
         msg = in_socket.recv_string()
         ts, line = msg.split(' ', 1)
@@ -90,6 +91,10 @@ def eventstream(in_socket, out_socket):
         log.debug('translating: ' + line)
 
         handle_line(ts, line, out_socket)
+
+        handled += 1
+        if not handled % 100:
+            log.debug('handled another 100 messages (total %s)' % handled)
 
 
 def main(argv):

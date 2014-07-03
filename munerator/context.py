@@ -85,7 +85,7 @@ class GameContext(object):
             if kind == 'initgame':
                 self.gameinfo.update({
                     'num_players': 0,
-                    'stop': None
+                    'stop': ''
                 })
                 self.clients = {}
         elif kind in ['clientuserinfochanged', 'clientstatus']:
@@ -128,7 +128,7 @@ class GameContext(object):
                 pass
         elif kind == 'shutdowngame':
             # add stop time
-            self.gameinfo['stop'] = int(time.time())
+            self.gameinfo['stop'] = str(int(time.time()))
             self.gameinfo['current'] = False
 
             # reset current context

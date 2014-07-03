@@ -31,6 +31,8 @@ def handle_events(in_socket, rcon_socket):
     rcon_socket.send_string('status')
     rcon_socket.send_string('getstatus')
 
+    handled = 0
+
     log.info('listening for game events')
     while True:
         msg = in_socket.recv_string()
@@ -42,7 +44,11 @@ def handle_events(in_socket, rcon_socket):
         try:
             handle_event(kind, data, rcon_socket)
         except:
-            log.exception('error in event handling')
+            log.exception('error in event handling %s' % msg)
+
+        handled += 1
+        if not handled % 100:
+            log.info('handled another 100 messages (total %s)' % handled)
 
 
 def handle_event(kind, data, rcon_socket):
@@ -57,6 +63,9 @@ def handle_event(kind, data, rcon_socket):
     player, new_player = Players.objects.get_or_create(guid=player_id) if player_id else (None, None)
     game, new_game = Games.objects.get_or_create(timestamp=timestamp) if timestamp else (None, None)
 
+    if new_player:
+        log.info('added new player %s' % data.get('client_info').get('name'))
+
     # handle player updates
     if player and kind in ['clientbegin', 'clientdisconnect', 'clientuserinfochanged', 'playerscore', 'clientstatus']:
         # on name change, store previous name
@@ -70,7 +79,7 @@ def handle_event(kind, data, rcon_socket):
         if game:
             game.update(add_to_set__players=player)
 
-        log.info('updated player')
+        log.debug('updated player')
 
     # handle game updates
     if game and (kind in ['initgame', 'shutdowngame', 'getstatus'] or new_game):
@@ -83,7 +92,8 @@ def handle_event(kind, data, rcon_socket):
 
         # set game map
         gamemap, new = Gamemaps.objects.get_or_create(name=data['game_info']['mapname'])
-        log.debug('gamemap: %s, new: %s' % (gamemap, new))
+        if new:
+            log.info('added map %s' % gamemap.name)
         game.update(set__gamemap=gamemap)
 
         # update map played times
@@ -95,7 +105,7 @@ def handle_event(kind, data, rcon_socket):
             game.options = data.get('extras')
             game.save()
 
-        log.info('updated game')
+        log.debug('updated game')
 
         # reset players online status just to be sure
         Players.objects(Q(online=True) | Q(score__ne=None) | Q(team__ne=None)).update(
@@ -115,8 +125,8 @@ def handle_event(kind, data, rcon_socket):
             vote_obj.save()
             log.info('saved vote')
 
-        # add vote to game
-        game.update(add_to_set__votes=vote_obj)
+            # add vote to game
+            game.update(add_to_set__votes=vote_obj)
 
 
 def main(argv):
