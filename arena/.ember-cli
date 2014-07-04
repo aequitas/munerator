@@ -3,6 +3,6 @@
   "host": "0.0.0.0",
   "live-reload": true,
   "environment": "development",
-  "newestVersion": "0.0.37",
-  "lastVersionCheck": 1403905597681
+  "newestVersion": "0.0.39",
+  "lastVersionCheck": 1404499384642
 }

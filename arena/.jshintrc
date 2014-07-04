@@ -1,9 +1,9 @@
 {
   "predef": {
+    "moment": true,
     "document": true,
     "window": true,
-    "ArenaENV": true,
-    "moment": true
+    "ArenaENV": true
   },
   "browser" : true,
   "boss" : true,

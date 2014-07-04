@@ -7,11 +7,11 @@ js_files = $(find app config -name "*.js")
 
 all: build
 
-$(ember): package.json
+node_modules $(ember) $(bower): package.json
 	npm install .
 	touch $@
 
-vendor: bower.json
+vendor: bower.json $(bower)
 	$(bower) install --config.interactive=false
 	touch $@
 

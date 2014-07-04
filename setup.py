@@ -1,4 +1,4 @@
-__version__ = '0.12.17'
+__version__ = '0.13.0'
 from setuptools import setup, find_packages
 import os
 import fnmatch
@@ -65,14 +65,14 @@ setup(
         'db': [
             'mongoengine',
             'eve_mongoengine==0.0.6-dev',
-            'eve==0.4-dev',
+            'eve==0.5-dev',
             'flask',
         ]
     },
     dependency_links=[
         'https://github.com/hellerstanislav/eve-mongoengine/tarball/01e983b0dcf80b95cdbee799e78405559cc6cca7'
         '#egg=eve_mongoengine-0.0.6-dev',
-        'https://github.com/aequitas/eve/tarball/25fc50e34ddc88ecd7ed14bd77124314f70622da#egg=eve-0.4-dev'
+        'https://github.com/nicolaiarocci/eve/tarball/c89f2b35a852a0d08b4a48d2c53bf759958125f3#egg=eve-0.5-dev'
     ],
     packages=find_packages(),
     license=read("LICENSE"),

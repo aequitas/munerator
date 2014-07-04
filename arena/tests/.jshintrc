@@ -1,11 +1,10 @@
 {
   "predef": [
+    "moment",
     "document",
     "window",
     "location",
     "setTimeout",
-    "Ember",
-    "Em",
     "$",
     "QUnit",
     "define",
@@ -36,6 +35,7 @@
     "click",
     "keyEvent",
     "find",
+    "findWithAssert",
     "wait",
     "DS",
     "keyEvent",
@@ -44,12 +44,11 @@
     "andThen",
     "currentURL",
     "currentPath",
-    "currentRouteName",
-    "moment"
+    "currentRouteName"
   ],
-  "node" : false,
-  "browser" : false,
-  "boss" : true,
+  "node": false,
+  "browser": false,
+  "boss": true,
   "curly": false,
   "debug": false,
   "devel": false,

@@ -2,6 +2,7 @@
 
 var Application = require('arena/app')['default'];
 var Router = require('arena/router')['default'];
+import Ember from 'ember';
 
 export default function startApp(attrs) {
   var App;
