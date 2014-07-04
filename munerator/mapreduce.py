@@ -6,6 +6,7 @@ from munerator.common.database import setup_eve_mongoengine
 
 import logging
 import datetime
+from bson.objectid import ObjectId
 
 log = logging.getLogger(__name__)
 
@@ -28,6 +29,9 @@ def populate_playlist(db):
         fields='_id'
     )
     map_ids = [m['_id'] for m in maps]
+
+    # add munerator player to always have default vote
+    players.append(ObjectId("53b71b5e17bb2e6473d99a64"))
 
     db.votes.aggregate([
         {
