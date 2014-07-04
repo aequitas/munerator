@@ -7,6 +7,8 @@ var Gamemap = DS.Model.extend({
     gametypes: DS.attr('raw'),
     min_players: DS.attr('number'),
     max_players: DS.attr('number'),
+    times_played: DS.attr('number'),
+    last_played: DS.attr('date'),
     _updated: DS.attr('date'),
     _created: DS.attr('date')
 });

@@ -1,6 +1,6 @@
 __all__ = ['Players', 'Games', 'Votes']
 
-from mongoengine import (BooleanField, Document, IntField, DictField,
+from mongoengine import (BooleanField, Document, IntField, DictField, DateTimeField,
                          ListField, ReferenceField, StringField, URLField)
 
 
@@ -29,6 +29,7 @@ class Gamemaps(Document):
     min_players = IntField(default=2)
     max_players = IntField(default=12)
     times_played = IntField(default=0)
+    last_played = DateTimeField()
 
 
 class Votes(Document):

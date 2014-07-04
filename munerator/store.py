@@ -12,6 +12,7 @@ Options:
 """
 import json
 import logging
+import datetime
 from functools import partial
 
 import zmq
@@ -97,8 +98,9 @@ def handle_event(kind, data, rcon_socket):
         game.update(set__gamemap=gamemap)
 
         # update map played times
-        if kind == 'initgame':
-            gamemap.update(inc__times_played=1)
+        if kind == 'shutdowngame':
+            if game.players:
+                gamemap.update(inc__times_played=1, set__last_played=datetime.datetime.now())
 
         # store game extra settings
         if data.get('extras'):

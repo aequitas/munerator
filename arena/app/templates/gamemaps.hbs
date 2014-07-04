@@ -4,7 +4,8 @@
         <th>Map name</th>
         <th>Gametypes</th>
         <th>Num. players</th>
-        <th>Updated</th>
+        <th>Last played</th>
+        <th>Times played</th>
     </tr>
     {{#each}}
     {{#link-to 'gamemap' this tagName="tr" class="clickable"}}
@@ -20,7 +21,8 @@
     <td>
         {{min_players}} - {{max_players}}
     </td>
-    <td>{{format-date _created 'LLL'}}</td>
+    <td>{{format-date last_played 'LLL'}}</td>
+    <td>{{times_played}}</td>
     {{/link-to}}
     {{/each}}
 </table>
