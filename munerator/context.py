@@ -66,8 +66,14 @@ class GameContext(object):
 
         # for some events we need to translate player_name into client_id
         if not client_id and kind in ['say', 'killer', 'killed']:
+            if data.get('player_name') == '<world>':
+                player_name = data.get('killed_name')
+            else:
+                player_name = data.get('player_name')
+
             client_id = get_dict_value_from_key_if_key_value(
-                self.clients, 'client_id', 'name', data.get('player_name'))
+                self.clients, 'client_id', 'name', player_name)
+
             data['client_id'] = client_id
 
         if client_id and client_id not in self.clients:
