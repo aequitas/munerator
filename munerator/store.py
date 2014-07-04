@@ -151,7 +151,6 @@ def main(argv):
 
     # setup database
     host, port = args['--database'].split(':')
-
     setup_eve_mongoengine(host, port)
 
     # start event loop

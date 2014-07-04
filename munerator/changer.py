@@ -15,7 +15,9 @@ from functools import partial
 import zmq
 from docopt import docopt
 from munerator.common.eventler import Eventler
+from munerator.common.database import setup_eve_mongoengine
 from munerator.games import Game
+from munerator.mapreduce import populate_playlist
 
 log = logging.getLogger(__name__)
 
@@ -31,16 +33,21 @@ class Changer(Eventler):
         """
 
         if kind in ['clientbegin', 'clientdisconnect']:
-            fraglimit = data.get('game_info', {}).get('fraglimit')
-            num_players = data.get('game_info', {}).get('num_players')
+            self.update_fraglimit(data)
+            if hasattr(self, 'db'):
+                populate_playlist(self.db)
 
-            if all([fraglimit, num_players]):
-                new_fraglimit = Game.get_fraglimit(num_players)
-                log.debug('fraglimit:%s new_fraglimit:%s' % (fraglimit, new_fraglimit))
+    def update_fraglimit(self, data):
+        fraglimit = data.get('game_info', {}).get('fraglimit')
+        num_players = data.get('game_info', {}).get('num_players')
 
-                if new_fraglimit > fraglimit:
-                    log.info('new fraglimit %s' % new_fraglimit)
-                    self.rcon('set fraglimit %s' % new_fraglimit)
+        if all([fraglimit, num_players]):
+            new_fraglimit = Game.get_fraglimit(num_players)
+            log.debug('fraglimit:%s new_fraglimit:%s' % (fraglimit, new_fraglimit))
+
+            if new_fraglimit > fraglimit:
+                log.info('new fraglimit %s' % new_fraglimit)
+                self.rcon('set fraglimit %s' % new_fraglimit)
 
 
 def main(argv):
@@ -58,5 +65,9 @@ def main(argv):
     rcon_socket = context.socket(zmq.PUSH)
     rcon_socket.connect(args['--rcon-socket'])
 
-    c = Changer(in_socket, rcon_socket=rcon_socket)
+    # setup database
+    host, port = args['--database'].split(':')
+    db = setup_eve_mongoengine(host, port)
+
+    c = Changer(in_socket, rcon_socket=rcon_socket, db=db)
     c.handle_events()

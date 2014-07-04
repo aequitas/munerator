@@ -3,23 +3,26 @@
 ember = node_modules/ember-cli/bin/ember
 bower = node_modules/bower/bin/bower
 
+js_files = $(find app config -name "*.js")
+
 all: build
 
 $(ember): package.json
 	npm install .
 	touch $@
 
-vendor/.done: bower.json
+vendor: bower.json
 	$(bower) install --config.interactive=false
 	touch $@
 
-test: $(ember) vendor/.done
+test: $(ember) vendor
 	$(ember) test
 
 build: dist
 
-dist: app/*.js app/*/*.js config/environment.js $(ember) vendor/.done
+dist: $(js_files) $(ember) vendor
 	$(ember) build --environment=production
+	touch $@
 
 clean:
 	rm -rf dist/* tmp/*

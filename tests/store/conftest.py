@@ -1,7 +1,9 @@
+import munerator.common.database
 import mongomock
 import mongoengine
 import eve.io.mongo.mongo
 import pytest
+from mock import Mock
 
 
 con = mongomock.Connection()
@@ -24,6 +26,7 @@ def db(monkeypatch):
     """
     monkeypatch.setitem(mongoengine.connection._dbs, 'default', _db)
     monkeypatch.setitem(mongoengine.connection._connections, 'default', con)
+    monkeypatch.setattr(munerator.common.database, 'MongoClient', Mock(return_value={'munerator': _db}))
 
     def init_app(self, app):
         self.driver = {'db': _db}
