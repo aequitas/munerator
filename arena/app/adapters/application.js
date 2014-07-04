@@ -19,5 +19,9 @@ export default DS.RESTAdapter.extend({
         }
         hash.data.ts = Math.round(new Date().getTime()/10000);
         return this._super(url, type, hash);
-    }
+    },
+    findMany: function(store, type, ids) {
+        var data = { where: '_id=="' + ids.join('" or _id=="') + '"'};
+        return this.ajax(this.buildURL(type.typeKey), 'GET', { data: data });
+    },
 });

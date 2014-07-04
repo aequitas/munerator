@@ -23,7 +23,7 @@ def populate_playlist(db):
         {
             "min_players": {"$lte": normalized_count},
             "max_players": {"$gte": normalized_count},
-            "_updated": {"$lte": not_updated_after}
+            "last_played": {"$lte": not_updated_after}
         },
         fields='_id'
     )
