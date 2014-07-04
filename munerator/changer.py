@@ -7,6 +7,7 @@ Options:
   -v --verbose          Verbose logging
   --context-socket url  ZMQ socket for context events [default: tcp://quake.brensen.com:9002]
   --rcon-socket url     ZMQ socket for rcon commands [default: tcp://127.0.0.1:9005]
+  --database ip:port    Host and port for mongo database [default: 127.0.0.1:27017]
 
 """
 import logging

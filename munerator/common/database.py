@@ -22,6 +22,6 @@ def setup_eve_mongoengine(host='localhost', port=27017):
     # add models
     ext.add_model([Players, Games, Votes, Gamemaps, PlaylistItems])
 
-    db = MongoClient(host, port)['munerator']
+    db = MongoClient(host, int(port))['munerator']
 
     return db
