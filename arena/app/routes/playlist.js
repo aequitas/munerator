@@ -4,6 +4,8 @@ import PollingRouteMixin from './polling';
 export default Ember.Route.extend(PollingRouteMixin, {
     controllerName: 'playlistitems',
     model: function(){
-        return this.store.find('playlistitem', {'sort': '[("score",1)]'});
+        return this.store.find('playlistitem', {'sort': '[("score",-1)]'});
+
+
     }
 });

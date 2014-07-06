@@ -3,7 +3,7 @@
 ember = node_modules/ember-cli/bin/ember
 bower = node_modules/bower/bin/bower
 
-js_files = $(find app config -name "*.js")
+js_files = $(shell find app config -name "*.js" -o -name "*.hbs")
 
 all: build
 
