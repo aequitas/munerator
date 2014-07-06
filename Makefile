@@ -19,6 +19,7 @@ all: $(arena) $(pyapp)
 
 $(pip):
 	virtualenv -q $(pyenv)
+	pip install -U wheel
 
 requirements_dev.txt.done: $(pip) requirements_dev.txt
 	pip install -r requirements_dev.txt

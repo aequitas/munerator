@@ -61,4 +61,5 @@ class Games(Document):
 class PlaylistItems(Document):
     gamemap = ReferenceField('Gamemaps')
     votes = ListField(ReferenceField('Votes'))
+    gametype = IntField(default=0)
     score = IntField(default=0)

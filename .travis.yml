@@ -5,6 +5,7 @@ python:
 #    - 'pypy'
 before_install: 
     - sudo apt-get install libzmq3-dev
+    - pip install -U wheel
 script: 
     - "make test"
 install:
