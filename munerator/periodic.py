@@ -15,7 +15,7 @@ import hashlib
 
 from docopt import docopt
 from munerator.common.database import setup_eve_mongoengine
-from munerator.common.models import Gamemaps, Games
+from munerator.common.models import Gamemaps, Games, Votes, Players
 from mongoengine.queryset import Q
 
 log = logging.getLogger(__name__)
@@ -68,7 +68,7 @@ def valid_asset(url):
     m.update(content)
     md5 = m.hexdigest()
 
-    log.debug('hash: %s' % md5)
+    log.debug('hash: %s', md5)
 
     if md5 in notfoundhashes:
         return False
@@ -83,15 +83,15 @@ def find_assets(force):
         gamemaps = Gamemaps.objects(levelshot=None)
 
     for gamemap in gamemaps:
-        log.debug('searching levelshot for %s' % gamemap.name)
+        log.debug('searching levelshot for %s', gamemap.name)
         for source in sources['levelshot']:
             url = source.format(mapname=gamemap.name)
             if valid_asset(url):
-                log.info('url %s, is valid, storing' % url)
+                log.info('url %s, is valid, storing', url)
                 gamemap.update(set__levelshot=url)
                 break
             else:
-                log.debug('url %s is invalid' % url)
+                log.debug('url %s is invalid', url)
         else:
             # in case no levelshot is found
             gamemap.update(set__levelshot=default)
@@ -99,16 +99,24 @@ def find_assets(force):
         for source in sources['images']:
             url = source.format(mapname=gamemap.name)
             if valid_asset(url):
-                log.info('url %s, is valid, storing' % url)
+                log.info('url %s, is valid, storing', url)
                 gamemap.update(add_to_set__images=url)
             else:
-                log.debug('url %s is invalid' % url)
+                log.debug('url %s is invalid', url)
 
 
 def clean_database():
-    games = Games.objects(Q(current=False) | Q(current__exists=False), players__size=0)
-    log.debug('removing games: %s' % games)
-    games.delete()
+    not_played_games = Games.objects(Q(current=False) | Q(current__exists=False), players__size=0)
+    log.debug('removing games: %s', not_played_games.to_json())
+    not_played_games.delete()
+
+    players = Players.objects.scalar('id')
+    games = Games.objects.scalar('id')
+    gamemaps = Gamemaps.objects.scalar('id')
+
+    invalid_votes = Votes.objects(Q(player__not__in=players) | Q(game__not__in=games) | Q(gamemap__not__in=gamemaps))
+    log.debug('removing votes: %s', invalid_votes.to_json())
+    invalid_votes.delete()
 
 
 def main(argv):

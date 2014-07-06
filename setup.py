@@ -92,5 +92,5 @@ setup(
             "munerator = munerator:main",
         ]
     },
-    data_files=find_data_files('arena/dist', '*', recursive=True, prefix='static'),
+    data_files=find_data_files('arena/dist', '*', recursive=True, prefix='local/munerator/static'),
 )

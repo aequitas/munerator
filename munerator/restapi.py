@@ -12,6 +12,7 @@ Options:
 """
 import logging
 import os
+import sys
 
 from docopt import docopt
 from eve import Eve
@@ -44,7 +45,7 @@ def main(argv):
     }
 
     # setup flask app
-    static_folder = os.path.join(os.path.dirname(__file__), 'static')
+    static_folder = os.path.join(sys.prefix, 'local', 'munerator', 'static')
     app = Eve(static_folder=static_folder, static_url_path='', settings=my_settings)
 
     # setup eve mongodb database

@@ -54,8 +54,13 @@ $(arena):
 wheel: $(arena) setup.py
 	python setup.py -v bdist_wheel
 
-upload: test $(arena) setup.py
+upload: wheel
 	python setup.py sdist upload
+
+install: $(pip) $(arena)
+	python setup.py install
+	python setup.py install_data
+	pip install -e .[db]
 
 docs/_build: $(sphinx) $(pyapp)
 	cd docs; make html
