@@ -97,11 +97,6 @@ def handle_event(kind, data, rcon_socket):
             log.info('added map %s' % gamemap.name)
         game.update(set__gamemap=gamemap)
 
-        # update map played times
-        if kind == 'shutdowngame':
-            if game.players:
-                gamemap.update(inc__times_played=1, set__last_played=datetime.datetime.now())
-
         # store game extra settings
         if data.get('extras'):
             game.options = data.get('extras')
@@ -112,6 +107,15 @@ def handle_event(kind, data, rcon_socket):
         # reset players online status just to be sure
         Players.objects(Q(online=True) | Q(score__ne=None) | Q(team__ne=None)).update(
             set__online=False, set__score=None, set__team=None)
+
+        # on game shutdown
+        if kind == 'shutdowngame':
+            if game.players:
+                # update gamemap with last played time and increment play count
+                gamemap.update(inc__times_played=1, set__last_played=datetime.datetime.now())
+            else:
+                # delete game if not played
+                game.delete()
 
     # handle votes
     if kind == 'say' and player and game:
