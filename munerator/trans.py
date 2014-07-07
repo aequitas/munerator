@@ -35,8 +35,8 @@ translaters = [
     (r'[0-9: ]*Item: (?P<client_id>\d+) item_quad.*', 'quad'),
     (r'[0-9: ]*ClientUserinfoChanged: (?P<guid>(?P<client_id>\d+)) n\\(?P<player_name>[^\\]+)\\t\\(?P<team_id>\d+).*'
         r'\\skill\\ (?P<skill>[\d\.]+).*id\\', 'clientuserinfochanged'),
-    (r'cmd:getstatus response_type:statusResponse response:.*\\g_gametype\\(?P<gametype>[^\\])+\\mapname'
-        r'\\(?P<mapname>[\w]+).*\\g_timestamp\\(?P<timestamp>[^\\]+)', 'getstatus'),
+    (r'cmd:getstatus response_type:statusResponse response:.*fraglimit\\(?P<fraglimit>[\w]+).*\\g_gametype'
+        r'\\(?P<gametype>[^\\])+\\mapname\\(?P<mapname>[\w]+).*\\g_timestamp\\(?P<timestamp>[^\\]+)', 'getstatus'),
     (r"cmd:status response_type:print response:\s*(?P<client_id>[0-9]+)\s*(?P<score>[0-9]+)\s*(?P<ping>[0-9]+)\s*"
      r"(?P<player_name>.+)\^7\s*[^\s]+\s*(?P<address>[^\s]+)\s*[^\s]+\s*[^\s]+", 'clientstatus'),
     (r'cmd:dumpuser (?P<client_id>\d+) response_type:print response:cl_guid\s*(?P<guid>[\w]+)', 'dumpuser'),
