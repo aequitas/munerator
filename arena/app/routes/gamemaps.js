@@ -1,23 +1,14 @@
 import Ember from 'ember';
+import InfiniteScroll from 'arena/infinite_scroll';
 
-export default Ember.Route.extend({
-    model: function() {
-        var items = Ember.A([]);
-        var promise = this.store.find('gamemap', {'sort': '[("name",1)]'});
-
-        promise.then(function(){
-            items.pushObjects(promise.content.content);
+export default Ember.Route.extend(InfiniteScroll.RouteMixin, {
+    setupController: function(controller) {
+        this.fetchPage(1).then(function(items){
+            controller.set('content', items.get('content'));
+            controller.set('total', items.get('meta.total'));
         });
-        return items;
     },
-    actions: {
-        getMore: function(){
-            var newpage = this.controller.get('page') + 1;
-            var more = this.store.find('gamemap', {page:newpage, 'sort': '[("name",1)]'});
-            more.then(function(){
-                this.get('controller').send('gotMore', more.content.content, newpage);
-            }.bind(this));
-
-        }
+    fetchPage: function(page){
+        return this.store.find('gamemap', {'sort': '[("name",1)]', 'page': page});
     }
 });

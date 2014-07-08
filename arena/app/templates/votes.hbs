@@ -1,5 +1,5 @@
 <div class="pull-right">
-    (total: {{content.meta.total}})
+    ({{this.length}} of total: {{total}})
 </div>
 <table class="table">
 <tr>
@@ -20,6 +20,11 @@
     <td>{{vote}}</td>
     <td>{{format-date _created 'LLL'}}</td>
     <td>&nbsp;</td>
-</tr
+</tr>
 {{/each}}
 </table>
+{{#if hasMore}}
+<button {{action 'getMore'}} type="button" class="btn btn-primary btn-xs btn-block">
+    {{#if loadingMore}}Loading more...{{else}}Load more{{/if}}
+</button>
+{{/if}}

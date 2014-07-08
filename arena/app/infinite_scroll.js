@@ -9,6 +9,11 @@ InfiniteScroll.ControllerMixin = Ember.Mixin.create({
     loadingMore: false,
     page: InfiniteScroll.PAGE,
     perPage: InfiniteScroll.PER_PAGE,
+
+    hasMore: function(){
+        return this.get('total') > this.get('content.length');
+    }.property('@each'),
+
     actions: {
         getMore: function(){
             if (this.get('loadingMore')) {
@@ -29,8 +34,13 @@ InfiniteScroll.ControllerMixin = Ember.Mixin.create({
 
 InfiniteScroll.RouteMixin = Ember.Mixin.create({
     actions: {
-        getMore: function() {
-            throw new Error("Must override Route action `getMore`.");
+        getMore: function(){
+            var newpage = this.controller.get('page') + 1;
+            var more = this.fetchPage(newpage);
+            more.then(function(){
+                this.get('controller').send('gotMore', more.content.content, newpage);
+            }.bind(this));
+
         },
         fetchPage: function() {
             throw new Error("Must override Route action `getMore`.");

@@ -19,7 +19,6 @@ import zmq
 from docopt import docopt
 from munerator.common.models import Games, Players, Votes, Gamemaps
 from munerator.common.database import setup_eve_mongoengine
-from mongoengine.queryset import Q
 
 log = logging.getLogger(__name__)
 
@@ -80,6 +79,9 @@ def handle_event(kind, data, rcon_socket):
         if game:
             game.update(add_to_set__players=player)
 
+        # set last seen time
+        player.update(set__last_seen=datetime.datetime.now())
+
         log.debug('updated player')
 
     # handle game updates
@@ -104,10 +106,6 @@ def handle_event(kind, data, rcon_socket):
 
         log.debug('updated game')
 
-        # reset players online status just to be sure
-        Players.objects(Q(online=True) | Q(score__ne=None) | Q(team__ne=None)).update(
-            set__online=False, set__score=None, set__team=None)
-
         # on game shutdown
         if kind == 'shutdowngame':
             if game.players:
@@ -116,6 +114,9 @@ def handle_event(kind, data, rcon_socket):
             else:
                 # delete game if not played
                 game.delete()
+
+            # reset players online status just to be sure
+            Players.objects(online=True).update(set__online=False, set__score=None, set__team=None)
 
     # handle votes
     if kind == 'say' and player and game:
