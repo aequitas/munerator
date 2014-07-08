@@ -20,12 +20,12 @@ test: $(ember) vendor
 
 build: dist
 
-dist: $(js_files) $(ember) vendor
+dist: $(js_files) node_modules vendor
 	$(ember) build --environment=production
 	touch $@
 
 clean:
-	rm -rf dist/* tmp/*
+	rm -rf dist tmp/*
 
 clean_all: clean
 	rm -rf node_modules/* vendor/* vendor/.done
