@@ -16,6 +16,7 @@ class Players(Document):
     address = StringField()
     bot = BooleanField()
     headmodel = StringField()
+    last_seen = DateTimeField()
 
     # fields allowed to be updated by context info
     update_fields = ['name', 'online', 'score', 'team', 'team_id', 'skill', 'address', 'bot', 'headmodel']

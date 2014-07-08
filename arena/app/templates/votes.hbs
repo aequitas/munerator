@@ -23,3 +23,8 @@
 </tr
 {{/each}}
 </table>
+{{#if hasMore}}
+<button {{action 'getMore'}} type="button" class="btn btn-primary btn-xs btn-block">
+    {{#if loadingMore}}Loading more...{{else}}Load more{{/if}}
+</button>
+{{/if}}

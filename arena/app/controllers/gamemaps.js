@@ -8,6 +8,7 @@ export default Ember.ArrayController.extend(InfiniteScroll.ControllerMixin, {
         return this.get('total') > this.get('perPage') * this.get('page');
     }.property('page', 'total'),
     total: function(){
+        console.log(this.get('content'));
         return this.store.metadataFor('gamemap').total;
     }.property('@each')
 
