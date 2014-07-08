@@ -1,5 +1,8 @@
+{{#if headmodel}}
+<img src="/assets/headmodels/{{unbound headmodel}}.png">
+{{/if}}
+
 <p>Nickname: {{quake-name name}} {{#if bot}}(bot){{/if}}</p>
-<p>Headmodel: {{headmodel}}</p>
 {{#if names}}
 <p>Previous nicknames:</p>
 <ul>
@@ -8,3 +11,4 @@
 {{/each}}
 </ul>
 {{/if}}
+<p>Last seen: {{last_seen}}</p>

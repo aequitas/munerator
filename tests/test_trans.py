@@ -86,10 +86,10 @@ def test_data(line, key, value):
 
 
 @pytest.mark.parametrize("line,key,value", [
-    [r"cmd:getstatus response_type:statusResponse response:\g_gametype\10\mapname\testmap"
+    [r"cmd:getstatus response_type:statusResponse response:\fraglimit\1\g_gametype\10\mapname\testmap"
         r"\sv_allowDownload\1\sv_privateClients\0\dmflags\72\fraglimit\10\timelimit"
         r"\100\sv_hostname\g_timestamp\2014-06-28 19:22:53", 'g_gametype', '10'],
-    [r"cmd:getstatus response_type:statusResponse response:\g_gametype\10\mapname\testmap"
+    [r"cmd:getstatus response_type:statusResponse response:\fraglimit\1\g_gametype\10\mapname\testmap"
         r"\sv_allowDownload\1\sv_privateClients\0\dmflags\72\fraglimit\10\timelimit"
         r"\100\sv_hostname\g_timestamp\2014-06-28 19:22:53", 'fraglimit', '10'],
 ])

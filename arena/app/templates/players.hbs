@@ -1,17 +1,27 @@
+<div class="pull-right">
+    ({{this.length}} of total: {{content.meta.total}})
+</div>
 <table class="table">
 <tr>
-    <th>Online</th>
+    <th>&nbsp;</th>
     <th>Name</th>
     <th>Team</th>
     <th>Score</th>
+    <th>Last seen</th>
     <th><span {{bind-attr class="isPolling::invisible :glyphicon :glyphicon-refresh"}}></span></th>
 </tr>
 {{#each}}
 <tr>
-    <td>{{#if online}}<span class="glyphicon glyphicon-ok"></span>{{/if}}</td>
+    <td>
+        <span {{bind-attr class="online::invisible :glyphicon :glyphicon-ok"}}></span>
+        {{#if headmodel}}
+        <img src="/assets/headmodels/{{unbound headmodel}}.png" alt="headmodel" width="32">
+        {{/if}}
+    </td>
     <td>{{#link-to 'player' this}}{{quake-name name}}{{/link-to}} {{#if bot}}(bot){{/if}}</td>
     <td>{{team}}</td>
     <td>{{score}}</td>
+    <td>{{last_seen}}</td>
     <td>&nbsp;</td>
 </tr>
 {{/each}}
