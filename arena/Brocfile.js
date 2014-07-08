@@ -2,7 +2,11 @@
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-var app = new EmberApp();
+var app = new EmberApp({
+    fingerprint: {
+                     exclude: ['headmodels/'],
+                 } 
+});
 
 app.import('vendor/momentjs/moment.js');
 app.import('vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js');
@@ -10,8 +14,8 @@ app.import('vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/c
 
 // Standard Bootstrap javascript
 ['collapse.js'].forEach(function (path) {
-  var fullPath = 'vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/' + path;
-  app.import(fullPath);
+    var fullPath = 'vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/' + path;
+    app.import(fullPath);
 });
 
 // Bootstrap for ember
