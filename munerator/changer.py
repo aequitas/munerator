@@ -53,7 +53,7 @@ class Changer(Eventler):
             self.playlister.generate_playlist()
 
     def update_fraglimit(self, data):
-        fraglimit = data.get('game_info', {}).get('fraglimit')
+        fraglimit = int(data.get('game_info', {}).get('fraglimit'))
         num_players = data.get('game_info', {}).get('num_players')
 
         if all([fraglimit, num_players]):

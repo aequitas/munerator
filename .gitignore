@@ -52,3 +52,5 @@ munerator/static
 *.done
 db
 .muneratorrc
+munerator_db
+*.db.tgz
