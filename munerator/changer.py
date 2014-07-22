@@ -29,6 +29,7 @@ class Changer(Eventler):
         super(Changer, self).__init__(*args, **kwargs)
         self.playlister = Playlister()
         self.votereduce = VoteReduce()
+        self.update_playlist()
 
     def rcon(self, cmd):
         self.rcon_socket.send_string(cmd)
@@ -40,11 +41,16 @@ class Changer(Eventler):
 
         if kind in ['clientbegin', 'clientdisconnect']:
             self.update_fraglimit(data)
+            self.update_playlist()
 
-            # update player votes and generate new playlist
-            if hasattr(self, 'db'):
-                self.votereduce.vote_reduce()
-                self.playlister.generate_playlist()
+        if kind in ['initgame']:
+            self.update_playlist()
+
+    def update_playlist(self):
+        # update player votes and generate new playlist
+        if hasattr(self, 'db'):
+            self.votereduce.vote_reduce()
+            self.playlister.generate_playlist()
 
     def update_fraglimit(self, data):
         fraglimit = data.get('game_info', {}).get('fraglimit')
@@ -67,7 +73,7 @@ def main(argv):
     in_socket = context.socket(zmq.SUB)
     in_socket.connect(args['--context-socket'])
 
-    filters = ['clientbegin', 'clientdisconnect']
+    filters = ['clientbegin', 'clientdisconnect', 'initgame']
     add_filter = partial(in_socket.setsockopt, zmq.SUBSCRIBE)
     map(add_filter, filters)
 
