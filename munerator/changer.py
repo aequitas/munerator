@@ -18,12 +18,17 @@ from docopt import docopt
 from munerator.common.eventler import Eventler
 from munerator.common.database import setup_eve_mongoengine
 from munerator.games import Game
-from munerator.mapreduce import populate_playlist
+from munerator.mapreduce import Playlister, VoteReduce
+
 
 log = logging.getLogger(__name__)
 
 
 class Changer(Eventler):
+    def __init__(self, *args, **kwargs):
+        super(Changer, self).__init__(*args, **kwargs)
+        self.playlister = Playlister()
+        self.votereduce = VoteReduce()
 
     def rcon(self, cmd):
         self.rcon_socket.send_string(cmd)
@@ -35,8 +40,11 @@ class Changer(Eventler):
 
         if kind in ['clientbegin', 'clientdisconnect']:
             self.update_fraglimit(data)
+
+            # update player votes and generate new playlist
             if hasattr(self, 'db'):
-                populate_playlist(self.db)
+                self.votereduce.vote_reduce()
+                self.playlister.generate_playlist()
 
     def update_fraglimit(self, data):
         fraglimit = data.get('game_info', {}).get('fraglimit')

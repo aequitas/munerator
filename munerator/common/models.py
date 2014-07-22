@@ -1,7 +1,7 @@
 __all__ = ['Players', 'Games', 'Votes']
 
 from mongoengine import (BooleanField, Document, IntField, DictField, DateTimeField,
-                         ListField, ReferenceField, StringField, URLField)
+                         ListField, ReferenceField, StringField, URLField, FloatField)
 
 
 class Players(Document):
@@ -59,8 +59,18 @@ class Games(Document):
     update_fields = ['mapname', 'gametype', 'state', 'start', 'stop', 'num_players', 'current']
 
 
+class PlayerVotes(Document):
+    id = DictField(primary_key=True)
+    value = FloatField()
+
+
+class IntermediatePlaylist(Document):
+    id = DictField(primary_key=True)
+    value = DictField()
+
+
 class PlaylistItems(Document):
     gamemap = ReferenceField('Gamemaps')
     votes = ListField(ReferenceField('Votes'))
     gametype = IntField(default=0)
-    score = IntField(default=0)
+    score = FloatField(default=0)
