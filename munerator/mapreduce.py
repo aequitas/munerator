@@ -62,21 +62,44 @@ class VoteReduce(object):
 
 
 class Playlister(object):
-    team_games = [3, 4, 5, 6, 7, 8, 9]
-
     map_maps = """
     function() {
+        // magic numbers
+        var team_games = [3, 4, 5, 6, 7, 8, 9];
+        var team_game_modifier = 0.1;
+        var last_played_modifier = 0.5;
+        var rerotate_hours = 24;
+
         var key = {
             gamemap:this._id,
             gametype: null
         };
-        var value = {
-            score: 0.0,
-            votes: [],
-        };
+        var modifier = 1.0;
+        var modifiers = [];
+
+        // get last played time modifier factor
+        var now = new Date().getTime()/1000/60/60;
+        var last_played = this.last_played.getTime()/1000/60/60;
+        var last_played = Math.min(now - last_played, rerotate_hours) / rerotate_hours;
+        last_played = Math.ceil(last_played * 100)/100
+        modifiers.push({name: 'last played', factor: last_played});
+        modifier = modifier * last_played;
 
         // emit for every map/playlist combination
         this.gametypes.forEach(function(gametype){
+            var value = {
+                score: 1.0,
+                modifier: modifier,
+                votes: [],
+                modifiers: modifiers
+            }
+
+            // don't favor team games with uneven number of online players
+            if (team_games.indexOf(gametype) >= 0 && num_players % 2){
+                value.modifier = value.modifier * team_game_modifier;
+                value.modifiers.push({name: 'no team games', factor: team_game_modifier})
+            }
+
             key.gametype = gametype;
             emit(key, value);
         });
@@ -91,25 +114,37 @@ class Playlister(object):
         }
         var value = {
             score: this.value.score,
-            votes: this.value.votes
+            modifier: 1,
+            votes: this.value.votes,
+            modifiers: []
         }
         emit(key, value);
     }
     """
 
+    # sum of scores and product of modifiers, concatting lists of metadata
     sum_score = """
     function(key, values){
         var scores = [];
         var votes = [];
+        var modifier = 1;
+        var modifiers = [];
 
         values.forEach(function(value){
+            // calculate reduced values
             scores.push(value.score);
+            modifier = Math.ceil(modifier * value.modifier * 100)/100;
+
+            // metadata
             votes = votes.concat(value.votes);
+            modifiers = modifiers.concat(value.modifiers);
         });
 
         return {
             score: Array.sum(scores),
-            votes: votes
+            modifier: modifier,
+            votes: votes,
+            modifiers: modifiers
         };
     }
     """
@@ -127,22 +162,11 @@ class Playlister(object):
         suitable_maps = Gamemaps.objects(min_players__lte=normalized_count, max_players__gte=normalized_count)
         log.debug('suitable map count: %s' % suitable_maps.count())
 
-        # if uneven number of players, don't do team games
-        if online_player_count % 2:
-            log.debug('uneven player count, filtering team games out')
-            suitable_maps = suitable_maps.filter(__raw__={
-                'gametypes': {
-                    '$not': {
-                        '$elemMatch': {'$in': self.team_games}
-                    }
-                }
-            })
-            log.debug('suitable map count: %s' % suitable_maps.count())
-
         # prime map results with suitable maps
         list(suitable_maps.map_reduce(
             self.map_maps, self.sum_score,
-            {'replace': 'intermediate_playlist'}
+            {'replace': 'intermediate_playlist'},
+            scope={'num_players': normalized_count}
         ))
 
         # add player votes scores onto suitable maps
@@ -161,8 +185,9 @@ class Playlister(object):
             PlaylistItems(
                 gamemap=item.id.get('gamemap'),
                 gametype=item.id.get('gametype'),
-                score=item.value.get('score'),
-                votes=item.value.get('votes')
+                score=round(item.value.get('score') * item.value.get('modifier'), 3),
+                votes=item.value.get('votes'),
+                modifiers=item.value.get('modifiers')
             ).save()
         log.debug('playlist items count: %s', PlaylistItems.objects.count())
 

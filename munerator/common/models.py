@@ -74,3 +74,4 @@ class PlaylistItems(Document):
     votes = ListField(ReferenceField('Votes'))
     gametype = IntField(default=0)
     score = FloatField(default=0)
+    modifiers = ListField(DictField())
