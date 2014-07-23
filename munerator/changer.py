@@ -64,7 +64,9 @@ class Changer(Eventler):
         log.info('next game: %s' % str(game))
         self.rcon('say Next game: %s' % str(game))
 
-        log.info('nextmap string: %s' % game.nextmapstring())
+        nextmap_string = game.nextmapstring()
+        log.info('nextmap string: %s' % nextmap_string)
+        self.rcon(nextmap_string)
 
     def update_fraglimit(self, data):
         fraglimit = int(data.get('game_info', {}).get('fraglimit'))
