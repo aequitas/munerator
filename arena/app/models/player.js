@@ -9,6 +9,7 @@ var Player = DS.Model.extend({
     skill: DS.attr('number'),    
     bot: DS.attr('boolean'),
     headmodel: DS.attr('string'),
+    last_seen: DS.attr('date'),
     _updated: DS.attr('date'),
     _created: DS.attr('date')
 });

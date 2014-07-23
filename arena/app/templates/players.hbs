@@ -21,7 +21,7 @@
     <td>{{#link-to 'player' this}}{{quake-name name}}{{/link-to}} {{#if bot}}(bot){{/if}}</td>
     <td>{{team}}</td>
     <td>{{score}}</td>
-    <td>{{last_seen}}</td>
+    <td>{{fromnow-date last_seen 'DD'}}</td>
     <td>&nbsp;</td>
 </tr>
 {{/each}}
