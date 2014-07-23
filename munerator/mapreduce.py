@@ -67,6 +67,7 @@ class Playlister(object):
         // magic numbers
         var team_games = [3, 4, 5, 6, 7, 8, 9];
         var team_game_modifier = 0.1;
+        var less_team_games = 0.5;
         var last_played_modifier = 0.5;
         var rerotate_hours = 24;
 
@@ -98,6 +99,12 @@ class Playlister(object):
             if (team_games.indexOf(gametype) >= 0 && num_players % 2){
                 value.modifier = value.modifier * team_game_modifier;
                 value.modifiers.push({name: 'no team games', factor: team_game_modifier})
+            }
+
+            // don't favor team games with low player count
+            if (team_games.indexOf(gametype) >= 0 && num_players <= 2){
+                value.modifier = value.modifier * less_team_games;
+                value.modifiers.push({name: 'less team games', factor: less_team_games})
             }
 
             key.gametype = gametype;
