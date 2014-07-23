@@ -68,6 +68,7 @@ class Playlister(object):
         var team_games = [3, 4, 5, 6, 7, 8, 9];
         var team_game_modifier = 0.1;
         var less_team_games = 0.5;
+        var less_played_modifier = 1.5;
         var last_played_modifier = 0.5;
         var rerotate_hours = 24;
 
@@ -83,8 +84,16 @@ class Playlister(object):
         var last_played = this.last_played.getTime()/1000/60/60;
         var last_played = Math.min(now - last_played, rerotate_hours) / rerotate_hours;
         last_played = Math.ceil(last_played * 100)/100
-        modifiers.push({name: 'last played', factor: last_played});
-        modifier = modifier * last_played;
+        if (last_played < 1){
+            modifiers.push({name: 'recently played', factor: last_played});
+            modifier = modifier * last_played;
+        }
+
+        // boost less played maps
+        if (this.times_played <= played_median){
+            modifiers.push({name: 'played lt. avg.', factor: less_played_modifier});
+            modifier = modifier * less_played_modifier;
+        }
 
         // emit for every map/playlist combination
         this.gametypes.forEach(function(gametype){
@@ -169,11 +178,18 @@ class Playlister(object):
         suitable_maps = Gamemaps.objects(min_players__lte=normalized_count, max_players__gte=normalized_count)
         log.debug('suitable map count: %s' % suitable_maps.count())
 
+        # get median play count for maps
+        played_median = suitable_maps.order_by('times_played')[len(suitable_maps) // 2].times_played
+        log.debug('map play median: %s' % played_median)
+
         # prime map results with suitable maps
         list(suitable_maps.map_reduce(
             self.map_maps, self.sum_score,
             {'replace': 'intermediate_playlist'},
-            scope={'num_players': normalized_count}
+            scope={
+                'num_players': normalized_count,
+                'played_median': played_median
+            }
         ))
 
         # add player votes scores onto suitable maps
@@ -210,5 +226,9 @@ if __name__ == '__main__':
     pl = Playlister()
     pl.generate_playlist()
 
-    for pli in PlaylistItems.objects.order_by('-score')[:10]:
+    playlistitems = list(PlaylistItems.objects.order_by('-score'))
+    for pli in playlistitems:
         print pli.gamemap.name, pli.gametype, pli.modifiers, pli.score
+    # print '...'
+    # for pli in playlistitems[-20:]:
+    #     print pli.gamemap.name, pli.gametype, pli.modifiers, pli.score
