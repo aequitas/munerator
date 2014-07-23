@@ -176,11 +176,13 @@ class Playlister(object):
         log.debug('map search player count: %s' % normalized_count)
 
         # select maps suitable for online players
-        current_map = Games.objects(current=True).first().gamemap.id
+        current_map = Games.objects(current=True).first()
+        if current_map:
+            current_map_id = current_map.gamemap.id
         suitable_maps = Gamemaps.objects(
             min_players__lte=normalized_count,
             max_players__gte=normalized_count,
-            id__ne=current_map
+            id__ne=current_map_id
         )
         log.debug('suitable map count: %s' % suitable_maps.count())
 
