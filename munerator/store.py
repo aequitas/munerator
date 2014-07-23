@@ -60,11 +60,13 @@ def handle_event(kind, data, rcon_socket):
     player_id = str(data.get('client_info', {}).get('guid', ''))
     timestamp = str(data.get('game_info', {}).get('timestamp', ''))
 
-    player, new_player = Players.objects.get_or_create(guid=player_id) if player_id else (None, None)
-    game, new_game = Games.objects.get_or_create(timestamp=timestamp) if timestamp else (None, None)
-
-    if new_player:
+    player = Players.objects(guids=player_id).first()
+    if not player:
+        player = Players(guids=[player_id])
         log.info('added new player %s' % data.get('client_info').get('name'))
+        player.save()
+
+    game, new_game = Games.objects.get_or_create(timestamp=timestamp) if timestamp else (None, None)
 
     # handle player updates
     if player and kind in ['clientbegin', 'clientdisconnect', 'clientuserinfochanged', 'playerscore', 'clientstatus']:

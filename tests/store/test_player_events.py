@@ -11,7 +11,7 @@ def test_add_player(db, uuid):
 
     player = db.players.find_one()
     assert player['name'] == data['name']
-    assert player['guid'] == data['guid']
+    assert data['guid'] in player['guids']
 
 
 def test_update_player(db, uuid):
@@ -42,8 +42,6 @@ def test_updated_created_fields(db, uuid):
     setup_eve_mongoengine('', 0)
 
     data = {
-        'id': uuid,
-        'guid': uuid,
         'name': 'test'
     }
     handle_event('clientuserinfochanged', {'client_info': data}, None)

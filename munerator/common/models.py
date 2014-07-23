@@ -6,6 +6,7 @@ from mongoengine import (BooleanField, Document, IntField, DictField, DateTimeFi
 
 class Players(Document):
     guid = StringField()
+    guids = ListField(StringField())
     name = StringField()
     names = ListField(StringField())
     online = BooleanField()

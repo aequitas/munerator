@@ -1,4 +1,6 @@
 class Game(object):
+    team_game_types = [3, 4, 5, 6, 7, 8, 9]
+
     specials = {
         "instagib": "set g_instantgib 2"
     }
@@ -20,7 +22,8 @@ class Game(object):
 
     team_commands = [
         "set g_teamAutoJoin 0",
-        "set g_teamForceBalance 1"
+        "set g_teamForceBalance 1",
+        "set capturelimit 5"
     ]
 
     catchup = "g_catchup 5"
@@ -43,7 +46,7 @@ class Game(object):
         cmds = list(self.defaults)
 
         # set gametype specific options
-        if self.gametype in [3, 4, 5, 6, 7, 8, 9]:
+        if self.gametype in self.team_game_types:
             cmds += self.team_commands
         else:
             cmds.append(self.catchup)
