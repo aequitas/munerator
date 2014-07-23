@@ -39,6 +39,7 @@ class Votes(Document):
     player = ReferenceField('Players')
     gamemap = ReferenceField('Gamemaps')
     gametype = IntField()
+    num_players = IntField()
     vote = IntField()
 
 
