@@ -91,7 +91,7 @@ class Playlister(object):
                 score: 1.0,
                 modifier: modifier,
                 votes: [],
-                modifiers: modifiers
+                modifiers: modifiers.slice(0)
             }
 
             // don't favor team games with uneven number of online players
@@ -202,3 +202,6 @@ if __name__ == '__main__':
     # get all valid maps
     pl = Playlister()
     pl.generate_playlist()
+
+    for pli in PlaylistItems.objects.order_by('-score')[:10]:
+        print pli.gamemap.name, pli.gametype, pli.modifiers, pli.score

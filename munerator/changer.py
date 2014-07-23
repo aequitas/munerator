@@ -53,7 +53,6 @@ class Changer(Eventler):
         if hasattr(self, 'db'):
             self.votereduce.vote_reduce()
             self.playlister.generate_playlist()
-            self.set_next_game()
 
     def set_next_game(self, num_players):
         next_game = PlaylistItems.objects.order_by('-score').first()
