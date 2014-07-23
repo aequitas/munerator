@@ -6,7 +6,8 @@ from munerator.common.database import setup_eve_mongoengine
 
 import logging
 import datetime
-from munerator.common.models import Votes, Gamemaps, PlayerVotes, Players, PlaylistItems, IntermediatePlaylist
+from munerator.common.models import Games, Votes, Gamemaps, PlayerVotes, Players, PlaylistItems, IntermediatePlaylist
+
 
 log = logging.getLogger(__name__)
 
@@ -77,7 +78,7 @@ class Playlister(object):
             gametype: null
         };
         var modifier = 1.0;
-        var modifiers = [];
+        var modifiers = new Array;
 
         // get last played time modifier factor
         var now = new Date().getTime()/1000/60/60;
@@ -175,7 +176,12 @@ class Playlister(object):
         log.debug('map search player count: %s' % normalized_count)
 
         # select maps suitable for online players
-        suitable_maps = Gamemaps.objects(min_players__lte=normalized_count, max_players__gte=normalized_count)
+        current_map = Games.objects(current=True).first().gamemap.id
+        suitable_maps = Gamemaps.objects(
+            min_players__lte=normalized_count,
+            max_players__gte=normalized_count,
+            id__ne=current_map
+        )
         log.debug('suitable map count: %s' % suitable_maps.count())
 
         # get median play count for maps
