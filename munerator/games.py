@@ -70,16 +70,17 @@ class Game(object):
         cmds.append("set g_gametype %s" % self.gametype)
 
         # set default fallback nextmap if not specified
-        if not nextmap:
-            nextmap = 'vstr m01'
-
-        cmds.append('set nextmap "%s"' % nextmap)
+        if nextmap:
+            cmds.append('set nextmap "%s"' % nextmap)
 
         cmds.append("map %s" % self.mapname)
 
         return ";".join(cmds)
 
     def nextmapstring(self, nextmap=None):
+        if not nextmap:
+            nextmap = 'vstr m01'
+
         return 'set nextmap "%s";' % self.mapstring(nextmap).replace('"', '\\"')
 
     def __str__(self):

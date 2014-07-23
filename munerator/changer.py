@@ -29,7 +29,9 @@ class Changer(Eventler):
         super(Changer, self).__init__(*args, **kwargs)
         self.playlister = Playlister()
         self.votereduce = VoteReduce()
-        self.update_playlist()
+
+        if hasattr(self, 'db'):
+            self.update_playlist()
 
     def rcon(self, cmd):
         self.rcon_socket.send_string(cmd)
@@ -45,14 +47,14 @@ class Changer(Eventler):
         if kind in ['initgame', 'clientbegin', 'clientdisconnect']:
             num_players = data.get('game_info', {}).get('num_players')
 
-            self.update_playlist()
-            self.set_next_game(num_players)
+            if hasattr(self, 'db'):
+                self.update_playlist()
+                self.set_next_game(num_players)
 
     def update_playlist(self):
         # update player votes and generate new playlist
-        if hasattr(self, 'db'):
-            self.votereduce.vote_reduce()
-            self.playlister.generate_playlist()
+        self.votereduce.vote_reduce()
+        self.playlister.generate_playlist()
 
     def set_next_game(self, num_players):
         next_game = PlaylistItems.objects.order_by('-score').first()
