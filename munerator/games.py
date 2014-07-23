@@ -81,7 +81,7 @@ class Game(object):
         if not nextmap:
             nextmap = 'vstr m01'
 
-        return 'set nextmap "%s";' % self.mapstring(nextmap).replace('"', '\\"')
+        return 'set nextmap "%s";' % self.mapstring(nextmap)
 
     def __str__(self):
         return "%s (%s)" % (self.mapname, GAMETYPES[self.gametype])
