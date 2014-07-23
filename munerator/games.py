@@ -1,3 +1,10 @@
+GAMETYPES = [
+    'Deathmatch', 'Tournament', 'Single Player', 'Team Deathmatch (TDM)', 'Capture The Flag (CTF)',
+    'One Flag Capture', 'Overload', 'Harvester', 'Elimination', 'CTF Elimination', 'Last Man Standing',
+    'Double Domination', 'Domination'
+]
+
+
 class Game(object):
     team_game_types = [3, 4, 5, 6, 7, 8, 9]
 
@@ -71,3 +78,6 @@ class Game(object):
 
     def nextmapstring(self, nextmap=None):
         return 'set nextmap "%s";' % self.mapstring(nextmap).replace('"', '\\"')
+
+    def __str__(self):
+        return "%s (%s)" % (self.mapname, GAMETYPES[self.gametype])

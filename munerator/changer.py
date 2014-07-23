@@ -18,7 +18,7 @@ from docopt import docopt
 from munerator.common.eventler import Eventler
 from munerator.common.database import setup_eve_mongoengine
 from munerator.games import Game
-from munerator.mapreduce import Playlister, VoteReduce
+from munerator.mapreduce import Playlister, VoteReduce, PlaylistItems
 
 
 log = logging.getLogger(__name__)
@@ -39,18 +39,33 @@ class Changer(Eventler):
         Apply changes based on gameplay event. Eg. player joins -> increase fraglimit
         """
 
-        if kind in ['clientbegin', 'clientdisconnect']:
+        if kind == 'clientbegin':
             self.update_fraglimit(data)
-            self.update_playlist()
 
-        if kind in ['initgame']:
+        if kind in ['initgame', 'clientbegin', 'clientdisconnect']:
+            num_players = data.get('game_info', {}).get('num_players')
+
             self.update_playlist()
+            self.set_next_game(num_players)
 
     def update_playlist(self):
         # update player votes and generate new playlist
         if hasattr(self, 'db'):
             self.votereduce.vote_reduce()
             self.playlister.generate_playlist()
+            self.set_next_game()
+
+    def set_next_game(self, num_players):
+        next_game = PlaylistItems.objects.order_by('-score').first()
+        if not next_game:
+            log.error('failed to determine next game')
+            return
+
+        game = Game(next_game.gamemap.name, next_game.gametype, num_players)
+        log.info('next game: %s' % str(game))
+        self.rcon('say Next game: %s' % str(game))
+
+        log.info('nextmap string: %s' % game.nextmapstring())
 
     def update_fraglimit(self, data):
         fraglimit = int(data.get('game_info', {}).get('fraglimit'))
