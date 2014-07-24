@@ -33,7 +33,7 @@
         <td>
             <ul>
                 {{#each votes}}
-                <li>{{player.name}}: {{vote}}</li>
+                <li>{{#link-to 'player' player}}{{quake-name player.name}}{{/link-to}}: {{vote}}</li>
                 {{/each}}
             </ul>
         </td>

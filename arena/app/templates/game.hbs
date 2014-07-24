@@ -1,4 +1,5 @@
-<p>map: {{mapname}}</p>
+<img {{bind-attr src=gamemap.levelshot}} class="img-thumbnail" alt="levelshot" width="128">
+<p>map: {{#link-to 'gamemap' gamemap}}{{gamemap.name}}{{/link-to}}</p>
 <p>gametype: {{game-type gametype}}</p>
 <p>players:</p>
 <ul>
