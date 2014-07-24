@@ -180,10 +180,10 @@ class Playlister(object):
             min_players__lte=normalized_count,
             max_players__gte=normalized_count)
 
-        # don't replay current map
-        current_map = Games.objects(current=True).first()
-        if current_map:
-            suitable_maps = suitable_maps.filter(id__ne=current_map.id)
+        # don't replay recent maps
+        recent_maps_ids = [x.id for x in Games.objects.order_by('-start').scalar('gamemap')[:3]]
+        if recent_maps_ids:
+            suitable_maps = suitable_maps.filter(id__nin=recent_maps_ids)
         log.debug('suitable map count: %s' % suitable_maps.count())
 
         # get median play count for maps
