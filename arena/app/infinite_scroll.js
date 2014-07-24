@@ -36,14 +36,11 @@ InfiniteScroll.RouteMixin = Ember.Mixin.create({
     actions: {
         getMore: function(){
             var newpage = this.controller.get('page') + 1;
-            var more = this.fetchPage(newpage);
+            var more = this.model(newpage);
             more.then(function(){
                 this.get('controller').send('gotMore', more.content.content, newpage);
             }.bind(this));
 
-        },
-        fetchPage: function() {
-            throw new Error("Must override Route action `getMore`.");
         }
     }
 });

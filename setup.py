@@ -1,4 +1,4 @@
-__version__ = '0.17.14'
+__version__ = '0.18.0'
 from setuptools import setup, find_packages
 import os
 import fnmatch

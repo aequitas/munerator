@@ -1,6 +1,14 @@
 <div class="well-sm well">
-    <strong>Playlist generation</strong><br>
-    Playlist is generated every time a player joins/leaves. Maps are ordered on score. Score is based on current number of player, current player votes for maps and map last played time. Highest scoring game will be played next.
+    <strong>Playlist generation</strong>
+    <p>Playlist is generated every time a player joins/leaves. Maps are ordered on score. Highest scoring game will be played next. Scores are based on sum of current online players votes for map/gametype combo, multiplied by modifiers.</p>
+    <p>Consecutive player votes count less every time until they reach 2. One +1 vote counts as 1, two as 1.5, three as 1.75 etc.</p>
+    <p>Current possible modifiers are:</p>
+    <ul>
+    <li>recently played: don't favor maps which have been played recently (24 hours ago).</li>
+    <li>played lt. avg.: boost maps which haven't been played a lot.</li>
+    <li>no team games: don't play team games with uneven number of players</li>
+    <li>less team games: play less team games when low number of players</li>
+    </ul>
 </div>
 <div class="pull-right">
     ({{this.length}} of total: {{total}})
