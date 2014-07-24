@@ -59,7 +59,7 @@ class VoteReduce(object):
         list(new_votes.map_reduce(self.map_votes, self.reduce_votes, {self.action: 'player_votes'}))
         self.last_run = datetime.datetime.now()
         # after first run set collection output mode to merge
-        self.action = 'merge'
+        self.action = 'reduce'
 
 
 class Playlister(object):
