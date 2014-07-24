@@ -52,10 +52,13 @@ default = 'http://ws.q3df.org/images/levelshots/512x384/'
 def valid_asset(url):
     log.debug('url: %s' % url)
     try:
-        response = urllib2.urlopen(url)
+        response = urllib2.urlopen(url, timeout=15)
     except urllib2.HTTPError as e:
         response = e
         log.debug(response)
+    except urllib2.URLError as e:
+        log.debug('error while fetching url: %s' % e)
+        return False
 
     if not response.code == 200:
         return False
