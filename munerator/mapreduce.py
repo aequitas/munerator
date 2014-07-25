@@ -71,7 +71,7 @@ class Playlister(object):
         var less_team_games = 0.5;
         var less_played_modifier = 1.5;
         var last_played_modifier = 0.5;
-        var rerotate_hours = 24;
+        var rerotate_hours = 72;
 
         var key = {
             gamemap:this._id,
