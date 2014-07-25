@@ -15,7 +15,7 @@ from functools import partial
 
 import zmq
 from docopt import docopt
-from munerator.common.eventler import Eventler
+from munerator.common.eventler import ThrottleEventler
 from munerator.common.database import setup_eve_mongoengine
 from munerator.games import Game
 from munerator.mapreduce import Playlister, VoteReduce, PlaylistItems
@@ -24,7 +24,7 @@ from munerator.mapreduce import Playlister, VoteReduce, PlaylistItems
 log = logging.getLogger(__name__)
 
 
-class Changer(Eventler):
+class Changer(ThrottleEventler):
     def __init__(self, *args, **kwargs):
         super(Changer, self).__init__(*args, **kwargs)
         self.playlister = Playlister()
@@ -42,14 +42,20 @@ class Changer(Eventler):
         """
 
         if kind == 'clientbegin':
-            self.update_fraglimit(data)
+            self.actions['update_fraglimit'] = ((data,), {})
 
         if kind in ['initgame', 'clientbegin', 'clientdisconnect']:
             num_players = data.get('game_info', {}).get('num_players')
 
             if hasattr(self, 'db'):
-                self.update_playlist()
-                self.set_next_game(num_players)
+                self.actions['set_next_game'] = ((num_players,), {})
+
+        if kind == 'initgame':
+            mapname = data.get('game_info', {}).get('mapname')
+            self.actions['announce'] = ((mapname,), {})
+
+    def announce(self, mapname):
+        self.rcon('say Loaded map %s, mapvote enabled (+1/-1, like/dislike)' % mapname)
 
     def update_playlist(self):
         # update player votes and generate new playlist
@@ -57,6 +63,8 @@ class Changer(Eventler):
         self.playlister.generate_playlist()
 
     def set_next_game(self, num_players):
+        self.update_playlist()
+
         next_game = PlaylistItems.objects.order_by('-score').first()
         if not next_game:
             log.error('failed to determine next game')
@@ -71,6 +79,7 @@ class Changer(Eventler):
         self.rcon(nextmap_string)
 
     def update_fraglimit(self, data):
+        log.debug('checking fraglimit')
         fraglimit = int(data.get('game_info', {}).get('fraglimit'))
         num_players = data.get('game_info', {}).get('num_players')
 

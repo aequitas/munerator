@@ -15,6 +15,7 @@ def test_fraglimit_increase():
 
     c = Changer(in_socket, rcon_socket=rcon_socket)
     c.handle_event('clientbegin', data)
+    c.handle_actions()
     rcon_socket.send_string.assert_called_once_with('set fraglimit 16')
 
 
