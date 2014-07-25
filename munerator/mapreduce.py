@@ -223,7 +223,10 @@ class Playlister(object):
         log.debug('playlist items count: %s', PlaylistItems.objects.count())
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG)
+    from applib.textui import colprint
+
+    logging.basicConfig(level=logging.DEBUG, format='%(message)s')
+
     db = setup_eve_mongoengine()
 
     # reduce votes to per-player, per-map
@@ -234,9 +237,15 @@ if __name__ == '__main__':
     pl = Playlister()
     pl.generate_playlist()
 
-    playlistitems = list(PlaylistItems.objects.order_by('-score'))
+    x = list()
+    x.append(["Map", "Type", "Score", "Modifiers", "Votes"])
+
+    playlistitems = list(PlaylistItems.objects.order_by('score'))
     for pli in playlistitems:
-        print pli.gamemap.name, pli.gametype, pli.modifiers, pli.score
-    # print '...'
-    # for pli in playlistitems[-20:]:
-    #     print pli.gamemap.name, pli.gametype, pli.modifiers, pli.score
+        x.append([
+            pli.gamemap.name, str(pli.gametype), str(pli.score),
+            ", ".join(['{name}:{factor}'.format(**m) for m in pli.modifiers]),
+            ", ".join(['{0.player.name}:{0.vote}'.format(v) for v in pli.votes])
+        ])
+    x.append(["Map", "Type", "Score", "Modifiers", "Votes"])
+    colprint(x)
