@@ -19,6 +19,7 @@ import zmq
 from docopt import docopt
 from munerator.common.models import Games, Players, Votes, Gamemaps
 from munerator.common.database import setup_eve_mongoengine
+from munerator.games import GAMETYPE_IDS
 
 log = logging.getLogger(__name__)
 
@@ -99,8 +100,9 @@ def handle_event(kind, data, rcon_socket):
         gamemap, new = Gamemaps.objects.get_or_create(name=data['game_info']['mapname'])
         if new:
             log.info('added map %s' % gamemap.name)
-        gamemap.update(add_to_set__gametypes=game.gametype)
-        gamemap.save()
+        if game.gametype in GAMETYPE_IDS:
+            gamemap.update(add_to_set__gametypes=int(game.gametype))
+            gamemap.save()
         game.update(set__gamemap=gamemap)
 
         # store game extra settings

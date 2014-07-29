@@ -4,6 +4,8 @@ GAMETYPES = [
     'Double Domination', 'Domination'
 ]
 
+GAMETYPE_IDS = range(0, len(GAMETYPES))
+
 
 class Game(object):
     team_game_types = [3, 4, 5, 6, 7, 8, 9]

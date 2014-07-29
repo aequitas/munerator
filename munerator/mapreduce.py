@@ -181,7 +181,7 @@ class Playlister(object):
             max_players__gte=normalized_count)
 
         # don't replay recent maps
-        recent_maps_ids = [x.id for x in Games.objects.order_by('-start').scalar('gamemap')[:3]]
+        recent_maps_ids = [x.id for x in Games.objects.order_by('-start').scalar('gamemap')[:3] if x]
         if recent_maps_ids:
             suitable_maps = suitable_maps.filter(id__nin=recent_maps_ids)
         log.debug('suitable map count: %s' % suitable_maps.count())
