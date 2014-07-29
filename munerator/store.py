@@ -100,7 +100,7 @@ def handle_event(kind, data, rcon_socket):
         gamemap, new = Gamemaps.objects.get_or_create(name=data['game_info']['mapname'])
         if new:
             log.info('added map %s' % gamemap.name)
-        if int(game.gametype) in GAMETYPE_IDS:
+        if game.gametype and int(game.gametype) in GAMETYPE_IDS:
             gamemap.update(add_to_set__gametypes=int(game.gametype))
             gamemap.save()
         game.update(set__gamemap=gamemap)
