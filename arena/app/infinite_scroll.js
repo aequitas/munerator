@@ -35,6 +35,9 @@ InfiniteScroll.ControllerMixin = Ember.Mixin.create({
 InfiniteScroll.RouteMixin = Ember.Mixin.create({
     actions: {
         getMore: function(){
+            // disable polling when more items are being loaded
+            this.set('allowPoll', false);
+
             var newpage = this.controller.get('page') + 1;
             var more = this.model(newpage);
             more.then(function(){
