@@ -11,6 +11,7 @@ Options:
 
 """
 import logging
+import random
 from functools import partial
 
 import zmq
@@ -70,7 +71,12 @@ class Changer(ThrottleEventler):
             log.error('failed to determine next game')
             return
 
-        game = Game(next_game.gamemap.name, next_game.gametype, num_players)
+        if next_game.gametype == 0 and random.choice(range(10)) == 0:
+            special = 'instagib'
+        else:
+            special = None
+
+        game = Game(next_game.gamemap.name, next_game.gametype, num_players, special)
         log.info('next game: %s' % str(game))
         self.rcon('say Next game: %s' % str(game))
 

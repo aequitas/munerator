@@ -88,4 +88,7 @@ class Game(object):
         return 'set nextmap "%s";' % self.mapstring(nextmap)
 
     def __str__(self):
-        return "%s (%s)" % (self.mapname, GAMETYPES[self.gametype])
+        if self.special:
+            return "%s (%s) special:%s" % (self.mapname, GAMETYPES[self.gametype], self.special)
+        else:
+            return "%s (%s)" % (self.mapname, GAMETYPES[self.gametype])

@@ -84,9 +84,13 @@ class Playlister(object):
 
         // get last played time modifier factor
         var now = new Date().getTime()/1000/60/60;
-        var last_played = this.last_played.getTime()/1000/60/60;
-        var last_played = Math.min(now - last_played, rerotate_hours) / rerotate_hours;
-        last_played = Math.ceil(last_played * 100)/100
+        if (this.last_played){
+            var last_played = this.last_played.getTime()/1000/60/60;
+            var last_played = Math.min(now - last_played, rerotate_hours) / rerotate_hours;
+            last_played = Math.ceil(last_played * 100)/100
+        } else {
+            var last_played = 0.5;
+        }
         if (last_played < 1){
             modifiers.push({name: 'recently played', factor: last_played});
             modifier = modifier * last_played;
