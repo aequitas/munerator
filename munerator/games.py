@@ -71,11 +71,11 @@ class Game(object):
         cmds.append("set fraglimit %s" % self.get_fraglimit(self.num_players))
         cmds.append("set g_gametype %s" % self.gametype)
 
+        cmds.append("map %s" % self.mapname)
+
         # set default fallback nextmap if not specified
         if nextmap:
-            cmds.append('set nextmap "%s"' % nextmap)
-
-        cmds.append("map %s" % self.mapname)
+            cmds.append('set nextmap %s' % nextmap)
 
         return ";".join(cmds)
 

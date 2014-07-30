@@ -40,7 +40,7 @@ def test_replace_nextmap():
                           "set g_gravity 800;set g_knockback 1000;set map_restart 0;set g_instantgib 0;"
                           "set g_vampire 0;set g_regen 0;set g_rockets 0;set g_catchup 0;set g_teamAutoJoin 0;"
                           "set g_teamForceBalance 1;set capturelimit 5;set g_motd '';set fraglimit 16;set g_gametype 4;"
-                          "set nextmap \"vstr map01\";map mapname\";")
+                          "map mapname;set nextmap vstr map01\";")
 
     game = Game('mapname', 4, 4)
 
