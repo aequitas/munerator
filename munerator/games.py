@@ -26,13 +26,15 @@ class Game(object):
         "set g_vampire 0",
         "set g_regen 0",
         "set g_rockets 0",
-        "set g_catchup 0"
+        "set g_catchup 0",
+        "set g_respawntime 0"
     ]
 
     team_commands = [
         "set g_teamAutoJoin 0",
         "set g_teamForceBalance 1",
-        "set capturelimit 5"
+        "set capturelimit 5",
+        "set g_respawntime 5"
     ]
 
     catchup = "g_catchup 5"

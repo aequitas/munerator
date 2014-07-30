@@ -26,6 +26,8 @@ log = logging.getLogger(__name__)
 
 
 class Changer(ThrottleEventler):
+    nextgame = None
+
     def __init__(self, *args, **kwargs):
         super(Changer, self).__init__(*args, **kwargs)
         self.playlister = Playlister()
@@ -55,6 +57,9 @@ class Changer(ThrottleEventler):
             mapname = data.get('game_info', {}).get('mapname')
             self.actions['announce'] = ((mapname,), {})
 
+        if kind == 'say' and 'nextgame' in data.get('text', ''):
+            self.say_nextgame()
+
     def announce(self, mapname):
         self.rcon('say Loaded map %s, mapvote enabled (+1/-1, like/dislike)' % mapname)
 
@@ -78,7 +83,8 @@ class Changer(ThrottleEventler):
 
         game = Game(next_game.gamemap.name, next_game.gametype, num_players, special)
         log.info('next game: %s' % str(game))
-        self.rcon('say Next game: %s' % str(game))
+        self.nextgame = game
+        self.say_nextgame()
 
         nextmap_string = game.nextmapstring()
         log.info('nextmap string: %s' % nextmap_string)
@@ -96,6 +102,10 @@ class Changer(ThrottleEventler):
             if new_fraglimit > fraglimit:
                 log.info('new fraglimit %s' % new_fraglimit)
                 self.rcon('set fraglimit %s' % new_fraglimit)
+
+    def say_nextgame(self):
+        if self.nextgame:
+            self.rcon('say Next game: %s' % str(self.nextgame))
 
 
 def main(argv):
