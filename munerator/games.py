@@ -46,6 +46,8 @@ class Game(object):
     @staticmethod
     def get_fraglimit(num_players):
         # increate fraglimit by 8 for every two players joining
+        if num_players not in range(30):
+            num_players = 0
         fraglimit = int(num_players) / 2 * 8
         fraglimit = fraglimit = max(10, min(fraglimit, 30))
 
