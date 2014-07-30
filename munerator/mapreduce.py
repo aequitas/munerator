@@ -68,10 +68,12 @@ class Playlister(object):
         // magic numbers
         var team_games = [3, 4, 5, 6, 7, 8, 9];
         var team_game_modifier = 0.1;
+        var map_size_modifier = 0.1;
         var less_team_games = 0.5;
         var less_played_modifier = 1.5;
         var last_played_modifier = 0.5;
         var rerotate_hours = 24*7;
+        var default_score = num_players / 2;
 
         var key = {
             gamemap:this._id,
@@ -96,10 +98,16 @@ class Playlister(object):
             modifier = modifier * less_played_modifier;
         }
 
+        // don't favor maps with unsuitable size
+        if (this.min_players > num_players || this.max_player < num_players){
+            modifier = modifier * map_size_modifier;
+            modifiers.push({name: 'not suitable size', factor: map_size_modifier})
+        }
+
         // emit for every map/playlist combination
         this.gametypes.forEach(function(gametype){
             var value = {
-                score: 1.0,
+                score: default_score,
                 modifier: modifier,
                 votes: [],
                 modifiers: modifiers.slice(0)
@@ -176,9 +184,7 @@ class Playlister(object):
         log.debug('map search player count: %s' % normalized_count)
 
         # select maps suitable for online players
-        suitable_maps = Gamemaps.objects(
-            min_players__lte=normalized_count,
-            max_players__gte=normalized_count)
+        suitable_maps = Gamemaps.objects()
 
         # don't replay recent maps
         recent_maps_ids = [x.id for x in Games.objects.order_by('-start').scalar('gamemap')[:3] if x]
