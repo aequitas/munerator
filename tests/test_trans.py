@@ -76,6 +76,8 @@ def test_translations(line, kind):
         'guid', '4149407351D856EBE4C59B969BAA68B2'],
     [r"0:00 InitGame: \fraglimit\10\g_gametype\10\mapname\testmap\sv_allowDownload\1\g_timestamp\2014-06-28 19:22:53",
         "fraglimit", "10"],
+    [r"0:00 InitGame: \fraglimit\10\g_gametype\10\mapname\pul1duel-oa\sv_allowDownload\1\g_timestamp\2014-06-28 19:22",
+        "mapname", "pul1duel-oa"],
 
 ])
 def test_data(line, key, value):
