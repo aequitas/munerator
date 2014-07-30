@@ -68,7 +68,7 @@ class Game(object):
         if self.special:
             cmds.append("set g_motd %s" % self.special)
         else:
-            cmds.append("set g_motd ''")
+            cmds.append("set g_motd no special mode")
 
         cmds.append("set fraglimit %s" % self.get_fraglimit(self.num_players))
         cmds.append("set g_gametype %s" % self.gametype)

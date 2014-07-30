@@ -71,7 +71,7 @@ class Changer(ThrottleEventler):
             log.error('failed to determine next game')
             return
 
-        if next_game.gametype == 0 and random.choice(range(10)) == 0:
+        if next_game.gametype == 0 and random.choice(range(5)) == 0:
             special = 'instagib'
         else:
             special = None
