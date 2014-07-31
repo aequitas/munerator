@@ -103,8 +103,10 @@ class Playlister(object):
         }
 
         // don't favor maps with unsuitable size
-        map_size_modifier = Math.min(num_players, this.min_players) / (this.min_players||2);
-        map_size_modifier *= this.max_players / Math.max((num_players), this.max_players);
+        min_players = Math.max(this.min_players, 2)
+        max_players = Math.min(this.max_players, 16)
+        map_size_modifier = Math.min(num_players, min_players) / min_players;
+        map_size_modifier *= max_players / Math.max(num_players, max_players);
         map_size_modifier = Math.max(map_size_modifier, 0.1);
         if (map_size_modifier !== 1){
             modifier = modifier * map_size_modifier;
