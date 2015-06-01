@@ -11,6 +11,9 @@ munerator
 .. image:: https://pypip.in/d/munerator/badge.png
         :target: https://crate.io/packages/munerator
 
+.. image:: https://codeclimate.com/github/aequitas/munerator/badges/gpa.svg
+   :target: https://codeclimate.com/github/aequitas/munerator
+   :alt: Code Climate
 
 Munerator: Organizer of gladiatorial fights. (http://www.unrv.com/culture/gladiator.php)
 
